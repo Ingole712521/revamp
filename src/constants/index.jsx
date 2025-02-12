@@ -81,10 +81,17 @@ export const BIO = [
 
 
 export const EXPERIENCES = [
+   {
+    title: "Jr React developer",
+    company: "Kshan Tech Soft Pvt Ltd ",
+    duration: "Jan 2025 - Present ",
+    description:
+      " Junior React Developer building responsive web applications using React, TypeScript, JavaScript, and MongoDB at Kshan Tech Soft Pvt Ltd.  ",
+  },
   {
     title: "Full Stack Developer",
     company: "Alief View Media Group  ",
-    duration: "March 2024 - Present",
+    duration: "March 2024 - September 2024",
     description:
       " I spearheaded the development of a website from the ground up, overseeing all aspects from initial concept and design through to final deployment. This involved creating a robust and responsive layout, integrating dynamic functionalities, and ensuring a seamless user experience across all devices. My work encompassed front-end and back-end development, optimizing performance, and implementing security measures to deliver a high-quality, fully functional website  ",
   },
