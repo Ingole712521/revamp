@@ -7,29 +7,50 @@ import Skills from "./components/Skills";
 import WorkExperience from "./components/WorkExperience";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
-// import Work from "./components/Work";
-
+import Blogs from "./components/Blogs";
+import { ConfigProvider, theme } from 'antd';
+import { useState } from 'react';
 
 function App() {
- return(
- <div className="relative h-full overflow y-auto antialiased">
-  <div className="fixed inset-0 bg-fixed bg-cover bg-center bg-img"></div>
-  <div className="relative z-10 flex flex-col items-center p-4 space-y-8 container mx-auto">
-    <Hero/>
-    <Navbar/>
-    <Projects/>
-    {/* <Work/> */}
-    <Bio/>
-    < Skills/>
-    <WorkExperience/>
-    <EducationSection/>
-    <ContactSection/>
-    <Footer/>
-  </div>
- 
- </div>
+  const [isDark, setIsDark] = useState(true);
 
- ) 
+  const toggleTheme = () => setIsDark((v) => !v);
+
+  return (
+    <ConfigProvider
+      theme={{
+        algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm,
+        token: {
+          colorPrimary: '#6366f1',
+          borderRadius: 12,
+        },
+      }}
+    >
+      <div className={
+        isDark
+          ? "relative min-h-screen bg-gradient-to-br from-black via-zinc-900 to-black overflow-x-hidden"
+          : "relative min-h-screen bg-gradient-to-br from-white via-indigo-50 to-white overflow-x-hidden"
+      }>
+        {/* Main Content */}
+        <div className="relative z-10">
+          <Navbar isDark={isDark} onToggleTheme={toggleTheme} />
+          
+          <main className="container mx-auto px-4 py-8 space-y-16">
+            <Hero isDark={isDark} />
+            <Projects />
+            <Blogs />
+            <Bio />
+            <Skills />
+            <WorkExperience />
+            <EducationSection />
+            <ContactSection />
+          </main>
+          
+          <Footer />
+        </div>
+      </div>
+    </ConfigProvider>
+  );
 }
 
 export default App;

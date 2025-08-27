@@ -89,7 +89,7 @@ export const EXPERIENCES = [
       " Junior React Developer building responsive web applications using React, TypeScript, JavaScript, and MongoDB at Kshan Tech Soft Pvt Ltd.  ",
   },
   {
-    title: "Full Stack Developer",
+    title: "React developer",
     company: "Alief View Media Group  ",
     duration: "March 2024 - September 2024",
     description:

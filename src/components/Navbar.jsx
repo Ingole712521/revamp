@@ -1,95 +1,160 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NAVIGATION_LINKS } from "../constants";
-import { FaTimes, FaBars } from "react-icons/fa";
+import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
+import { motion, AnimatePresence } from "framer-motion";
 
-const Navbar = () => {
+const Navbar = ({ isDark = true, onToggleTheme }) => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
 
-    const togglerMobileMenu = () => {
-        setMobileMenuOpen(!isMobileMenuOpen);
-    };
+    useEffect(() => {
+        const handleScroll = () => {
+            const isScrolled = window.scrollY > 20;
+            setScrolled(isScrolled);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const handleLinkClick = (e, href) => {
         e.preventDefault();
         const targetElement = document.querySelector(href);
         if (targetElement) {
-            const Offset = -85;
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.scrollY + Offset;
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: "smooth",
-            });
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
         setMobileMenuOpen(false);
     };
 
+    const navVariants = {
+        hidden: { y: -100, opacity: 0 },
+        visible: { 
+            y: 0, 
+            opacity: 1,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
+
+    const menuVariants = {
+        hidden: { opacity: 0, y: -20 },
+        visible: { 
+            opacity: 1, 
+            y: 0,
+            transition: { duration: 0.3, staggerChildren: 0.1 }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, x: -20 },
+        visible: { opacity: 1, x: 0 }
+    };
+
+    const textColor = isDark ? 'text-white' : 'text-slate-900';
+    const textMuted = isDark ? 'text-white/80' : 'text-slate-700';
+    const glassBg = isDark ? 'bg-white/10' : 'bg-slate-900/5';
+    const borderCol = isDark ? 'border-white/20' : 'border-slate-900/10';
+
     return (
-        <div>
-            <nav className="fixed left-0 right-0 top-4 z-50 bg-black/20 py-4 rounded-lg shadow-lg">
-                {/* Desktop Menu */}
-                <div className="mx-auto hidden max-w-3xl items-center justify-center rounded-lg border border-stone-50/30 bg-black/20 lg:flex">
-                    <div className="flex items-center justify-between gap-8">
-                        <div>
-                            <a href="#" className="text-2xl font-bold text-white hover:text-yellow">
-                                Home
-                            </a>
-                        </div>
-                        <div>
-                            <ul className="flex items-center gap-6">
-                                {NAVIGATION_LINKS.map((item, index) => (
-                                    <li key={index}>
-                                        <a
-                                            className="text-lg text-white hover:text-yellow"
+        <motion.nav
+            variants={navVariants}
+            initial="hidden"
+            animate="visible"
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+                scrolled 
+                    ? `${glassBg} backdrop-blur-md border-b ${borderCol} shadow-lg` 
+                    : 'bg-transparent'
+            }`}
+        >
+            <div className="container mx-auto px-4">
+                <div className="flex items-center justify-between h-16 lg:h-20">
+                    {/* Logo/Brand */}
+                    <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        className="flex items-center space-x-2"
+                    >
+                    {/* //     <div className="w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center"> */}
+                    //         {/* <span className="text-white font-bold text-lg lg:text-xl">N</span> */}
+                    {/* //     </div> */}
+                        {/* <span className={`${textColor} font-bold text-xl lg:text-2xl`}>Nehal</span> */}
+                    </motion.div>
+
+                    {/* Desktop Menu */}
+                    <div className="hidden lg:flex items-center space-x-6">
+                        {NAVIGATION_LINKS.map((item, index) => (
+                            <motion.a
+                                key={index}
+                                href={item.href}
+                                onClick={(e) => handleLinkClick(e, item.href)}
+                                className={`${textMuted} hover:${textColor} font-medium transition-all duration-300 relative group`}
+                                whileHover={{ y: -2 }}
+                            >
+                                {item.label}
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                            </motion.a>
+                        ))}
+                        <button
+                            onClick={onToggleTheme}
+                            className={`px-3 py-1.5 rounded-lg ${glassBg} ${borderCol} border ${textColor}`}
+                            aria-label="Toggle theme"
+                        >
+                            {isDark ? 'Light' : 'Dark'}
+                        </button>
+                    </div>
+
+                    {/* Mobile Menu Button */}
+                    <div className="flex items-center lg:hidden gap-2">
+                        <button
+                            onClick={onToggleTheme}
+                            className={`px-3 py-1.5 rounded-lg ${glassBg} ${borderCol} border ${textColor}`}
+                            aria-label="Toggle theme"
+                        >
+                            {isDark ? 'Light' : 'Dark'}
+                        </button>
+                        <motion.button
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+                            className={`p-2 rounded-lg ${glassBg} border ${borderCol}`}
+                        >
+                            {isMobileMenuOpen ? (
+                                <CloseOutlined className={`${textColor} text-xl`} />
+                            ) : (
+                                <MenuOutlined className={`${textColor} text-xl`} />
+                            )}
+                        </motion.button>
+                    </div>
+                </div>
+
+                {/* Mobile Menu */}
+                <AnimatePresence>
+                    {isMobileMenuOpen && (
+                        <motion.div
+                            variants={menuVariants}
+                            initial="hidden"
+                            animate="visible"
+                            exit="hidden"
+                            className="lg:hidden mt-4 pb-4"
+                        >
+                            <div className={`${glassBg} backdrop-blur-md rounded-xl border ${borderCol} p-6`}>
+                                <div className="space-y-4">
+                                    {NAVIGATION_LINKS.map((item, index) => (
+                                        <motion.a
+                                            key={index}
                                             href={item.href}
                                             onClick={(e) => handleLinkClick(e, item.href)}
+                                            className={`block ${textMuted} hover:${textColor} font-medium text-lg transition-all duration-300`}
+                                            variants={itemVariants}
+                                            whileHover={{ x: 10 }}
                                         >
                                             {item.label}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                {/* Mobile Menu */}
-                <div className="lg:hidden">
-                    <div className="flex items-center justify-between px-4 bg-black/20 py-4 rounded-lg shadow-lg">
-                        <div>
-                            {/* No logo or Home link */}
-                        </div>
-                        <div className="flex items-center">
-                            <button
-                                className="focus:outline-none"
-                                onClick={togglerMobileMenu}
-                            >
-                                {isMobileMenuOpen ? (
-                                    <FaTimes className="h-8 w-8 text-white" />
-                                ) : (
-                                    <FaBars className="h-8 w-8 text-white" />
-                                )}
-                            </button>
-                        </div>
-                    </div>
-                    {isMobileMenuOpen && (
-                        <ul className="ml-4 mt-4 flex flex-col gap-6 text-white bg-black/20 rounded-lg p-4">
-                            {NAVIGATION_LINKS.map((item, index) => (
-                                <li key={index}>
-                                    <a
-                                        href={item.href}
-                                        className="block text-xl hover:text-yellow"
-                                        onClick={(e) => handleLinkClick(e, item.href)}
-                                    >
-                                        {item.label}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
+                                        </motion.a>
+                                    ))}
+                                </div>
+                            </div>
+                        </motion.div>
                     )}
-                </div>
-            </nav>
-        </div>
+                </AnimatePresence>
+            </div>
+        </motion.nav>
     );
 };
 
