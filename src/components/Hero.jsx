@@ -113,7 +113,7 @@ const Hero = ({ isDark = true }) => {
                                 <div className="text-white/60 text-sm">Blog Posts</div>
                             </div>
                             <div className="text-center">
-                                <div className="text-2xl lg:text-3xl font-bold text-white">2+</div>
+                                <div className="text-2xl lg:text-3xl font-bold text-white">23+</div>
                                 <div className="text-white/60 text-sm">Projects</div>
                             </div>
                             <div className="text-center">

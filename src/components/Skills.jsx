@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Progress, Card } from "antd";
+import {  Card } from "antd";
 import { 
     CloudOutlined, 
     CodeOutlined, 
