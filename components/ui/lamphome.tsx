@@ -96,19 +96,23 @@ export function Lamphome({
         transition={{ duration: 0.8, ease: 'easeOut' }}
         className='relative flex items-center justify-between w-full max-w-4xl h-auto py-3 px-3 [@media(min-width:768px)]:px-6 bg-white/80 dark:bg-neutral-950 backdrop-blur-xs border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300'
       >
-        {logoSrc && (
-          <div className='shrink-0'>
-            <Image
-              src={logoSrc}
-              alt={logoAlt || 'Logo'}
-              width={28}
-              height={28}
-              className='cursor-pointer hover:scale-110 transition-transform duration-200'
-            />
-          </div>
-        )}
+        <div className='flex-1 flex items-center justify-start'>
+          {logoSrc ? (
+            <div className='shrink-0'>
+              <Image
+                src={logoSrc}
+                alt={logoAlt || 'Logo'}
+                width={28}
+                height={28}
+                className='cursor-pointer hover:scale-110 transition-transform duration-200'
+              />
+            </div>
+          ) : (
+             <div className="w-7 h-7" />
+          )}
+        </div>
 
-        <nav className='hidden [@media(min-width:640px)]:flex items-center space-x-4 [@media(min-width:768px)]:space-x-6'>
+        <nav className='shrink-0 hidden [@media(min-width:640px)]:flex items-center space-x-4 [@media(min-width:768px)]:space-x-6'>
           {navItems.map((item, index) => (
             <Link
               key={index}
@@ -121,7 +125,7 @@ export function Lamphome({
           ))}
         </nav>
 
-        <div className='flex items-center space-x-2'>
+        <div className='flex-1 flex items-center justify-end space-x-2'>
           <button
             onClick={toggleMobileMenu}
             className='[@media(min-width:640px)]:hidden flex justify-center items-center p-2 bg-gray-100 dark:bg-neutral-900 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors duration-200'
