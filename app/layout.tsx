@@ -14,8 +14,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Next.js Portfolio",
-  description: "Minimalist portfolio with Lamp Navbar",
+  title: "Nehal Ingole | Frontend Developer & DevOps Engineer",
+  description: "I'm Nehal — Frontend Developer | DevOps Engineer focused on cloud automation, stylish development, and high-performance systems.",
+  icons: {
+    icon: "/image (3).jpg",
+    apple: "/image (3).jpg",
+  },
 };
 
 export default function RootLayout({
