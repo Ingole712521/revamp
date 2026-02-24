@@ -4,7 +4,6 @@ export const NAVIGATION_LINKS = [
     { label: "Bio", href: "#bio" },
     { label: "Skills", href: "#skills" },
     { label: "Work", href: "#work" },
-    { label: "Education", href: "#education" },
     { label: "Contact", href: "#contact" },
 ];
 
@@ -149,12 +148,34 @@ export const EXPERIENCES = [
     }
 ];
 
-export const EDUCATION = [
+export const QUOTES = [
     {
-        degree: "Bachelor of Technology",
-        institution: "GCE Karad",
-        duration: "2019 - 2023",
-        description: "Focused on coding and management. Completed 20+ projects and authored 72+ technical articles."
+        text: "You have a right to perform your prescribed duty, but you are not entitled to the fruits of actions.",
+        author: "Bhagavad Gita"
+    },
+    {
+        text: "The only way to do great work is to love what you do.",
+        author: "Steve Jobs"
+    },
+    {
+        text: "Innovation distinguishes between a leader and a follower.",
+        author: "Steve Jobs"
+    },
+    {
+        text: "Your time is limited, so don't waste it living someone else's life.",
+        author: "Steve Jobs"
+    },
+    {
+        text: "Stay hungry, stay foolish.",
+        author: "Whole Earth Catalog"
+    },
+    {
+        text: "The best way to predict the future is to invent it.",
+        author: "Alan Kay"
+    },
+    {
+        text: "Simplicity is the ultimate sophistication.",
+        author: "Leonardo da Vinci"
     }
 ];
 

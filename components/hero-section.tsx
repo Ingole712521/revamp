@@ -87,7 +87,7 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
                 <Link href="#" className="hover:text-zinc-900 dark:hover:text-white transition-colors"><Twitter className="w-5 h-5" /></Link>
                 <Link href="#" className="hover:text-zinc-900 dark:hover:text-white transition-colors"><Linkedin className="w-5 h-5" /></Link>
                 <Link href="#" className="hover:text-zinc-900 dark:hover:text-white transition-colors"><Github className="w-5 h-5" /></Link>
-                <Link href="#" className="hover:text-zinc-900 dark:hover:text-white transition-colors"><Mail className="w-5 h-5" /></Link>
+                <Link href="mailto:nehalingole2001@gmail.com" className="hover:text-zinc-900 dark:hover:text-white transition-colors"><Mail className="w-5 h-5" /></Link>
             </motion.div>
         </section>
     );

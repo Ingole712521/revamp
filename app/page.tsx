@@ -6,12 +6,14 @@ import React from "react";
 import { HeroSection } from "@/components/hero-section";
 import { ProjectsSection } from "@/components/projects-section";
 import { ExperienceSection } from "@/components/experience-section";
-import { EducationSection } from "@/components/education-section";
 import { Footer } from "@/components/footer";
 import { CustomCursor } from "@/components/custom-cursor";
 import { GithubActivity } from "@/components/github-activity";
 import { BlogSection } from "@/components/blog-section";
 import { AboutSection } from "@/components/about-section";
+import { QuotesSection } from "@/components/quotes-section";
+import { VisitorCount } from "@/components/visitor-count";
+import { ContactSection } from "@/components/contact-section";
 import { ResumeModal } from "@/components/resume-modal";
 import { useState } from "react";
 
@@ -38,7 +40,9 @@ export default function Home() {
           <AboutSection />
           <GithubActivity />
           <BlogSection />
-          <EducationSection />
+          <QuotesSection />
+          <ContactSection />
+          {/* <VisitorCount /> */}
           <Footer />
         </div>
       </Lamphome>
