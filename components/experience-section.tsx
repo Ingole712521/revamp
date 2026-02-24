@@ -1,7 +1,6 @@
 "use client"
 
 import { EXPERIENCES } from "@/lib/constants";
-import { getTechIcon } from "@/lib/icons";
 import { motion, AnimatePresence } from "motion/react";
 import {
     Briefcase,
@@ -111,18 +110,14 @@ function ExperienceCard({ exp }: { exp: any }) {
                                     Technologies & Tools
                                 </h4>
                                 <div className="flex flex-wrap gap-2">
-                                    {exp.techStack.map((tech: string, tIdx: number) => {
-                                        const icon = getTechIcon(tech);
-                                        return (
-                                            <div
-                                                key={tIdx}
-                                                className="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 flex items-center gap-1.5 hover:border-blue-500/50 transition-all cursor-default group/tech"
-                                            >
-                                                <img src={icon} alt={tech} className="w-3.5 h-3.5 object-contain opacity-80 group-hover/tech:opacity-100 transition-opacity" />
-                                                <span className="text-xs  text-black dark:text-white transition-colors">{tech}</span>
-                                            </div>
-                                        );
-                                    })}
+                                    {exp.techStack.map((tech: string, tIdx: number) => (
+                                        <div
+                                            key={tIdx}
+                                            className="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 hover:border-blue-500/50 transition-all cursor-default group/tech"
+                                        >
+                                            <span className="text-xs text-black dark:text-white transition-colors">{tech}</span>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
 

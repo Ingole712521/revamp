@@ -3,7 +3,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { HERO, SKILLS_CATEGORIES } from '@/lib/constants';
-import { getTechIcon } from '@/lib/icons';
 import Image from 'next/image';
 
 export function AboutSection() {
@@ -46,22 +45,14 @@ export function AboutSection() {
 
                         {/* Smaller icon grid */}
                         <div className="flex flex-wrap gap-2 items-center justify-center lg:justify-start">
-                            {SKILLS_CATEGORIES.flatMap(cat => cat.skills).map((skill) => {
-                                const icon = getTechIcon(skill);
-                                return (
-                                    <div
-                                        key={skill}
-                                        className="w-8 h-8  flex items-center justify-center hover:scale-105 hover:border-zinc-400 dark:hover:border-zinc-500 transition-all cursor-pointer shadow-sm group"
-                                        title={skill}
-                                    >
-                                        <img
-                                            src={icon}
-                                            alt={skill}
-                                            className="w-4 h-4 object-contain opacity-80 group-hover:opacity-100 transition-opacity"
-                                        />
-                                    </div>
-                                );
-                            })}
+                            {SKILLS_CATEGORIES.flatMap(cat => cat.skills).map((skill) => (
+                                <span
+                                    key={skill}
+                                    className="px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-md text-[10px] uppercase tracking-wider font-bold text-zinc-600 dark:text-zinc-400"
+                                >
+                                    {skill}
+                                </span>
+                            ))}
                         </div>
                     </div>
                 </div>

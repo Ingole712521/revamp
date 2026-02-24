@@ -1,7 +1,6 @@
 "use client"
 
 import { PROJECTS } from "@/lib/constants";
-import { getTechIcon } from "@/lib/icons";
 import { ProjectPlaceholder } from "@/components/project-placeholder";
 import { motion } from "motion/react";
 import Image from "next/image";
@@ -13,7 +12,7 @@ import { gsap } from "gsap";
 export function ProjectsSection() {
     return (
         <section id="projects" className="section-container border-t border-zinc-100 dark:border-zinc-900">
-            <h2 className="mb-12 text-center text-black dark:text-white">Featured Projects</h2>
+            <h2 className="mb-12 text-center text-black dark:text-white">Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-0">
                 {PROJECTS.map((project, idx) => (
                     <ProjectCard key={project.id} project={project} idx={idx} />
@@ -98,15 +97,11 @@ function ProjectCard({ project, idx }: { project: any; idx: number }) {
             </div>
             <div className="p-6">
                 <div className="flex flex-wrap gap-2 mb-3">
-                    {project.tags.map((tag: string) => {
-                        const icon = getTechIcon(tag);
-                        return (
-                            <span key={tag} className="flex items-center gap-1.5 px-2 py-1 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-md text-[10px] uppercase tracking-wider font-bold text-zinc-600 dark:text-zinc-400">
-                                <img src={icon} alt={tag} className="w-2.5 h-2.5 object-contain opacity-70" />
-                                {tag}
-                            </span>
-                        );
-                    })}
+                    {project.tags.map((tag: string) => (
+                        <span key={tag} className="px-2 py-1 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-md text-[10px] uppercase tracking-wider font-bold text-zinc-600 dark:text-zinc-400">
+                            {tag}
+                        </span>
+                    ))}
                 </div>
                 <h3 className="text-xl font-bold text-black dark:text-white mb-2">{project.name}</h3>
                 <p className="text-zinc-800 dark:text-zinc-200 text-sm line-clamp-2">{project.description}</p>
