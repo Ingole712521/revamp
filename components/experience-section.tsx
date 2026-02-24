@@ -14,42 +14,30 @@ import {
     ExternalLink
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export function ExperienceSection() {
-    const sectionRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from(".experience-card", {
-                opacity: 0,
-                y: 30,
-                stagger: 0.15,
-                duration: 0.8,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 85%",
-                }
-            });
-        }, sectionRef);
-
-        return () => ctx.revert();
-    }, []);
-
     return (
-        <section id="work" ref={sectionRef} className="w-full py-24 border-t border-zinc-100 dark:border-zinc-900">
+        <section id="work" className="w-full py-24 border-t border-zinc-100 dark:border-zinc-900">
             <h2 className="text-4xl font-black mb-16 text-center text-black dark:text-white uppercase tracking-tighter">
                 Professional Path
             </h2>
 
             <div className="max-w-4xl mx-auto space-y-6 px-4">
                 {EXPERIENCES.map((exp, idx) => (
-                    <ExperienceCard key={idx} exp={exp} />
+                    <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.05 }}
+                        transition={{
+                            delay: idx * 0.1,
+                            duration: 0.5,
+                            ease: "easeOut"
+                        }}
+                    >
+                        <ExperienceCard exp={exp} />
+                    </motion.div>
                 ))}
             </div>
         </section>
@@ -60,7 +48,7 @@ function ExperienceCard({ exp }: { exp: any }) {
     const [isExpanded, setIsExpanded] = useState(false);
 
     return (
-        <div className="experience-card group bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-100 dark:border-zinc-800 rounded-3xl overflow-hidden transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-700">
+        <div className="experience-card group bg-zinc-100/10 dark:bg-zinc-800/20 border border-zinc-200 dark:border-zinc-700 rounded-3xl overflow-hidden transition-all duration-300 hover:border-zinc-400 dark:hover:border-zinc-500">
             <div
                 onClick={() => setIsExpanded(!isExpanded)}
                 className="p-6 md:p-8 cursor-pointer flex flex-col md:flex-row gap-6 items-start"

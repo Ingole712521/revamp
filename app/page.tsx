@@ -9,6 +9,9 @@ import { ExperienceSection } from "@/components/experience-section";
 import { EducationSection } from "@/components/education-section";
 import { Footer } from "@/components/footer";
 import { CustomCursor } from "@/components/custom-cursor";
+import { GithubActivity } from "@/components/github-activity";
+import { BlogSection } from "@/components/blog-section";
+import { AboutSection } from "@/components/about-section";
 import { ResumeModal } from "@/components/resume-modal";
 import { useState } from "react";
 
@@ -30,8 +33,11 @@ export default function Home() {
       >
         <div className="max-w-4xl w-full px-6 flex flex-col items-center">
           <HeroSection onResumeClick={() => setIsResumeOpen(true)} />
-          <ProjectsSection />
           <ExperienceSection />
+          <ProjectsSection />
+          <AboutSection />
+          <GithubActivity />
+          <BlogSection />
           <EducationSection />
           <Footer />
         </div>
