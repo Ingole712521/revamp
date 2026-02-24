@@ -25,7 +25,6 @@ export function ProjectPlaceholder({ name, index }: { name: string, index: numbe
         <div className="p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl">
           <Icon className="w-10 h-10 text-zinc-900 dark:text-white" />
         </div>
-        <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-[0.2em]">System.initialize()</span>
       </motion.div>
 
       {/* Grid Pattern */}

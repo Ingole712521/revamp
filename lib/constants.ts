@@ -11,14 +11,37 @@ export const NAVIGATION_LINKS = [
 export const HERO = {
     name: "Nehal Ingole",
     greet: "Hi, I'm Nehal —",
-    role: "Frontend Developer & DevOps Engineer & Rust learner",
+    role: "Frontend Developer |  DevOps Engineer",
     description:
         "focused on cloud automation, stylish development, and high-performance systems. Passionate about Docker, AWS, and building minimalist technical aesthetics.",
     avatar: "/image (3).jpg",
 };
 
 export const TECH_STACK = [
-    "AWS", "Docker", "Kubernetes", "Rust", "React", "Linux", "Terraform", "GitHub Actions", "Ansible", "Cybersecurity"
+    "AWS", "Docker", "Kubernetes", "Rust", "React", "Next.js", "TypeScript", "Linux", "Terraform", "GitHub Actions", "Ansible", "Cybersecurity"
+];
+
+export const SKILLS_CATEGORIES = [
+    {
+        title: "Cloud",
+        skills: ["AWS"]
+    },
+    {
+        title: "DevOps",
+        skills: ["Docker", "Kubernetes", "Jenkins", "Terraform", "Ansible", "ArgoCD"]
+    },
+    {
+        title: "Version Control",
+        skills: ["Git", "GitHub", "GitLab"]
+    },
+    {
+        title: "OS",
+        skills: ["Linux"]
+    },
+    {
+        title: "Frontend",
+        skills: ["React.js", "TypeScript", "JavaScript"]
+    }
 ];
 
 export const PROJECTS = [
@@ -43,7 +66,7 @@ export const PROJECTS = [
         id: 3,
         name: "CI/CD on ECR and Docker",
         description: "Automated Docker container uploads to AWS ECR using GitHub Actions, boosting deployment efficiency.",
-        image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=2070&auto=format&fit=crop",
+        image: "/ECR.png",
         link: "https://www.linkedin.com/posts/nehal-ingole_githubactions-aws-ecr-activity-7183878521130217474-oS8C",
         tags: ["GitHub Actions", "AWS ECR", "CI/CD"]
     },
@@ -51,7 +74,7 @@ export const PROJECTS = [
         id: 4,
         name: "Ansible Server Automation",
         description: "Simplified server management through Ansible playbooks, inventory management, and automated service deployments.",
-        image: "https://images.unsplash.com/photo-1558494949-ef010958b4e7?q=80&w=2070&auto=format&fit=crop",
+        image: "/ansible.png",
         link: "https://www.linkedin.com/posts/nehal-ingole_document-activity-7178789372949897216-h1FK",
         tags: ["Ansible", "Automation", "IAAC"]
     }
@@ -139,7 +162,7 @@ export const BLOGS = [
     {
         title: "UPI Architecture Explained: NPCI, Banks, and Transaction Flow",
         description: "A deep dive into how UPI works, the roles of NPCI, PSPs, and banks in ensuring seamless real-time payments.",
-        image: "https://images.unsplash.com/photo-1614064641938-3bcee2c0f937?q=80&w=2070&auto=format&fit=crop",
+        image: "/up.png",
         link: "https://learnwithnehal.hashnode.dev/upi-architecture-explained-npci-banks-and-transaction-flow",
         date: "February 24, 2026",
         tags: ["Architecture", "Fintech", "UPI"]
@@ -147,7 +170,7 @@ export const BLOGS = [
     {
         title: "Simplifying Docker Management with Portainer CE",
         description: "Learn how to use Portainer to manage your Docker environments with ease, from containers to stacks.",
-        image: "https://images.unsplash.com/photo-1605745341112-85968b193ef5?q=80&w=2071&auto=format&fit=crop",
+        image: "/dockercontainer.png",
         link: "https://learnwithnehal.hashnode.dev/simplifying-docker-management-with-portainer-ce",
         date: "January 15, 2026",
         tags: ["Docker", "DevOps", "Portainer"]
@@ -155,7 +178,7 @@ export const BLOGS = [
     {
         title: "CI/CD on ECR and Docker with GitHub Actions",
         description: "A step-by-step guide to automating your container deployment pipeline using AWS ECR and GitHub Actions.",
-        image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=2070&auto=format&fit=crop",
+        image: "/dockeraws.png",
         link: "https://www.linkedin.com/posts/nehal-ingole_githubactions-aws-ecr-activity-7183878521130217474-oS8C",
         date: "December 10, 2025",
         tags: ["GitHub Actions", "ECR", "CI/CD"]

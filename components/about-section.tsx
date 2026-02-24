@@ -2,56 +2,66 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { HERO, TECH_STACK } from '@/lib/constants';
+import { HERO, SKILLS_CATEGORIES } from '@/lib/constants';
+import { getTechIcon } from '@/lib/icons';
 import Image from 'next/image';
 
 export function AboutSection() {
     return (
         <section id="bio" className="section-container border-t border-zinc-100 dark:border-zinc-900">
             <div className="mb-12">
-                <span className="text-zinc-500 dark:text-zinc-400 text-xs font-bold uppercase tracking-widest mb-2 block">About</span>
-                <h2>Me</h2>
+                <span className=" text-zinc-500 dark:text-zinc-400 text-3xl font-bold uppercase tracking-widest mb-2 block">About Me</span>
+                <h2 className="text-3xl md:text-4xl font-bold"></h2>
             </div>
 
             <motion.div
                 initial={{ opacity: 0, scale: 0.98 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="flex flex-col md:flex-row gap-8 items-center md:items-stretch bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-100 dark:border-zinc-800 rounded-[2.5rem] overflow-hidden p-8"
+                className="flex flex-col lg:flex-row gap-8 items-center lg:items-center bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-100 dark:border-zinc-800 rounded-2xl overflow-hidden p-6 lg:p-8 mb-16"
             >
-                {/* Large Avatar Card */}
-                <div className="w-64 h-64 md:w-80 md:h-80 relative rounded-[2rem] overflow-hidden flex-shrink-0 shadow-2xl border-4 border-white dark:border-zinc-800 bg-yellow-400">
+                {/* Avatar - Shrunk size */}
+                <div className="w-32 h-32 md:w-40 md:h-40 relative rounded-2xl overflow-hidden flex-shrink-0 shadow-xl border-2 border-white dark:border-zinc-800 bg-yellow-400 group">
                     <Image
                         src={HERO.avatar}
                         alt={HERO.name}
                         fill
-                        className="object-cover"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        priority
                     />
                 </div>
 
-                {/* Content Area */}
-                <div className="flex-1 flex flex-col justify-center py-4 text-center md:text-left">
-                    <h3 className="mb-6 uppercase tracking-tight">
+                {/* Content Area - Compact layout */}
+                <div className="flex-1 flex flex-col justify-center text-center lg:text-left">
+                    <h3 className="mb-2 font-black text-2xl md:text-3xl">
                         {HERO.name}
                     </h3>
-                    <p className="mb-10 max-w-xl">
-                        I'm a dedicated <span className="font-bold text-blue-600 dark:text-blue-400">DevOps Engineer</span> and <span className="font-bold text-black dark:text-white">Full Stack Enthusiast</span>.
-                        I love building high-performance automation systems and high-end technical architectures.
-                        Focused on cloud scalability and minimalist design aesthetics.
+
+                    <p className="mb-4 text-base text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                        I'm a DevOps Engineer and Frontend Developer, passionate about building scalable cloud systems and clean, high-performance web experiences. I specialize in automation, modern infrastructure, and user-focused design.
                     </p>
 
-                    <div>
-                        <span className="text-zinc-500 dark:text-zinc-400 text-xs font-bold uppercase tracking-widest mb-4 block">Skills</span>
-                        <div className="flex flex-wrap justify-center md:justify-start gap-5">
-                            {TECH_STACK.slice(0, 8).map((skill) => (
-                                <div
-                                    key={skill}
-                                    className="w-10 h-10 rounded-xl bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 flex items-center justify-center hover:scale-110 transition-transform cursor-pointer shadow-sm group"
-                                    title={skill}
-                                >
-                                    <span className="text-[10px] font-black group-hover:text-blue-500 transition-colors uppercase">{skill.substring(0, 2)}</span>
-                                </div>
-                            ))}
+                    <div className="mt-2">
+                        <span className="text-zinc-500 dark:text-zinc-400 text-xs font-bold uppercase tracking-widest mb-3 block">Skills & Technologies</span>
+
+                        {/* Smaller icon grid */}
+                        <div className="flex flex-wrap gap-2 items-center justify-center lg:justify-start">
+                            {SKILLS_CATEGORIES.flatMap(cat => cat.skills).map((skill) => {
+                                const icon = getTechIcon(skill);
+                                return (
+                                    <div
+                                        key={skill}
+                                        className="w-8 h-8  flex items-center justify-center hover:scale-105 hover:border-zinc-400 dark:hover:border-zinc-500 transition-all cursor-pointer shadow-sm group"
+                                        title={skill}
+                                    >
+                                        <img
+                                            src={icon}
+                                            alt={skill}
+                                            className="w-4 h-4 object-contain opacity-80 group-hover:opacity-100 transition-opacity"
+                                        />
+                                    </div>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>

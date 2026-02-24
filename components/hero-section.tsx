@@ -30,7 +30,7 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="mb-6"
+                className="mb-6 text-4xl"
             >
                 {HERO.greet} <span className="text-zinc-600 dark:text-zinc-400">{HERO.role}</span>
             </motion.h1>

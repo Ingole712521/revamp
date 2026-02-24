@@ -1,0 +1,47 @@
+export const TECH_ICONS: Record<string, string> = {
+    "AWS": "/aws-color.png",
+    "Amazon Web Services": "https://cdn.simpleicons.org/amazonaws/white",
+    "Docker": "https://cdn.simpleicons.org/docker/2496ED",
+    "Kubernetes": "https://cdn.simpleicons.org/kubernetes/326CE5",
+    "Rust": "https://cdn.simpleicons.org/rust/white",
+    "React": "https://cdn.simpleicons.org/react/61DAFB",
+    "Next.js": "https://cdn.simpleicons.org/nextdotjs/white",
+    "TypeScript": "https://cdn.simpleicons.org/typescript/3178C6",
+    "JavaScript": "https://cdn.simpleicons.org/javascript/F7DF1E",
+    "Tailwind CSS": "https://cdn.simpleicons.org/tailwindcss/06B6D4",
+    "Linux": "https://cdn.simpleicons.org/linux/FCC624",
+    "Ubuntu": "https://cdn.simpleicons.org/ubuntu/E95420",
+    "GCP": "https://cdn.simpleicons.org/googlecloud/4285F4",
+    "Terraform": "https://cdn.simpleicons.org/terraform/844FBA",
+    "GitHub Actions": "https://cdn.simpleicons.org/githubactions/2088FF",
+    "Ansible": "https://cdn.simpleicons.org/ansible/EE0000",
+    "MongoDB": "https://cdn.simpleicons.org/mongodb/47A24A",
+    "GSAP": "https://cdn.simpleicons.org/greensock/88CE02",
+    "Figma": "https://cdn.simpleicons.org/figma/F24E1E",
+    "Portainer": "https://cdn.simpleicons.org/portainer/13BEFF",
+    "CI/CD": "https://cdn.simpleicons.org/githubactions/2088FF",
+    "HLS": "https://cdn.simpleicons.org/amazonaws/white",
+    "ECR": "https://cdn.simpleicons.org/amazon-ecr/white",
+    "Cybersecurity": "https://cdn.simpleicons.org/linux/white",
+    "Machine Learning": "https://cdn.simpleicons.org/python/3776AB",
+    "Terraform ": "https://cdn.simpleicons.org/terraform/844FBA",
+    "Redhat 7": "https://cdn.simpleicons.org/redhat/EE0000",
+    "Microsoft Azure": "https://cdn.simpleicons.org/microsoftazure/0078D4",
+    "IAAC": "https://cdn.simpleicons.org/terraform/844FBA",
+    "Automation": "https://cdn.simpleicons.org/ansible/EE0000",
+    "Portainer CE": "https://cdn.simpleicons.org/portainer/13BEFF",
+    "AWS ECR": "https://cdn.simpleicons.org/amazon-ecr/white",
+    "HLS Adaptive Bitrate Streaming": "https://cdn.simpleicons.org/amazonaws/white",
+    "Jenkins": "https://cdn.simpleicons.org/jenkins/D24939",
+    "ArgoCD": "https://cdn.simpleicons.org/argocd/EF7B4D",
+    "Git": "https://cdn.simpleicons.org/git/F05032",
+    "GitHub": "https://cdn.simpleicons.org/github/black",
+    "GitLab": "https://cdn.simpleicons.org/gitlab/FC6D26",
+    "React.js": "https://cdn.simpleicons.org/react/61DAFB",
+};
+
+export const getTechIcon = (name: string) => {
+    // Exact match or normalize and check
+    const normalized = name.trim();
+    return TECH_ICONS[normalized] || TECH_ICONS[name] || `https://cdn.simpleicons.org/star/white`;
+};

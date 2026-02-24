@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { BLOGS } from '@/lib/constants';
+import { getTechIcon } from '@/lib/icons';
 import { Calendar, ArrowRight, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -35,11 +36,15 @@ export function BlogSection() {
                             />
                             <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
                                 <div className="flex flex-wrap gap-2">
-                                    {blog.tags.map(tag => (
-                                        <span key={tag} className="px-2 py-1 bg-white/10 backdrop-blur-md rounded-md text-[10px] font-bold text-white uppercase tracking-wider">
-                                            {tag}
-                                        </span>
-                                    ))}
+                                    {blog.tags.map(tag => {
+                                        const icon = getTechIcon(tag);
+                                        return (
+                                            <span key={tag} className="flex items-center gap-1.5 px-2 py-1 bg-white/10 backdrop-blur-md rounded-md text-[10px] font-bold text-white uppercase tracking-wider">
+                                                <img src={icon} alt={tag} className="w-3 h-3 object-contain opacity-90 group-hover:opacity-100 transition-opacity" />
+                                                {tag}
+                                            </span>
+                                        );
+                                    })}
                                 </div>
                             </div>
                         </div>
