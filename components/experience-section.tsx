@@ -18,23 +18,17 @@ import Image from "next/image";
 
 export function ExperienceSection() {
     return (
-        <section id="work" className="w-full py-24 border-t border-zinc-100 dark:border-zinc-900">
-            <h2 className="text-4xl font-black mb-16 text-center text-black dark:text-white uppercase tracking-tighter">
+        <section id="work" className="section-container border-t border-zinc-100 dark:border-zinc-900">
+            <h2 className="mb-16 text-center text-black dark:text-white">
                 Professional Path
             </h2>
 
-            <div className="max-w-4xl mx-auto space-y-6 px-4">
+            <div className="space-y-6 px-4 md:px-0">
                 {EXPERIENCES.map((exp, idx) => (
                     <motion.div
                         key={idx}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.05 }}
-                        transition={{
-                            delay: idx * 0.1,
-                            duration: 0.5,
-                            ease: "easeOut"
-                        }}
+                        initial={{ opacity: 1 }}
+                        className="mb-6"
                     >
                         <ExperienceCard exp={exp} />
                     </motion.div>

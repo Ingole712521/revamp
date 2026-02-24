@@ -9,7 +9,7 @@ import { Github, Linkedin, Mail, Twitter, FileText, Send } from "lucide-react";
 
 export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
     return (
-        <section className="flex flex-col items-center text-center mt-10 mb-20">
+        <section className="section-container border-t-0 flex flex-col items-center text-center">
             <motion.div
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -30,7 +30,7 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-4"
+                className="mb-6"
             >
                 {HERO.greet} <span className="text-zinc-600 dark:text-zinc-400">{HERO.role}</span>
             </motion.h1>
@@ -39,7 +39,7 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="text-lg text-zinc-800 dark:text-zinc-200 max-w-2xl mb-8"
+                className="max-w-2xl mb-8"
             >
                 I {HERO.description}
             </motion.p>

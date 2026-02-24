@@ -11,9 +11,9 @@ import { gsap } from "gsap";
 
 export function ProjectsSection() {
     return (
-        <section id="projects" className="w-full py-20 border-t border-zinc-100 dark:border-zinc-900">
-            <h2 className="text-3xl font-bold mb-12 text-center text-black dark:text-white">Featured Projects</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <section id="projects" className="section-container border-t border-zinc-100 dark:border-zinc-900">
+            <h2 className="mb-12 text-center text-black dark:text-white">Featured Projects</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-0">
                 {PROJECTS.map((project, idx) => (
                     <ProjectCard key={project.id} project={project} idx={idx} />
                 ))}
