@@ -11,7 +11,7 @@ export const NAVIGATION_LINKS = [
 export const HERO = {
     name: "Nehal Ingole",
     greet: "Hi, I'm Nehal —",
-    role: "DevOps Engineer & Rust learner",
+    role: "Frontend Developer & DevOps Engineer & Rust learner",
     description:
         "focused on cloud automation, stylish development, and high-performance systems. Passionate about Docker, AWS, and building minimalist technical aesthetics.",
     avatar: "/image (3).jpg",
@@ -77,7 +77,7 @@ export const EXPERIENCES = [
     },
     {
         title: "DevOps Engineer Trainee",
-        company: "LinuxWorld Informatics",
+        company: "Trainee",
         duration: "Sept 2020 - Aug 2021",
         description: "Worked with Kubernetes, Jenkins, and Docker. Increased security efficiency by 2% and reduced costs by 10%."
     }
@@ -86,7 +86,7 @@ export const EXPERIENCES = [
 export const EDUCATION = [
     {
         degree: "Bachelor of Technology",
-        institution: "GCOE Karad",
+        institution: "GCE Karad",
         duration: "2019 - 2023",
         description: "Focused on coding and management. Completed 20+ projects and authored 72+ technical articles."
     }
