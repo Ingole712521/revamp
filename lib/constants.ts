@@ -28,6 +28,7 @@ export const PROJECTS = [
         description: "Deployed a High-Level Streaming (HLS) solution using Docker and Amazon Web Services (AWS) for optimized video delivery.",
         image: "https://images.unsplash.com/photo-1614064641938-3bcee2c0f937?q=80&w=2070&auto=format&fit=crop",
         link: "https://www.linkedin.com/posts/nehal-ingole_streaming-videostreaming-docker-activity-7207360568955924481--ZGI",
+        videoUrl: "https://www.youtube.com/embed/VkoHykQrWOY?autoplay=1&mute=1&controls=0&loop=1&playlist=VkoHykQrWOY",
         tags: ["AWS", "Docker", "HLS"]
     },
     {
@@ -66,20 +67,62 @@ export const EXPERIENCES = [
     {
         title: "Jr React Developer",
         company: "Kshan Tech Soft Pvt Ltd",
+        logo: "/logos/kshan.png", // Placeholder
         duration: "Jan 2025 - Present",
-        description: "Building responsive web applications using React, TypeScript, and MongoDB."
+        location: "Pune, India (On-Site)",
+        description: "Developing high-performance web applications with a focus on cloud integration and smooth user experiences.",
+        techStack: ["Docker", "TypeScript", "GitHub Actions", "Ubuntu", "GCP", "MongoDB", "React", "JavaScript", "Tailwind CSS", "Next.js", "GSAP", "AWS"],
+        points: [
+            "Architecting core infrastructure and agent development for flagship products.",
+            "Engineered and deployed high-performance automation agents enhancing product capabilities.",
+            "Conducting comprehensive testing for authentication, automation, and system stability.",
+            "Optimizing internal tools and maintaining detailed technical documentation to streamline workflows."
+        ],
+        socials: {
+            website: "https://kshantechsoft.com/",
+            linkedin: "https://www.linkedin.com/company/kshan-tech-soft-pvt-ltd/",
+            twitter: "#"
+        }
     },
     {
-        title: "React Developer",
+        title: "React Developer (Freelancer)",
         company: "Alief View Media Group",
+        logo: "/logos/alief.png", // Placeholder
         duration: "March 2024 - Sept 2024",
-        description: "Spearheaded full-site development from concept to deployment, ensuring seamless UX across devices."
+        location: "Remote (India)",
+        description: "Spearheaded full-site development from concept to deployment, ensuring seamless UX across devices.",
+        techStack: ["React", "TypeScript", "Tailwind CSS", "Figma", "GSAP"],
+        points: [
+            "Designed and developed fully responsive web interfaces using React and GSAP for high-end animations.",
+            "Translated complex Figma designs into pixel-perfect, performant code.",
+            "Collaborated with cross-functional teams to deliver cloud-based media solutions.",
+            "Implemented modern CSS practices with Tailwind for scalable and maintainable styling."
+        ],
+        socials: {
+            website: "#",
+            linkedin: "#",
+            github: "https://github.com/nehal-ingole"
+        }
     },
     {
-        title: "DevOps Engineer Trainee",
-        company: "Trainee",
+        title: "DevOps Intern",
+        company: "LinuxWorld Informatics Pvt. Ltd",
+        logo: "/logos/linuxworld.png", // Placeholder
         duration: "Sept 2020 - Aug 2021",
-        description: "Worked with Kubernetes, Jenkins, and Docker. Increased security efficiency by 2% and reduced costs by 10%."
+        location: "Jaipur, India (Remote)",
+        description: "Mastered cloud orchestration and automation tools during an intensive DevOps internship.",
+        techStack: ["Docker", "Kubernetes", "Ansible", "AWS", "GCP", "Microsoft Azure", "Machine Learning", "Ubuntu", "Redhat 7", "Terraform"],
+        points: [
+            "Deployed and managed containerized applications using Docker and Kubernetes clusters.",
+            "Automated infrastructure provisioning with Terraform and configuration management with Ansible.",
+            "Implemented CI/CD pipelines across multiple cloud providers (AWS, GCP, Azure).",
+            "Leveraged machine learning models for predictive infrastructure monitoring."
+        ],
+        socials: {
+            website: "https://www.linuxworldindia.org/",
+            linkedin: "https://www.linkedin.com/company/linuxworld-informatics-pvt-ltd/",
+            twitter: "#"
+        }
     }
 ];
 
