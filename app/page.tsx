@@ -15,10 +15,18 @@ import { QuotesSection } from "@/components/quotes-section";
 import { VisitorCount } from "@/components/visitor-count";
 import { ContactSection } from "@/components/contact-section";
 import { ResumeModal } from "@/components/resume-modal";
+import { LoadingScreen } from "@/components/loading-screen";
 import { useState } from "react";
 
 export default function Home() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  if (isLoading) {
+    return (
+      <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />
+    );
+  }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start bg-white dark:bg-black transition-colors duration-500 overflow-x-hidden">
