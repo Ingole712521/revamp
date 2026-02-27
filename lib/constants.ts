@@ -71,7 +71,7 @@ export const PROJECTS = [
         id: 1,
         name: "HLS Adaptive Bitrate Streaming With AWS",
         description: "Deployed a High-Level Streaming (HLS) solution using Docker and Amazon Web Services (AWS) for optimized video delivery.",
-        image: "https://images.unsplash.com/photo-1614064641938-3bcee2c0f937?q=80&w=2070&auto=format&fit=crop",
+        image: "/webpratice.png",
         link: "https://www.linkedin.com/posts/nehal-ingole_streaming-videostreaming-docker-activity-7207360568955924481--ZGI",
         videoUrl: "https://www.youtube.com/embed/VkoHykQrWOY?autoplay=1&mute=1&controls=0&loop=1&playlist=VkoHykQrWOY",
 
@@ -81,7 +81,7 @@ export const PROJECTS = [
         id: 2,
         name: "Simplifying Docker Management",
         description: "Explored Portainer CE to streamline container management, resource monitoring, and deployment workflows.",
-        image: "https://images.unsplash.com/photo-1605745341112-85968b193ef5?q=80&w=2071&auto=format&fit=crop",
+        image: "/dockerPontaner.png",
         link: "https://learnwithnehal.hashnode.dev/simplifying-docker-management-with-portainer-ce",
         tags: ["Docker", "Portainer", "DevOps"]
     },
@@ -114,8 +114,8 @@ export const PROJECTS = [
         id: 6,
         name: "Own Github Repository Using AWS",
         description: "Deployed a Docker environment on Google Cloud Platform using Terraform, achieving efficient resource provisioning and management for scalable applications.",
-        videoUrl: "https://youtu.be/Xu9RLiXOa5k?si=dSVVLcp42qGo35NB?autoplay=1&controls=0&loop=1&playlist=Xu9RLiXOa5k",
-        image: "/terraform.png",
+        videoUrl: "https://www.youtube.com/embed/Xu9RLiXOa5k?autoplay=1&mute=1&loop=1&playlist=Xu9RLiXOa5k",
+        image: "/github.png",
         link: "https://www.linkedin.com/posts/nehal-ingole_github-aws-codingjourney-activity-7172914850921148416-9Lue?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC508FUBuGfTDjOmT3MnzkFrrqilcF1xhAw",
         tags: ["Docker", "Git", "AWS", "Ubuntu", "Windows"]
     }
