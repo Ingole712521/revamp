@@ -90,38 +90,44 @@ export function Lamphome({
   const currentGlowPosition = isDragging ? dynamicGlowPosition : glowPosition;
 
   return (
-    <div
-      className={`min-h-screen w-full flex flex-col items-center justify-start pt-2 [@media(min-width:480px)]:pt-4 [@media(min-width:768px)]:pt-6 [@media(min-width:1024px)]:pt-8 transition-all duration-500 text-black dark:text-white ${className}`}
-    >
-      <NavBar
-        logoSrc={logoSrc}
-        logoAlt={logoAlt}
-        navItems={navItems}
-        mobileMenuOpen={mobileMenuOpen}
-        toggleMobileMenu={toggleMobileMenu}
-        setMobileMenuOpen={setMobileMenuOpen}
-      >
-        <ThemeChain
-          chainLength={chainLength}
-          dragY={dragY}
-          isDragging={isDragging}
-          chainPulled={chainPulled}
-          isDarkMode={isDarkMode}
-          currentGlowPosition={currentGlowPosition}
-          handleDragStart={handleDragStart}
-          handleDragEnd={handleDragEnd}
-          onDrag={(event, info) => {
-            const newDragY = Math.max(0, info.offset.y);
-            setDragY(newDragY);
-            if (newDragY > 4) {
-              const position = calculateGlowPosition(newDragY);
-              setDynamicGlowPosition(position);
-            }
-          }}
-        />
-      </NavBar>
+    <>
+      {/* Fixed Navbar - Always visible at top */}
+      <div className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
+        <div className="pointer-events-auto w-full max-w-4xl">
+          <NavBar
+            logoSrc={logoSrc}
+            logoAlt={logoAlt}
+            navItems={navItems}
+            mobileMenuOpen={mobileMenuOpen}
+            toggleMobileMenu={toggleMobileMenu}
+            setMobileMenuOpen={setMobileMenuOpen}
+          >
+            <ThemeChain
+              chainLength={chainLength}
+              dragY={dragY}
+              isDragging={isDragging}
+              chainPulled={chainPulled}
+              isDarkMode={isDarkMode}
+              currentGlowPosition={currentGlowPosition}
+              handleDragStart={handleDragStart}
+              handleDragEnd={handleDragEnd}
+              onDrag={(event, info) => {
+                const newDragY = Math.max(0, info.offset.y);
+                setDragY(newDragY);
+                if (newDragY > 4) {
+                  const position = calculateGlowPosition(newDragY);
+                  setDynamicGlowPosition(position);
+                }
+              }}
+            />
+          </NavBar>
+        </div>
+      </div>
 
-      <GlowEffects isDarkMode={isDarkMode} showGlow={showGlow} />
+      <div
+        className={`min-h-screen w-full flex flex-col items-center justify-start pt-16 [@media(min-width:480px)]:pt-16 transition-all duration-500 text-black dark:text-white ${className}`}
+      >
+        <GlowEffects isDarkMode={isDarkMode} showGlow={showGlow} />
 
       {title && (
         <motion.h1
@@ -168,6 +174,7 @@ export function Lamphome({
           {children}
         </motion.div>
       )}
-    </div>
+      </div>
+    </>
   );
 }

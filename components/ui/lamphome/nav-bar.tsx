@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 interface NavItem {
     href: string;
@@ -29,12 +29,44 @@ export function NavBar({
     setMobileMenuOpen,
     children
 }: NavBarProps) {
+    const navRef = useRef<HTMLDivElement>(null);
+
+    // Close mobile menu when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (navRef.current && !navRef.current.contains(event.target as Node)) {
+                setMobileMenuOpen(false);
+            }
+        };
+
+        if (mobileMenuOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [mobileMenuOpen, setMobileMenuOpen]);
+
+    // Close mobile menu on scroll
+    useEffect(() => {
+        const handleScroll = () => {
+            if (mobileMenuOpen) {
+                setMobileMenuOpen(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [mobileMenuOpen, setMobileMenuOpen]);
+
     return (
         <motion.div
+            ref={navRef}
             initial={{ width: '95%' }}
             animate={{ width: '95%' }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className='relative flex items-center justify-between w-full max-w-4xl h-auto py-3 px-3 [@media(min-width:768px)]:px-6 bg-white/80 dark:bg-neutral-950 backdrop-blur-xs border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300'
+            className='flex items-center justify-between w-full h-auto py-3 px-3 [@media(min-width:768px)]:px-6 bg-white/80 dark:bg-neutral-950 backdrop-blur-xs border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300'
         >
             <div className='flex-1 flex items-center justify-start'>
                 {logoSrc ? (
