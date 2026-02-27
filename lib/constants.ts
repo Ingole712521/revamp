@@ -16,6 +16,29 @@ export const HERO = {
     avatar: "/image (3).jpg",
 };
 
+export const SOCIALS = {
+    linkedin: {
+        url: "https://www.linkedin.com/in/nehal-ingole/",
+        label: "LinkedIn",
+        preview: "linkedin.com/in/nehal-ingole",
+    },
+    github: {
+        url: "https://github.com/Ingole712521",
+        label: "GitHub",
+        preview: "github.com/Ingole712521",
+    },
+    twitter: {
+        url: "https://x.com/IngoleNehal",
+        label: "Twitter",
+        preview: "x.com/IngoleNehal",
+    },
+    email: {
+        url: "mailto:nehalingole2001@gmail.com",
+        label: "Email",
+        preview: "nehalingole2001@gmail.com",
+    },
+};
+
 export const TECH_STACK = [
     "AWS", "Docker", "Kubernetes", "Rust", "React", "Next.js", "TypeScript", "Linux", "Terraform", "GitHub Actions", "Ansible", "Cybersecurity"
 ];
@@ -103,7 +126,7 @@ export const EXPERIENCES = [
         socials: {
             website: "https://kshantechsoft.com/",
             linkedin: "https://www.linkedin.com/company/kshan-tech-soft-pvt-ltd/",
-            twitter: "#"
+            twitter: "https://x.com/IngoleNehal"
         }
     },
     {
@@ -143,7 +166,7 @@ export const EXPERIENCES = [
         socials: {
             website: "https://www.linuxworldindia.org/",
             linkedin: "https://www.linkedin.com/company/linuxworld-informatics-pvt-ltd/",
-            twitter: "#"
+         
         }
     }
 ];

@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "motion/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface GlowEffectsProps {
     isDarkMode: boolean;
@@ -9,7 +9,13 @@ interface GlowEffectsProps {
 }
 
 export function GlowEffects({ isDarkMode, showGlow }: GlowEffectsProps) {
-    if (!isDarkMode) return null;
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    if (!mounted || !isDarkMode) return null;
 
     return (
         <motion.div

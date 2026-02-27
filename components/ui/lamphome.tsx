@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, PanInfo } from 'motion/react';
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import { NavBar } from './lamphome/nav-bar';
 import { ThemeChain } from './lamphome/theme-chain';
@@ -32,15 +32,18 @@ export function Lamphome({
   className = '',
 }: LamphomeProps) {
   const { theme, setTheme, resolvedTheme } = useTheme();
-  const isDarkMode = resolvedTheme === 'dark';
+  const [mounted, setMounted] = useState(false);
 
-  const chainPulled = useMemo(() => isDarkMode, [isDarkMode]);
-  const chainLength = useMemo(() => (isDarkMode ? 72 : 48), [isDarkMode]);
-  const showGlow = useMemo(() => isDarkMode, [isDarkMode]);
-  const glowPosition = useMemo<'above' | 'below'>(
-    () => (isDarkMode ? 'above' : 'below'),
-    [isDarkMode],
-  );
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Use consistent values during SSR and initial hydration
+  const isDarkMode = mounted && resolvedTheme === 'dark';
+  const chainPulled = isDarkMode;
+  const chainLength = isDarkMode ? 72 : 48;
+  const showGlow = isDarkMode;
+  const glowPosition: 'above' | 'below' = isDarkMode ? 'above' : 'below';
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dragY, setDragY] = useState(0);
@@ -132,7 +135,7 @@ export function Lamphome({
         </motion.h1>
       )}
 
-      {!isDarkMode && (
+      {mounted && !isDarkMode && (
         <motion.div
           initial={{ width: '60%', opacity: 1 }}
           animate={{

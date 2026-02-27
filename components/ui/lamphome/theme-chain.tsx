@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, PanInfo } from "motion/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface ThemeChainProps {
     chainLength: number;
@@ -26,10 +26,18 @@ export function ThemeChain({
     handleDragEnd,
     onDrag
 }: ThemeChainProps) {
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
     return (
         <div className='absolute right-3 top-full mt-2 flex flex-col items-center group z-10'>
             <motion.div
                 className='w-1 bg-linear-to-b from-gray-400 to-gray-600 dark:from-gray-500 dark:to-gray-300 rounded-full shadow-xs relative'
+                initial={{
+                    height: chainLength,
+                }}
                 animate={{
                     height: chainLength + dragY,
                     scaleY: 1,
@@ -42,7 +50,6 @@ export function ThemeChain({
                     damping: isDragging ? undefined : 20,
                 }}
                 style={{
-                    height: `${chainLength + dragY}px`,
                     transformOrigin: 'top center',
                 }}
             >
@@ -99,7 +106,7 @@ export function ThemeChain({
                         />
                     </div>
                 </div>
-                {isDarkMode && (
+                {mounted && isDarkMode && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -126,7 +133,7 @@ export function ThemeChain({
                         </svg>
                     </motion.div>
                 )}
-                {!isDragging && !chainPulled && (
+                {mounted && !isDragging && !chainPulled && (
                     <motion.div
                         className='absolute -bottom-10 left-1/2 transform -translate-x-1/2 text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap pointer-events-none bg-white/80 dark:bg-slate-800/80 px-2 py-1 rounded-full'
                         initial={{ opacity: 0, y: -5 }}

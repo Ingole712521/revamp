@@ -1,11 +1,12 @@
 "use client"
 
-import { HERO, TECH_STACK } from "@/lib/constants";
+import { HERO, TECH_STACK, SOCIALS } from "@/lib/constants";
 import { TechBadge } from "@/components/tech-badge";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { Github, Linkedin, Mail, Twitter, FileText, Send } from "lucide-react";
+import { LinkPreview } from "@/components/ui/link-preview";
 
 export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
     return (
@@ -77,18 +78,45 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
                 </Link>
             </motion.div>
 
-            {/* Social Icons */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 }}
-                className="flex gap-6 mt-12 text-zinc-400 dark:text-zinc-500"
-            >
-                <Link href="#" className="hover:text-zinc-900 dark:hover:text-white transition-colors"><Twitter className="w-5 h-5" /></Link>
-                <Link href="#" className="hover:text-zinc-900 dark:hover:text-white transition-colors"><Linkedin className="w-5 h-5" /></Link>
-                <Link href="#" className="hover:text-zinc-900 dark:hover:text-white transition-colors"><Github className="w-5 h-5" /></Link>
-                <Link href="mailto:nehalingole2001@gmail.com" className="hover:text-zinc-900 dark:hover:text-white transition-colors"><Mail className="w-5 h-5" /></Link>
-            </motion.div>
+            {/* Social Icons with Link Preview */}
+            <SocialIconsWithPreview />
         </section>
+    );
+}
+
+function SocialIconsWithPreview() {
+    const socialItems = [
+        { key: 'twitter', icon: Twitter, data: SOCIALS.twitter },
+        { key: 'linkedin', icon: Linkedin, data: SOCIALS.linkedin },
+        { key: 'github', icon: Github, data: SOCIALS.github },
+    ];
+
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+            className="flex gap-6 mt-12"
+        >
+            {socialItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                    <LinkPreview
+                        key={item.key}
+                        url={item.data.url}
+                        className="text-zinc-400 dark:text-zinc-500 hover:text-black dark:hover:text-white transition-colors"
+                    >
+                        <Icon className="w-5 h-5" />
+                    </LinkPreview>
+                );
+            })}
+            {/* Email without preview */}
+            <Link
+                href={SOCIALS.email.url}
+                className="text-zinc-400 dark:text-zinc-500 hover:text-black dark:hover:text-white transition-colors"
+            >
+                <Mail className="w-5 h-5" />
+            </Link>
+        </motion.div>
     );
 }

@@ -9,7 +9,7 @@ import { GitHubCalendar } from 'react-github-calendar';
 export function GithubActivity() {
     const [isOnline, setIsOnline] = useState(true);
     const [lastWorked, setLastWorked] = useState('8h 00m');
-    const [currentTime, setCurrentTime] = useState(new Date());
+    const [currentTime, setCurrentTime] = useState<Date | null>(null);
 
     // Real-time online/offline status
     useEffect(() => {
@@ -82,7 +82,7 @@ export function GithubActivity() {
                     <div className="flex flex-col items-end">
                         <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-widest">Total Contributions</span>
                         <span className="text-2xl font-black text-black dark:text-white leading-none mt-1">
-                            {GITHUB_STATS.totalContributions.toLocaleString()}
+                            {GITHUB_STATS.totalContributions.toLocaleString('en-US')}
                         </span>
                     </div>
 
@@ -111,19 +111,21 @@ export function GithubActivity() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="relative p-6 bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col items-center"
+                className="relative p-6 bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col items-center min-h-[200px]"
             >
                 <div className="w-full overflow-x-auto pb-4 custom-scrollbar flex md:justify-center">
-                    <GitHubCalendar
-                        username={GITHUB_STATS.username}
-                        blockSize={11}
-                        blockMargin={4}
-                        fontSize={12}
-                        theme={{
-                            light: ['#f4f4f5', '#dcfce7', '#86efac', '#22c55e', '#15803d'],
-                            dark: ['#09090b', '#064e3b', '#059669', '#10b981', '#34d399'],
-                        }}
-                    />
+                    {currentTime && (
+                        <GitHubCalendar
+                            username={GITHUB_STATS.username}
+                            blockSize={11}
+                            blockMargin={4}
+                            fontSize={12}
+                            theme={{
+                                light: ['#f4f4f5', '#dcfce7', '#86efac', '#22c55e', '#15803d'],
+                                dark: ['#09090b', '#064e3b', '#059669', '#10b981', '#34d399'],
+                            }}
+                        />
+                    )}
                 </div>
 
                 <div className="w-full mt-4 flex items-center justify-between border-t border-zinc-100 dark:border-zinc-800/50 pt-4">
@@ -133,7 +135,7 @@ export function GithubActivity() {
                     </div>
                     <div className="flex items-center gap-3">
                         <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">
-                            Last updated: {currentTime.toLocaleTimeString()}
+                            Last updated: {currentTime?.toLocaleTimeString() ?? '--:--:--'}
                         </span>
                     </div>
                 </div>

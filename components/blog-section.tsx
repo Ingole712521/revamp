@@ -1,13 +1,123 @@
 "use client"
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { BLOGS } from '@/lib/constants';
 import { Calendar, ArrowRight, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+interface HashnodePost {
+    title: string;
+    slug: string;
+    publishedAt: string;
+    brief: string;
+    coverImage?: {
+        url: string;
+    };
+    tags?: Array<{
+        name: string;
+    }>;
+}
+
+const fetchPosts = async (): Promise<HashnodePost[]> => {
+    const headers = {
+        "content-type": "application/json",
+        "Authorization": "f8c3ef54-e83e-41f2-b21b-5c57adae93eb",
+    };
+    const requestBody = {
+        query: `query Publication {
+            publication(host: "learnwithnehal.hashnode.dev") {
+                posts(first: 10) {
+                    edges {
+                        node {
+                            title
+                            slug
+                            publishedAt
+                            brief
+                            coverImage {
+                                url
+                            }
+                            tags {
+                                name
+                            }
+                        }
+                    }
+                }
+            }
+        }`,
+    };
+    const options = {
+        method: "POST",
+        headers,
+        body: JSON.stringify(requestBody),
+    };
+
+    const response = await fetch("https://gql.hashnode.com", options);
+    const data = await response.json();
+
+    const edges = data?.data?.publication?.posts?.edges || [];
+    return edges.map((edge: { node: HashnodePost }) => edge.node);
+};
+
+const formatDate = (dateString: string): string => {
+    const date = new Date(dateString);
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const month = months[date.getUTCMonth()];
+    const day = date.getUTCDate();
+    const year = date.getUTCFullYear();
+    return `${month} ${day}, ${year}`;
+};
+
 export function BlogSection() {
+    const [blogs, setBlogs] = useState<HashnodePost[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const loadBlogs = async () => {
+            try {
+                setLoading(true);
+                const posts = await fetchPosts();
+                setBlogs(posts);
+            } catch (err) {
+                setError('Failed to load blogs');
+                console.error('Error fetching blogs:', err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        loadBlogs();
+    }, []);
+
+    if (loading) {
+        return (
+            <section id="blogs" className="section-container border-t border-zinc-100 dark:border-zinc-900">
+                <div className="mb-12">
+                    <span className="text-zinc-500 dark:text-zinc-400 text-xs font-bold uppercase tracking-widest mb-2 block">Featured</span>
+                    <h2>Blogs</h2>
+                </div>
+                <div className="flex justify-center items-center py-20">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+                </div>
+            </section>
+        );
+    }
+
+    if (error) {
+        return (
+            <section id="blogs" className="section-container border-t border-zinc-100 dark:border-zinc-900">
+                <div className="mb-12">
+                    <span className="text-zinc-500 dark:text-zinc-400 text-xs font-bold uppercase tracking-widest mb-2 block">Featured</span>
+                    <h2>Blogs</h2>
+                </div>
+                <div className="text-center py-20 text-zinc-500">
+                    <p>{error}</p>
+                </div>
+            </section>
+        );
+    }
+
     return (
         <section id="blogs" className="section-container border-t border-zinc-100 dark:border-zinc-900">
             <div className="mb-12">
@@ -16,9 +126,9 @@ export function BlogSection() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {BLOGS.map((blog, idx) => (
+                {blogs.map((blog, idx) => (
                     <motion.div
-                        key={idx}
+                        key={blog.slug}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -28,16 +138,16 @@ export function BlogSection() {
                         {/* Image Container */}
                         <div className="relative h-56 w-full overflow-hidden">
                             <Image
-                                src={blog.image}
+                                src={blog.coverImage?.url || "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop"}
                                 alt={blog.title}
                                 fill
                                 className="object-cover transition-transform duration-500 hover:scale-105"
                             />
                             <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
                                 <div className="flex flex-wrap gap-2">
-                                    {blog.tags.map(tag => (
-                                        <span key={tag} className="px-2 py-1 bg-white/10 backdrop-blur-md rounded-md text-[10px] font-bold text-white uppercase tracking-wider">
-                                            {tag}
+                                    {blog.tags?.slice(0, 3).map((tag) => (
+                                        <span key={tag.name} className="px-2 py-1 bg-white/10 backdrop-blur-md rounded-md text-[10px] font-bold text-white uppercase tracking-wider">
+                                            {tag.name}
                                         </span>
                                     ))}
                                 </div>
@@ -50,16 +160,16 @@ export function BlogSection() {
                                 {blog.title}
                             </h3>
                             <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-8 line-clamp-3">
-                                {blog.description}
+                                {blog.brief}
                             </p>
 
                             <div className="mt-auto pt-6 border-t border-zinc-100 dark:border-zinc-800/50 flex items-center justify-between">
                                 <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-500">
                                     <Calendar className="w-4 h-4" />
-                                    <span className="text-xs font-bold uppercase tracking-widest">{blog.date}</span>
+                                    <span className="text-xs font-bold uppercase tracking-widest">{formatDate(blog.publishedAt)}</span>
                                 </div>
                                 <Link
-                                    href={blog.link}
+                                    href={`https://learnwithnehal.hashnode.dev/${blog.slug}`}
                                     target="_blank"
                                     className="flex items-center gap-2 text-sm font-black text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-all group"
                                 >
