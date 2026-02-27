@@ -74,7 +74,8 @@ export const PROJECTS = [
         image: "https://images.unsplash.com/photo-1614064641938-3bcee2c0f937?q=80&w=2070&auto=format&fit=crop",
         link: "https://www.linkedin.com/posts/nehal-ingole_streaming-videostreaming-docker-activity-7207360568955924481--ZGI",
         videoUrl: "https://www.youtube.com/embed/VkoHykQrWOY?autoplay=1&mute=1&controls=0&loop=1&playlist=VkoHykQrWOY",
-        tags: ["AWS", "Docker", "HLS"]
+
+        tags: ["AWS", "Docker", "HLS", "S3"]
     },
     {
         id: 2,
@@ -99,6 +100,24 @@ export const PROJECTS = [
         image: "/ansible.png",
         link: "https://www.linkedin.com/posts/nehal-ingole_document-activity-7178789372949897216-h1FK",
         tags: ["Ansible", "Automation", "IAAC"]
+    },
+    {
+        id: 5,
+        name: "Docker Deployment on GCP Using Terraform",
+        description: "Deployed a Docker environment on Google Cloud Platform using Terraform, achieving efficient resource provisioning and management for scalable applications.",
+        videoUrl: "https://www.youtube.com/embed/VkoHykQrWOY?autoplay=1&mute=1&controls=0&loop=1&playlist=VkoHykQrWOY",
+        image: "/terraform.png",
+        link: "https://www.linkedin.com/posts/nehal-ingole_terraform-docker-googlecloud-activity-7187755010640801792-4rFl?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC508FUBuGfTDjOmT3MnzkFrrqilcF1xhAw",
+        tags: ["Docker", "Terraform", "IAAC", "GCP", "Ubuntu"]
+    },
+    {
+        id: 6,
+        name: "Own Github Repository Using AWS",
+        description: "Deployed a Docker environment on Google Cloud Platform using Terraform, achieving efficient resource provisioning and management for scalable applications.",
+        videoUrl: "https://youtu.be/Xu9RLiXOa5k?si=dSVVLcp42qGo35NB?autoplay=1&controls=0&loop=1&playlist=Xu9RLiXOa5k",
+        image: "/terraform.png",
+        link: "https://www.linkedin.com/posts/nehal-ingole_github-aws-codingjourney-activity-7172914850921148416-9Lue?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC508FUBuGfTDjOmT3MnzkFrrqilcF1xhAw",
+        tags: ["Docker", "Git", "AWS", "Ubuntu", "Windows"]
     }
 ];
 
@@ -112,7 +131,7 @@ export const EXPERIENCES = [
     {
         title: "Jr React Developer",
         company: "Kshan Tech Soft Pvt Ltd",
-        logo: "/logos/kshan.png", // Placeholder
+        logo: "/logos/kshan.png",
         duration: "Jan 2025 - Present",
         location: "Pune, India (On-Site)",
         description: "Developing high-performance web applications with a focus on cloud integration and smooth user experiences.",
@@ -132,7 +151,7 @@ export const EXPERIENCES = [
     {
         title: "React Developer (Freelancer)",
         company: "Alief View Media Group",
-        logo: "/logos/alief.png", // Placeholder
+        logo: "/logos/alief.png",
         duration: "March 2024 - Sept 2024",
         location: "Remote (India)",
         description: "Spearheaded full-site development from concept to deployment, ensuring seamless UX across devices.",
@@ -166,7 +185,7 @@ export const EXPERIENCES = [
         socials: {
             website: "https://www.linuxworldindia.org/",
             linkedin: "https://www.linkedin.com/company/linuxworld-informatics-pvt-ltd/",
-         
+
         }
     }
 ];
