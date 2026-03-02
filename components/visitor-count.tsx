@@ -11,8 +11,7 @@ export function VisitorCount() {
     useEffect(() => {
         const fetchCount = async () => {
             try {
-                // Use counterapi.dev to increment and get the count
-                // Namespace: nehal-portfolio, Key: visits
+                
                 const response = await fetch('https://api.counterapi.dev/v1/nehal-portfolio/visits/up');
                 const data = await response.json();
                 if (data && data.count) {

@@ -6,13 +6,11 @@ import {
     Briefcase,
     Calendar,
     ChevronDown,
-    Globe,
-    Linkedin,
-    Twitter,
-    Github,
     MapPin,
+    Linkedin,
+    Github,
+    Twitter,
     Mail,
-    X,
 } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
@@ -36,14 +34,14 @@ export function ExperienceSection() {
                 ))}
             </div>
 
-            {/* Social Links Popup */}
-            <SocialLinksPopup />
+            {/* Background Video with Hover Popup */}
+            <VideoWithSocialLinks />
         </section>
     );
 }
 
-function SocialLinksPopup() {
-    const [isOpen, setIsOpen] = useState(false);
+function VideoWithSocialLinks() {
+    const [isHovered, setIsHovered] = useState(false);
 
     const socialItems = [
         { key: 'linkedin', icon: Linkedin, data: SOCIALS.linkedin },
@@ -53,28 +51,34 @@ function SocialLinksPopup() {
     ];
 
     return (
-        <>
-            {/* Toggle Button */}
-            <motion.button
-                onClick={() => setIsOpen(!isOpen)}
-                className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-black dark:bg-white text-white dark:text-black shadow-2xl flex items-center justify-center hover:scale-110 transition-transform"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-            >
-                {isOpen ? <X className="w-6 h-6" /> : <Globe className="w-6 h-6" />}
-            </motion.button>
+        <div
+            className="fixed bottom-6 right-6 z-50"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
+          
+            <div className="w-50 h-38 rounded-2xl overflow-hidden shadow-2xl">
+                <video
+                    src="/Video Project.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-full object-contain"
+                />
+            </div>
 
-            {/* Popup */}
+            {/* Social Links Popup on Hover */}
             <AnimatePresence>
-                {isOpen && (
+                {isHovered && (
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: 20 }}
                         transition={{ duration: 0.2 }}
-                        className="fixed bottom-24 right-6 z-50 w-80 bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden"
+                        className="absolute bottom-full right-0 mb-2 w-72 bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden"
                     >
-                        <div className="p-4 border-b border-zinc-100 dark:border-zinc-800">
+                        <div className="p-3 border-b border-zinc-100 dark:border-zinc-800">
                             <h3 className="text-sm font-black text-black dark:text-white uppercase tracking-widest">
                                 Connect With Me
                             </h3>
@@ -87,10 +91,10 @@ function SocialLinksPopup() {
                                         key={item.key}
                                         href={item.data.url}
                                         target={item.key === 'email' ? '_self' : '_blank'}
-                                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors group"
+                                        className="flex items-center gap-3 p-2 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors group"
                                     >
-                                        <div className="w-10 h-10 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center group-hover:bg-black dark:group-hover:bg-white transition-colors">
-                                            <Icon className="w-5 h-5 text-zinc-600 dark:text-zinc-400 group-hover:text-white dark:group-hover:text-black transition-colors" />
+                                        <div className="w-9 h-9 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center group-hover:bg-black dark:group-hover:bg-white transition-colors">
+                                            <Icon className="w-4 h-4 text-zinc-600 dark:text-zinc-400 group-hover:text-white dark:group-hover:text-black transition-colors" />
                                         </div>
                                         <div className="flex-1 min-w-0">
                                             <p className="text-sm font-bold text-black dark:text-white">
@@ -107,7 +111,7 @@ function SocialLinksPopup() {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </>
+        </div>
     );
 }
 
