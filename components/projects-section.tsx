@@ -115,17 +115,17 @@ function ProjectCard({ project, idx }: { project: any; idx: number }) {
 
                 {/* Hover Overlay with Buttons */}
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-                    {project.videoUrl && (
-                        <button
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                setShowVideo(true);
-                            }}
-                            className="p-3 bg-white rounded-full text-black hover:scale-110 transition-transform shadow-xl"
-                        >
-                            <Play className="w-5 h-5" />
-                        </button>
-                    )}
+                    {/* {project.videoUrl && (
+                        // <button
+                        //     onClick={(e) => {
+                        //         e.stopPropagation();
+                        //         setShowVideo(true);
+                        //     }}
+                        //     className="p-3 bg-white rounded-full text-black hover:scale-110 transition-transform shadow-xl"
+                        // >
+                        //     <Play className="w-5 h-5" />
+                        // </button>
+                    )} */}
                     <Link
                         href={project.link}
                         target="_blank"
