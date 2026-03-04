@@ -118,6 +118,15 @@ export const PROJECTS = [
         image: "/github.png",
         link: "https://www.linkedin.com/posts/nehal-ingole_github-aws-codingjourney-activity-7172914850921148416-9Lue?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC508FUBuGfTDjOmT3MnzkFrrqilcF1xhAw",
         tags: ["Docker", "Git", "AWS", "Ubuntu", "Windows"]
+    },
+    {
+        id: 6,
+        name: "Under Development",
+        description: "Ship faster than ever with a library designed for speed, performance, and cutting-edge aesthetics.",
+        // videoUrl: "https://www.youtube.com/embed/Xu9RLiXOa5k?autoplay=1&mute=1&loop=1&playlist=Xu9RLiXOa5k",
+        image: "/componentLibrary.png",
+        link: "https://component-hazel.vercel.app/",
+        tags: ["Nextjs", "Git", "Motion", "Tailwindcss", "Windows"]
     }
 ];
 
