@@ -10,14 +10,10 @@ export function GithubActivity() {
     const [isOnline, setIsOnline] = useState(true);
     const [lastWorked, setLastWorked] = useState('8h 00m');
     const [currentTime, setCurrentTime] = useState<Date | null>(null);
-
-    // Real-time online/offline status
     useEffect(() => {
         const handleOnline = () => setIsOnline(true);
         const handleOffline = () => setIsOnline(false);
-
         setIsOnline(navigator.onLine);
-
         window.addEventListener('online', handleOnline);
         window.addEventListener('offline', handleOffline);
 
@@ -27,34 +23,28 @@ export function GithubActivity() {
         };
     }, []);
 
-    // Update "last worked" based on time of day (simulated real-time data)
     useEffect(() => {
         const updateLastWorked = () => {
             const now = new Date();
             const hours = now.getHours();
             const minutes = now.getMinutes();
-
-            // Simulate different activity patterns based on time
             if (hours >= 9 && hours <= 17) {
-                // During work hours, show recent activity
-                const workedMinutes = Math.min(minutes + hours * 60, 480); // Max 8 hours
+                const workedMinutes = Math.min(minutes + hours * 60, 480);
                 const workedHours = Math.floor(workedMinutes / 60);
                 const workedMins = workedMinutes % 60;
                 setLastWorked(`${workedHours}h ${workedMins.toString().padStart(2, '0')}m`);
             } else if (hours > 17) {
-                // After work, show total day's work
-                const totalMinutes = Math.min(480 + (hours - 17) * 10, 540); // Simulate overtime
+                const totalMinutes = Math.min(480 + (hours - 17) * 10, 540);
                 const workedHours = Math.floor(totalMinutes / 60);
                 const workedMins = totalMinutes % 60;
                 setLastWorked(`${workedHours}h ${workedMins.toString().padStart(2, '0')}m`);
             } else {
-                // Early morning, show yesterday's stats
                 setLastWorked('5h 30m');
             }
         };
 
         updateLastWorked();
-        const interval = setInterval(updateLastWorked, 60000); // Update every minute
+        const interval = setInterval(updateLastWorked, 600000);
 
         return () => clearInterval(interval);
     }, []);
@@ -111,21 +101,24 @@ export function GithubActivity() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="relative p-6 bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col items-center min-h-[200px]"
+                className="relative p-6 bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col min-h-[200px]"
             >
-                <div className="w-full overflow-x-auto pb-4 custom-scrollbar flex md:justify-center">
-                    {currentTime && (
-                        <GitHubCalendar
-                            username={GITHUB_STATS.username}
-                            blockSize={11}
-                            blockMargin={4}
-                            fontSize={12}
-                            theme={{
-                                light: ['#f4f4f5', '#dcfce7', '#86efac', '#22c55e', '#15803d'],
-                                dark: ['#09090b', '#064e3b', '#059669', '#10b981', '#34d399'],
-                            }}
-                        />
-                    )}
+                {/* Scrollable Container for GitHub Calendar */}
+                <div className="flex-1 overflow-y-auto max-h-[400px] pr-2 custom-scrollbar">
+                    <div className="w-full overflow-x-auto pb-4 flex md:justify-center">
+                        {currentTime && (
+                            <GitHubCalendar
+                                username={GITHUB_STATS.username}
+                                blockSize={11}
+                                blockMargin={4}
+                                fontSize={12}
+                                theme={{
+                                    light: ['#f4f4f5', '#dcfce7', '#86efac', '#22c55e', '#15803d'],
+                                    dark: ['#09090b', '#064e3b', '#059669', '#10b981', '#34d399'],
+                                }}
+                            />
+                        )}
+                    </div>
                 </div>
 
                 <div className="w-full mt-4 flex items-center justify-between border-t border-zinc-100 dark:border-zinc-800/50 pt-4">
@@ -140,6 +133,29 @@ export function GithubActivity() {
                     </div>
                 </div>
             </motion.div>
+
+            {/* Custom Scrollbar Styles */}
+            <style jsx>{`
+                .custom-scrollbar::-webkit-scrollbar {
+                    width: 6px;
+                }
+                .custom-scrollbar::-webkit-scrollbar-track {
+                    background: transparent;
+                }
+                .custom-scrollbar::-webkit-scrollbar-thumb {
+                    background: #d4d4d8;
+                    border-radius: 3px;
+                }
+                .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+                    background: #3f3f46;
+                }
+                .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                    background: #a1a1aa;
+                }
+                .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                    background: #52525b;
+                }
+            `}</style>
         </section>
     );
 }
