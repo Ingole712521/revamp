@@ -63,37 +63,53 @@ function ProjectCard({ project, idx }: { project: any; idx: number }) {
             onClick={handleCardClick}
             className="group relative bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 rounded-2xl overflow-hidden hover:border-zinc-300 dark:hover:border-zinc-700 transition-all cursor-pointer"
         >
-            <div className="relative h-48 w-full overflow-hidden">
-                {imageError ? (
-                    <ProjectPlaceholder name={project.name} index={idx} />
-                ) : (
-                    <Image
-                        src={project.image}
-                        alt={project.name}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        onError={() => setImageError(true)}
-                    />
-                )}
-
-                {/* Video Preview on Hover (YouTube iframe) */}
-                {project.videoUrl && !showVideo && (
-                    <div
-                        ref={videoRef}
-                        className="absolute inset-0 opacity-0 pointer-events-none"
-                    >
-                        <iframe
-                            src={project.videoUrl}
-                            className="w-full h-full pointer-events-none scale-110"
-                            allow="autoplay; encrypted-media"
-                            loading="lazy"
-                        />
+            <div className="relative h-64 w-full overflow-hidden bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500 flex items-center justify-center p-6 group/image">
+                <div
+                    className="relative w-full h-full rounded-xl overflow-hidden shadow-2xl border border-white/20 bg-zinc-950 transition-all duration-500 ease-out group-hover/image:!transform-none z-10"
+                    style={{
+                        transform: "perspective(1000px) rotateX(15deg) rotateY(-20deg) rotateZ(2deg) scale(1.05)",
+                    }}
+                >
+                    {/* Mock Browser Top Bar */}
+                    <div className="w-full bg-zinc-900 border-b border-white/10 px-3 py-2 flex items-center gap-1.5 relative z-20">
+                        <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                        <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+                        <div className="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
                     </div>
-                )}
+
+                    <div className="relative w-full h-[calc(100%-1.75rem)] overflow-hidden bg-zinc-950">
+                        {imageError ? (
+                            <ProjectPlaceholder name={project.name} index={idx} />
+                        ) : (
+                            <Image
+                                src={project.image}
+                                alt={project.name}
+                                fill
+                                className="object-cover object-top transition-transform duration-500"
+                                onError={() => setImageError(true)}
+                            />
+                        )}
+
+                        {/* Video Preview on Hover (YouTube iframe) */}
+                        {project.videoUrl && !showVideo && (
+                            <div
+                                ref={videoRef}
+                                className="absolute inset-0 opacity-0 pointer-events-none bg-black z-10"
+                            >
+                                <iframe
+                                    src={project.videoUrl}
+                                    className="w-full h-full pointer-events-none scale-[1.02]"
+                                    allow="autoplay; encrypted-media"
+                                    loading="lazy"
+                                />
+                            </div>
+                        )}
+                    </div>
+                </div>
 
                 {/* Full Video Player */}
                 {showVideo && project.videoUrl && (
-                    <div className="absolute inset-0 z-20 bg-black">
+                    <div className="absolute inset-0 z-30 bg-black">
                         <video
                             src={project.videoUrl}
                             className="w-full h-full object-cover"
@@ -106,7 +122,7 @@ function ProjectCard({ project, idx }: { project: any; idx: number }) {
                                 e.stopPropagation();
                                 setShowVideo(false);
                             }}
-                            className="absolute top-2 right-2 z-30 p-2 bg-black/50 text-white rounded-full hover:bg-black/70"
+                            className="absolute top-2 right-2 z-40 p-2 bg-black/50 text-white rounded-full hover:bg-black/70"
                         >
                             ✕
                         </button>
@@ -114,7 +130,7 @@ function ProjectCard({ project, idx }: { project: any; idx: number }) {
                 )}
 
                 {/* Hover Overlay with Buttons */}
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4 z-40">
                     {/* {project.videoUrl && (
                         // <button
                         //     onClick={(e) => {

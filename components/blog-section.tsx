@@ -136,17 +136,34 @@ export function BlogSection() {
                         className="flex flex-col bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-blue-500/30"
                     >
                         {/* Image Container */}
-                        <div className="relative h-56 w-full overflow-hidden">
-                            <Image
-                                src={blog.coverImage?.url || "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop"}
-                                alt={blog.title}
-                                fill
-                                className="object-cover transition-transform duration-500 hover:scale-105"
-                            />
-                            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                        <div className="relative h-72 w-full overflow-hidden bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500 flex items-center justify-center p-6 group/image">
+                            <div
+                                className="relative w-full h-full rounded-xl overflow-hidden shadow-2xl border border-white/20 bg-zinc-950 transition-all duration-500 ease-out group-hover/image:!transform-none z-10"
+                                style={{
+                                    transform: "perspective(1000px) rotateX(15deg) rotateY(-20deg) rotateZ(2deg) scale(1.05)",
+                                }}
+                            >
+                                {/* Mock Browser Top Bar */}
+                                <div className="w-full bg-zinc-900 border-b border-white/10 px-3 py-2 flex items-center gap-1.5 relative z-20">
+                                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+                                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
+                                </div>
+
+                                <div className="relative w-full h-[calc(100%-1.75rem)] overflow-hidden bg-zinc-950">
+                                    <Image
+                                        src={blog.coverImage?.url || "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop"}
+                                        alt={blog.title}
+                                        fill
+                                        className="object-cover object-top transition-transform duration-500"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-end p-6 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <div className="flex flex-wrap gap-2">
                                     {blog.tags?.slice(0, 3).map((tag) => (
-                                        <span key={tag.name} className="px-2 py-1 bg-white/10 backdrop-blur-md rounded-md text-[10px] font-bold text-white uppercase tracking-wider">
+                                        <span key={tag.name} className="px-2 py-1 bg-white/20 backdrop-blur-md border border-white/10 rounded-md text-[10px] font-bold text-white uppercase tracking-wider shadow-xl">
                                             {tag.name}
                                         </span>
                                     ))}
