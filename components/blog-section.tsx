@@ -138,19 +138,19 @@ export function BlogSection() {
                         {/* Image Container */}
                         <div className="relative h-72 w-full overflow-hidden bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500 flex items-center justify-center p-6 group/image">
                             <div
-                                className="relative w-full h-full rounded-xl overflow-hidden shadow-2xl border border-white/20 bg-zinc-950 transition-all duration-500 ease-out group-hover/image:!transform-none z-10"
+                                className="relative w-full h-full flex flex-col rounded-xl overflow-hidden shadow-2xl border border-zinc-200 dark:border-white/20 bg-white dark:bg-zinc-950 transition-all duration-500 ease-out group-hover/image:!transform-none z-10"
                                 style={{
                                     transform: "perspective(1000px) rotateX(15deg) rotateY(-20deg) rotateZ(2deg) scale(1.05)",
                                 }}
                             >
                                 {/* Mock Browser Top Bar */}
-                                <div className="w-full bg-zinc-900 border-b border-white/10 px-3 py-2 flex items-center gap-1.5 relative z-20">
+                                <div className="w-full bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200 dark:border-white/10 px-3 py-2 flex items-center gap-1.5 z-20 shrink-0">
                                     <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
                                     <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
                                     <div className="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
                                 </div>
 
-                                <div className="relative w-full h-[calc(100%-1.75rem)] overflow-hidden bg-zinc-950">
+                                <div className="relative w-full flex-1 overflow-hidden bg-white dark:bg-zinc-950">
                                     <Image
                                         src={blog.coverImage?.url || "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop"}
                                         alt={blog.title}

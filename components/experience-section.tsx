@@ -58,14 +58,14 @@ function VideoWithSocialLinks() {
             onMouseLeave={() => setIsHovered(false)}
         >
           
-            <div className="w-50 h-38 rounded-2xl overflow-hidden shadow-2xl">
+            <div className="w-48 h-48 md:w-56 md:h-56 rounded-3xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.2)] dark:shadow-[0_20px_40px_rgba(0,0,0,0.5)] border-4 border-white dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 transition-transform duration-300 hover:scale-105">
                 <video
                     src="/Video Project.mp4"
                     autoPlay
                     muted
                     loop
                     playsInline
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover object-center"
                 />
             </div>
 
