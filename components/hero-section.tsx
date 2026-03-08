@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Github, Linkedin, Mail, Twitter, FileText, Send } from "lucide-react";
 import { LinkPreview } from "@/components/ui/link-preview";
+import { TypewriterEffect } from "@/components/ui/typewriter";
 
 export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
     return (
@@ -31,9 +32,12 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="mb-6 text-4xl"
+                className="mb-6 text-4xl min-h-[40px] md:min-h-[48px]"
             >
-                {HERO.greet} <span className="text-zinc-600 dark:text-zinc-400">{HERO.role}</span>
+                {HERO.greet}{" "}
+                <span className="text-zinc-600 dark:text-zinc-400">
+                    <TypewriterEffect words={["Frontend Developer", "DevOps Engineer"]} />
+                </span>
             </motion.h1>
 
             <motion.p

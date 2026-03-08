@@ -8,8 +8,8 @@ export const NAVIGATION_LINKS = [
 ];
 
 export const HERO = {
-    name: "Nehal Ingole",
-    greet: "Hi, I'm Nehal —",
+    name: "Nehal Ingole - ",
+    greet: "Hi, I'm Nehal Ingole",
     role: "Frontend Developer |  DevOps Engineer",
     description:
         "focused on cloud automation, stylish development, and high-performance systems. Passionate about Docker, AWS, and building minimalist technical aesthetics.",
