@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef } from "react";
+import { MeteorShower } from "../meteor-shower";
 
 interface NavItem {
     href: string;
@@ -66,9 +67,13 @@ export function NavBar({
             initial={{ width: '95%' }}
             animate={{ width: '95%' }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className='flex items-center justify-between w-full h-auto py-3 px-3 [@media(min-width:768px)]:px-6 bg-white/80 dark:bg-neutral-950 backdrop-blur-xs border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300'
+            className='relative flex items-center justify-between w-full h-auto py-3 px-3 [@media(min-width:768px)]:px-6 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-xs border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300'
         >
-            <div className='flex-1 flex items-center justify-start'>
+            <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none z-0">
+                <MeteorShower number={10} />
+            </div>
+
+            <div className='flex-1 flex items-center justify-start z-10'>
                 {logoSrc ? (
                     <div className='shrink-0'>
                         <Image
@@ -84,7 +89,7 @@ export function NavBar({
                 )}
             </div>
 
-            <nav className='shrink-0 hidden [@media(min-width:640px)]:flex items-center space-x-4 [@media(min-width:768px)]:space-x-6'>
+            <nav className='relative z-10 shrink-0 hidden [@media(min-width:640px)]:flex items-center space-x-4 [@media(min-width:768px)]:space-x-6'>
                 {navItems.map((item, index) => (
                     <Link
                         key={index}
@@ -97,7 +102,9 @@ export function NavBar({
                 ))}
             </nav>
 
-            <div className='flex-1 flex items-center justify-end space-x-2'>
+            <div className='  flex-1 flex items-center justify-end space-x-2'>
+                {children}
+
                 <button
                     onClick={toggleMobileMenu}
                     className='[@media(min-width:640px)]:hidden flex justify-center items-center p-2 bg-gray-100 dark:bg-neutral-900 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors duration-200'
@@ -120,8 +127,6 @@ export function NavBar({
                     </motion.svg>
                 </button>
             </div>
-
-            {children}
 
             <AnimatePresence>
                 {mobileMenuOpen && (

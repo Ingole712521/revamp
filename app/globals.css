@@ -143,3 +143,21 @@
 .section-container {
   @apply w-full max-w-4xl mx-auto px-6 py-12 md:py-16 border-x border-zinc-200/50 dark:border-zinc-800/30 bg-white/30 dark:bg-black/20;
 }
+
+@keyframes meteor {
+  0% {
+    transform: rotate(215deg) translateX(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(215deg) translateX(-500px);
+    opacity: 0;
+  }
+}
+
+.animate-meteor-effect {
+  animation: meteor 5s linear infinite;
+}
