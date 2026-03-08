@@ -5,8 +5,12 @@ import { motion } from 'motion/react';
 import { GITHUB_STATS } from '@/lib/constants';
 import { Github, Clock } from 'lucide-react';
 import { GitHubCalendar } from 'react-github-calendar';
+import { useTheme } from 'next-themes';
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css';
 
 export function GithubActivity() {
+    const { theme, systemTheme } = useTheme();
     const [isOnline, setIsOnline] = useState(true);
     const [lastWorked, setLastWorked] = useState('8h 00m');
     const [currentTime, setCurrentTime] = useState<Date | null>(null);
@@ -105,18 +109,28 @@ export function GithubActivity() {
             >
                 {/* Scrollable Container for GitHub Calendar */}
                 <div className="flex-1 overflow-y-auto max-h-[400px] pr-2 custom-scrollbar">
-                    <div className="w-full overflow-x-auto pb-4 flex md:justify-center">
+                    <div className="w-full overflow-x-scroll pb-2 custom-horizontal-scrollbar flex md:justify-center">
                         {currentTime && (
-                            <GitHubCalendar
-                                username={GITHUB_STATS.username}
-                                blockSize={11}
-                                blockMargin={4}
-                                fontSize={12}
-                                theme={{
-                                    light: ['#f4f4f5', '#dcfce7', '#86efac', '#22c55e', '#15803d'],
-                                    dark: ['#09090b', '#064e3b', '#059669', '#10b981', '#34d399'],
-                                }}
-                            />
+                            <div className="min-w-[800px] flex justify-center py-2 px-4">
+                                <GitHubCalendar
+                                    username={GITHUB_STATS.username}
+                                    blockSize={11}
+                                    blockMargin={4}
+                                    fontSize={12}
+                                    colorScheme={theme === 'dark' || (theme === 'system' && systemTheme === 'dark') ? 'dark' : 'light'}
+                                    theme={{
+                                        light: ['#f4f4f5', '#dcfce7', '#86efac', '#22c55e', '#15803d'],
+                                        dark: ['#09090b', '#064e3b', '#059669', '#10b981', '#34d399'],
+                                    }}
+                                    renderBlock={(block, activity) =>
+                                        React.cloneElement(block as React.ReactElement, {
+                                            'data-tooltip-id': 'react-tooltip',
+                                            'data-tooltip-content': `${activity.count} contributions on ${activity.date}`,
+                                        } as any)
+                                    }
+                                />
+                                <Tooltip id="react-tooltip" className="!z-50 !bg-zinc-900 dark:!bg-zinc-100 !text-white dark:!text-black !rounded-md !text-xs !font-bold !px-3 !py-1.5 shadow-xl" />
+                            </div>
                         )}
                     </div>
                 </div>
@@ -139,21 +153,67 @@ export function GithubActivity() {
                 .custom-scrollbar::-webkit-scrollbar {
                     width: 6px;
                 }
+                .custom-horizontal-scrollbar::-webkit-scrollbar {
+                    height: 10px;
+                }
+                
+                /* Track styling */
                 .custom-scrollbar::-webkit-scrollbar-track {
                     background: transparent;
                 }
+                .custom-horizontal-scrollbar::-webkit-scrollbar-track {
+                    background: transparent;
+                    border-radius: 10px;
+                    margin: 0 10px;
+                }
+
+                /* Thumb styling (the gray draggable bar) */
                 .custom-scrollbar::-webkit-scrollbar-thumb {
                     background: #d4d4d8;
                     border-radius: 3px;
                 }
+                .custom-horizontal-scrollbar::-webkit-scrollbar-thumb {
+                    background: #9ca3af;
+                    border-radius: 10px;
+                }
+                
                 .dark .custom-scrollbar::-webkit-scrollbar-thumb {
                     background: #3f3f46;
                 }
-                .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-                    background: #a1a1aa;
-                }
-                .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                .dark .custom-horizontal-scrollbar::-webkit-scrollbar-thumb {
                     background: #52525b;
+                }
+
+                .custom-scrollbar::-webkit-scrollbar-thumb:hover,
+                .custom-horizontal-scrollbar::-webkit-scrollbar-thumb:hover {
+                    background: #6b7280;
+                }
+                
+                /* Adding the little directional arrows using scrollbar scroll buttons */
+                .custom-horizontal-scrollbar::-webkit-scrollbar-button:single-button {
+                    background-color: transparent;
+                    display: block;
+                    width: 16px;
+                    height: 10px;
+                    background-size: 10px;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+                
+                /* Left Arrow */
+                .custom-horizontal-scrollbar::-webkit-scrollbar-button:single-button:horizontal:decrement {
+                    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='%239ca3af'><path d='M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z'/></svg>");
+                }
+                .dark .custom-horizontal-scrollbar::-webkit-scrollbar-button:single-button:horizontal:decrement {
+                    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='%2352525b'><path d='M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z'/></svg>");
+                }
+
+                /* Right Arrow */
+                .custom-horizontal-scrollbar::-webkit-scrollbar-button:single-button:horizontal:increment {
+                    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='%239ca3af'><path d='M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z'/></svg>");
+                }
+                .dark .custom-horizontal-scrollbar::-webkit-scrollbar-button:single-button:horizontal:increment {
+                    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='%2352525b'><path d='M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z'/></svg>");
                 }
             `}</style>
         </section>
