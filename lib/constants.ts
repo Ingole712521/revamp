@@ -8,7 +8,7 @@ export const NAVIGATION_LINKS = [
 ];
 
 export const HERO = {
-    name: "Nehal Ingole - ",
+    name: "Nehal Ingole ",
     greet: "Hi, I'm Nehal Ingole",
     role: "Frontend Developer |  DevOps Engineer",
     description:
