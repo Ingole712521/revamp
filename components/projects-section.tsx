@@ -61,7 +61,7 @@ function ProjectCard({ project, idx }: { project: any; idx: number }) {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             onClick={handleCardClick}
-            className="group relative bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 rounded-2xl overflow-hidden hover:border-zinc-300 dark:hover:border-zinc-700 transition-all cursor-pointer"
+            className="group relative bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 rounded-2xl overflow-hidden hover:border-zinc-300 dark:hover:border-zinc-700 transition-all cursor-pointer flex flex-col h-full"
         >
             <div className="relative h-64 w-full overflow-hidden bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500 flex items-center justify-center p-6 group/image">
                 <div
@@ -152,10 +152,12 @@ function ProjectCard({ project, idx }: { project: any; idx: number }) {
                     </Link>
                 </div>
             </div>
-            <div className="p-6 flex flex-col gap-3">
+            <div className="p-6 flex flex-col gap-3 flex-1">
                 <h3 className="text-xl font-bold text-black dark:text-white">{project.name}</h3>
-                <p className="text-zinc-800 dark:text-zinc-200 text-sm">{project.description}</p>
-                <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-zinc-200 dark:border-zinc-800 mt-2">
+                <p className="text-zinc-800 dark:text-zinc-200 text-sm flex-1">
+                    {project.description}
+                </p>
+                <div className="mt-auto flex flex-wrap items-center gap-2 pt-2 border-t border-zinc-200 dark:border-zinc-800">
                     <span className="text-xs font-semibold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
                         Tech :
                     </span>
