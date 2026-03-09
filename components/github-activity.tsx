@@ -107,32 +107,30 @@ export function GithubActivity() {
                 viewport={{ once: true }}
                 className="relative p-6 bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col min-h-[200px]"
             >
-                {/* Scrollable Container for GitHub Calendar */}
-                <div className="flex-1 overflow-y-auto max-h-[400px] pr-2 custom-scrollbar">
-                    <div className="w-full overflow-x-scroll pb-2 custom-horizontal-scrollbar flex md:justify-center">
-                        {currentTime && (
-                            <div className="min-w-[800px] flex justify-center py-2 px-4">
-                                <GitHubCalendar
-                                    username={GITHUB_STATS.username}
-                                    blockSize={11}
-                                    blockMargin={4}
-                                    fontSize={12}
-                                    colorScheme={theme === 'dark' || (theme === 'system' && systemTheme === 'dark') ? 'dark' : 'light'}
-                                    theme={{
-                                        light: ['#f4f4f5', '#dcfce7', '#86efac', '#22c55e', '#15803d'],
-                                        dark: ['#09090b', '#064e3b', '#059669', '#10b981', '#34d399'],
-                                    }}
-                                    renderBlock={(block, activity) =>
-                                        React.cloneElement(block as React.ReactElement, {
-                                            'data-tooltip-id': 'react-tooltip',
-                                            'data-tooltip-content': `${activity.count} contributions on ${activity.date}`,
-                                        } as any)
-                                    }
-                                />
-                                <Tooltip id="react-tooltip" className="!z-50 !bg-zinc-900 dark:!bg-zinc-100 !text-white dark:!text-black !rounded-md !text-xs !font-bold !px-3 !py-1.5 shadow-xl" />
-                            </div>
-                        )}
-                    </div>
+                {/* Horizontally scrollable container for GitHub Calendar */}
+                <div className="flex-1 overflow-x-auto overflow-y-hidden pb-2 custom-horizontal-scrollbar">
+                    {currentTime && (
+                        <div className="min-w-[800px] flex justify-center py-2 px-4">
+                            <GitHubCalendar
+                                username={GITHUB_STATS.username}
+                                blockSize={11}
+                                blockMargin={4}
+                                fontSize={12}
+                                colorScheme={theme === 'dark' || (theme === 'system' && systemTheme === 'dark') ? 'dark' : 'light'}
+                                theme={{
+                                    light: ['#f4f4f5', '#dcfce7', '#86efac', '#22c55e', '#15803d'],
+                                    dark: ['#09090b', '#064e3b', '#059669', '#10b981', '#34d399'],
+                                }}
+                                renderBlock={(block, activity) =>
+                                    React.cloneElement(block as React.ReactElement, {
+                                        'data-tooltip-id': 'react-tooltip',
+                                        'data-tooltip-content': `${activity.count} contributions on ${activity.date}`,
+                                    } as any)
+                                }
+                            />
+                            <Tooltip id="react-tooltip" className="!z-50 !bg-zinc-900 dark:!bg-zinc-100 !text-white dark:!text-black !rounded-md !text-xs !font-bold !px-3 !py-1.5 shadow-xl" />
+                        </div>
+                    )}
                 </div>
 
                 <div className="w-full mt-4 flex items-center justify-between border-t border-zinc-100 dark:border-zinc-800/50 pt-4">

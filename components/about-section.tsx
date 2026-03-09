@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { HERO, SKILLS_CATEGORIES } from '@/lib/constants';
 import Image from 'next/image';
+import { TechBadge } from '@/components/tech-badge';
 
 export function AboutSection() {
     return (
@@ -43,15 +44,10 @@ export function AboutSection() {
                     <div className="mt-2">
                         <span className="text-zinc-500 dark:text-zinc-400 text-xs font-bold uppercase tracking-widest mb-3 block">Skills & Technologies</span>
 
-                        {/* Smaller icon grid */}
+                        {/* Smaller icon grid with logos */}
                         <div className="flex flex-wrap gap-2 items-center justify-center lg:justify-start">
-                            {SKILLS_CATEGORIES.flatMap(cat => cat.skills).map((skill) => (
-                                <span
-                                    key={skill}
-                                    className="px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-md text-[10px] uppercase tracking-wider font-bold text-zinc-600 dark:text-zinc-400"
-                                >
-                                    {skill}
-                                </span>
+                            {SKILLS_CATEGORIES.flatMap((cat) => cat.skills).map((skill) => (
+                                <TechBadge key={skill} name={skill} />
                             ))}
                         </div>
                     </div>
