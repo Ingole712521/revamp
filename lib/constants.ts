@@ -125,7 +125,7 @@ export const PROJECTS = [
         description: "Ship faster than ever with a library designed for speed, performance, and cutting-edge aesthetics.",
         // videoUrl: "https://www.youtube.com/embed/Xu9RLiXOa5k?autoplay=1&mute=1&loop=1&playlist=Xu9RLiXOa5k",
         image: "/componentLibrary.png",
-        link: "https://component-hazel.vercel.app/",
+        link: "https://www.animioui.in/",
         tags: ["Nextjs", "Git", "Motion", "Tailwindcss", "Windows"]
     }
 ];

@@ -152,9 +152,11 @@ export function BlogSection() {
 
                                 <div className="relative w-full flex-1 overflow-hidden bg-white dark:bg-zinc-950">
                                     <Image
-                                        src={blog.coverImage?.url || "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop"}
+                                        src={blog.coverImage?.url || "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1600&auto=format&fit=crop"}
                                         alt={blog.title}
                                         fill
+                                        loading="lazy"
+                                        sizes="(max-width: 768px) 100vw, 50vw"
                                         className="object-cover object-top transition-transform duration-500"
                                     />
                                 </div>

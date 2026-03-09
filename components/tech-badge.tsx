@@ -21,12 +21,18 @@ export function TechBadge({ name }: { name: string }) {
             src={iconUrl}
             alt={name}
             fill
+            loading="lazy"
+            sizes="16px"
             className="object-contain"
           />
         ) : (
           <img
             src={iconUrl}
             alt={name}
+            loading="lazy"
+            decoding="async"
+            width={16}
+            height={16}
             className="w-full h-full object-contain"
           />
         )}
