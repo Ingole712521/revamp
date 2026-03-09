@@ -152,16 +152,22 @@ function ProjectCard({ project, idx }: { project: any; idx: number }) {
                     </Link>
                 </div>
             </div>
-            <div className="p-6">
-                <div className="flex flex-wrap gap-2 mb-3">
+            <div className="p-6 flex flex-col gap-3">
+                <h3 className="text-xl font-bold text-black dark:text-white">{project.name}</h3>
+                <p className="text-zinc-800 dark:text-zinc-200 text-sm">{project.description}</p>
+                <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-zinc-200 dark:border-zinc-800 mt-2">
+                    <span className="text-xs font-semibold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
+                        Tech :
+                    </span>
                     {project.tags.map((tag: string) => (
-                        <span key={tag} className="px-2 py-1 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-md text-[10px] uppercase tracking-wider font-bold text-zinc-600 dark:text-zinc-400">
+                        <span
+                            key={tag}
+                            className="px-2 py-1 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-md text-[10px] uppercase tracking-wider font-bold text-zinc-600 dark:text-zinc-400"
+                        >
                             {tag}
                         </span>
                     ))}
                 </div>
-                <h3 className="text-xl font-bold text-black dark:text-white mb-2">{project.name}</h3>
-                <p className="text-zinc-800 dark:text-zinc-200 text-sm">{project.description}</p>
             </div>
         </motion.div>
     );

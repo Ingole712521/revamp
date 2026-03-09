@@ -165,7 +165,10 @@ export function BlogSection() {
                             <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-end p-6 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <div className="flex flex-wrap gap-2">
                                     {blog.tags?.slice(0, 3).map((tag) => (
-                                        <span key={tag.name} className="px-2 py-1 bg-white/20 backdrop-blur-md border border-white/10 rounded-md text-[10px] font-bold text-white uppercase tracking-wider shadow-xl">
+                                        <span
+                                            key={tag.name}
+                                            className="px-2 py-1 bg-white/20 backdrop-blur-md border border-white/10 rounded-md text-[10px] font-bold text-white uppercase tracking-wider shadow-xl"
+                                        >
                                             {tag.name}
                                         </span>
                                     ))}
