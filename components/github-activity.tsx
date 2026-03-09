@@ -110,7 +110,7 @@ export function GithubActivity() {
                 {/* Horizontally scrollable container for GitHub Calendar */}
                 <div className="flex-1 overflow-x-auto overflow-y-hidden pb-2 custom-horizontal-scrollbar">
                     {currentTime && (
-                        <div className="min-w-[800px] flex justify-center py-2 px-4">
+                        <div className="w-max flex justify-start md:justify-center py-2 px-4">
                             <GitHubCalendar
                                 username={GITHUB_STATS.username}
                                 blockSize={11}
