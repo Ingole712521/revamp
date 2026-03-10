@@ -14,7 +14,9 @@ export function ContactSection() {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        setMounted(true);
+        setTimeout(() => {
+            setMounted(true);
+        }, 100);
     }, []);
 
 
@@ -67,7 +69,7 @@ export function ContactSection() {
 
                 <div className="relative z-10 max-w-2xl mx-auto">
                     <h3 className="text-2xl md:text-2xl font-black text-zinc-900 dark:text-white mb-6 tracking-tight">
-                        Hey, you scrolled this far, let's talk.
+                    Still scrolling? Good. Let’s build something amazing together
                     </h3>
 
                     <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-10">
@@ -78,7 +80,7 @@ export function ContactSection() {
                             <Send className="w-4 h-4" />
                             Email Me
                         </Link>
-
+{/* 
                         <Link
                             href="https://calendly.com/"
                             target="_blank"
@@ -86,7 +88,7 @@ export function ContactSection() {
                         >
                             <Phone className="w-4 h-4" />
                             Book a Free Call
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
             </motion.div>
