@@ -8,7 +8,7 @@ import {
     ChevronDown,
     MapPin,
     Linkedin,
-    // sdas
+   
     Github,
     Twitter,
     Mail,
