@@ -14,7 +14,9 @@ import {
     Mail,
 } from "lucide-react";
 import { useState } from "react";
+import { useTheme } from "next-themes";
 import Link from "next/link";
+import Image from "next/image";
 
 export function ExperienceSection() {
     return (
@@ -57,7 +59,7 @@ function VideoWithSocialLinks() {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-          
+
             <div className="w-48 h-48 md:w-56 md:h-56 rounded-3xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.2)] dark:shadow-[0_20px_40px_rgba(0,0,0,0.5)] border-4 border-white dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 transition-transform duration-300 hover:scale-105">
                 <video
                     src="/Video Project.mp4"
@@ -118,6 +120,16 @@ function VideoWithSocialLinks() {
 
 function ExperienceCard({ exp }: { exp: any }) {
     const [isExpanded, setIsExpanded] = useState(false);
+    const { resolvedTheme } = useTheme();
+
+    const logoSrc =
+        exp.company === "Alief View Media Group"
+            ? resolvedTheme === "dark"
+                ? "/alifview-logo.png"
+                : "/lightmodeofalifview.png"
+
+            : exp.logo;
+    const isAlief = exp.company === "Alief View Media Group";
 
     return (
         <div className="experience-card group bg-zinc-100/10 dark:bg-zinc-800/20 border border-zinc-200 dark:border-zinc-700 rounded-2xl overflow-hidden transition-all duration-300 hover:border-zinc-400 dark:hover:border-zinc-500">
@@ -126,10 +138,15 @@ function ExperienceCard({ exp }: { exp: any }) {
                 className="p-5 md:p-6 cursor-pointer flex flex-col md:flex-row gap-4 items-start"
             >
                 {/* Company Logo */}
-                <div className="w-12 h-12 rounded-xl bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center overflow-hidden flex-shrink-0 shadow-inner">
-                    {exp.logo ? (
-                        <div className="relative w-full h-full p-2">
-                            <Briefcase className="w-6 h-6 text-zinc-400" />
+                <div className="w-14 h-14 rounded-2xl bg-white dark:bg-zinc-900 flex items-center justify-center overflow-hidden shadow-inner border border-zinc-200 dark:border-zinc-700">
+                    {logoSrc ? (
+                        <div className="relative w-full h-full">
+                            <Image
+                                src={logoSrc}
+                                alt={exp.company}
+                                fill
+                                className={isAlief ? "object-contain p-1" : "object-cover"}
+                            />
                         </div>
                     ) : (
                         <Briefcase className="w-6 h-6 text-zinc-400" />

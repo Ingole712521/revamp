@@ -140,7 +140,7 @@ export const EXPERIENCES = [
     {
         title: "Jr React Developer",
         company: "Kshan Tech Soft Pvt Ltd",
-        logo: "/logos/kshan.png",
+        logo: "/kshansofttech.png",
         duration: "Jan 2025 - Present",
         location: "Pune, India (On-Site)",
         description: "Developing high-performance web applications with a focus on cloud integration and smooth user experiences.",
@@ -160,7 +160,7 @@ export const EXPERIENCES = [
     {
         title: "React Developer (Freelancer)",
         company: "Alief View Media Group",
-        logo: "/logos/alief.png",
+        logo: "/alifview-logo.png",
         duration: "March 2024 - Sept 2024",
         location: "Remote (India)",
         description: "Spearheaded full-site development from concept to deployment, ensuring seamless UX across devices.",
@@ -180,7 +180,7 @@ export const EXPERIENCES = [
     {
         title: "DevOps Intern",
         company: "LinuxWorld Informatics Pvt. Ltd",
-        logo: "/logos/linuxworld.png", // Placeholder
+        logo: "/linuxworld.png", 
         duration: "Sept 2020 - Aug 2021",
         location: "Jaipur, India (Remote)",
         description: "Mastered cloud orchestration and automation tools during an intensive DevOps internship.",

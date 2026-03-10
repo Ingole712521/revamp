@@ -90,10 +90,36 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
 
 function SocialIconsWithPreview() {
     const socialItems = [
-        { key: 'twitter', icon: Twitter, data: SOCIALS.twitter },
-        { key: 'linkedin', icon: Linkedin, data: SOCIALS.linkedin },
-        { key: 'github', icon: Github, data: SOCIALS.github },
-    ];
+        {
+            key: 'twitter',
+            icon: Twitter,
+            data: SOCIALS.twitter,
+            staticPreview: {
+                isStatic: true as const,
+                imageSrc: "/twitter-profile.png",
+            },
+        },
+        {
+            key: 'linkedin',
+            icon: Linkedin,
+            data: SOCIALS.linkedin,
+            // Uses a static screenshot image for the tooltip preview
+            // Place your LinkedIn profile screenshot in the public folder with this name
+            staticPreview: {
+                isStatic: true as const,
+                imageSrc: "/linkedin-profile.png",
+            },
+        },
+        {
+            key: 'github',
+            icon: Github,
+            data: SOCIALS.github,
+            staticPreview: {
+                isStatic: true as const,
+                imageSrc: "/github-profile.png",
+            },
+        },
+    ] as const;
 
     return (
         <motion.div
@@ -104,11 +130,20 @@ function SocialIconsWithPreview() {
         >
             {socialItems.map((item) => {
                 const Icon = item.icon;
+                const previewProps =
+                    "staticPreview" in item
+                        ? {
+                            isStatic: item.staticPreview.isStatic,
+                            imageSrc: item.staticPreview.imageSrc,
+                        }
+                        : {};
+
                 return (
                     <LinkPreview
                         key={item.key}
                         url={item.data.url}
                         className="text-zinc-400 dark:text-zinc-500 hover:text-black dark:hover:text-white transition-colors"
+                        {...previewProps}
                     >
                         <Icon className="w-5 h-5" />
                     </LinkPreview>
@@ -117,6 +152,7 @@ function SocialIconsWithPreview() {
             {/* Email without preview */}
             <Link
                 href={SOCIALS.email.url}
+                title="nehalingole2001@gmail.com"
                 className="text-zinc-400 dark:text-zinc-500 hover:text-black dark:hover:text-white transition-colors"
             >
                 <Mail className="w-5 h-5" />

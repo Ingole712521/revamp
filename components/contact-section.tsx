@@ -1,25 +1,31 @@
 "use client"
 
-import { motion } from "motion/react";
+import { motion, useMotionValue, useSpring } from "motion/react";
 import Link from "next/link";
 import { Send, Phone } from "lucide-react";
 import Image from "next/image";
 import { HERO } from "@/lib/constants";
-import LetterGlitch from "@/components/LetterGlitch";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 
 export function ContactSection() {
-    const { resolvedTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+    const springX = useSpring(x, { stiffness: 80, damping: 15 });
+    const springY = useSpring(y, { stiffness: 80, damping: 15 });
 
-    useEffect(() => {
-        setTimeout(() => {
-            setMounted(true);
-        }, 100);
-    }, []);
+    const handleMouseMove = (event: any) => {
+        const rect = event.currentTarget.getBoundingClientRect();
+        const offsetX = event.clientX - rect.left - rect.width / 2;
+        const offsetY = event.clientY - rect.top - rect.height / 2;
 
+        // Subtle parallax effect
+        x.set(offsetX / 20);
+        y.set(offsetY / 20);
+    };
 
+    const handleMouseLeave = () => {
+        x.set(0);
+        y.set(0);
+    };
 
     return (
         <section id="contact" className="section-container border-t border-zinc-100 dark:border-zinc-900 pb-20">
@@ -32,44 +38,48 @@ export function ContactSection() {
                 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
                 viewport={{ once: true }}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
                 className="relative p-10 md:p-16 rounded-[2.5rem] bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-center group cursor-defaul"
             >
                 {/* Floating Avatar - Outside the box */}
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center justify-center z-30">
-                    <div className="w-16 h-16 bg-white dark:bg-zinc-800 rounded-2xl shadow-2xl border-2 border-zinc-200 dark:border-zinc-700 flex items-center justify-center animate-bounce overflow-hidden">
+                    <div className="w-16 h-16 bg-white dark:bg-zinc-800 rounded-2xl shadow-2xl border-2 border-zinc-200 dark:border-zinc-700 flex items-center justify-center animate-bounce ">
                         <Image
                             src={HERO.avatar}
                             alt="Contact"
                             width={50}
                             height={50}
-                            className="rounded-lg object-cover  group-hover:grayscale-0 transition-all"
+                            className="rounded-lg object-cover  group-hover:grayscale-0 transition-all overflow-auto"
                         />
                     </div>
                 </div>
 
-                {/* LetterGlitch Background */}
-                <div className="absolute inset-0 rounded-lg ">
-                    {mounted && (
-                        <LetterGlitch
-                            glitchColors={['#2b4539', '#61dca3', '#61b3dc']}
-                            glitchSpeed={50}
-                            centerVignette={false}
-                            outerVignette={true}
-                            smooth={true}
-                            characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$&*()-_+=/[]{};:<>.,0123456789"
+                {/* Image Background with subtle parallax (constrained to container) */}
+                <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden pointer-events-none">
+                    <motion.div
+                        className="relative w-full h-full"
+                        style={{ x: springX, y: springY }}
+                    >
+                        <Image
+                            src="/connect.png"
+                            alt="Connect background"
+                            fill
+                            className="object-cover opacity-70 scale-110"
+                            priority
                         />
-                    )}
+                    </motion.div>
                 </div>
 
                 {/* Overlay for better text readability */}
-                <div className="absolute inset-0 rounded-lg"></div>
+                <div className="absolute inset-0 rounded-[2.5rem] bg-zinc-950/20 dark:bg-black/40" />
 
                 {/* Dynamic Glow Effect on Hover */}
                 <div className="absolute inset-0 rounded-lg bg-blue-500/0 group-hover:bg-blue-500/5 transition-colors duration-1000 blur-3xl pointer-events-none"></div>
 
                 <div className="relative z-10 max-w-2xl mx-auto">
                     <h3 className="text-2xl md:text-2xl font-black text-zinc-900 dark:text-white mb-6 tracking-tight">
-                    Still scrolling? Good. Let’s build something amazing together
+                        Still scrolling? Good. Let’s build something amazing together
                     </h3>
 
                     <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-10">
@@ -80,7 +90,7 @@ export function ContactSection() {
                             <Send className="w-4 h-4" />
                             Email Me
                         </Link>
-{/* 
+                        {/* 
                         <Link
                             href="https://calendly.com/"
                             target="_blank"
