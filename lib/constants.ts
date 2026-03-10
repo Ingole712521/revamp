@@ -121,7 +121,7 @@ export const PROJECTS = [
     },
     {
         id: 6,
-        name: "Under Development",
+        name: "AnimioUI",
         description: "Ship faster than ever with a library designed for speed, performance, and cutting-edge aesthetics.",
         // videoUrl: "https://www.youtube.com/embed/Xu9RLiXOa5k?autoplay=1&mute=1&loop=1&playlist=Xu9RLiXOa5k",
         image: "/componentLibrary.png",
@@ -180,7 +180,7 @@ export const EXPERIENCES = [
     {
         title: "DevOps Intern",
         company: "LinuxWorld Informatics Pvt. Ltd",
-        logo: "/linuxworld.png", 
+        logo: "/linuxworld.png",
         duration: "Sept 2020 - Aug 2021",
         location: "Jaipur, India (Remote)",
         description: "Mastered cloud orchestration and automation tools during an intensive DevOps internship.",
