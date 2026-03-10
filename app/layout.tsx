@@ -33,12 +33,12 @@ export const metadata: Metadata = {
     "Kubernetes",
     "portfolio",
   ],
-  metadataBase: new URL("https://your-production-domain.com"),
+  metadataBase: new URL("https://www.nehalingole.in/"),
   openGraph: {
     title: "Nehal Ingole | Frontend Developer & DevOps Engineer",
     description:
       "Explore projects, experience, and blogs by Nehal Ingole – a Frontend Developer and DevOps Engineer focused on scalable, high‑performance systems.",
-    url: "https://your-production-domain.com",
+    url: "https://www.nehalingole.in/",
     siteName: "Nehal Ingole Portfolio",
     type: "website",
     images: [
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     creator: "@IngoleNehal",
   },
   alternates: {
-    canonical: "https://your-production-domain.com",
+    canonical: "https://www.nehalingole.in/",
   },
   robots: {
     index: true,
