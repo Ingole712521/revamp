@@ -68,18 +68,53 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
                 transition={{ delay: 0.5 }}
                 className="flex flex-wrap justify-center gap-4"
             >
-                <button
-                    onClick={onResumeClick}
-                    className="flex items-center gap-2 px-6 py-3 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white rounded-lg font-medium hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors border border-zinc-200 dark:border-zinc-700"
+                <motion.div
+                    initial={{ scale: 1, y: 0 }}
+                    animate={{ scale: [1, 1.02, 1], y: [0, -2, 0] }}
+                    transition={{
+                        duration: 2.4,
+                        repeat: Infinity,
+                        repeatType: "loop",
+                        ease: "easeInOut",
+                        delay: 0.4,
+                    }}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.97, y: 0 }}
                 >
-                    <FileText className="w-4 h-4" /> Resume / CV
-                </button>
-                <Link
-                    href="#contact"
-                    className="flex items-center gap-2 px-6 py-3 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-lg font-medium hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-colors shadow-lg shadow-white/5"
+                    <button
+                        onClick={onResumeClick}
+                        className="relative inline-flex items-center gap-2 px-8 py-3 rounded-[999px] text-sm font-semibold text-zinc-900 dark:text-white bg-gradient-to-b from-zinc-100 to-zinc-300 dark:from-zinc-700 dark:to-zinc-900 shadow-[0_0_24px_rgba(148,163,184,0.35)] hover:shadow-[0_0_30px_rgba(148,163,184,0.6)] border border-zinc-200/80 dark:border-zinc-600/80 transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-zinc-300 dark:focus-visible:ring-zinc-500 focus-visible:ring-offset-black/5"
+                    >
+                        <span className="relative z-10 flex items-center gap-2">
+                            <FileText className="w-4 h-4" />
+                            Resume / CV
+                        </span>
+                        <span className="pointer-events-none absolute inset-[1px] rounded-[999px] bg-gradient-to-b from-white/80 to-zinc-300/90 dark:from-zinc-700/90 dark:to-zinc-900/90 opacity-90" />
+                    </button>
+                </motion.div>
+                <motion.div
+                    initial={{ scale: 1, y: 0 }}
+                    animate={{ scale: [1, 1.02, 1], y: [0, -2, 0] }}
+                    transition={{
+                        duration: 2.4,
+                        repeat: Infinity,
+                        repeatType: "loop",
+                        ease: "easeInOut",
+                    }}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.97, y: 0 }}
                 >
-                    <Send className="w-4 h-4" /> Get in touch
-                </Link>
+                    <Link
+                        href="#contact"
+                        className="relative inline-flex items-center justify-center px-10 py-3 rounded-[999px] text-sm font-semibold text-white bg-gradient-to-b from-[#d49b62] to-[#b5743b] shadow-[0_0_32px_rgba(180,116,59,0.45)] hover:shadow-[0_0_40px_rgba(180,116,59,0.7)] transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#d49b62] focus-visible:ring-offset-black/5"
+                    >
+                        <span className="relative z-10 flex items-center gap-2">
+                            <Send className="w-4 h-4" />
+                            Get in touch
+                        </span>
+                        <span className="pointer-events-none absolute inset-[1px] rounded-[999px] bg-gradient-to-b from-[#e2ae79] to-[#b5743b]/90 opacity-90" />
+                    </Link>
+                </motion.div>
             </motion.div>
 
             {/* Social Icons with Link Preview */}
