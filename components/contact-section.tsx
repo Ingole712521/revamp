@@ -2,7 +2,7 @@
 
 import { motion, useMotionValue, useSpring } from "motion/react";
 import Link from "next/link";
-import { Send, Phone } from "lucide-react";
+import { Send } from "lucide-react";
 import Image from "next/image";
 import { HERO } from "@/lib/constants";
 
@@ -90,15 +90,6 @@ export function ContactSection() {
                             <Send className="w-4 h-4" />
                             Email Me
                         </Link>
-                        {/* 
-                        <Link
-                            href="https://calendly.com/"
-                            target="_blank"
-                            className="flex items-center gap-3 px-8 py-4 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white border border-zinc-200 dark:border-zinc-700 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-all hover:-translate-y-1 active:scale-95"
-                        >
-                            <Phone className="w-4 h-4" />
-                            Book a Free Call
-                        </Link> */}
                     </div>
                 </div>
             </motion.div>

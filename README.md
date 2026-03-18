@@ -1,33 +1,149 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nehal Ingole Portfolio
 
-## Getting Started
+Portfolio website built with Next.js (App Router), Tailwind CSS, and animated UI (Motion + GSAP). The home page is a single scroll-based layout composed of multiple sections (Hero, Experience, Projects, Bio/Skills, GitHub Activity, Blogs, Quotes, Contact, Footer).
 
-First, run the development server:
+Live site: https://www.nehalingole.in/
+
+## Features
+
+- Animated landing hero with tech badges, social icons (with hover preview), and CTA buttons.
+- Theme toggle using a draggable “theme chain” UI (dark/light) powered by `next-themes`.
+- Custom cursor that reacts to project hover events (GSAP-powered).
+- Interactive project cards:
+  - Hover overlay + clickable external links.
+  - Optional video preview on hover using a YouTube iframe.
+  - Optional full video player mode.
+- Experience section with expandable cards for role points and tech stack.
+- GitHub Activity section:
+  - GitHub contribution calendar (`react-github-calendar`).
+  - Online/offline indicator from browser `navigator.onLine`.
+  - “Worked today” counter computed client-side.
+- Blogs section that fetches the latest posts from Hashnode using GraphQL.
+- Resume modal:
+  - Click “Resume / CV” to open an animated modal.
+  - Preview the PDF in an `iframe` and provide a download button.
+- Loading screen:
+  - A Remotion composition is shown while the page “hydrates”/loads.
+- Optional Visitor Count section (`counterapi.dev`) is implemented but currently commented out in `app/page.tsx`.
+
+## Tech Stack
+
+- Framework: Next.js 16 + React 19 (App Router)
+- Language: TypeScript (strict mode enabled)
+- Styling: Tailwind CSS v4 + `shadcn/tailwind.css`
+- UI/Animation:
+  - `motion/react` (section and component animations)
+  - `gsap` (cursor + project hover interactions)
+  - `@remotion/player` (loading animation)
+- Icons: `lucide-react`
+- Theme: `next-themes`
+- Data/content:
+  - Portfolio content defined in `lib/constants.ts`
+  - Blogs fetched from Hashnode via GraphQL in `components/blog-section.tsx`
+- Analytics: `@vercel/analytics/next`
+
+## Sections (What you see on the page)
+
+The main page is implemented in `app/page.tsx` and renders, in order:
+
+- `CustomCursor`
+- `ResumeModal` (controlled by state in `app/page.tsx`)
+- `Lamphome` (navbar + glow effects + theme chain + layout wrapper)
+- `HeroSection` (avatar, greeting, typewriter effect, tech badges, social icons, CTAs)
+- `ExperienceSection` (expandable work cards + hover video + social popup)
+- `ProjectsSection` (interactive project cards with images and optional video previews)
+- `AboutSection` (avatar + bio + skills badges)
+- `GithubActivity` (contribution calendar + status + “worked today”)
+- `BlogSection` (Hashnode GraphQL fetch + post cards)
+- `QuotesSection` (random quote from `QUOTES`)
+- `ContactSection` (parallax/glow contact card with mailto link)
+- `Footer`
+
+## Key Implementation Details
+
+### Content model (`lib/constants.ts`)
+
+Most portfolio content is centralized in `lib/constants.ts`, including:
+
+- Navigation items (`NAVIGATION_LINKS`)
+- Hero content (`HERO`)
+- Social links (`SOCIALS`)
+- Tech stack for badges (`TECH_STACK`, `SKILLS_CATEGORIES`)
+- Projects (`PROJECTS`) including tags and optional `videoUrl`
+- About/bio paragraphs (`BIO`)
+- Experiences (`EXPERIENCES`)
+- Quotes (`QUOTES`)
+- Blogs metadata (`BLOGS`) (note: the blogs section currently fetches from Hashnode at runtime)
+- GitHub stats stub (`GITHUB_STATS`)
+
+### Theme toggle
+
+Theme behavior is controlled by `ThemeProvider` in `app/layout.tsx` and the interactive chain UI in:
+
+- `components/ui/lamphome.tsx`
+- `components/ui/lamphome/theme-chain.tsx`
+
+### Projects video preview
+
+`components/projects-section.tsx` uses:
+
+- A YouTube iframe preview when `project.videoUrl` exists and the card is hovered.
+- GSAP to fade the hover video container.
+
+### Blogs fetching
+
+`components/blog-section.tsx` requests posts from Hashnode’s GraphQL endpoint (`https://gql.hashnode.com`) for `learnwithnehal.hashnode.dev`.
+
+Important note: the GraphQL request uses an `Authorization` header that is currently hard-coded in the component. For production, move it to an environment variable (for security).
+
+## Setup
+
+Prerequisites:
+
+- Node.js 18+ (recommended)
+
+Install dependencies and run:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Scripts
 
-## Learn More
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-To learn more about Next.js, take a look at the following resources:
+## Configuration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Next.js image domains
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+`next.config.ts` configures allowed image formats and remote image `remotePatterns` for Next’s `next/image`.
+
+### Assets
+
+Static assets used by the portfolio live in `public/`:
+
+- Project images (ex: `connect.png`, `webpratice.png`, etc.)
+- Social preview images (ex: `linkedin-profile.png`, `github-profile.png`, `twitter-profile.png`)
+- Resume PDF: `Nehal_Ingole_7397966719.pdf`
+- Background/hero images (ex: `image (3).jpg`)
+- Videos used in UI (ex: `Video Project.mp4`)
+
+## Deployment
+
+This project is designed to run well on Vercel:
+
+- `next build`
+- `next start`
+
+Make sure any secrets for external APIs (for example, the Hashnode GraphQL authorization) are provided via environment variables before deploying.
 
 ## Deploy on Vercel
 
