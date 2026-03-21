@@ -1,5 +1,6 @@
 export const NAVIGATION_LINKS = [
     { label: "Home", href: "/" },
+    { label: "Proof of Work", href: "#proof-of-work" },
     { label: "Projects", href: "#projects" },
     { label: "Bio", href: "#bio" },
     { label: "Skills", href: "#skills" },
@@ -118,15 +119,36 @@ export const PROJECTS = [
         image: "/github.png",
         link: "https://www.linkedin.com/posts/nehal-ingole_github-aws-codingjourney-activity-7172914850921148416-9Lue?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC508FUBuGfTDjOmT3MnzkFrrqilcF1xhAw",
         tags: ["Docker", "Git", "AWS", "Ubuntu", "Windows"]
+    }
+];
+
+export const PROOF_OF_WORK = [
+    {
+        id: "pow-kestra",
+        name: "Kestra — open source contribution",
+        description:
+            "Merged fix for blueprint tags not resetting when navigating away from the Blueprints Browser; tag filters now stay aligned with the URL on return (#14965).",
+        image: "https://cdn.simpleicons.org/kestra/6366F1",
+        link: "https://github.com/kestra-io/kestra/pull/15043",
+        tags: ["Open Source", "Vue", "Frontend"]
     },
     {
-        id: 6,
+        id: "pow-alif",
+        name: "Alif View Media Group",
+        description:
+            "Conference organizer and corporate events site: responsive marketing experience for technology summits and premier events.",
+        image: "/lightmodeofalifview.png",
+        link: "https://alifviewmedia.com/",
+        tags: ["React", "Tailwind CSS", "EmailJS", "Adobe"]
+    },
+    {
+        id: "pow-animioui",
         name: "AnimioUI",
-        description: "Ship faster than ever with a library designed for speed, performance, and cutting-edge aesthetics.",
-        // videoUrl: "https://www.youtube.com/embed/Xu9RLiXOa5k?autoplay=1&mute=1&loop=1&playlist=Xu9RLiXOa5k",
+        description:
+            "Ship faster than ever with a library designed for speed, performance, and cutting-edge aesthetics.",
         image: "/componentLibrary.png",
         link: "https://www.animioui.in/",
-        tags: ["Nextjs", "Git", "Motion", "Tailwindcss", "Windows"]
+        tags: ["Next.js", "Git", "Motion", "Tailwind CSS"]
     }
 ];
 

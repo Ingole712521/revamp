@@ -4,6 +4,7 @@ import { Lamphome } from "@/components/ui/lamphome";
 import { NAVIGATION_LINKS } from "@/lib/constants";
 import React from "react";
 import { HeroSection } from "@/components/hero-section";
+import { ProofOfWorkSection } from "@/components/proof-of-work-section";
 import { ProjectsSection } from "@/components/projects-section";
 import { ExperienceSection } from "@/components/experience-section";
 import { Footer } from "@/components/footer";
@@ -44,6 +45,7 @@ export default function Home() {
         <div className="max-w-4xl w-full px-6 flex flex-col items-center">
           <HeroSection onResumeClick={() => setIsResumeOpen(true)} />
           <ExperienceSection />
+          <ProofOfWorkSection />
           <ProjectsSection />
           <AboutSection />
           <GithubActivity />
