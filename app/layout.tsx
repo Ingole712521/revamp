@@ -1,8 +1,20 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/next";
+import { StructuredData } from "@/components/structured-data";
+import { GoogleAnalytics } from "@/components/google-analytics";
+import {
+  absoluteUrl,
+  OG_IMAGE_PATH,
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  SITE_NAME,
+  SITE_TAGLINE,
+  SITE_TITLE,
+  SITE_URL,
+} from "@/lib/seo-config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,53 +26,52 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "Nehal Ingole | Frontend Developer & DevOps Engineer",
-    template: "%s | Nehal Ingole",
-  },
-  description:
-    "Portfolio of Nehal Ingole, Frontend Developer and DevOps Engineer specializing in cloud automation, high‑performance React/Next.js apps, and modern DevOps practices.",
-  keywords: [
-    "Nehal Ingole",
-    "frontend developer",
-    "devops engineer",
-    "React",
-    "Next.js",
-    "TypeScript",
-    "AWS",
-    "Docker",
-    "Kubernetes",
-    "portfolio",
+const ogImage = absoluteUrl(OG_IMAGE_PATH);
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#09090b" },
   ],
-  metadataBase: new URL("https://www.nehalingole.in/"),
-  openGraph: {
-    title: "Nehal Ingole | Frontend Developer & DevOps Engineer",
-    description:
-      "Explore projects, experience, and blogs by Nehal Ingole – a Frontend Developer and DevOps Engineer focused on scalable, high‑performance systems.",
-    url: "https://www.nehalingole.in/",
-    siteName: "Nehal Ingole Portfolio",
-    type: "website",
-    images: [
-      {
-        url: "/image (3).jpg",
-        width: 1200,
-        height: 630,
-        alt: "Nehal Ingole",
-      },
-    ],
+};
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ||
+  process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+    ? {
+        verification: {
+          ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && {
+            google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+          }),
+          ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION && {
+            other: {
+              "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION,
+            },
+          }),
+        },
+      }
+    : {}),
+  applicationName: SITE_NAME,
+  title: {
+    default: SITE_TITLE,
+    template: `%s | ${SITE_NAME}`,
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Nehal Ingole | Frontend Developer & DevOps Engineer",
-    description:
-      "Frontend Developer and DevOps Engineer building fast, reliable applications in React, Next.js, and AWS.",
-    images: ["/image (3).jpg"],
-    creator: "@IngoleNehal",
+  description: SITE_DESCRIPTION,
+  keywords: SITE_KEYWORDS,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
   },
-  alternates: {
-    canonical: "https://www.nehalingole.in/",
-  },
+  category: "technology",
+  classification: "Portfolio",
+  referrer: "origin-when-cross-origin",
   robots: {
     index: true,
     follow: true,
@@ -72,9 +83,46 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/",
+      en: "/",
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "/",
+    siteName: `${SITE_NAME} Portfolio`,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [
+      {
+        url: ogImage,
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} — ${SITE_TAGLINE}`,
+        type: "image/jpeg",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [ogImage],
+    creator: "@IngoleNehal",
+    site: "@IngoleNehal",
+  },
   icons: {
-    icon: "/icon.png",
-    apple: "/icon.png",
+    icon: [{ url: "/icon.png", sizes: "512x512", type: "image/png" }],
+    apple: [{ url: "/icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  appleWebApp: {
+    capable: true,
+    title: SITE_NAME,
+    statusBarStyle: "black-translucent",
   },
 };
 
@@ -88,6 +136,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <StructuredData />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -97,6 +146,7 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         <Analytics />
+        <GoogleAnalytics />
       </body>
     </html>
   );

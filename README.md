@@ -40,7 +40,19 @@ Live site: https://www.nehalingole.in/
 - Data/content:
   - Portfolio content defined in `lib/constants.ts`
   - Blogs fetched from Hashnode via GraphQL in `components/blog-section.tsx`
-- Analytics: `@vercel/analytics/next`
+- Analytics: `@vercel/analytics/next` and Google Analytics 4 (`components/google-analytics.tsx`, ID in `lib/seo-config.ts` or `NEXT_PUBLIC_GA_MEASUREMENT_ID`)
+
+## SEO
+
+Technical SEO is implemented for discoverability (not a guarantee of ranking—Google ranks pages by relevance, quality signals, and competition):
+
+- **Metadata** (`app/layout.tsx`): title template, description, keywords, canonical URL, `robots`, Open Graph, Twitter cards, `authors` / `publisher`, `appleWebApp`, `alternates.languages`.
+- **Central config** (`lib/seo-config.ts`): site URL, copy, and JSON-LD helpers. Override the live domain with `NEXT_PUBLIC_SITE_URL` (see `.env.example`).
+- **Structured data**: JSON-LD `@graph` with `WebSite`, `Person`, and `WebPage` for rich results eligibility.
+- **Sitemap & robots**: `app/sitemap.ts` → `/sitemap.xml`, `app/robots.ts` → `/robots.txt` with sitemap URL.
+- **Web app manifest**: `app/manifest.ts` → `/manifest.webmanifest` (name, theme colors, icons).
+
+After deploy, add the site in [Google Search Console](https://search.google.com/search-console) and submit the sitemap URL (`https://your-domain/sitemap.xml`). Set verification env vars if you use meta-tag verification.
 
 ## Sections (What you see on the page)
 
@@ -51,6 +63,7 @@ The main page is implemented in `app/page.tsx` and renders, in order:
 - `Lamphome` (navbar + glow effects + theme chain + layout wrapper)
 - `HeroSection` (avatar, greeting, typewriter effect, tech badges, social icons, CTAs)
 - `ExperienceSection` (expandable work cards + hover video + social popup)
+- `ProofOfWorkSection` (highlight cards: open source, client work, AnimioUI)
 - `ProjectsSection` (interactive project cards with images and optional video previews)
 - `AboutSection` (avatar + bio + skills badges)
 - `GithubActivity` (contribution calendar + status + “worked today”)
