@@ -116,8 +116,8 @@ export const metadata: Metadata = {
     site: "@IngoleNehal",
   },
   icons: {
-    icon: [{ url: "/icon.png", sizes: "512x512", type: "image/png" }],
-    apple: [{ url: "/icon.png", sizes: "180x180", type: "image/png" }],
+    icon: [{ url: "/image%20(3)%20copy.jpg", type: "image/jpeg" }],
+    apple: [{ url: "/image%20(3).jpg", sizes: "180x180", type: "image/jpg" }],
   },
   appleWebApp: {
     capable: true,

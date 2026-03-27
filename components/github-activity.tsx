@@ -91,12 +91,12 @@ export function GithubActivity() {
                     </div>
 
                     {/* Worked Today */}
-                    <div className="flex flex-col items-end">
+                    {/* <div className="flex flex-col items-end">
                         <div className="flex items-center gap-2 text-sm font-bold text-black dark:text-white">
                             <Clock className="w-3.5 h-3.5 text-zinc-500" />
                             <span>Worked {lastWorked} today</span>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
