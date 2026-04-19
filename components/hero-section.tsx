@@ -5,7 +5,7 @@ import { TechBadge } from "@/components/tech-badge";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Mail, Twitter, FileText, Send } from "lucide-react";
+import { Github, Linkedin, Mail, Twitter, Youtube, FileText, Send } from "lucide-react";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { TypewriterEffect } from "@/components/ui/typewriter";
 
@@ -153,6 +153,11 @@ function SocialIconsWithPreview() {
                 isStatic: true as const,
                 imageSrc: "/github-profile.png",
             },
+        },
+        {
+            key: 'youtube',
+            icon: Youtube,
+            data: SOCIALS.youtube,
         },
     ] as const;
 

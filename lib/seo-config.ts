@@ -60,6 +60,7 @@ export function getPersonJsonLd() {
       "https://www.linkedin.com/in/nehal-ingole/",
       "https://github.com/Ingole712521",
       "https://x.com/IngoleNehal",
+      "https://www.youtube.com/@nehalingole1754",
     ],
     knowsAbout: [
       "React",

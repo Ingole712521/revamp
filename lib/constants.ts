@@ -33,6 +33,11 @@ export const SOCIALS = {
         label: "Twitter",
         preview: "x.com/IngoleNehal",
     },
+    youtube: {
+        url: "https://www.youtube.com/@nehalingole1754",
+        label: "YouTube",
+        preview: "youtube.com/@nehalingole1754",
+    },
     email: {
         url: "mailto:nehalingole2001@gmail.com",
         label: "Email",
