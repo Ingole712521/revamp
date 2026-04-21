@@ -154,6 +154,18 @@ export const PROOF_OF_WORK = [
         image: "/componentLibrary.png",
         link: "https://www.animioui.in/",
         tags: ["Next.js", "Git", "Motion", "Tailwind CSS"]
+    },
+    {
+        id: "pow-emotion",
+        name: "Emotion — emotional support chat",
+        description:
+            "A single-page space to talk through feelings with no sign-ups, logins, or database—messages exist only in the browser session. Next.js (App Router), React, TypeScript, Tailwind, and OpenRouter (LLaMA) with server-only API handling and a calm, minimal UX.",
+        image:
+            "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=80",
+        link: "https://emotion-app-roan.vercel.app/",
+        videoUrl:
+            "https://www.youtube.com/embed/4_ue3T4wBx4?autoplay=1&mute=1&controls=0&loop=1&playlist=4_ue3T4wBx4",
+        tags: ["Next.js", "TypeScript", "Tailwind CSS", "OpenRouter", "Privacy"]
     }
 ];
 
