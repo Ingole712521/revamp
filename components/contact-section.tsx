@@ -90,8 +90,17 @@ export function ContactSection() {
                             <Send className="w-4 h-4" />
                             Email Me
                         </Link>
+                        <Link
+                            href="tel:7397966719"
+                            className="flex items-center gap-3 px-8 py-4 bg-zinc-900 dark:bg-white text-white dark:text-black rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-all hover:-translate-y-1 active:scale-95 shadow-xl"
+                        >
+                            <Send className="w-4 h-4" />
+                           Call me on  7397966719
+                        </Link>
                     </div>
+                    
                 </div>
+                
             </motion.div>
         </section>
     );
