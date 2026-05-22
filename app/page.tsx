@@ -9,6 +9,7 @@ import { ProjectsSection } from "@/components/projects-section";
 import { ExperienceSection } from "@/components/experience-section";
 import { Footer } from "@/components/footer";
 import { CustomCursor } from "@/components/custom-cursor";
+import { Oneko } from "@/components/oneko";
 import { GithubActivity } from "@/components/github-activity";
 import { BlogSection } from "@/components/blog-section";
 import { AboutSection } from "@/components/about-section";
@@ -32,6 +33,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-start bg-white dark:bg-black transition-colors duration-500 overflow-x-hidden">
       <CustomCursor />
+      <Oneko />
       <ResumeModal
         isOpen={isResumeOpen}
         onClose={() => setIsResumeOpen(false)}
