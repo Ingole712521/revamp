@@ -69,18 +69,13 @@ export function GithubActivity() {
                     <span className="text-zinc-500 dark:text-zinc-400 text-xs font-bold uppercase tracking-widest mb-2 block">Featured</span>
                     <h2>GitHub Activity</h2>
                 </div>
-
-                {/* Stats in column layout - each on its own line */}
                 <div className="flex flex-col items-end gap-3">
-                    {/* Total Contributions */}
                     <div className="flex flex-col items-end">
                         <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-widest">Total Contributions</span>
                         <span className="text-2xl font-black text-black dark:text-white leading-none mt-1">
                             {GITHUB_STATS.totalContributions.toLocaleString('en-US')}
                         </span>
                     </div>
-
-                    {/* Online Status */}
                     <div className="flex flex-col items-end">
                         <div className="flex items-center gap-2">
                             <div className={`w-2 h-2 rounded-full ${isOnline ? 'bg-green-500' : 'bg-zinc-400'} animate-pulse`} />
@@ -90,24 +85,16 @@ export function GithubActivity() {
                         </div>
                     </div>
 
-                    {/* Worked Today */}
-                    {/* <div className="flex flex-col items-end">
-                        <div className="flex items-center gap-2 text-sm font-bold text-black dark:text-white">
-                            <Clock className="w-3.5 h-3.5 text-zinc-500" />
-                            <span>Worked {lastWorked} today</span>
-                        </div>
-                    </div> */}
+                  
                 </div>
             </div>
 
-            {/* Graph Container */}
             <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 className="relative p-6 bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col min-h-[200px]"
             >
-                {/* Horizontally scrollable container for GitHub Calendar */}
                 <div className="flex-1 overflow-x-auto overflow-y-hidden pb-2 custom-horizontal-scrollbar">
                     {currentTime && (
                         <div className="w-max flex justify-start md:justify-center py-2 px-4">
@@ -146,7 +133,6 @@ export function GithubActivity() {
                 </div>
             </motion.div>
 
-            {/* Custom Scrollbar Styles */}
             <style jsx>{`
                 .custom-scrollbar::-webkit-scrollbar {
                     width: 6px;
