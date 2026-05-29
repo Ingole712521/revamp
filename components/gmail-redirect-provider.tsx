@@ -9,7 +9,7 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowUpRight, Mail, X } from "lucide-react";
+import { ArrowUpRight, Check, Mail, X } from "lucide-react";
 import { CONTACT_EMAIL, GMAIL_COMPOSE_URL } from "@/lib/constants";
 
 type GmailRedirectContextValue = {
@@ -110,26 +110,29 @@ function GmailRedirectModal({
                         </div>
 
                         <div className="px-6 py-5">
-                            <p
+                            <div
                                 id="gmail-redirect-desc"
-                                className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400"
+                                className="relative overflow-hidden rounded-xl border border-zinc-200/90 bg-linear-to-br from-zinc-50 via-white to-zinc-50 p-5 shadow-sm dark:border-zinc-800 dark:from-zinc-900 dark:via-zinc-950 dark:to-zinc-900"
                             >
-                                You will be redirected to Gmail to start a new
-                                message. Your address will be added to the{" "}
-                                <span className="font-medium text-zinc-800 dark:text-zinc-200">
-                                    To
-                                </span>{" "}
-                                field automatically.
-                            </p>
-
-                            <div className="mt-4 rounded-xl border border-zinc-200 bg-zinc-50/80 px-4 py-3 dark:border-zinc-800 dark:bg-zinc-900/50">
-                                <p className="text-[11px] font-medium text-zinc-500 dark:text-zinc-500">
-                                    Recipient
+                                <div
+                                    className="pointer-events-none absolute inset-y-0 left-0 w-0.5 bg-zinc-900 dark:bg-zinc-100"
+                                    aria-hidden
+                                />
+                                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-500">
+                                    Compose ready
                                 </p>
-                                <p className="mt-0.5 truncate text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                                    {CONTACT_EMAIL}
+                                <p className="mt-2 text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+                                    Your message is one click away.
+                                </p>
+                                <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                                    We&apos;ll open Gmail with everything ready
+                                    so you can start the conversation instantly.
                                 </p>
                             </div>
+
+                         
+
+                           
                         </div>
 
                         <div className="flex flex-col-reverse gap-2 border-t border-zinc-100 bg-zinc-50/50 px-6 py-4 sm:flex-row sm:justify-end dark:border-zinc-800/80 dark:bg-zinc-900/30">
