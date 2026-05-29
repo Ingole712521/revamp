@@ -17,6 +17,7 @@ import { useState } from "react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import Image from "next/image";
+import { useGmailRedirect } from "@/components/gmail-redirect-provider";
 
 export function ExperienceSection() {
     return (
@@ -45,6 +46,7 @@ export function ExperienceSection() {
 
 function VideoWithSocialLinks() {
     const [isHovered, setIsHovered] = useState(false);
+    const { requestGmailRedirect } = useGmailRedirect();
 
     const socialItems = [
         { key: 'linkedin', icon: Linkedin, data: SOCIALS.linkedin },
@@ -89,13 +91,12 @@ function VideoWithSocialLinks() {
                         <div className="p-2">
                             {socialItems.map((item) => {
                                 const Icon = item.icon;
-                                return (
-                                    <Link
-                                        key={item.key}
-                                        href={item.data.url}
-                                        target={item.key === 'email' ? '_self' : '_blank'}
-                                        className="flex items-center gap-3 p-2 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors group"
-                                    >
+                                const isEmail = item.key === "email";
+                                const className =
+                                    "flex items-center gap-3 p-2 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors group w-full text-left";
+
+                                const content = (
+                                    <>
                                         <div className="w-9 h-9 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center group-hover:bg-black dark:group-hover:bg-white transition-colors">
                                             <Icon className="w-4 h-4 text-zinc-600 dark:text-zinc-400 group-hover:text-white dark:group-hover:text-black transition-colors" />
                                         </div>
@@ -107,6 +108,31 @@ function VideoWithSocialLinks() {
                                                 {item.data.preview}
                                             </p>
                                         </div>
+                                    </>
+                                );
+
+                                if (isEmail) {
+                                    return (
+                                        <button
+                                            key={item.key}
+                                            type="button"
+                                            onClick={requestGmailRedirect}
+                                            className={className}
+                                        >
+                                            {content}
+                                        </button>
+                                    );
+                                }
+
+                                return (
+                                    <Link
+                                        key={item.key}
+                                        href={item.data.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={className}
+                                    >
+                                        {content}
                                     </Link>
                                 );
                             })}

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { GmailRedirectProvider } from "@/components/gmail-redirect-provider";
 import { Analytics } from "@vercel/analytics/next";
 import { StructuredData } from "@/components/structured-data";
 import { GoogleAnalytics } from "@/components/google-analytics";
@@ -143,7 +144,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <GmailRedirectProvider>{children}</GmailRedirectProvider>
         </ThemeProvider>
         <Analytics />
         <GoogleAnalytics />

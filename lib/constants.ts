@@ -17,6 +17,11 @@ export const HERO = {
     avatar: "/image (3).jpg",
 };
 
+export const CONTACT_EMAIL = "nehalingole2001@gmail.com";
+
+/** Opens Gmail compose with CONTACT_EMAIL in the To field */
+export const GMAIL_COMPOSE_URL = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONTACT_EMAIL)}`;
+
 export const SOCIALS = {
     linkedin: {
         url: "https://www.linkedin.com/in/nehal-ingole/",
@@ -39,9 +44,9 @@ export const SOCIALS = {
         preview: "youtube.com/@nehalingole1754",
     },
     email: {
-        url: "mailto:nehalingole2001@gmail.com",
+        url: GMAIL_COMPOSE_URL,
         label: "Email",
-        preview: "nehalingole2001@gmail.com",
+        preview: CONTACT_EMAIL,
     },
 };
 

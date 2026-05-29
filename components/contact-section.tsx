@@ -5,8 +5,10 @@ import Link from "next/link";
 import { Send } from "lucide-react";
 import Image from "next/image";
 import { HERO } from "@/lib/constants";
+import { useGmailRedirect } from "@/components/gmail-redirect-provider";
 
 export function ContactSection() {
+    const { requestGmailRedirect } = useGmailRedirect();
     const x = useMotionValue(0);
     const y = useMotionValue(0);
     const springX = useSpring(x, { stiffness: 80, damping: 15 });
@@ -83,13 +85,14 @@ export function ContactSection() {
                     </h3>
 
                     <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-10">
-                        <Link
-                            href="mailto:nehalingole2001@gmail.com"
+                        <button
+                            type="button"
+                            onClick={requestGmailRedirect}
                             className="flex items-center gap-3 px-8 py-4 bg-zinc-900 dark:bg-white text-white dark:text-black rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-all hover:-translate-y-1 active:scale-95 shadow-xl"
                         >
                             <Send className="w-4 h-4" />
                             Email Me
-                        </Link>
+                        </button>
                         <Link
                             href="tel:7397966719"
                             className="flex items-center gap-3 px-8 py-4 bg-zinc-900 dark:bg-white text-white dark:text-black rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-all hover:-translate-y-1 active:scale-95 shadow-xl"

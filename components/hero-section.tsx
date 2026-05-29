@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Github, Linkedin, Mail, Twitter, Youtube, FileText, Send } from "lucide-react";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { TypewriterEffect } from "@/components/ui/typewriter";
+import { useGmailRedirect } from "@/components/gmail-redirect-provider";
 
 export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
     return (
@@ -124,6 +125,7 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
 }
 
 function SocialIconsWithPreview() {
+    const { requestGmailRedirect } = useGmailRedirect();
     const socialItems = [
         {
             key: 'twitter',
@@ -190,13 +192,14 @@ function SocialIconsWithPreview() {
                 );
             })}
             {/* Email without preview */}
-            <Link
-                href={SOCIALS.email.url}
-                title="nehalingole2001@gmail.com"
+            <button
+                type="button"
+                onClick={requestGmailRedirect}
+                title={SOCIALS.email.preview}
                 className="text-zinc-400 dark:text-zinc-500 hover:text-black dark:hover:text-white transition-colors"
             >
                 <Mail className="w-5 h-5" />
-            </Link>
+            </button>
         </motion.div>
     );
 }
