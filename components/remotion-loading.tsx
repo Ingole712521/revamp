@@ -9,15 +9,10 @@ import {
 } from "remotion";
 import { getTechIcon } from "@/lib/icons";
 
-// Loading animation component using Remotion
 export function RemotionLoading() {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
-
-  // Animation progress (0 to 1)
   const progress = frame / durationInFrames;
-
-  // Name reveal animation
   const nameOpacity = interpolate(
     frame,
     [0, 20, 40],
@@ -217,7 +212,6 @@ export function RemotionLoading() {
           />
         </div>
 
-        {/* Loading text */}
         <p
           style={{
             fontSize: "12px",
