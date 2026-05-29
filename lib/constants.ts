@@ -144,7 +144,8 @@ export const PROOF_OF_WORK = [
             "Conference organizer and corporate events site: responsive marketing experience for technology summits and premier events.",
         image: "/lightmodeofalifview.png",
         link: "https://alifviewmedia.com/",
-        tags: ["React", "Tailwind CSS", "EmailJS", "Adobe"]
+        tags: ["React", "Tailwind CSS", "EmailJS", "Adobe"],
+        imageFit: "contain",
     },
     {
         id: "pow-animioui",

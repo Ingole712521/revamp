@@ -16,6 +16,7 @@ export type ProjectCardItem = {
     link: string;
     videoUrl?: string;
     tags: string[];
+    imageFit?: "cover" | "contain";
 };
 
 export function ProjectCard({ project, idx }: { project: ProjectCardItem; idx: number }) {
@@ -76,13 +77,25 @@ export function ProjectCard({ project, idx }: { project: ProjectCardItem; idx: n
                         {imageError ? (
                             <ProjectPlaceholder name={project.name} index={idx} />
                         ) : (
-                            <Image
-                                src={project.image}
-                                alt={project.name}
-                                fill
-                                className="object-cover object-top transition-transform duration-500"
-                                onError={() => setImageError(true)}
-                            />
+                            <div
+                                className={
+                                    project.imageFit === "contain"
+                                        ? "absolute inset-4"
+                                        : "absolute inset-0"
+                                }
+                            >
+                                <Image
+                                    src={project.image}
+                                    alt={project.name}
+                                    fill
+                                    className={
+                                        project.imageFit === "contain"
+                                            ? "object-contain object-center transition-transform duration-500"
+                                            : "object-cover object-top transition-transform duration-500"
+                                    }
+                                    onError={() => setImageError(true)}
+                                />
+                            </div>
                         )}
 
                         {project.videoUrl && !showVideo && (
