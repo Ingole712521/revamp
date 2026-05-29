@@ -1,3 +1,5 @@
+import type { ProjectCardItem } from "@/components/project-card";
+
 export const NAVIGATION_LINKS = [
     { label: "Home", href: "/" },
     { label: "Proof of Work", href: "#proof-of-work" },
@@ -132,7 +134,7 @@ export const PROJECTS = [
     }
 ];
 
-export const PROOF_OF_WORK = [
+export const PROOF_OF_WORK: ProjectCardItem[] = [
     {
         id: "pow-kestra",
         name: "Kestra — open source contribution",
