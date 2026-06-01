@@ -15,7 +15,7 @@ import { RESUME } from "@/lib/resume-data";
 
 function SkillPill({ label }: { label: string }) {
     return (
-        <span className="inline-flex items-center rounded-full border border-zinc-700/80 bg-zinc-900/80 px-2.5 py-0.5 text-[11px] font-medium text-zinc-200 print:border-zinc-400 print:bg-zinc-100 print:text-zinc-800">
+        <span className="inline-flex items-center rounded-full border border-zinc-200 bg-zinc-100 px-2.5 py-0.5 text-[11px] font-medium text-zinc-700 dark:border-zinc-700/80 dark:bg-zinc-900/80 dark:text-zinc-200 print:border-zinc-400 print:bg-zinc-100 print:text-zinc-800">
             {label}
         </span>
     );
@@ -36,16 +36,16 @@ export function ResumeView({ id }: { id?: string }) {
     return (
         <article
             id={id}
-            className="resume-document min-h-full bg-[#121212] text-zinc-100 print:bg-white print:text-zinc-900"
+            className="resume-document min-h-full bg-white text-zinc-900 dark:bg-[#121212] dark:text-zinc-100 print:bg-white print:text-zinc-900"
         >
             <div className="w-full px-5 py-6 sm:px-6 sm:py-8 print:px-8 print:py-8">
                 {/* Header */}
-                <header className="relative border-b border-zinc-800 pb-8 print:border-zinc-200">
+                <header className="relative border-b border-zinc-200 pb-8 dark:border-zinc-800 print:border-zinc-200">
                     <a
                         href={notionUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="absolute top-0 right-0 hidden items-center gap-1.5 rounded-lg border border-zinc-700 bg-zinc-900/60 px-3 py-1.5 text-xs font-medium text-zinc-300 transition-colors hover:border-zinc-500 hover:text-white sm:inline-flex print:hidden"
+                        className="absolute top-0 right-0 hidden items-center gap-1.5 rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-1.5 text-xs font-medium text-zinc-600 transition-colors hover:border-zinc-300 hover:text-zinc-900 dark:border-zinc-700 dark:bg-zinc-900/60 dark:text-zinc-300 dark:hover:border-zinc-500 dark:hover:text-white sm:inline-flex print:hidden"
                     >
                         View on Notion
                         <ExternalLink className="h-3.5 w-3.5" strokeWidth={1.75} />
@@ -57,26 +57,26 @@ export function ResumeView({ id }: { id?: string }) {
                             alt={name}
                             width={44}
                             height={44}
-                            className="h-11 w-11 shrink-0 rounded-lg border border-zinc-700 object-cover print:border-zinc-300"
+                            className="h-11 w-11 shrink-0 rounded-lg border border-zinc-200 object-cover dark:border-zinc-700 print:border-zinc-300"
                         />
                         <div className="min-w-0">
-                            <h1 className="text-2xl font-semibold tracking-tight text-white print:text-zinc-900 sm:text-[1.75rem]">
+                            <h1 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white print:text-zinc-900 sm:text-[1.75rem]">
                                 {name}
                             </h1>
-                            <p className="mt-0.5 text-sm text-zinc-400 print:text-zinc-600 sm:text-base">
+                            <p className="mt-0.5 text-sm text-zinc-500 dark:text-zinc-400 print:text-zinc-600 sm:text-base">
                                 {title}
                             </p>
                         </div>
                     </div>
 
-                    <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-zinc-400 print:text-zinc-600">
+                    <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-zinc-500 dark:text-zinc-400 print:text-zinc-600">
                         <span className="inline-flex items-center gap-1.5">
                             <MapPin className="h-3.5 w-3.5 shrink-0" strokeWidth={1.75} />
                             {location}
                         </span>
                         <a
                             href={`mailto:${email}`}
-                            className="inline-flex items-center gap-1.5 hover:text-zinc-200 print:text-zinc-700"
+                            className="inline-flex items-center gap-1.5 hover:text-zinc-800 dark:hover:text-zinc-200 print:text-zinc-700"
                         >
                             <Mail className="h-3.5 w-3.5 shrink-0" strokeWidth={1.75} />
                             {email}
@@ -89,7 +89,7 @@ export function ResumeView({ id }: { id?: string }) {
                             href={website}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 hover:text-zinc-200 print:text-zinc-700"
+                            className="inline-flex items-center gap-1.5 hover:text-zinc-800 dark:hover:text-zinc-200 print:text-zinc-700"
                         >
                             <Globe className="h-3.5 w-3.5 shrink-0" strokeWidth={1.75} />
                             nehalingole.in
@@ -101,37 +101,37 @@ export function ResumeView({ id }: { id?: string }) {
                             href={links.linkedin}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-zinc-500 hover:text-zinc-300 print:text-zinc-600"
+                            className="inline-flex items-center gap-1 text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300 print:text-zinc-600"
                         >
                             <Linkedin className="h-3.5 w-3.5" strokeWidth={1.75} />
                             LinkedIn
                         </a>
-                        <span className="text-zinc-700 print:text-zinc-300">·</span>
+                        <span className="text-zinc-300 dark:text-zinc-700 print:text-zinc-300">·</span>
                         <a
                             href={links.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-zinc-500 hover:text-zinc-300 print:text-zinc-600"
+                            className="inline-flex items-center gap-1 text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300 print:text-zinc-600"
                         >
                             <Github className="h-3.5 w-3.5" strokeWidth={1.75} />
                             GitHub
                         </a>
-                        <span className="text-zinc-700 print:text-zinc-300">·</span>
+                        <span className="text-zinc-300 dark:text-zinc-700 print:text-zinc-300">·</span>
                         <a
                             href={links.twitter}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-zinc-500 hover:text-zinc-300 print:text-zinc-600"
+                            className="inline-flex items-center gap-1 text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300 print:text-zinc-600"
                         >
                             <Twitter className="h-3.5 w-3.5" strokeWidth={1.75} />
                             X
                         </a>
-                        <span className="text-zinc-700 print:text-zinc-300">·</span>
+                        <span className="text-zinc-300 dark:text-zinc-700 print:text-zinc-300">·</span>
                         <a
                             href={links.blog}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-zinc-500 hover:text-zinc-300 print:text-zinc-600"
+                            className="text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300 print:text-zinc-600"
                         >
                             Hashnode Blog
                         </a>
@@ -139,15 +139,15 @@ export function ResumeView({ id }: { id?: string }) {
                 </header>
 
                 {/* Summary */}
-                <section className="border-b border-zinc-800 py-8 print:border-zinc-200">
+                <section className="border-b border-zinc-200 py-8 dark:border-zinc-800 print:border-zinc-200">
                     <SectionTitle>Professional Summary</SectionTitle>
-                    <p className="text-sm leading-relaxed text-zinc-400 print:text-zinc-700">
+                    <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 print:text-zinc-700">
                         {summary}
                     </p>
                 </section>
 
                 {/* Skills */}
-                <section className="border-b border-zinc-800 py-8 print:border-zinc-200">
+                <section className="border-b border-zinc-200 py-8 dark:border-zinc-800 print:border-zinc-200">
                     <SectionTitle>Skills</SectionTitle>
                     <div className="space-y-4">
                         {skills.map((group) => (
@@ -169,17 +169,17 @@ export function ResumeView({ id }: { id?: string }) {
                 </section>
 
                 {/* Experience */}
-                <section className="border-b border-zinc-800 py-8 print:border-zinc-200">
+                <section className="border-b border-zinc-200 py-8 dark:border-zinc-800 print:border-zinc-200">
                     <SectionTitle>Experience</SectionTitle>
                     <div className="space-y-8">
                         {experience.map((job) => (
                             <div key={`${job.company}-${job.duration}`}>
                                 <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
                                     <div>
-                                        <p className="font-semibold text-white print:text-zinc-900">
+                                        <p className="font-semibold text-zinc-900 dark:text-white print:text-zinc-900">
                                             {job.company}
                                         </p>
-                                        <p className="text-sm text-zinc-400 print:text-zinc-600">
+                                        <p className="text-sm text-zinc-500 dark:text-zinc-400 print:text-zinc-600">
                                             {job.title}
                                         </p>
                                         {job.website && (
@@ -187,7 +187,7 @@ export function ResumeView({ id }: { id?: string }) {
                                                 href={job.website}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="mt-0.5 inline-block text-xs text-zinc-500 hover:text-zinc-300 print:text-zinc-500"
+                                                className="mt-0.5 inline-block text-xs text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300 print:text-zinc-500"
                                             >
                                                 {job.website.replace(/^https?:\/\//, "")}
                                             </a>
@@ -204,9 +204,9 @@ export function ResumeView({ id }: { id?: string }) {
                                     {job.points.map((point) => (
                                         <li
                                             key={point}
-                                            className="flex gap-2 text-sm leading-relaxed text-zinc-400 print:text-zinc-700"
+                                            className="flex gap-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 print:text-zinc-700"
                                         >
-                                            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-zinc-600 print:bg-zinc-400" />
+                                            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-zinc-400 dark:bg-zinc-600 print:bg-zinc-400" />
                                             <span>{point}</span>
                                         </li>
                                     ))}
@@ -222,15 +222,15 @@ export function ResumeView({ id }: { id?: string }) {
                 </section>
 
                 {/* Achievements */}
-                <section className="border-b border-zinc-800 py-8 print:border-zinc-200">
+                <section className="border-b border-zinc-200 py-8 dark:border-zinc-800 print:border-zinc-200">
                     <SectionTitle>Achievements</SectionTitle>
                     <div className="space-y-6">
                         {achievements.map((item) => (
                             <div key={item.title}>
-                                <p className="font-semibold text-white print:text-zinc-900">
+                                <p className="font-semibold text-zinc-900 dark:text-white print:text-zinc-900">
                                     {item.title}
                                 </p>
-                                <p className="mt-1.5 text-sm leading-relaxed text-zinc-400 print:text-zinc-700">
+                                <p className="mt-1.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 print:text-zinc-700">
                                     {item.description}
                                 </p>
                                 {item.tags && item.tags.length > 0 && (
@@ -250,10 +250,10 @@ export function ResumeView({ id }: { id?: string }) {
                     <SectionTitle>Education</SectionTitle>
                     <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
                         <div>
-                            <p className="font-semibold text-white print:text-zinc-900">
+                            <p className="font-semibold text-zinc-900 dark:text-white print:text-zinc-900">
                                 {education.degree}
                             </p>
-                            <p className="text-sm text-zinc-400 print:text-zinc-600">
+                            <p className="text-sm text-zinc-500 dark:text-zinc-400 print:text-zinc-600">
                                 {education.school}
                             </p>
                         </div>
@@ -265,9 +265,9 @@ export function ResumeView({ id }: { id?: string }) {
                         {education.highlights.map((item) => (
                             <li
                                 key={item}
-                                className="flex gap-2 text-sm leading-relaxed text-zinc-400 print:text-zinc-700"
+                                className="flex gap-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 print:text-zinc-700"
                             >
-                                <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-zinc-600 print:bg-zinc-400" />
+                                <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-zinc-400 dark:bg-zinc-600 print:bg-zinc-400" />
                                 <span>{item}</span>
                             </li>
                         ))}
