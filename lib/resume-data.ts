@@ -24,8 +24,11 @@ export type ResumeAchievement = {
     tags?: string[];
 };
 
+export const RESUME_AVATAR = "/image (3) copy.jpg";
+
 export const RESUME = {
     name: "Nehal Ingole",
+    avatar: RESUME_AVATAR,
     title: "Frontend Developer & DevOps Engineer",
     location: "Pune, India",
     email: CONTACT_EMAIL,

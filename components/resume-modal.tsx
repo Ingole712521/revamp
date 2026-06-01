@@ -37,7 +37,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                         initial={{ opacity: 0, scale: 0.96, y: 16 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.96, y: 16 }}
-                        className="resume-modal-shell fixed inset-4 z-[10001] flex flex-col overflow-hidden rounded-2xl border border-zinc-800 bg-[#121212] shadow-2xl md:inset-8 print:inset-0 print:rounded-none print:border-0"
+                        className="resume-modal-shell fixed left-1/2 top-1/2 z-[10001] flex h-[min(78vh,640px)] w-[min(calc(100vw-1.5rem),40rem)] -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-xl border border-zinc-800 bg-[#121212] shadow-2xl print:inset-0 print:h-auto print:max-h-none print:w-full print:translate-none print:rounded-none print:border-0"
                     >
                         <div className="resume-modal-toolbar flex shrink-0 items-center justify-between border-b border-zinc-800 bg-[#0f0f0f] px-4 py-3 sm:px-6 print:hidden">
                             <div className="flex items-center gap-3">

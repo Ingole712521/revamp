@@ -10,6 +10,7 @@ import {
     Phone,
     Twitter,
 } from "lucide-react";
+import Image from "next/image";
 import { RESUME } from "@/lib/resume-data";
 
 function SkillPill({ label }: { label: string }) {
@@ -29,7 +30,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 }
 
 export function ResumeView({ id }: { id?: string }) {
-    const { name, title, location, email, phone, website, notionUrl, links, summary, skills, experience, achievements, education } =
+    const { name, avatar, title, location, email, phone, website, notionUrl, links, summary, skills, experience, achievements, education } =
         RESUME;
 
     return (
@@ -37,7 +38,7 @@ export function ResumeView({ id }: { id?: string }) {
             id={id}
             className="resume-document min-h-full bg-[#121212] text-zinc-100 print:bg-white print:text-zinc-900"
         >
-            <div className="mx-auto max-w-3xl px-6 py-10 sm:px-10 sm:py-12 print:max-w-none print:px-8 print:py-8">
+            <div className="w-full px-5 py-6 sm:px-6 sm:py-8 print:px-8 print:py-8">
                 {/* Header */}
                 <header className="relative border-b border-zinc-800 pb-8 print:border-zinc-200">
                     <a
@@ -50,12 +51,23 @@ export function ResumeView({ id }: { id?: string }) {
                         <ExternalLink className="h-3.5 w-3.5" strokeWidth={1.75} />
                     </a>
 
-                    <h1 className="text-3xl font-semibold tracking-tight text-white print:text-zinc-900 sm:text-[2rem]">
-                        {name}
-                    </h1>
-                    <p className="mt-1.5 text-base text-zinc-400 print:text-zinc-600">
-                        {title}
-                    </p>
+                    <div className="flex items-center gap-3 pr-28 sm:pr-36">
+                        <Image
+                            src={avatar}
+                            alt={name}
+                            width={44}
+                            height={44}
+                            className="h-11 w-11 shrink-0 rounded-lg border border-zinc-700 object-cover print:border-zinc-300"
+                        />
+                        <div className="min-w-0">
+                            <h1 className="text-2xl font-semibold tracking-tight text-white print:text-zinc-900 sm:text-[1.75rem]">
+                                {name}
+                            </h1>
+                            <p className="mt-0.5 text-sm text-zinc-400 print:text-zinc-600 sm:text-base">
+                                {title}
+                            </p>
+                        </div>
+                    </div>
 
                     <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-zinc-400 print:text-zinc-600">
                         <span className="inline-flex items-center gap-1.5">

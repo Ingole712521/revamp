@@ -172,6 +172,12 @@
   .resume-modal-shell {
     position: fixed !important;
     inset: 0 !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    transform: none !important;
     margin: 0 !important;
     max-width: none !important;
     border: none !important;
