@@ -161,3 +161,27 @@
 .animate-meteor-effect {
   animation: meteor 5s linear infinite;
 }
+
+/* Resume modal — print / Save as PDF */
+@media print {
+  .resume-modal-backdrop,
+  .resume-modal-toolbar {
+    display: none !important;
+  }
+
+  .resume-modal-shell {
+    position: fixed !important;
+    inset: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    background: white !important;
+  }
+
+  .resume-document {
+    background: white !important;
+  }
+}

@@ -1,7 +1,3 @@
-/**
- * Builds public/oneko.gif from public/profile_image.png
- * Run: node scripts/build-oneko-sprites.mjs
- */
 import sharp from "sharp";
 
 const ROW_BOUNDS = [

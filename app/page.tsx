@@ -37,7 +37,6 @@ export default function Home() {
       <ResumeModal
         isOpen={isResumeOpen}
         onClose={() => setIsResumeOpen(false)}
-        resumeUrl="/Nehal_Ingole_7397966719.pdf"
       />
       <Lamphome
         title=""
