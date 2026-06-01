@@ -55,7 +55,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                             </div>
 
                             <div className="flex items-center gap-2">
-                                <a
+                                {/* <a
                                     href={NOTION_RESUME_URL}
                                     target="_blank"
                                     rel="noopener noreferrer"
@@ -63,7 +63,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                                 >
                                     View on Notion
                                     <ExternalLink className="h-3.5 w-3.5" strokeWidth={1.75} />
-                                </a>
+                                </a> */}
                                 <button
                                     type="button"
                                     onClick={handleDownloadPdf}
