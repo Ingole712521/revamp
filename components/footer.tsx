@@ -200,22 +200,7 @@ export function Footer() {
                             </span>
                         </p>
 
-                        <div className="inline-flex w-fit items-center gap-2 rounded-md border border-zinc-200 bg-zinc-50 px-3 py-2 text-xs font-medium text-slate-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-slate-400">
-                            {isLoading ? (
-                                <span className="inline-block h-3 w-24 animate-pulse rounded-full bg-zinc-200 dark:bg-zinc-800" />
-                            ) : (
-                                <>
-                                    <span className="size-1.5 rounded-full bg-emerald-500" />
-                                    Guest{" "}
-                                    <span className="font-bold text-black dark:text-white">
-                                        {count
-                                            ? `#${formatVisitorNumber(count)}`
-                                            : "#---"}
-                                    </span>
-                                    {count ? getVisitorOrdinal(count) : ""}
-                                </>
-                            )}
-                        </div>
+                       
                     </div>
                 </motion.div>
             </div>
