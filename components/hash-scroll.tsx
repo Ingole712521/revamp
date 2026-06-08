@@ -1,35 +1,34 @@
 "use client";
 
+import { LENIS_SCROLL_OFFSET } from "@/components/lenis-provider";
+import { useLenis } from "lenis/react";
 import { useEffect } from "react";
 
-function scrollToHash(hash: string) {
-    if (!hash || hash === "#") return;
-
-    const id = decodeURIComponent(hash.slice(1));
-    const target = document.getElementById(id);
-    if (!target) return;
-
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
 export function HashScroll({ enabled = true }: { enabled?: boolean }) {
-    useEffect(() => {
-        if (!enabled) return;
+    const lenis = useLenis();
 
-        const handleHash = () => {
-            requestAnimationFrame(() => {
-                scrollToHash(window.location.hash);
-            });
+    useEffect(() => {
+        if (!enabled || !lenis) return;
+
+        const scrollToHash = () => {
+            const hash = window.location.hash;
+            if (!hash || hash === "#") return;
+
+            const id = decodeURIComponent(hash.slice(1));
+            const target = document.getElementById(id);
+            if (target) {
+                lenis.scrollTo(target, { offset: LENIS_SCROLL_OFFSET });
+            }
         };
 
-        const timeout = window.setTimeout(handleHash, 100);
+        const timeout = window.setTimeout(scrollToHash, 150);
 
-        window.addEventListener("hashchange", handleHash);
+        window.addEventListener("hashchange", scrollToHash);
         return () => {
             window.clearTimeout(timeout);
-            window.removeEventListener("hashchange", handleHash);
+            window.removeEventListener("hashchange", scrollToHash);
         };
-    }, [enabled]);
+    }, [enabled, lenis]);
 
     return null;
 }

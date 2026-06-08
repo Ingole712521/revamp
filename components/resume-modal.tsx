@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { useLenis } from "lenis/react";
 import { X, Download, FileText } from "lucide-react";
 import { ResumeView } from "@/components/resume-view";
 import { RESUME_PDF_FILENAME, RESUME_PDF_URL } from "@/lib/resume-data";
@@ -13,6 +14,21 @@ interface ResumeModalProps {
 
 export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
     const resumeRef = useRef<HTMLDivElement>(null);
+    const lenis = useLenis();
+
+    useEffect(() => {
+        if (!lenis) return;
+
+        if (isOpen) {
+            lenis.stop();
+        } else {
+            lenis.start();
+        }
+
+        return () => {
+            lenis.start();
+        };
+    }, [isOpen, lenis]);
 
     const handleDownloadPdf = useCallback(() => {
         const link = document.createElement("a");
@@ -40,6 +56,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                         initial={{ opacity: 0, scale: 0.96, y: 16 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.96, y: 16 }}
+                        data-lenis-prevent
                         className="resume-modal-shell fixed left-1/2 top-1/2 z-[10001] flex h-[min(78vh,640px)] w-[min(calc(100vw-1.5rem),40rem)] -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-[0_24px_80px_-12px_rgba(0,0,0,0.18)] dark:border-zinc-800 dark:bg-zinc-950 dark:shadow-[0_24px_80px_-12px_rgba(0,0,0,0.55)] print:inset-0 print:h-auto print:max-h-none print:w-full print:translate-none print:rounded-none print:border-0"
                     >
                         <div className="resume-modal-toolbar flex shrink-0 items-center justify-between border-b border-zinc-100 bg-zinc-50/80 px-4 py-3 dark:border-zinc-800 dark:bg-zinc-900/50 sm:px-6 print:hidden">
@@ -89,7 +106,11 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
 
                         <div
                             ref={resumeRef}
+                            data-lenis-prevent
+                            data-lenis-prevent-wheel
+                            data-lenis-prevent-touch
                             className="flex-1 overflow-y-auto overscroll-contain print:overflow-visible"
+                            onWheel={(e) => e.stopPropagation()}
                         >
                             <ResumeView id="resume-print-root" />
                         </div>
