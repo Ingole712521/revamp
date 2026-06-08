@@ -4,6 +4,7 @@ import { useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X, Download, FileText } from "lucide-react";
 import { ResumeView } from "@/components/resume-view";
+import { RESUME_PDF_FILENAME, RESUME_PDF_URL } from "@/lib/resume-data";
 
 interface ResumeModalProps {
     isOpen: boolean;
@@ -14,10 +15,13 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
     const resumeRef = useRef<HTMLDivElement>(null);
 
     const handleDownloadPdf = useCallback(() => {
-        const prevTitle = document.title;
-        document.title = "Nehal_Ingole_Resume";
-        window.print();
-        document.title = prevTitle;
+        const link = document.createElement("a");
+        link.href = RESUME_PDF_URL;
+        link.download = RESUME_PDF_FILENAME;
+        link.rel = "noopener noreferrer";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }, []);
 
     return (
@@ -48,7 +52,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                                         Curriculum Vitae
                                     </h3>
                                     <p className="text-[10px] font-medium uppercase tracking-wider text-zinc-500">
-                                        Notion-style · Print to PDF
+                                        Preview & download
                                     </p>
                                 </div>
                             </div>

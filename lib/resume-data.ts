@@ -3,6 +3,9 @@ import { CONTACT_EMAIL, SOCIALS } from "@/lib/constants";
 export const NOTION_RESUME_URL =
     "https://www.notion.so/Nehal-Ingole-372ac888d27581b0b005e3d014382df7";
 
+export const RESUME_PDF_URL = "/Nehal_Ingole_7397966719.pdf";
+export const RESUME_PDF_FILENAME = "Nehal_Ingole_7397966719.pdf";
+
 export type ResumeSkillGroup = {
     category: string;
     skills: string[];
