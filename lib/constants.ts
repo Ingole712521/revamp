@@ -3,12 +3,12 @@ import type { ProjectCardItem } from "@/components/project-card";
 export const NAVIGATION_LINKS = [
     { label: "Home", href: "/" },
     { label: "View Video", href: "/video" },
-    { label: "Proof of Work", href: "#proof-of-work" },
-    { label: "Projects", href: "#projects" },
-    { label: "Bio", href: "#bio" },
-    { label: "Skills", href: "#skills" },
-    { label: "Work", href: "#work" },
-    { label: "Contact", href: "#contact" },
+    { label: "Proof of Work", href: "/#proof-of-work" },
+    { label: "Projects", href: "/#projects" },
+    { label: "Bio", href: "/#bio" },
+    { label: "Skills", href: "/#skills" },
+    { label: "Work", href: "/#work" },
+    { label: "Contact", href: "/#contact" },
 ];
 
 export type FooterLink = {

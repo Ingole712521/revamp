@@ -138,6 +138,10 @@
   p {
     @apply text-base md:text-lg leading-relaxed text-zinc-700 dark:text-zinc-300;
   }
+  section[id],
+  [id].scroll-mt-28 {
+    scroll-margin-top: 7rem;
+  }
 }
 
 .section-container {

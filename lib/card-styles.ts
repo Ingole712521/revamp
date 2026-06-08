@@ -1,4 +1,3 @@
-/** Shared professional backdrop for project, blog, and video media frames */
 export const CARD_MEDIA_BACKDROP =
     "bg-linear-to-br from-zinc-200 via-slate-200 to-slate-300 dark:from-zinc-950 dark:via-slate-900 dark:to-zinc-950";
 

@@ -41,7 +41,7 @@ export function AboutSection() {
                         I'm a DevOps Engineer and Frontend Developer, passionate about building scalable cloud systems and clean, high-performance web experiences. I specialize in automation, modern infrastructure, and user-focused design.
                     </p>
 
-                    <div className="mt-2">
+                    <div id="skills" className="mt-2 scroll-mt-28">
                         <span className="text-zinc-500 dark:text-zinc-400 text-xs font-bold uppercase tracking-widest mb-3 block">Skills & Technologies</span>
 
                         {/* Smaller icon grid with logos */}

@@ -16,6 +16,7 @@ import { AboutSection } from "@/components/about-section";
 import { QuotesSection } from "@/components/quotes-section";
 import { ContactSection } from "@/components/contact-section";
 import { ResumeModal } from "@/components/resume-modal";
+import { HashScroll } from "@/components/hash-scroll";
 import { LoadingScreen } from "@/components/loading-screen";
 import { useState } from "react";
 
@@ -31,6 +32,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col bg-white transition-colors duration-500 dark:bg-black overflow-x-hidden">
+      <HashScroll enabled={!isLoading} />
       <CustomCursor />
       <Oneko />
       <ResumeModal
