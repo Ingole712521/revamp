@@ -14,7 +14,6 @@ import { GithubActivity } from "@/components/github-activity";
 import { BlogSection } from "@/components/blog-section";
 import { AboutSection } from "@/components/about-section";
 import { QuotesSection } from "@/components/quotes-section";
-import { VisitorCount } from "@/components/visitor-count";
 import { ContactSection } from "@/components/contact-section";
 import { ResumeModal } from "@/components/resume-modal";
 import { LoadingScreen } from "@/components/loading-screen";
@@ -53,9 +52,8 @@ export default function Home() {
           <BlogSection />
           <QuotesSection />
           <ContactSection />
-          {/* <VisitorCount /> */}
-          <Footer />
         </div>
+        <Footer />
       </Lamphome>
     </main>
   );

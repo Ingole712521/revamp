@@ -1,6 +1,5 @@
 "use client";
 
-import { Footer } from "@/components/footer";
 import { VideoCard } from "@/components/video-card";
 import { PORTFOLIO_VIDEOS, SOCIALS, VIDEO_PAGE } from "@/lib/constants";
 import { motion } from "motion/react";
@@ -40,7 +39,7 @@ export function VideosSection() {
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-12 flex justify-center"
+        className="flex justify-center"
       >
         <Link
           href={SOCIALS.youtube.url}
@@ -53,8 +52,6 @@ export function VideosSection() {
           <ExternalLink className="size-4" />
         </Link>
       </motion.div>
-
-      <Footer />
     </section>
   );
 }

@@ -1,43 +1,15 @@
-"use client"
+"use client";
 
-import React, { useEffect, useState } from 'react';
-import { motion } from 'motion/react';
-import { Eye } from 'lucide-react';
+import {
+    formatVisitorNumber,
+    getVisitorOrdinal,
+    useVisitorCount,
+} from "@/hooks/use-visitor-count";
+import { motion } from "motion/react";
+import { Eye } from "lucide-react";
 
 export function VisitorCount() {
-    const [count, setCount] = useState<number | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchCount = async () => {
-            try {
-                
-                const response = await fetch('https://api.counterapi.dev/v1/nehal-portfolio/visits/up');
-                const data = await response.json();
-                if (data && data.count) {
-                    setCount(data.count);
-                }
-            } catch (error) {
-                console.error('Error fetching visitor count:', error);
-                // Fallback to a high number if API fails
-                setCount(32858);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-
-        fetchCount();
-    }, []);
-
-    const formatNumber = (num: number) => {
-        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    };
-
-    const getOrdinal = (n: number) => {
-        const s = ["th", "st", "nd", "rd"];
-        const v = n % 100;
-        return n + (s[(v - 20) % 10] || s[v] || s[0]);
-    };
+    const { count, isLoading } = useVisitorCount();
 
     return (
         <motion.div
@@ -46,15 +18,22 @@ export function VisitorCount() {
             viewport={{ once: true }}
             className="mt-12 mb-16 flex justify-center"
         >
-            <div className="flex items-center gap-4 px-6 py-3 bg-zinc-50/80 dark:bg-zinc-900/40 border border-zinc-100 dark:border-zinc-800 rounded-2xl shadow-sm backdrop-blur-sm group hover:border-zinc-300 dark:hover:border-zinc-700 transition-all cursor-default">
-                <div className="flex items-center justify-center p-2 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-sm">
-                    <Eye className={`w-4 h-4 transition-colors ${isLoading ? 'animate-pulse text-zinc-300' : 'text-zinc-500 dark:text-zinc-400 group-hover:text-blue-500'}`} />
+            <div className="group flex cursor-default items-center gap-4 rounded-2xl border border-zinc-100 bg-zinc-50/80 px-6 py-3 shadow-sm backdrop-blur-sm transition-all hover:border-zinc-300 dark:border-zinc-800 dark:bg-zinc-900/40 dark:hover:border-zinc-700">
+                <div className="flex items-center justify-center rounded-lg border border-zinc-200 bg-white p-2 shadow-sm dark:border-zinc-700 dark:bg-zinc-800">
+                    <Eye
+                        className={`size-4 transition-colors ${isLoading ? "animate-pulse text-zinc-300" : "text-zinc-500 group-hover:text-blue-500 dark:text-zinc-400"}`}
+                    />
                 </div>
                 {isLoading ? (
-                    <div className="h-4 w-32 bg-zinc-200 dark:bg-zinc-800 animate-pulse rounded-md" />
+                    <div className="h-4 w-32 animate-pulse rounded-md bg-zinc-200 dark:bg-zinc-800" />
                 ) : (
                     <p className="text-sm font-medium text-zinc-600 dark:text-zinc-300">
-                        You are the <span className="font-black text-black dark:text-white text-lg tracking-tight">{count ? formatNumber(count) : "---"}<sup>th</sup></span> visitor
+                        You are the{" "}
+                        <span className="text-lg font-black tracking-tight text-black dark:text-white">
+                            {count ? formatVisitorNumber(count) : "---"}
+                            <sup>{count ? getVisitorOrdinal(count) : "th"}</sup>
+                        </span>{" "}
+                        visitor
                     </p>
                 )}
             </div>

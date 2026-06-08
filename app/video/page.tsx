@@ -1,6 +1,7 @@
 "use client";
 
 import { CustomCursor } from "@/components/custom-cursor";
+import { Footer } from "@/components/footer";
 import { Oneko } from "@/components/oneko";
 import { Lamphome } from "@/components/ui/lamphome";
 import { VideosSection } from "@/components/videos-section";
@@ -13,6 +14,7 @@ export default function VideoPage() {
       <Oneko />
       <Lamphome title="" description="" navItems={NAVIGATION_LINKS}>
         <VideosSection />
+        <Footer />
       </Lamphome>
     </main>
   );

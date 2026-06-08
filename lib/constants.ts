@@ -11,6 +11,24 @@ export const NAVIGATION_LINKS = [
     { label: "Contact", href: "#contact" },
 ];
 
+export type FooterLink = {
+    label: string;
+    href: string;
+    external?: boolean;
+};
+
+export const FOOTER_NAV: FooterLink[] = [
+    { label: "Home", href: "/" },
+    { label: "Work", href: "/#work" },
+    { label: "Projects", href: "/#projects" },
+    { label: "Proof of Work", href: "/#proof-of-work" },
+    { label: "Videos", href: "/video" },
+    { label: "Bio", href: "/#bio" },
+    { label: "Blog", href: "https://learnwithnehal.hashnode.dev", external: true },
+    { label: "Contact", href: "/#contact" },
+    { label: "Resume", href: "/Nehal_Ingole_7397966719.pdf", external: true },
+];
+
 export const HERO = {
     name: "Nehal Ingole ",
     greet: "Hi, I'm Nehal Ingole",
