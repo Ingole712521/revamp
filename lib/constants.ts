@@ -2,6 +2,7 @@ import type { ProjectCardItem } from "@/components/project-card";
 
 export const NAVIGATION_LINKS = [
     { label: "Home", href: "/" },
+    { label: "View Video", href: "/video" },
     { label: "Proof of Work", href: "#proof-of-work" },
     { label: "Projects", href: "#projects" },
     { label: "Bio", href: "#bio" },
@@ -18,6 +19,60 @@ export const HERO = {
         "focused on cloud automation, stylish development, and high-performance systems. Passionate about Docker, AWS, and building minimalist technical aesthetics.",
     avatar: "/image (3).jpg",
 };
+
+export type PortfolioVideo = {
+    id: string;
+    title: string;
+    videoSrc: string;
+    thumbnailSrc: string;
+    thumbnailAlt: string;
+};
+
+export const VIDEO_PAGE = {
+    title: "Videos",
+    description:
+        "Introductions, demos, and technical walkthroughs across DevOps, React, cybersecurity, and cloud automation.",
+};
+
+export const PORTFOLIO_VIDEOS: PortfolioVideo[] = [
+    {
+        id: "devops-intro",
+        title: "Intro for DevOps Engineer",
+        videoSrc: "https://www.youtube.com/embed/XNm-txThsb0",
+        thumbnailSrc: "https://img.youtube.com/vi/XNm-txThsb0/hqdefault.jpg",
+        thumbnailAlt: "Intro for DevOps Engineer",
+    },
+    {
+        id: "react-intro",
+        title: "Intro for React.js Developer",
+        videoSrc: "https://www.youtube.com/embed/Ms0ANSRat8I",
+        thumbnailSrc: "https://img.youtube.com/vi/Ms0ANSRat8I/hqdefault.jpg",
+        thumbnailAlt: "Intro for React.js Developer",
+    },
+    {
+        id: "cybersecurity-ml",
+        title: "CyberSecurity with Machine Learning",
+        videoSrc: "https://www.youtube.com/embed/9uI6P0yER9w",
+        thumbnailSrc: "https://img.youtube.com/vi/9uI6P0yER9w/hqdefault.jpg",
+        thumbnailAlt: "CyberSecurity with Machine Learning",
+    },
+    {
+        id: "ruby-rails-eks",
+        title: "Ruby on Rails on EKS using CI/CD Pipeline",
+        videoSrc: "https://www.youtube.com/embed/33jlF58zEaQ",
+        thumbnailSrc: "https://img.youtube.com/vi/33jlF58zEaQ/hqdefault.jpg",
+        thumbnailAlt: "Ruby on Rails on EKS using CI/CD Pipeline",
+    },
+    {
+        id: "gcp-terraform-docker",
+        title:
+            "Automating Docker Environment Deployment on Google Cloud Platform with Terraform",
+        videoSrc: "https://www.youtube.com/embed/ViDbRiR3ajI",
+        thumbnailSrc: "https://img.youtube.com/vi/ViDbRiR3ajI/hqdefault.jpg",
+        thumbnailAlt:
+            "Automating Docker Environment Deployment on Google Cloud Platform with Terraform",
+    },
+];
 
 export const CONTACT_EMAIL = "nehalingole2001@gmail.com";
 
