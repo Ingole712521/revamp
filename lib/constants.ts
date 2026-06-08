@@ -23,6 +23,9 @@ export const HERO = {
 export type PortfolioVideo = {
     id: string;
     title: string;
+    description: string;
+    tags: string[];
+    youtubeUrl: string;
     videoSrc: string;
     thumbnailSrc: string;
     thumbnailAlt: string;
@@ -38,37 +41,57 @@ export const PORTFOLIO_VIDEOS: PortfolioVideo[] = [
     {
         id: "devops-intro",
         title: "Intro for DevOps Engineer",
+        description:
+            "A personal introduction covering my DevOps background, tooling, and approach to cloud automation.",
+        tags: ["DevOps", "Intro", "Cloud"],
+        youtubeUrl: "https://youtu.be/XNm-txThsb0",
         videoSrc: "https://www.youtube.com/embed/XNm-txThsb0",
-        thumbnailSrc: "https://img.youtube.com/vi/XNm-txThsb0/hqdefault.jpg",
+        thumbnailSrc: "https://img.youtube.com/vi/XNm-txThsb0/maxresdefault.jpg",
         thumbnailAlt: "Intro for DevOps Engineer",
     },
     {
         id: "react-intro",
         title: "Intro for React.js Developer",
+        description:
+            "Overview of my frontend journey — React, UI craft, and building polished web experiences.",
+        tags: ["React", "Intro", "Frontend"],
+        youtubeUrl: "https://youtu.be/Ms0ANSRat8I",
         videoSrc: "https://www.youtube.com/embed/Ms0ANSRat8I",
-        thumbnailSrc: "https://img.youtube.com/vi/Ms0ANSRat8I/hqdefault.jpg",
+        thumbnailSrc: "https://img.youtube.com/vi/Ms0ANSRat8I/maxresdefault.jpg",
         thumbnailAlt: "Intro for React.js Developer",
     },
     {
         id: "cybersecurity-ml",
         title: "CyberSecurity with Machine Learning",
+        description:
+            "Exploring how machine learning supports cybersecurity workflows, detection, and analysis.",
+        tags: ["Cybersecurity", "Machine Learning"],
+        youtubeUrl: "https://youtu.be/9uI6P0yER9w",
         videoSrc: "https://www.youtube.com/embed/9uI6P0yER9w",
-        thumbnailSrc: "https://img.youtube.com/vi/9uI6P0yER9w/hqdefault.jpg",
+        thumbnailSrc: "https://img.youtube.com/vi/9uI6P0yER9w/maxresdefault.jpg",
         thumbnailAlt: "CyberSecurity with Machine Learning",
     },
     {
         id: "ruby-rails-eks",
         title: "Ruby on Rails on EKS using CI/CD Pipeline",
+        description:
+            "Deploying a Rails application on Amazon EKS with a full CI/CD pipeline walkthrough.",
+        tags: ["Ruby on Rails", "EKS", "CI/CD", "AWS"],
+        youtubeUrl: "https://youtu.be/33jlF58zEaQ",
         videoSrc: "https://www.youtube.com/embed/33jlF58zEaQ",
-        thumbnailSrc: "https://img.youtube.com/vi/33jlF58zEaQ/hqdefault.jpg",
+        thumbnailSrc: "https://img.youtube.com/vi/33jlF58zEaQ/maxresdefault.jpg",
         thumbnailAlt: "Ruby on Rails on EKS using CI/CD Pipeline",
     },
     {
         id: "gcp-terraform-docker",
         title:
-            "Automating Docker Environment Deployment on Google Cloud Platform with Terraform",
+            "Automating Docker on GCP with Terraform",
+        description:
+            "Provisioning and automating a Docker environment on Google Cloud Platform using Terraform.",
+        tags: ["GCP", "Docker", "Terraform", "IaC"],
+        youtubeUrl: "https://youtu.be/ViDbRiR3ajI",
         videoSrc: "https://www.youtube.com/embed/ViDbRiR3ajI",
-        thumbnailSrc: "https://img.youtube.com/vi/ViDbRiR3ajI/hqdefault.jpg",
+        thumbnailSrc: "https://img.youtube.com/vi/ViDbRiR3ajI/maxresdefault.jpg",
         thumbnailAlt:
             "Automating Docker Environment Deployment on Google Cloud Platform with Terraform",
     },
