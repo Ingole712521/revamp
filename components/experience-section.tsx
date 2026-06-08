@@ -8,7 +8,6 @@ import {
     ChevronDown,
     MapPin,
     Linkedin,
-   
     Github,
     Twitter,
     Mail,
@@ -38,7 +37,6 @@ export function ExperienceSection() {
                 ))}
             </div>
 
-            {/* Background Video with Hover Popup */}
             <VideoWithSocialLinks />
         </section>
     );
@@ -73,7 +71,6 @@ function VideoWithSocialLinks() {
                 />
             </div>
 
-            {/* Social Links Popup on Hover */}
             <AnimatePresence>
                 {isHovered && (
                     <motion.div
@@ -163,8 +160,7 @@ function ExperienceCard({ exp }: { exp: any }) {
                 onClick={() => setIsExpanded(!isExpanded)}
                 className="p-5 md:p-6 cursor-pointer flex flex-col md:flex-row gap-4 items-start"
             >
-                {/* Company Logo */}
-                <div className="w-14 h-14 rounded-2xl bg-white dark:bg-zinc-900 flex items-center justify-center overflow-hidden shadow-inner border border-zinc-200 dark:border-zinc-700">
+                <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-inner dark:border-zinc-700 dark:bg-zinc-900">
                     {logoSrc ? (
                         <div className="relative w-full h-full">
                             <Image
@@ -179,8 +175,7 @@ function ExperienceCard({ exp }: { exp: any }) {
                     )}
                 </div>
 
-                {/* Main Content */}
-                <div className="flex-1 min-w-0">
+                <div className="min-w-0 flex-1">
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-2">
 
                         <div className="flex items-center gap-2">
@@ -190,8 +185,7 @@ function ExperienceCard({ exp }: { exp: any }) {
 
                         </div>
 
-                        {/* Date & Location */}
-                        <div className="flex flex-col md:items-end gap-1 text-xs  text-zinc-800 dark:text-zinc-200 uppercase tracking-widest whitespace-nowrap">
+                        <div className="flex flex-col gap-1 whitespace-nowrap text-xs uppercase tracking-widest text-zinc-800 dark:text-zinc-200 md:items-end">
                             <div className="flex items-center gap-1.5">
                                 <Calendar className="w-3 h-3" />
                                 <span>{exp.duration}</span>
@@ -203,7 +197,6 @@ function ExperienceCard({ exp }: { exp: any }) {
                         </div>
                     </div>
 
-                    {/* Role & Toggle */}
                     <div className="flex items-center justify-between">
                         <p className="text-sm  text-blue-600 dark:text-blue-400">
                             {exp.title}
@@ -218,7 +211,6 @@ function ExperienceCard({ exp }: { exp: any }) {
                 </div>
             </div>
 
-            {/* Collapsible Content */}
             <AnimatePresence>
                 {isExpanded && (
                     <motion.div

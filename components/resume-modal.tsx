@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useLenis } from "lenis/react";
 import { X, Download, FileText } from "lucide-react";
@@ -13,7 +13,6 @@ interface ResumeModalProps {
 }
 
 export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
-    const resumeRef = useRef<HTMLDivElement>(null);
     const lenis = useLenis();
 
     useEffect(() => {
@@ -75,15 +74,6 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                             </div>
 
                             <div className="flex items-center gap-2">
-                                {/* <a
-                                    href={NOTION_RESUME_URL}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="hidden items-center gap-1.5 rounded-lg border border-zinc-700 px-3 py-2 text-xs font-medium text-zinc-300 transition-colors hover:border-zinc-500 hover:text-white sm:inline-flex"
-                                >
-                                    View on Notion
-                                    <ExternalLink className="h-3.5 w-3.5" strokeWidth={1.75} />
-                                </a> */}
                                 <button
                                     type="button"
                                     onClick={handleDownloadPdf}
@@ -105,7 +95,6 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                         </div>
 
                         <div
-                            ref={resumeRef}
                             data-lenis-prevent
                             data-lenis-prevent-wheel
                             data-lenis-prevent-touch

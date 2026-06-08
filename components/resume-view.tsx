@@ -39,7 +39,6 @@ export function ResumeView({ id }: { id?: string }) {
             className="resume-document min-h-full bg-white text-zinc-900 dark:bg-[#121212] dark:text-zinc-100 print:bg-white print:text-zinc-900"
         >
             <div className="w-full px-5 py-6 sm:px-6 sm:py-8 print:px-8 print:py-8">
-                {/* Header */}
                 <header className="relative border-b border-zinc-200 pb-8 dark:border-zinc-800 print:border-zinc-200">
                     <a
                         href={notionUrl}
@@ -138,7 +137,6 @@ export function ResumeView({ id }: { id?: string }) {
                     </div>
                 </header>
 
-                {/* Summary */}
                 <section className="border-b border-zinc-200 py-8 dark:border-zinc-800 print:border-zinc-200">
                     <SectionTitle>Professional Summary</SectionTitle>
                     <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 print:text-zinc-700">
@@ -146,7 +144,6 @@ export function ResumeView({ id }: { id?: string }) {
                     </p>
                 </section>
 
-                {/* Skills */}
                 <section className="border-b border-zinc-200 py-8 dark:border-zinc-800 print:border-zinc-200">
                     <SectionTitle>Skills</SectionTitle>
                     <div className="space-y-4">
@@ -168,7 +165,6 @@ export function ResumeView({ id }: { id?: string }) {
                     </div>
                 </section>
 
-                {/* Experience */}
                 <section className="border-b border-zinc-200 py-8 dark:border-zinc-800 print:border-zinc-200">
                     <SectionTitle>Experience</SectionTitle>
                     <div className="space-y-8">
@@ -221,7 +217,6 @@ export function ResumeView({ id }: { id?: string }) {
                     </div>
                 </section>
 
-                {/* Achievements */}
                 <section className="border-b border-zinc-200 py-8 dark:border-zinc-800 print:border-zinc-200">
                     <SectionTitle>Achievements</SectionTitle>
                     <div className="space-y-6">
@@ -245,7 +240,6 @@ export function ResumeView({ id }: { id?: string }) {
                     </div>
                 </section>
 
-                {/* Education */}
                 <section className="py-8">
                     <SectionTitle>Education</SectionTitle>
                     <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">

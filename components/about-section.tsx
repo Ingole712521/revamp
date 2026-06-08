@@ -1,6 +1,5 @@
 "use client"
 
-import React from 'react';
 import { motion } from 'motion/react';
 import { HERO, SKILLS_CATEGORIES } from '@/lib/constants';
 import Image from 'next/image';
@@ -20,8 +19,7 @@ export function AboutSection() {
                 viewport={{ once: true }}
                 className="flex flex-col lg:flex-row gap-8 items-center lg:items-center bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-100 dark:border-zinc-800 rounded-2xl overflow-hidden p-6 lg:p-8 mb-16"
             >
-                {/* Avatar - Shrunk size */}
-                <div className="w-32 h-32 md:w-40 md:h-40 relative rounded-2xl overflow-hidden flex-shrink-0 shadow-xl border-2 border-white dark:border-zinc-800 bg-yellow-400 group">
+                <div className="relative h-32 w-32 shrink-0 overflow-hidden rounded-2xl border-2 border-white bg-yellow-400 shadow-xl group md:h-40 md:w-40 dark:border-zinc-800">
                     <Image
                         src={HERO.avatar}
                         alt={HERO.name}
@@ -31,8 +29,7 @@ export function AboutSection() {
                     />
                 </div>
 
-                {/* Content Area - Compact layout */}
-                <div className="flex-1 flex flex-col justify-center text-center lg:text-left">
+                <div className="flex flex-1 flex-col justify-center text-center lg:text-left">
                     <h3 className="mb-2 font-black text-2xl md:text-3xl">
                         {HERO.name}
                     </h3>
@@ -44,8 +41,7 @@ export function AboutSection() {
                     <div id="skills" className="mt-2 scroll-mt-28">
                         <span className="text-zinc-500 dark:text-zinc-400 text-xs font-bold uppercase tracking-widest mb-3 block">Skills & Technologies</span>
 
-                        {/* Smaller icon grid with logos */}
-                        <div className="flex flex-wrap gap-2 items-center justify-center lg:justify-start">
+                        <div className="flex flex-wrap items-center justify-center gap-2 lg:justify-start">
                             {SKILLS_CATEGORIES.flatMap((cat) => cat.skills).map((skill) => (
                                 <TechBadge key={skill} name={skill} />
                             ))}

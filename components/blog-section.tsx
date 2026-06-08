@@ -1,6 +1,5 @@
 "use client"
 
-import React from 'react';
 import { motion } from 'motion/react';
 import { Calendar, ArrowRight, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
@@ -37,7 +36,6 @@ export function BlogSection() {
                         transition={{ delay: idx * 0.1 }}
                         className="flex flex-col bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-slate-400/40 dark:hover:border-slate-600/50"
                     >
-                        {/* Image Container */}
                         <CardMediaBackdrop className="h-72 w-full p-6 group/image">
                             <div
                                 className="relative w-full h-full flex flex-col rounded-xl overflow-hidden shadow-2xl border border-zinc-200 dark:border-white/20 bg-white dark:bg-zinc-950 transition-all duration-500 ease-out group-hover/image:!transform-none z-10"
@@ -45,7 +43,6 @@ export function BlogSection() {
                                     transform: "perspective(1000px) rotateX(15deg) rotateY(-20deg) rotateZ(2deg) scale(1.05)",
                                 }}
                             >
-                                {/* Mock Browser Top Bar */}
                                 <div className="w-full bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200 dark:border-white/10 px-3 py-2 flex items-center gap-1.5 z-20 shrink-0">
                                     <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
                                     <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
@@ -78,7 +75,6 @@ export function BlogSection() {
                             </div>
                         </CardMediaBackdrop>
 
-                        {/* Content */}
                         <div className="p-8 flex flex-col flex-1">
                             <h3 className="text-xl font-bold text-black dark:text-white mb-4 line-clamp-2 leading-tight group-hover:text-blue-500 transition-colors">
                                 {blog.title}
