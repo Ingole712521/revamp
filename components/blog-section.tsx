@@ -1,123 +1,124 @@
-"use client"
-
-import React from 'react';
-import { motion } from 'motion/react';
-import { Calendar, ArrowRight, ExternalLink } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { getFeaturedBlogPosts } from '@/lib/blogs';
-
-const formatDate = (dateString: string): string => {
-    const date = new Date(dateString);
-    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    const month = months[date.getUTCMonth()];
-    const day = date.getUTCDate();
-    const year = date.getUTCFullYear();
-    return `${month} ${day}, ${year}`;
-};
-
-export function BlogSection() {
-    const blogs = getFeaturedBlogPosts();
-
-    return (
-        <section id="blogs" className="section-container border-t border-zinc-100 dark:border-zinc-900">
-            <div className="mb-12">
-                <span className="text-zinc-500 dark:text-zinc-400 text-xs font-bold uppercase tracking-widest mb-2 block">Featured</span>
-                <h2>Blogs</h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {blogs.map((blog, idx) => (
-                    <motion.div
-                        key={blog.href}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.1 }}
-                        className="flex flex-col bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-blue-500/30"
-                    >
-                        {/* Image Container */}
-                        <div className="relative h-72 w-full overflow-hidden bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500 flex items-center justify-center p-6 group/image">
-                            <div
-                                className="relative w-full h-full flex flex-col rounded-xl overflow-hidden shadow-2xl border border-zinc-200 dark:border-white/20 bg-white dark:bg-zinc-950 transition-all duration-500 ease-out group-hover/image:!transform-none z-10"
-                                style={{
-                                    transform: "perspective(1000px) rotateX(15deg) rotateY(-20deg) rotateZ(2deg) scale(1.05)",
-                                }}
-                            >
-                                {/* Mock Browser Top Bar */}
-                                <div className="w-full bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200 dark:border-white/10 px-3 py-2 flex items-center gap-1.5 z-20 shrink-0">
-                                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
-                                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
-                                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
-                                </div>
-
-                                <div className="relative w-full flex-1 overflow-hidden bg-white dark:bg-zinc-950">
-                                    <Image
-                                        src={blog.coverImage?.url || "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1600&auto=format&fit=crop"}
-                                        alt={blog.title}
-                                        fill
-                                        loading="lazy"
-                                        sizes="(max-width: 768px) 100vw, 50vw"
-                                        className="object-cover object-top transition-transform duration-500"
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-end p-6 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <div className="flex flex-wrap gap-2">
-                                    {blog.tags?.slice(0, 3).map((tag) => (
-                                        <span
-                                            key={tag.name}
-                                            className="px-2 py-1 bg-white/20 backdrop-blur-md border border-white/10 rounded-md text-[10px] font-bold text-white uppercase tracking-wider shadow-xl"
-                                        >
-                                            {tag.name}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Content */}
-                        <div className="p-8 flex flex-col flex-1">
-                            <h3 className="text-xl font-bold text-black dark:text-white mb-4 line-clamp-2 leading-tight group-hover:text-blue-500 transition-colors">
-                                {blog.title}
-                            </h3>
-                            <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-8 line-clamp-3">
-                                {blog.brief}
-                            </p>
-
-                            <div className="mt-auto pt-6 border-t border-zinc-100 dark:border-zinc-800/50 flex items-center justify-between">
-                                <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-500">
-                                    <Calendar className="w-4 h-4" />
-                                    <span className="text-xs font-bold uppercase tracking-widest">{formatDate(blog.publishedAt)}</span>
-                                </div>
-                                <Link
-                                    href={blog.href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-2 text-sm font-black text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-all group"
-                                >
-                                    <span>Read More</span>
-                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                                </Link>
-                            </div>
-                        </div>
-                    </motion.div>
-                ))}
-            </div>
-
-            <div className="mt-16 flex justify-center">
-                <Link
-                    href="https://learnwithnehal.hashnode.dev/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-2xl font-black text-sm uppercase tracking-widest shadow-xl hover:shadow-blue-500/20 transition-all hover:-translate-y-1 active:scale-95 flex items-center gap-3 border border-zinc-800 dark:border-zinc-200"
-                >
-                    <span>Show all blogs</span>
-                    <ExternalLink className="w-4 h-4" />
-                </Link>
-            </div>
-        </section>
-    );
-}
-
+"use client"
+
+import React from 'react';
+import { motion } from 'motion/react';
+import { Calendar, ArrowRight, ExternalLink } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { CardMediaBackdrop } from '@/components/card-media-backdrop';
+import { getFeaturedBlogPosts } from '@/lib/blogs';
+
+const formatDate = (dateString: string): string => {
+    const date = new Date(dateString);
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const month = months[date.getUTCMonth()];
+    const day = date.getUTCDate();
+    const year = date.getUTCFullYear();
+    return `${month} ${day}, ${year}`;
+};
+
+export function BlogSection() {
+    const blogs = getFeaturedBlogPosts();
+
+    return (
+        <section id="blogs" className="section-container border-t border-zinc-100 dark:border-zinc-900">
+            <div className="mb-12">
+                <span className="text-zinc-500 dark:text-zinc-400 text-xs font-bold uppercase tracking-widest mb-2 block">Featured</span>
+                <h2>Blogs</h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {blogs.map((blog, idx) => (
+                    <motion.div
+                        key={blog.href}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: idx * 0.1 }}
+                        className="flex flex-col bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-slate-400/40 dark:hover:border-slate-600/50"
+                    >
+                        {/* Image Container */}
+                        <CardMediaBackdrop className="h-72 w-full p-6 group/image">
+                            <div
+                                className="relative w-full h-full flex flex-col rounded-xl overflow-hidden shadow-2xl border border-zinc-200 dark:border-white/20 bg-white dark:bg-zinc-950 transition-all duration-500 ease-out group-hover/image:!transform-none z-10"
+                                style={{
+                                    transform: "perspective(1000px) rotateX(15deg) rotateY(-20deg) rotateZ(2deg) scale(1.05)",
+                                }}
+                            >
+                                {/* Mock Browser Top Bar */}
+                                <div className="w-full bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200 dark:border-white/10 px-3 py-2 flex items-center gap-1.5 z-20 shrink-0">
+                                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+                                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
+                                </div>
+
+                                <div className="relative w-full flex-1 overflow-hidden bg-white dark:bg-zinc-950">
+                                    <Image
+                                        src={blog.coverImage?.url || "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1600&auto=format&fit=crop"}
+                                        alt={blog.title}
+                                        fill
+                                        loading="lazy"
+                                        sizes="(max-width: 768px) 100vw, 50vw"
+                                        className="object-cover object-top transition-transform duration-500"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-end p-6 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div className="flex flex-wrap gap-2">
+                                    {blog.tags?.slice(0, 3).map((tag) => (
+                                        <span
+                                            key={tag.name}
+                                            className="px-2 py-1 bg-white/20 backdrop-blur-md border border-white/10 rounded-md text-[10px] font-bold text-white uppercase tracking-wider shadow-xl"
+                                        >
+                                            {tag.name}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        </CardMediaBackdrop>
+
+                        {/* Content */}
+                        <div className="p-8 flex flex-col flex-1">
+                            <h3 className="text-xl font-bold text-black dark:text-white mb-4 line-clamp-2 leading-tight group-hover:text-blue-500 transition-colors">
+                                {blog.title}
+                            </h3>
+                            <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-8 line-clamp-3">
+                                {blog.brief}
+                            </p>
+
+                            <div className="mt-auto pt-6 border-t border-zinc-100 dark:border-zinc-800/50 flex items-center justify-between">
+                                <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-500">
+                                    <Calendar className="w-4 h-4" />
+                                    <span className="text-xs font-bold uppercase tracking-widest">{formatDate(blog.publishedAt)}</span>
+                                </div>
+                                <Link
+                                    href={blog.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 text-sm font-black text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-all group"
+                                >
+                                    <span>Read More</span>
+                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                </Link>
+                            </div>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+
+            <div className="mt-16 flex justify-center">
+                <Link
+                    href="https://learnwithnehal.hashnode.dev/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-2xl font-black text-sm uppercase tracking-widest shadow-xl hover:shadow-blue-500/20 transition-all hover:-translate-y-1 active:scale-95 flex items-center gap-3 border border-zinc-800 dark:border-zinc-200"
+                >
+                    <span>Show all blogs</span>
+                    <ExternalLink className="w-4 h-4" />
+                </Link>
+            </div>
+        </section>
+    );
+}
+

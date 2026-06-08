@@ -1,5 +1,6 @@
 "use client";
 
+import { CardMediaBackdrop } from "@/components/card-media-backdrop";
 import { HeroVideoDialog } from "@/components/ui/hero-video-dialog";
 import type { PortfolioVideo } from "@/lib/constants";
 import { motion } from "motion/react";
@@ -21,14 +22,12 @@ export function VideoCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ delay: idx * 0.08, duration: 0.5 }}
-      className={`group flex h-full flex-col overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-xl transition-all duration-300 hover:border-blue-500/30 hover:shadow-2xl dark:border-zinc-800 dark:bg-zinc-900/40 ${
+      className={`group flex h-full flex-col overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-xl transition-all duration-300 hover:border-slate-400/40 hover:shadow-2xl dark:border-zinc-800 dark:bg-zinc-900/40 dark:hover:border-slate-600/50 ${
         featured ? "md:col-span-2" : ""
       }`}
     >
-      <div
-        className={`relative flex items-center justify-center overflow-hidden bg-linear-to-br from-pink-500 via-purple-500 to-indigo-500 ${
-          featured ? "p-6 md:p-8" : "p-4 md:p-5"
-        }`}
+      <CardMediaBackdrop
+        className={featured ? "p-6 md:p-8" : "p-4 md:p-5"}
       >
         <div
           className="relative z-10 w-full overflow-hidden rounded-xl border border-zinc-200 bg-zinc-950 shadow-2xl transition-all duration-500 ease-out group-hover:transform-none dark:border-white/20"
@@ -57,12 +56,12 @@ export function VideoCard({
           />
         </div>
 
-        <div className="pointer-events-none absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-        <div className="pointer-events-none absolute bottom-4 left-4 flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white opacity-0 backdrop-blur-md transition-opacity duration-300 group-hover:opacity-100">
-          <Play className="size-3 fill-white" />
+        <div className="pointer-events-none absolute inset-0 bg-slate-900/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:bg-black/25" />
+        <div className="pointer-events-none absolute bottom-4 left-4 z-20 flex items-center gap-2 rounded-md border border-slate-200/80 bg-white/90 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-slate-700 opacity-0 shadow-sm backdrop-blur-md transition-opacity duration-300 group-hover:opacity-100 dark:border-slate-700 dark:bg-slate-900/90 dark:text-slate-200">
+          <Play className="size-3 fill-slate-700 dark:fill-slate-200" />
           Click to play
         </div>
-      </div>
+      </CardMediaBackdrop>
 
       <div className={`flex flex-1 flex-col ${featured ? "p-8" : "p-6"}`}>
         <div className="mb-4 flex flex-wrap gap-2">

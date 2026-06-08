@@ -1,5 +1,6 @@
 "use client"
 
+import { CardMediaBackdrop } from "@/components/card-media-backdrop";
 import { ProjectPlaceholder } from "@/components/project-placeholder";
 import { motion } from "motion/react";
 import Image from "next/image";
@@ -60,7 +61,7 @@ export function ProjectCard({ project, idx }: { project: ProjectCardItem; idx: n
             onClick={handleCardClick}
             className="group relative bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 rounded-2xl overflow-hidden hover:border-zinc-300 dark:hover:border-zinc-700 transition-all cursor-pointer flex flex-col h-full"
         >
-            <div className="relative h-64 w-full overflow-hidden bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500 flex items-center justify-center p-6 group/image">
+            <CardMediaBackdrop className="h-64 w-full p-6 group/image">
                 <div
                     className="relative w-full h-full flex flex-col rounded-xl overflow-hidden shadow-2xl border border-zinc-200 dark:border-white/20 bg-white dark:bg-zinc-950 transition-all duration-500 ease-out group-hover/image:!transform-none z-10"
                     style={{
@@ -145,7 +146,7 @@ export function ProjectCard({ project, idx }: { project: ProjectCardItem; idx: n
                         <ExternalLink className="w-5 h-5" />
                     </Link>
                 </div>
-            </div>
+            </CardMediaBackdrop>
             <div className="p-6 flex flex-col gap-3 flex-1">
                 <h3 className="text-xl font-bold text-black dark:text-white">{project.name}</h3>
                 <p className="text-zinc-800 dark:text-zinc-200 text-sm flex-1">
