@@ -125,7 +125,7 @@ export function Lamphome({
       </div>
 
       <div
-        className={`min-h-screen w-full flex flex-col items-center justify-start pt-16 [@media(min-width:480px)]:pt-16 transition-all duration-500 text-black dark:text-white ${className}`}
+        className={`flex w-full flex-1 flex-col items-center justify-start pt-16 [@media(min-width:480px)]:pt-16 transition-all duration-500 text-black dark:text-white ${className}`}
       >
         <GlowEffects isDarkMode={isDarkMode} showGlow={showGlow} />
 
@@ -166,7 +166,7 @@ export function Lamphome({
 
       {children && (
         <motion.div
-          className='mt-6 [@media(min-width:480px)]:mt-8 w-full flex justify-center'
+          className='mt-6 [@media(min-width:480px)]:mt-8 flex w-full flex-1 flex-col items-center justify-start'
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}

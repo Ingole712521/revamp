@@ -30,7 +30,7 @@ export default function Home() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-start bg-white dark:bg-black transition-colors duration-500 overflow-x-hidden">
+    <main className="flex min-h-screen flex-col bg-white transition-colors duration-500 dark:bg-black overflow-x-hidden">
       <CustomCursor />
       <Oneko />
       <ResumeModal
@@ -41,6 +41,7 @@ export default function Home() {
         title=""
         description=""
         navItems={NAVIGATION_LINKS}
+        className="flex-1"
       >
         <div className="max-w-4xl w-full px-6 flex flex-col items-center">
           <HeroSection onResumeClick={() => setIsResumeOpen(true)} />
@@ -53,8 +54,8 @@ export default function Home() {
           <QuotesSection />
           <ContactSection />
         </div>
-        <Footer />
       </Lamphome>
+      <Footer />
     </main>
   );
 }
