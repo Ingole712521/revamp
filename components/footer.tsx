@@ -10,10 +10,10 @@ import { FOOTER_NAV, HERO, SOCIALS } from "@/lib/constants";
 import { motion } from "motion/react";
 import {
     ArrowUpRight,
+    Briefcase,
     Github,
     Linkedin,
     Mail,
-    Sparkles,
     Twitter,
     Youtube,
 } from "lucide-react";
@@ -37,7 +37,7 @@ function NavPill({
     external?: boolean;
 }) {
     const className =
-        "inline-flex items-center gap-1.5 rounded-full border border-violet-200/50 bg-white/40 px-4 py-2 text-sm font-semibold text-zinc-700 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-violet-300/70 hover:bg-white/80 hover:shadow-md hover:shadow-violet-500/10 dark:border-violet-500/20 dark:bg-violet-500/5 dark:text-zinc-200 dark:hover:border-violet-400/40 dark:hover:bg-violet-500/10";
+        "inline-flex items-center gap-1.5 rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-600 transition-all duration-200 hover:border-zinc-300 hover:bg-white hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900/80 dark:text-zinc-400 dark:hover:border-zinc-700 dark:hover:bg-zinc-900 dark:hover:text-zinc-100";
 
     const content = (
         <>
@@ -74,53 +74,50 @@ export function Footer() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="relative mb-10 overflow-hidden rounded-[2rem] p-px shadow-2xl shadow-purple-500/15 md:rounded-[2.5rem]"
+                    className="relative mb-10 overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:border-zinc-800 dark:bg-zinc-950 dark:shadow-[0_8px_30px_rgb(0,0,0,0.25)] md:rounded-3xl"
                 >
                     <div
                         aria-hidden
-                        className="absolute inset-0 bg-linear-to-br from-pink-500 via-violet-500 to-indigo-600"
+                        className="h-1 w-full bg-linear-to-r from-slate-700 via-slate-500 to-slate-700 dark:from-slate-400 dark:via-slate-600 dark:to-slate-400"
                     />
 
-                    <div className="relative overflow-hidden rounded-[calc(2rem-1px)] bg-white/75 backdrop-blur-2xl dark:rounded-[calc(2.5rem-1px)] dark:bg-zinc-950/55 md:rounded-[calc(2.5rem-1px)]">
+                    <div className="relative overflow-hidden">
                         <div
                             aria-hidden
-                            className="pointer-events-none absolute -right-10 -top-20 size-72 rounded-full bg-pink-500/35 blur-[90px]"
+                            className="pointer-events-none absolute inset-0 bg-linear-to-br from-slate-50/80 via-white to-zinc-50/50 dark:from-zinc-900 dark:via-zinc-950 dark:to-zinc-900"
                         />
                         <div
                             aria-hidden
-                            className="pointer-events-none absolute -bottom-24 -left-12 size-80 rounded-full bg-indigo-500/30 blur-[100px]"
+                            className="pointer-events-none absolute -right-20 top-0 size-64 rounded-full bg-slate-200/40 blur-3xl dark:bg-slate-700/15"
                         />
                         <div
                             aria-hidden
-                            className="pointer-events-none absolute left-1/2 top-1/2 size-56 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-400/20 blur-[80px]"
-                        />
-                        <div
-                            aria-hidden
-                            className="pointer-events-none absolute inset-0 opacity-[0.35] dark:opacity-[0.2]"
+                            className="pointer-events-none absolute inset-0 opacity-[0.4] dark:opacity-[0.15]"
                             style={{
                                 backgroundImage:
-                                    "linear-gradient(rgba(168,85,247,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,0.08) 1px, transparent 1px)",
-                                backgroundSize: "28px 28px",
+                                    "linear-gradient(rgba(100,116,139,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(100,116,139,0.06) 1px, transparent 1px)",
+                                backgroundSize: "32px 32px",
                             }}
                         />
 
                         <div className="relative flex flex-col gap-6 p-8 md:flex-row md:items-center md:justify-between md:p-10">
                             <div className="max-w-md">
-                                <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-violet-200/60 bg-white/50 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-violet-700 backdrop-blur-md dark:border-violet-500/25 dark:bg-violet-500/10 dark:text-violet-200">
-                                    <Sparkles className="size-3 text-yellow-400" />
+                                <div className="mb-4 inline-flex items-center gap-2 rounded-md border border-slate-200 bg-slate-50 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-slate-600 dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-300">
+                                    <Briefcase className="size-3 text-slate-500 dark:text-slate-400" />
+                                    <span className="size-1.5 rounded-full bg-emerald-500" />
                                     Available for work
                                 </div>
-                                <h3 className="bg-linear-to-r from-zinc-900 via-violet-950 to-indigo-950 bg-clip-text text-2xl font-black tracking-tight text-transparent md:text-3xl dark:from-white dark:via-violet-100 dark:to-indigo-100">
+                                <h3 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl dark:text-white">
                                     Let&apos;s build something great.
                                 </h3>
-                                <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+                                <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                                     Open to frontend, DevOps, and cloud automation collaborations.
                                 </p>
                             </div>
 
                             <Link
                                 href="/#contact"
-                                className="group inline-flex shrink-0 items-center justify-center gap-2 rounded-2xl bg-linear-to-r from-pink-500 via-violet-600 to-indigo-600 px-6 py-3.5 text-sm font-black uppercase tracking-widest text-white shadow-lg shadow-violet-500/25 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-violet-500/35"
+                                className="group inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border border-slate-800 bg-slate-900 px-6 py-3.5 text-sm font-semibold tracking-wide text-white transition-all hover:bg-slate-800 dark:border-slate-200 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100"
                             >
                                 Get in touch
                                 <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -138,7 +135,7 @@ export function Footer() {
                 >
                     <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
                         <div className="flex items-center gap-4">
-                            <div className="relative size-14 shrink-0 overflow-hidden rounded-2xl border-2 border-zinc-200 shadow-lg dark:border-zinc-700">
+                            <div className="relative size-14 shrink-0 overflow-hidden rounded-xl border border-zinc-200 shadow-sm dark:border-zinc-700">
                                 <Image
                                     src={HERO.avatar}
                                     alt={HERO.name}
@@ -148,10 +145,10 @@ export function Footer() {
                                 <span className="absolute bottom-1 right-1 size-2.5 rounded-full border-2 border-white bg-emerald-500 dark:border-zinc-900" />
                             </div>
                             <div>
-                                <p className="text-lg font-black text-black dark:text-white">
+                                <p className="text-lg font-bold text-slate-900 dark:text-white">
                                     {HERO.name.trim()}
                                 </p>
-                                <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                                <p className="text-sm text-slate-500 dark:text-slate-400">
                                     {HERO.role}
                                 </p>
                             </div>
@@ -167,7 +164,7 @@ export function Footer() {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         aria-label={item.label}
-                                        className="group flex size-11 items-center justify-center rounded-xl border border-zinc-200/80 bg-white/60 text-zinc-600 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-300 hover:text-black hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/60 dark:text-zinc-400 dark:hover:border-zinc-600 dark:hover:text-white"
+                                        className="group flex size-10 items-center justify-center rounded-lg border border-zinc-200 bg-zinc-50 text-slate-600 transition-all duration-200 hover:border-slate-300 hover:bg-white hover:text-slate-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-slate-400 dark:hover:border-zinc-700 dark:hover:text-white"
                                     >
                                         <Icon className="size-[18px] transition-transform group-hover:scale-110" />
                                     </a>
@@ -177,7 +174,7 @@ export function Footer() {
                                 type="button"
                                 onClick={requestGmailRedirect}
                                 aria-label={SOCIALS.email.label}
-                                className="group flex size-11 items-center justify-center rounded-xl border border-zinc-200/80 bg-white/60 text-zinc-600 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-400/50 hover:text-amber-600 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/60 dark:text-zinc-400 dark:hover:text-amber-400"
+                                className="group flex size-10 items-center justify-center rounded-lg border border-zinc-200 bg-zinc-50 text-slate-600 transition-all duration-200 hover:border-slate-300 hover:bg-white hover:text-slate-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-slate-400 dark:hover:border-zinc-700 dark:hover:text-white"
                             >
                                 <Mail className="size-[18px] transition-transform group-hover:scale-110" />
                             </button>
@@ -203,7 +200,7 @@ export function Footer() {
                             </span>
                         </p>
 
-                        <div className="inline-flex w-fit items-center gap-2 rounded-full border border-violet-200/50 bg-linear-to-r from-white/60 to-violet-50/50 px-4 py-2 text-xs font-medium text-zinc-600 backdrop-blur-md dark:border-violet-500/20 dark:from-violet-500/10 dark:to-indigo-500/10 dark:text-zinc-300">
+                        <div className="inline-flex w-fit items-center gap-2 rounded-md border border-zinc-200 bg-zinc-50 px-3 py-2 text-xs font-medium text-slate-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-slate-400">
                             {isLoading ? (
                                 <span className="inline-block h-3 w-24 animate-pulse rounded-full bg-zinc-200 dark:bg-zinc-800" />
                             ) : (
