@@ -232,6 +232,15 @@ export const PROJECTS = [
 
 export const PROOF_OF_WORK: ProjectCardItem[] = [
     {
+        id: "pow-revio",
+        name: "Revio",
+        description:
+            "An AI-powered GitHub Pull Request reviewer: when a PR is opened or updated, a webhook queues a review job, a worker fetches the diff, and gpt-5.3-codex (via OpenRouter) posts inline comments for bugs, security issues, performance problems, error handling, and logic errors",
+        image: "/revio.png",
+        link: "https://ai-code-reviwer-web.vercel.app/",
+        tags: ["Working", "GitHub App", "Next.js", "OpenRouter", "Clean Architecture", "TypeScript"]
+    },
+    {
         id: "pow-kestra",
         name: "Kestra — open source contribution",
         description:
