@@ -67,8 +67,8 @@ export function Footer() {
     const year = new Date().getFullYear();
 
     return (
-        <footer className="mt-auto w-full shrink-0 px-4 pb-8 pt-4 md:px-6">
-            <div className="section-container mx-auto overflow-hidden border-t-0 pb-8 pt-2">
+        <footer className="mt-auto w-full shrink-0">
+            <div className="section-container mx-auto overflow-hidden border-t border-zinc-100 pb-8 pt-2 dark:border-zinc-900">
                 <motion.div
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}

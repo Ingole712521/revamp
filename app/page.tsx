@@ -55,7 +55,7 @@ export default function Home() {
         navItems={NAVIGATION_LINKS}
         className="flex-1"
       >
-        <div className="max-w-4xl w-full px-6 flex flex-col items-center">
+        <div className="max-w-4xl w-full flex flex-col items-center">
           <HeroSection onResumeClick={() => setIsResumeOpen(true)} />
           <ExperienceSection />
           <ProofOfWorkSection />
