@@ -260,6 +260,15 @@ export const PROOF_OF_WORK: ProjectCardItem[] = [
         imageFit: "contain",
     },
     {
+        id: "pow-rsquaree",
+        name: "R Square",
+        description:
+            "Creative studio and marketing partner site: we help brands across every industry grow through thoughtful design and results-driven marketing.",
+        image: "/rsquaree.png",
+        link: "https://www.rsquaree.com/",
+        tags: ["React", "Tailwind CSS", "Marketing", "Design"]
+    },
+    {
         id: "pow-animioui",
         name: "AnimioUI",
         description:
