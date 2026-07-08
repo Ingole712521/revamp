@@ -21,9 +21,17 @@ import { useGmailRedirect } from "@/components/gmail-redirect-provider";
 export function ExperienceSection() {
     return (
         <section id="work" className="section-container border-t border-zinc-100 dark:border-zinc-900">
-            <h2 className="mb-12 text-center text-3xl md:text-4xl font-black text-black dark:text-white">
-                Professional Path
-            </h2>
+            <div className="mb-12 text-center md:mb-14">
+                <span className="mb-3 block text-xs font-bold uppercase tracking-[0.28em] text-zinc-500 dark:text-zinc-400">
+                    Career Journey
+                </span>
+                <h2 className="text-balance text-black dark:text-white">
+                    Professional Path
+                </h2>
+                <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-zinc-600 dark:text-zinc-400 md:text-base">
+                    Roles and projects that shaped my approach to frontend engineering, DevOps, and production-ready systems.
+                </p>
+            </div>
 
             <div className="space-y-4 px-4 md:px-0">
                 {EXPERIENCES.map((exp, idx) => (
@@ -81,7 +89,7 @@ function VideoWithSocialLinks() {
                         className="absolute bottom-full right-0 mb-2 w-72 bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden"
                     >
                         <div className="p-3 border-b border-zinc-100 dark:border-zinc-800">
-                            <h3 className="text-sm font-black text-black dark:text-white uppercase tracking-widest">
+                            <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-zinc-900 dark:text-white">
                                 Connect With Me
                             </h3>
                         </div>
@@ -179,13 +187,13 @@ function ExperienceCard({ exp }: { exp: any }) {
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-2">
 
                         <div className="flex items-center gap-2">
-                            <h3 className="text-xl font-black text-black dark:text-white truncate">
+                            <h3 className="truncate text-xl font-semibold tracking-tight text-zinc-950 dark:text-white">
                                 {exp.company}
                             </h3>
 
                         </div>
 
-                        <div className="flex flex-col gap-1 whitespace-nowrap text-xs uppercase tracking-widest text-zinc-800 dark:text-zinc-200 md:items-end">
+                        <div className="flex flex-col gap-1 whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.18em] text-zinc-700 dark:text-zinc-200 md:items-end">
                             <div className="flex items-center gap-1.5">
                                 <Calendar className="w-3 h-3" />
                                 <span>{exp.duration}</span>
@@ -198,7 +206,7 @@ function ExperienceCard({ exp }: { exp: any }) {
                     </div>
 
                     <div className="flex items-center justify-between">
-                        <p className="text-sm  text-blue-600 dark:text-blue-400">
+                        <p className="text-sm font-medium text-blue-600 dark:text-blue-400">
                             {exp.title}
                         </p>
                         <motion.div
@@ -221,7 +229,7 @@ function ExperienceCard({ exp }: { exp: any }) {
                     >
                         <div className="px-5 md:px-6 pb-6 pt-3 border-t border-zinc-100/50 dark:border-zinc-800/50">
                             <div className="mb-6">
-                                <h4 className="text-xs font-black text-black dark:text-white mb-3 flex items-center gap-2 uppercase tracking-widest">
+                                <h4 className="mb-3 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-900 dark:text-white">
                                     Technologies & Tools
                                 </h4>
                                 <div className="flex flex-wrap gap-2">
@@ -238,8 +246,8 @@ function ExperienceCard({ exp }: { exp: any }) {
 
                             <ul className="space-y-2">
                                 {exp.points?.map((point: string, pIdx: number) => (
-                                    <li key={pIdx} className="flex gap-2 text-zinc-800 dark:text-white leading-relaxed text-xs font-medium">
-                                        <span className="mt-1 w-1.5 h-1.5 rounded-full bg-blue-500/40 dark:bg-blue-500/60 flex-shrink-0" />
+                                    <li key={pIdx} className="flex gap-2 text-sm leading-7 text-zinc-700 dark:text-zinc-200">
+                                        <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500/40 dark:bg-blue-500/60" />
                                         <span>{point}</span>
                                     </li>
                                 ))}

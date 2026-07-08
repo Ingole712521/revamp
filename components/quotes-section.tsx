@@ -15,6 +15,12 @@ export function QuotesSection() {
 
     return (
         <section id="quotes" className="section-container border-t border-zinc-100 dark:border-zinc-900">
+            <div className="mb-12 text-center md:mb-14">
+                <span className="mb-3 block text-xs font-bold uppercase tracking-[0.28em] text-zinc-500 dark:text-zinc-400">
+                    Mindset
+                </span>
+                <h2 className="text-black dark:text-white">A Thought I Work By</h2>
+            </div>
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -25,19 +31,19 @@ export function QuotesSection() {
                 <Quote className="absolute -top-4 -left-4 w-32 h-32 text-zinc-200/50 dark:text-zinc-800/50 -rotate-12 pointer-events-none" />
 
                 <div className="relative z-10 flex flex-col items-center md:items-start">
-                    <p className="text-xl md:text-xl font-medium text-zinc-900 dark:text-zinc-100 italic leading-relaxed mb-8 text-center md:text-left">
+                    <p className="mb-8 text-center text-xl font-medium italic leading-9 text-zinc-900 dark:text-zinc-100 md:text-left">
                         "{quote.text}"
                     </p>
                     <div className="flex items-center gap-4">
                         <div className="h-px w-8 bg-zinc-300 dark:bg-zinc-700" />
-                        <span className="text-zinc-500 underline dark:text-zinc-400 font-bold uppercase tracking-[0.2em] text-sm">
+                        <span className="text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500 underline dark:text-zinc-400">
                             {quote.author}
                         </span>
                     </div>
                 </div>
 
                 {/* Grid Pattern Subtlety */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none"></div>
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-size-[32px_32px]"></div>
             </motion.div>
         </section>
     );

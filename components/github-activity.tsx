@@ -64,14 +64,17 @@ export function GithubActivity() {
 
     return (
         <section id="github" className="section-container border-t border-zinc-100 dark:border-zinc-900">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+            <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
                 <div>
-                    <span className="text-zinc-500 dark:text-zinc-400 text-xs font-bold uppercase tracking-widest mb-2 block">Featured</span>
-                    <h2>GitHub Activity</h2>
+                    <span className="mb-3 block text-xs font-bold uppercase tracking-[0.28em] text-zinc-500 dark:text-zinc-400">Open Source Signal</span>
+                    <h2 className="text-black dark:text-white">GitHub Activity</h2>
+                    <p className="mt-4 max-w-2xl text-sm leading-7 text-zinc-600 dark:text-zinc-400 md:text-base">
+                        A quick snapshot of consistency, contribution history, and ongoing engineering momentum.
+                    </p>
                 </div>
                 <div className="flex flex-col items-end gap-3">
                     <div className="flex flex-col items-end">
-                        <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-widest">Total Contributions</span>
+                        <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-500">Total Contributions</span>
                         <span className="text-2xl font-black text-black dark:text-white leading-none mt-1">
                             {GITHUB_STATS.totalContributions.toLocaleString('en-US')}
                         </span>
@@ -79,7 +82,7 @@ export function GithubActivity() {
                     <div className="flex flex-col items-end">
                         <div className="flex items-center gap-2">
                             <div className={`w-2 h-2 rounded-full ${isOnline ? 'bg-green-500' : 'bg-zinc-400'} animate-pulse`} />
-                            <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-widest">
+                            <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-500">
                                 {isOnline ? 'Online' : 'Offline'}
                             </span>
                         </div>
@@ -115,18 +118,18 @@ export function GithubActivity() {
                                     } as any)
                                 }
                             />
-                            <Tooltip id="react-tooltip" className="!z-50 !bg-zinc-900 dark:!bg-zinc-100 !text-white dark:!text-black !rounded-md !text-xs !font-bold !px-3 !py-1.5 shadow-xl" />
+                            <Tooltip id="react-tooltip" className="z-50! rounded-md! bg-zinc-900! px-3! py-1.5! text-xs! font-bold! text-white! shadow-xl dark:bg-zinc-100! dark:text-black!" />
                         </div>
                     )}
                 </div>
 
                 <div className="w-full mt-4 flex items-center justify-between border-t border-zinc-100 dark:border-zinc-800/50 pt-4">
-                    <div className="flex items-center gap-2 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">
+                    <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-400">
                         <Github className="w-4 h-4 opacity-50" />
                         <span>{GITHUB_STATS.username}</span>
                     </div>
                     <div className="flex items-center gap-3">
-                        <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">
+                        <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-400">
                             Last updated: {currentTime?.toLocaleTimeString() ?? '--:--:--'}
                         </span>
                     </div>

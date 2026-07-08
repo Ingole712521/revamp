@@ -63,7 +63,7 @@ export function ProjectCard({ project, idx }: { project: ProjectCardItem; idx: n
         >
             <CardMediaBackdrop className="h-64 w-full p-6 group/image">
                 <div
-                    className="relative w-full h-full flex flex-col rounded-xl overflow-hidden shadow-2xl border border-zinc-200 dark:border-white/20 bg-white dark:bg-zinc-950 transition-all duration-500 ease-out group-hover/image:!transform-none z-10"
+                    className="relative z-10 flex h-full w-full flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-2xl transition-all duration-500 ease-out group-hover/image:transform-none! dark:border-white/20 dark:bg-zinc-950"
                     style={{
                         transform: "perspective(1000px) rotateX(15deg) rotateY(-20deg) rotateZ(2deg) scale(1.05)",
                     }}
@@ -147,19 +147,21 @@ export function ProjectCard({ project, idx }: { project: ProjectCardItem; idx: n
                     </Link>
                 </div>
             </CardMediaBackdrop>
-            <div className="p-6 flex flex-col gap-3 flex-1">
-                <h3 className="text-xl font-bold text-black dark:text-white">{project.name}</h3>
-                <p className="text-zinc-800 dark:text-zinc-200 text-sm flex-1">
+            <div className="flex flex-1 flex-col gap-4 p-6">
+                <h3 className="text-xl font-semibold leading-tight tracking-tight text-zinc-950 dark:text-white md:text-[1.35rem]">
+                    {project.name}
+                </h3>
+                <p className="flex-1 text-sm leading-7 text-zinc-600 dark:text-zinc-300 md:text-[15px]">
                     {project.description}
                 </p>
-                <div className="mt-auto flex flex-wrap items-center gap-2 pt-2 border-t border-zinc-200 dark:border-zinc-800">
-                    <span className="text-xs font-semibold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
-                        Tech :
+                <div className="mt-auto flex flex-wrap items-center gap-2 border-t border-zinc-200 pt-3 dark:border-zinc-800">
+                    <span className="pr-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-500 dark:text-zinc-400">
+                        Stack
                     </span>
                     {project.tags.map((tag: string) => (
                         <span
                             key={tag}
-                            className="px-2 py-1 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-md text-[10px] uppercase tracking-wider font-bold text-zinc-600 dark:text-zinc-400"
+                            className="rounded-full border border-zinc-200 bg-zinc-100/80 px-3 py-1 text-[11px] font-medium tracking-wide text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800/80 dark:text-zinc-300"
                         >
                             {tag}
                         </span>

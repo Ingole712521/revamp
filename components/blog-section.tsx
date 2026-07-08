@@ -21,9 +21,12 @@ export function BlogSection() {
 
     return (
         <section id="blogs" className="section-container border-t border-zinc-100 dark:border-zinc-900">
-            <div className="mb-12">
-                <span className="text-zinc-500 dark:text-zinc-400 text-xs font-bold uppercase tracking-widest mb-2 block">Featured</span>
-                <h2>Blogs</h2>
+            <div className="mb-12 text-center md:mb-14">
+                <span className="mb-3 block text-xs font-bold uppercase tracking-[0.28em] text-zinc-500 dark:text-zinc-400">Writing & Notes</span>
+                <h2 className="text-black dark:text-white">Blogs</h2>
+                <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-zinc-600 dark:text-zinc-400 md:text-base">
+                    Articles on DevOps, frontend workflows, cloud experiments, and the lessons that come from building in public.
+                </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -38,7 +41,7 @@ export function BlogSection() {
                     >
                         <CardMediaBackdrop className="h-72 w-full p-6 group/image">
                             <div
-                                className="relative w-full h-full flex flex-col rounded-xl overflow-hidden shadow-2xl border border-zinc-200 dark:border-white/20 bg-white dark:bg-zinc-950 transition-all duration-500 ease-out group-hover/image:!transform-none z-10"
+                                className="relative z-10 flex h-full w-full flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-2xl transition-all duration-500 ease-out group-hover/image:transform-none! dark:border-white/20 dark:bg-zinc-950"
                                 style={{
                                     transform: "perspective(1000px) rotateX(15deg) rotateY(-20deg) rotateZ(2deg) scale(1.05)",
                                 }}
@@ -61,7 +64,7 @@ export function BlogSection() {
                                 </div>
                             </div>
 
-                            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-end p-6 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div className="absolute inset-x-0 bottom-0 z-30 flex h-32 items-end bg-linear-to-t from-black/90 via-black/40 to-transparent p-6 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                                 <div className="flex flex-wrap gap-2">
                                     {blog.tags?.slice(0, 3).map((tag) => (
                                         <span
@@ -76,23 +79,23 @@ export function BlogSection() {
                         </CardMediaBackdrop>
 
                         <div className="p-8 flex flex-col flex-1">
-                            <h3 className="text-xl font-bold text-black dark:text-white mb-4 line-clamp-2 leading-tight group-hover:text-blue-500 transition-colors">
+                            <h3 className="mb-4 line-clamp-2 text-xl font-semibold leading-tight tracking-tight text-zinc-950 transition-colors group-hover:text-blue-500 dark:text-white">
                                 {blog.title}
                             </h3>
-                            <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-8 line-clamp-3">
+                            <p className="mb-8 line-clamp-3 text-sm leading-7 text-zinc-600 dark:text-zinc-400 md:text-[15px]">
                                 {blog.brief}
                             </p>
 
                             <div className="mt-auto pt-6 border-t border-zinc-100 dark:border-zinc-800/50 flex items-center justify-between">
                                 <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-500">
                                     <Calendar className="w-4 h-4" />
-                                    <span className="text-xs font-bold uppercase tracking-widest">{formatDate(blog.publishedAt)}</span>
+                                    <span className="text-[11px] font-semibold uppercase tracking-[0.18em]">{formatDate(blog.publishedAt)}</span>
                                 </div>
                                 <Link
                                     href={blog.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 text-sm font-black text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-all group"
+                                    className="group flex items-center gap-2 text-sm font-semibold text-black transition-all hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
                                 >
                                     <span>Read More</span>
                                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
