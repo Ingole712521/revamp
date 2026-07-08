@@ -16,7 +16,6 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
   }, []);
 
   useEffect(() => {
-    // Auto-complete after 4 seconds (matching video duration)
     const timer = setTimeout(() => {
       onLoadingComplete();
     }, 4000);
@@ -27,7 +26,7 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
   if (!isClient) {
     return (
       <div className="fixed inset-0 z-50 bg-zinc-950 flex items-center justify-center">
-        <div className="text-white text-xl font-bold">Loading...</div>
+        <div className="text-white text-xl font-bold"></div>
       </div>
     );
   }
