@@ -27,7 +27,6 @@ export function RemotionLoading() {
     { extrapolateRight: "clamp" }
   );
 
-  // Role reveal animation
   const roleOpacity = interpolate(
     frame,
     [20, 40, 60],

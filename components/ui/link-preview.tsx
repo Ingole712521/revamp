@@ -9,7 +9,6 @@ import {
   useMotionValue,
   useSpring,
 } from "motion/react";
-
 import { cn } from "@/lib/utils";
 
 type LinkPreviewProps = {
@@ -55,18 +54,14 @@ export const LinkPreview = ({
   }
 
   const [isOpen, setOpen] = React.useState(false);
-
   const [isMounted, setIsMounted] = React.useState(false);
-
   React.useEffect(() => {
     setIsMounted(true);
   }, []);
 
   const springConfig = { stiffness: 100, damping: 15 };
   const x = useMotionValue(0);
-
   const translateX = useSpring(x, springConfig);
-
   const handleMouseMove = (event: any) => {
     const targetRect = event.target.getBoundingClientRect();
     const eventOffsetX = event.clientX - targetRect.left;
