@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { GmailRedirectProvider } from "@/components/gmail-redirect-provider";
 import { LenisProvider } from "@/components/lenis-provider";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { StructuredData } from "@/components/structured-data";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import {
@@ -150,6 +151,7 @@ export default function RootLayout({
           </LenisProvider>
         </ThemeProvider>
         <Analytics />
+        <SpeedInsights />
         <GoogleAnalytics />
       </body>
     </html>
