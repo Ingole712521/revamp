@@ -128,8 +128,8 @@ export const RESUME = {
         },
         {
             company: "Alief View Media Group",
-            title: "React Developer (Freelancer)",
-            duration: "Mar 2024 – Sep 2024",
+            title: "Software Developer",
+            duration: "April 2024 – December 2024",
             location: "Remote (India)",
             website: "https://alifviewmedia.com/",
             points: [
