@@ -18,22 +18,24 @@ import { ContactSection } from "@/components/contact-section";
 import { ResumeModal } from "@/components/resume-modal";
 import { HashScroll } from "@/components/hash-scroll";
 import { LoadingScreen } from "@/components/loading-screen";
-import { hasSplashCompleted, markSplashCompleted } from "@/lib/splash-session";
-import { useLayoutEffect, useState } from "react";
+import {
+  hasSplashCompleted,
+  markSplashCompleted,
+  subscribeSplash,
+} from "@/lib/splash-session";
+import { useState, useSyncExternalStore } from "react";
 
 export default function Home() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(() => !hasSplashCompleted());
-
-  useLayoutEffect(() => {
-    if (hasSplashCompleted()) {
-      setIsLoading(false);
-    }
-  }, []);
+  const splashCompleted = useSyncExternalStore(
+    subscribeSplash,
+    hasSplashCompleted,
+    () => false,
+  );
+  const isLoading = !splashCompleted;
 
   const handleLoadingComplete = () => {
     markSplashCompleted();
-    setIsLoading(false);
   };
 
   if (isLoading) {
