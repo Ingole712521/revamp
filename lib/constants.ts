@@ -322,7 +322,7 @@ export const EXPERIENCES = [
         title: "Software Developer",
         company: "Alief View Media Group",
         logo: "/alifview-logo.png",
-        duration: "April 2024 - December 2024",
+        duration: "April 2023 - December 2024",
         location: "Remote (India)",
         description: "Spearheaded full-site development from concept to deployment, ensuring seamless UX across devices.",
         techStack: ["React", "TypeScript", "Tailwind CSS", "Figma", "GSAP"],
