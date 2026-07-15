@@ -129,7 +129,7 @@ export const RESUME = {
         {
             company: "Alief View Media Group",
             title: "Software Developer",
-            duration: "April 2024 – December 2024",
+            duration: "April 2023 – December 2024",
             location: "Remote (India)",
             website: "https://alifviewmedia.com/",
             points: [
