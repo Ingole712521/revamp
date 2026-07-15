@@ -299,7 +299,7 @@ export const BIO = [
 
 export const EXPERIENCES = [
     {
-        title: "Jr React Developer",
+        title: "Software Developer",
         company: "Kshan Tech Soft Pvt Ltd",
         logo: "/kshansofttech.png",
         duration: "Jan 2025 - Present",
@@ -319,10 +319,10 @@ export const EXPERIENCES = [
         }
     },
     {
-        title: "React Developer (Freelancer)",
+        title: "Software Developer",
         company: "Alief View Media Group",
         logo: "/alifview-logo.png",
-        duration: "March 2024 - Sept 2024",
+        duration: "April 2024 - December 2024",
         location: "Remote (India)",
         description: "Spearheaded full-site development from concept to deployment, ensuring seamless UX across devices.",
         techStack: ["React", "TypeScript", "Tailwind CSS", "Figma", "GSAP"],
