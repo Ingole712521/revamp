@@ -40,7 +40,7 @@ export function ExperienceSection() {
                         initial={{ opacity: 1 }}
                         className="mb-4"
                     >
-                        <ExperienceCard exp={exp} />
+                        <ExperienceCard exp={exp} defaultExpanded={idx === 0} />
                     </motion.div>
                 ))}
             </div>
@@ -149,8 +149,8 @@ function VideoWithSocialLinks() {
     );
 }
 
-function ExperienceCard({ exp }: { exp: any }) {
-    const [isExpanded, setIsExpanded] = useState(false);
+function ExperienceCard({ exp, defaultExpanded = false }: { exp: any; defaultExpanded?: boolean }) {
+    const [isExpanded, setIsExpanded] = useState(defaultExpanded);
     const { resolvedTheme } = useTheme();
 
     const logoSrc =
