@@ -208,6 +208,16 @@ export const PROJECTS = [
         tags: ["Next.js 14", "TypeScript", "React", "Tailwind CSS", "pdf-parse", "OpenRouter", "react-markdown", "@react-pdf/renderer", "Vercel"]
     },
     {
+        id: 9,
+        name: "EMQX on AWS",
+        description:
+            "Terraform-managed MQTT cluster that serves 300K concurrent users in a single go, with NLB, auto-scaled replicants, and full deploy/verify/load-test automation.",
+        image:
+            "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+        link: "https://app.notion.com/p/EMQX-AWS-Deployment-Proof-Demo-377ac888d27580438dd8e14545a7b471",
+        tags: ["Terraform", "AWS", "EMQX 5.8", "MQTT", "NLB", "Python", "Ubuntu"]
+    },
+    {
         id: 1,
         name: "HLS Adaptive Bitrate Streaming With AWS",
         description: "Deployed a High-Level Streaming (HLS) solution using Docker and Amazon Web Services (AWS) for optimized video delivery.",
