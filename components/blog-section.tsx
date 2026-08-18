@@ -113,7 +113,7 @@ export function BlogSection() {
                     rel="noopener noreferrer"
                     className="px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-2xl font-black text-sm uppercase tracking-widest shadow-xl hover:shadow-blue-500/20 transition-all hover:-translate-y-1 active:scale-95 flex items-center gap-3 border border-zinc-800 dark:border-zinc-200"
                 >
-                    <span>Show all blogs</span>
+                    <span>See Other 80+ Blogs</span>
                     <ExternalLink className="w-4 h-4" />
                 </Link>
             </div>
