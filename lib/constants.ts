@@ -177,6 +177,25 @@ export const SKILLS_CATEGORIES = [
 
 export const PROJECTS = [
     {
+        id: 8,
+        name: "AI Workspace",
+        description:
+            "An AI-powered infinite whiteboard. Draw, chat with an assistant, and turn a topic or a rough sketch into a clean beginner-friendly mindmap — all in one screen, with no login.",
+        image: "/01-empty-canvas.png",
+        link: "https://a-icanvas.vercel.app/",
+        caseStudyLink:
+            "https://forest-breath-f27.notion.site/AI-Workspace-Complete-Project-Documentation-3c0ac888d27581219ffbfd8c82e00984",
+        tags: [
+            "Next.js 16",
+            "React 19",
+            "TypeScript",
+            "Tailwind CSS 4",
+            "OpenRouter",
+            "Docker",
+            "Docker Compose",
+        ],
+    },
+    {
         id: 7,
         name: "PDF2Notes Pro",
         description:

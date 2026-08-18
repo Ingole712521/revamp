@@ -14,7 +14,7 @@ export type ProjectCardItem = {
     name: string;
     description: string;
     image: string;
-    link: string;
+    link?: string;
     caseStudyLink?: string;
     videoUrl?: string;
     tags: string[];
@@ -47,7 +47,9 @@ export function ProjectCard({ project, idx }: { project: ProjectCardItem; idx: n
     };
 
     const handleCardClick = () => {
-        window.open(project.link, '_blank');
+        if (project.link) {
+            window.open(project.link, "_blank");
+        }
     };
 
     return (
@@ -60,7 +62,7 @@ export function ProjectCard({ project, idx }: { project: ProjectCardItem; idx: n
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             onClick={handleCardClick}
-            className="group relative bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 rounded-2xl overflow-hidden hover:border-zinc-300 dark:hover:border-zinc-700 transition-all cursor-pointer flex flex-col h-full"
+            className={`group relative bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 rounded-2xl overflow-hidden hover:border-zinc-300 dark:hover:border-zinc-700 transition-all flex flex-col h-full ${project.link || project.caseStudyLink ? "cursor-pointer" : ""}`}
         >
             <CardMediaBackdrop className="h-64 w-full p-6 group/image">
                 <div
@@ -137,7 +139,9 @@ export function ProjectCard({ project, idx }: { project: ProjectCardItem; idx: n
                     </div>
                 )}
 
+                {(project.link || project.caseStudyLink) && (
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4 z-40">
+                    {project.link && (
                     <Link
                         href={project.link}
                         target="_blank"
@@ -148,6 +152,7 @@ export function ProjectCard({ project, idx }: { project: ProjectCardItem; idx: n
                     >
                         <ExternalLink className="w-5 h-5" />
                     </Link>
+                    )}
                     {project.caseStudyLink && (
                         <Link
                             href={project.caseStudyLink}
@@ -161,6 +166,7 @@ export function ProjectCard({ project, idx }: { project: ProjectCardItem; idx: n
                         </Link>
                     )}
                 </div>
+                )}
             </CardMediaBackdrop>
             <div className="flex flex-1 flex-col gap-4 p-6">
                 <h3 className="text-xl font-semibold leading-tight tracking-tight text-zinc-950 dark:text-white md:text-[1.35rem]">
@@ -171,16 +177,20 @@ export function ProjectCard({ project, idx }: { project: ProjectCardItem; idx: n
                 </p>
                 {project.caseStudyLink && (
                     <div className="flex flex-wrap items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.18em]">
-                        <Link
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-600 hover:underline dark:text-blue-400"
-                            onClick={(e) => e.stopPropagation()}
-                        >
-                            Live site
-                        </Link>
-                        <span className="text-zinc-300 dark:text-zinc-700">·</span>
+                        {project.link && (
+                            <>
+                                <Link
+                                    href={project.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-blue-600 hover:underline dark:text-blue-400"
+                                    onClick={(e) => e.stopPropagation()}
+                                >
+                                    Live site
+                                </Link>
+                                <span className="text-zinc-300 dark:text-zinc-700">·</span>
+                            </>
+                        )}
                         <Link
                             href={project.caseStudyLink}
                             target="_blank"
