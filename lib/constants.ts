@@ -177,6 +177,18 @@ export const SKILLS_CATEGORIES = [
 
 export const PROJECTS = [
     {
+        id: 7,
+        name: "PDF2Notes Pro",
+        description:
+            "Turns a General Studies PDF into UPSC Mains Q&A revision notes and a downloadable A4 PDF. Upload a PDF, generate structured notes with answer frameworks, data tables, memory cues, and flowcharts, then export them for quick revision.",
+        image:
+            "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=80",
+        link: "https://generate-notes.vercel.app/",
+        caseStudyLink:
+            "https://forest-breath-f27.notion.site/How-PDF2Notes-Pro-Turns-a-GS-PDF-Into-UPSC-Mains-Notes-3c0ac888d27581eaae3ff77a473a8607",
+        tags: ["Next.js 14", "TypeScript", "React", "Tailwind CSS", "pdf-parse", "OpenRouter", "react-markdown", "@react-pdf/renderer", "Vercel"]
+    },
+    {
         id: 1,
         name: "HLS Adaptive Bitrate Streaming With AWS",
         description: "Deployed a High-Level Streaming (HLS) solution using Docker and Amazon Web Services (AWS) for optimized video delivery.",

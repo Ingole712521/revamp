@@ -5,7 +5,7 @@ import { ProjectPlaceholder } from "@/components/project-placeholder";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, FileText } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
 
@@ -15,6 +15,7 @@ export type ProjectCardItem = {
     description: string;
     image: string;
     link: string;
+    caseStudyLink?: string;
     videoUrl?: string;
     tags: string[];
     imageFit?: "cover" | "contain";
@@ -140,11 +141,25 @@ export function ProjectCard({ project, idx }: { project: ProjectCardItem; idx: n
                     <Link
                         href={project.link}
                         target="_blank"
+                        rel="noopener noreferrer"
+                        title="Open live site"
                         className="p-3 bg-white rounded-full text-black hover:scale-110 transition-transform shadow-xl"
                         onClick={(e) => e.stopPropagation()}
                     >
                         <ExternalLink className="w-5 h-5" />
                     </Link>
+                    {project.caseStudyLink && (
+                        <Link
+                            href={project.caseStudyLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="Read write-up"
+                            className="p-3 bg-white rounded-full text-black hover:scale-110 transition-transform shadow-xl"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <FileText className="w-5 h-5" />
+                        </Link>
+                    )}
                 </div>
             </CardMediaBackdrop>
             <div className="flex flex-1 flex-col gap-4 p-6">
@@ -154,6 +169,29 @@ export function ProjectCard({ project, idx }: { project: ProjectCardItem; idx: n
                 <p className="flex-1 text-sm leading-7 text-zinc-600 dark:text-zinc-300 md:text-[15px]">
                     {project.description}
                 </p>
+                {project.caseStudyLink && (
+                    <div className="flex flex-wrap items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.18em]">
+                        <Link
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-600 hover:underline dark:text-blue-400"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            Live site
+                        </Link>
+                        <span className="text-zinc-300 dark:text-zinc-700">·</span>
+                        <Link
+                            href={project.caseStudyLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-zinc-600 hover:underline dark:text-zinc-300"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            Write-up
+                        </Link>
+                    </div>
+                )}
                 <div className="mt-auto flex flex-wrap items-center gap-2 border-t border-zinc-200 pt-3 dark:border-zinc-800">
                     <span className="pr-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-500 dark:text-zinc-400">
                         Stack
