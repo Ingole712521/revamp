@@ -228,14 +228,6 @@ export const PROJECTS = [
         tags: ["AWS", "Docker", "HLS", "S3"]
     },
     {
-        id: 2,
-        name: "Simplifying Docker Management",
-        description: "Explored Portainer CE to streamline container management, resource monitoring, and deployment workflows.",
-        image: "/dockerPontaner.png",
-        link: "https://learnwithnehal.hashnode.dev/simplifying-docker-management-with-portainer-ce",
-        tags: ["Docker", "Portainer", "DevOps"]
-    },
-    {
         id: 3,
         name: "CI/CD on ECR and Docker",
         description: "Automated Docker container uploads to AWS ECR using GitHub Actions, boosting deployment efficiency.",
@@ -251,15 +243,15 @@ export const PROJECTS = [
         link: "https://www.linkedin.com/posts/nehal-ingole_document-activity-7178789372949897216-h1FK",
         tags: ["Ansible", "Automation", "IAAC"]
     },
-    {
-        id: 5,
-        name: "Docker Deployment on GCP Using Terraform",
-        description: "Deployed a Docker environment on Google Cloud Platform using Terraform, achieving efficient resource provisioning and management for scalable applications.",
-        videoUrl: "https://www.youtube.com/embed/VkoHykQrWOY?autoplay=1&mute=1&controls=0&loop=1&playlist=VkoHykQrWOY",
-        image: "/terraform.png",
-        link: "https://www.linkedin.com/posts/nehal-ingole_terraform-docker-googlecloud-activity-7187755010640801792-4rFl?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC508FUBuGfTDjOmT3MnzkFrrqilcF1xhAw",
-        tags: ["Docker", "Terraform", "IAAC", "GCP", "Ubuntu"]
-    },
+    // {
+    //     id: 5,
+    //     name: "Docker Deployment on GCP Using Terraform",
+    //     description: "Deployed a Docker environment on Google Cloud Platform using Terraform, achieving efficient resource provisioning and management for scalable applications.",
+    //     videoUrl: "https://www.youtube.com/embed/VkoHykQrWOY?autoplay=1&mute=1&controls=0&loop=1&playlist=VkoHykQrWOY",
+    //     image: "/terraform.png",
+    //     link: "https://www.linkedin.com/posts/nehal-ingole_terraform-docker-googlecloud-activity-7187755010640801792-4rFl?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC508FUBuGfTDjOmT3MnzkFrrqilcF1xhAw",
+    //     tags: ["Docker", "Terraform", "IAAC", "GCP", "Ubuntu"]
+    // },
     {
         id: 6,
         name: "Own Github Repository Using AWS",
