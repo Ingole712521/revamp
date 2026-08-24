@@ -126,18 +126,36 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    /* Subtle grid + glow background for a more “designed” feel. */
+    background-image:
+      radial-gradient(ellipse at top, rgba(168, 85, 247, 0.12) 0%, transparent 55%),
+      linear-gradient(rgba(100, 116, 139, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(100, 116, 139, 0.07) 1px, transparent 1px);
+    background-size: auto, 32px 32px, 32px 32px;
+    background-position: center, center, center;
   }
   h1 {
-    @apply text-5xl md:text-7xl font-black tracking-tight leading-[1.1];
+    /* Lighter + smaller base headings.
+       Components already use Tailwind classes where needed. */
+    @apply text-3xl md:text-4xl font-semibold tracking-[-0.02em] leading-[1.15];
+    font-family: var(--font-serif), ui-serif, Georgia, "Times New Roman", Times,
+      serif;
   }
   h2 {
-    @apply text-4xl md:text-5xl font-black tracking-tighter uppercase leading-none;
+    @apply text-xl md:text-2xl font-semibold tracking-[-0.01em] leading-[1.2];
+    font-family: var(--font-serif), ui-serif, Georgia, "Times New Roman", Times,
+      serif;
   }
   h3 {
-    @apply text-2xl md:text-3xl font-black tracking-tight leading-none;
+    @apply text-lg md:text-xl font-semibold tracking-[-0.01em] leading-[1.2];
+    font-family: var(--font-serif), ui-serif, Georgia, "Times New Roman", Times,
+      serif;
   }
   p {
-    @apply text-base md:text-lg leading-relaxed text-zinc-700 dark:text-zinc-300;
+    /* Hero/section text often relies on this default. */
+    @apply text-[15px] md:text-base leading-[1.65] text-zinc-700 dark:text-zinc-300;
   }
   section[id],
   [id].scroll-mt-28 {
@@ -146,7 +164,15 @@
 }
 
 .section-container {
-  @apply w-full max-w-4xl mx-auto px-6 py-12 md:py-16 border-x border-zinc-200/50 dark:border-zinc-800/30 bg-white/30 dark:bg-black/20;
+  /* Reduce "bulky" feel: less vertical padding + less opaque background. */
+  @apply w-full max-w-4xl mx-auto px-6 py-10 md:py-12 border-x border-zinc-200/40 dark:border-zinc-800/30 bg-white/20 dark:bg-black/20 backdrop-blur-sm shadow-[0_0_40px_rgba(0,0,0,0.03)];
+}
+
+.dark body {
+  background-image:
+    radial-gradient(ellipse at top, rgba(168, 85, 247, 0.18) 0%, transparent 55%),
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
 }
 
 @keyframes meteor {
