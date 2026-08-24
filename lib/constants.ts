@@ -8,14 +8,15 @@ export const NAVIGATION_LINKS = [
 ];
 
 export const INDEX_LINKS = [
-    { id: "bio", label: "About", href: "/#bio" },
-    { id: "contact", label: "Contact", href: "/#contact" },
-    { id: "projects", label: "Projects", href: "/#projects" },
-    { id: "proof-of-work", label: "Shipped", href: "/#proof-of-work" },
+    { id: "home", label: "Home", href: "/#home" },
     { id: "work", label: "Experience", href: "/#work" },
+    { id: "proof-of-work", label: "Shipped", href: "/#proof-of-work" },
+    { id: "projects", label: "Projects", href: "/#projects" },
+    { id: "bio", label: "About", href: "/#bio" },
     { id: "skills", label: "Skills", href: "/#skills" },
-    { id: "blogs", label: "Writing", href: "/#blogs" },
     { id: "github", label: "GitHub", href: "/#github" },
+    { id: "blogs", label: "Writing", href: "/#blogs" },
+    { id: "contact", label: "Contact", href: "/#contact" },
 ];
 
 export type FooterLink = {

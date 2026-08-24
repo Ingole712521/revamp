@@ -1,73 +1,85 @@
 "use client";
 
 import { INDEX_LINKS } from "@/lib/constants";
+import { useLenis } from "lenis/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+const MARKER = 128;
+
 export function SectionIndex() {
     const [activeId, setActiveId] = useState(INDEX_LINKS[0]?.id ?? "");
+    const lenis = useLenis();
 
     useEffect(() => {
-        const ids = INDEX_LINKS.map((item) => item.id).filter(Boolean);
-        const elements = ids
-            .map((id) => document.getElementById(id))
-            .filter((el): el is HTMLElement => Boolean(el));
+        const ids = INDEX_LINKS.map((item) => item.id);
 
-        if (elements.length === 0) return;
+        const updateActive = () => {
+            const elements = ids
+                .map((id) => document.getElementById(id))
+                .filter((el): el is HTMLElement => Boolean(el));
 
-        const observer = new IntersectionObserver(
-            (entries) => {
-                const visible = entries
-                    .filter((entry) => entry.isIntersecting)
-                    .sort(
-                        (a, b) =>
-                            b.intersectionRatio - a.intersectionRatio,
-                    );
-                if (visible[0]?.target.id) {
-                    setActiveId(visible[0].target.id);
+            if (elements.length === 0) return;
+
+            let current = elements[0].id;
+            for (const el of elements) {
+                if (el.getBoundingClientRect().top - MARKER <= 0) {
+                    current = el.id;
                 }
-            },
-            {
-                rootMargin: "-20% 0px -60% 0px",
-                threshold: [0.15, 0.35, 0.6],
-            },
-        );
+            }
+            setActiveId(current);
+        };
 
-        elements.forEach((el) => observer.observe(el));
-        return () => observer.disconnect();
-    }, []);
+        updateActive();
+
+        if (!lenis) {
+            window.addEventListener("scroll", updateActive, { passive: true });
+            return () => window.removeEventListener("scroll", updateActive);
+        }
+
+        lenis.on("scroll", updateActive);
+        return () => {
+            lenis.off("scroll", updateActive);
+        };
+    }, [lenis]);
 
     return (
-        <aside className="pointer-events-none fixed top-1/2 right-5 z-40 hidden -translate-y-1/2 xl:block">
+        <aside className="pointer-events-none absolute top-8 left-[calc(50%+29rem)] hidden h-[calc(100%-2rem)] w-32 xl:block">
             <nav
                 aria-label="Page index"
-                className="pointer-events-auto w-36"
+                className="pointer-events-auto sticky top-28"
             >
-                <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.28em] text-zinc-500">
+                <p className="mb-4 text-[10px] font-medium uppercase tracking-[0.28em] text-zinc-500">
                     Index
                 </p>
-                <ul className="space-y-2">
+                <ul className="space-y-2.5">
                     {INDEX_LINKS.map((item) => {
                         const isActive = activeId === item.id;
                         return (
                             <li key={item.href}>
                                 <Link
                                     href={item.href}
-                                    className={`flex items-center gap-2 text-[13px] transition-colors ${
+                                    className={`grid grid-cols-[1.25rem_minmax(0,1fr)] items-center text-[13px] leading-none transition-colors ${
                                         isActive
-                                            ? "text-zinc-950 dark:text-white"
+                                            ? "font-medium text-zinc-950 dark:text-white"
                                             : "text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200"
                                     }`}
                                 >
                                     <span
-                                        className={`h-px shrink-0 transition-all ${
-                                            isActive
-                                                ? "w-4 bg-zinc-950 dark:bg-white"
-                                                : "w-2 bg-zinc-400 dark:bg-zinc-600"
-                                        }`}
+                                        className="flex h-px w-5 justify-start"
                                         aria-hidden
-                                    />
-                                    {item.label}
+                                    >
+                                        <span
+                                            className={`h-px transition-all duration-200 ${
+                                                isActive
+                                                    ? "w-5 bg-zinc-950 dark:bg-white"
+                                                    : "w-2.5 bg-zinc-500 dark:bg-zinc-600"
+                                            }`}
+                                        />
+                                    </span>
+                                    <span className="whitespace-nowrap">
+                                        {item.label}
+                                    </span>
                                 </Link>
                             </li>
                         );

@@ -48,7 +48,6 @@ export default function Home() {
       <HashScroll enabled={!isLoading} />
       <CustomCursor />
       <Oneko />
-      <SectionIndex />
       <ResumeModal
         isOpen={isResumeOpen}
         onClose={() => setIsResumeOpen(false)}
@@ -59,16 +58,19 @@ export default function Home() {
         navItems={NAVIGATION_LINKS}
         className="flex-1"
       >
-        <div className="flex w-full max-w-4xl flex-col items-stretch">
-          <HeroSection onResumeClick={() => setIsResumeOpen(true)} />
-          <AboutSection />
-          <ContactSection onResumeClick={() => setIsResumeOpen(true)} />
-          <ProjectsSection />
-          <ProofOfWorkSection />
-          <ExperienceSection />
-          <GithubActivity />
-          <BlogSection />
-          <QuotesSection />
+        <div className="relative mx-auto w-full max-w-7xl">
+          <div className="mx-auto flex w-full max-w-4xl flex-col items-stretch">
+            <HeroSection onResumeClick={() => setIsResumeOpen(true)} />
+            <ExperienceSection />
+            <ProofOfWorkSection />
+            <ProjectsSection />
+            <AboutSection />
+            <GithubActivity />
+            <BlogSection />
+            <QuotesSection />
+            <ContactSection onResumeClick={() => setIsResumeOpen(true)} />
+          </div>
+          <SectionIndex />
         </div>
       </Lamphome>
       <Footer />
