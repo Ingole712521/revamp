@@ -2,13 +2,20 @@ import type { ProjectCardItem } from "@/components/project-card";
 
 export const NAVIGATION_LINKS = [
     { label: "Home", href: "/" },
-    { label: "View Video", href: "/video" },
-    { label: "Proof of Work", href: "/#proof-of-work" },
     { label: "Projects", href: "/#projects" },
-    { label: "Bio", href: "/#bio" },
-    { label: "Skills", href: "/#skills" },
-    { label: "Work", href: "/#work" },
+    { label: "Experience", href: "/#work" },
     { label: "Contact", href: "/#contact" },
+];
+
+export const INDEX_LINKS = [
+    { id: "bio", label: "About", href: "/#bio" },
+    { id: "contact", label: "Contact", href: "/#contact" },
+    { id: "projects", label: "Projects", href: "/#projects" },
+    { id: "proof-of-work", label: "Shipped", href: "/#proof-of-work" },
+    { id: "work", label: "Experience", href: "/#work" },
+    { id: "skills", label: "Skills", href: "/#skills" },
+    { id: "blogs", label: "Writing", href: "/#blogs" },
+    { id: "github", label: "GitHub", href: "/#github" },
 ];
 
 export type FooterLink = {
@@ -30,13 +37,23 @@ export const FOOTER_NAV: FooterLink[] = [
 ];
 
 export const HERO = {
-    name: "Nehal Ingole ",
+    name: "Nehal Ingole",
     greet: "Hi, I'm Nehal Ingole",
-    role: "Frontend Developer |  DevOps Engineer",
+    role: "Frontend Developer & DevOps Engineer",
     description:
-        "focused on cloud automation, stylish development, and high-performance systems. Passionate about Docker, AWS, and building minimalist technical aesthetics.",
+        "I build high-performance interfaces and the cloud systems that keep them shipping. Docker, AWS, and a preference for quiet, precise engineering.",
     avatar: "/image (3).jpg",
+    banner:
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80",
+    location: "Pune, India",
 };
+
+export const ABOUT_SNAPSHOT = [
+    "Shipping product, not just tickets",
+    "Cloud automation on AWS and Docker",
+    "80+ technical posts on Hashnode",
+    "Open-source work on Kestra",
+];
 
 export type PortfolioVideo = {
     id: string;
@@ -179,6 +196,9 @@ export const PROJECTS = [
     {
         id: 8,
         name: "AI Workspace",
+        category: "Fullstack" as const,
+        live: true,
+        featured: true,
         description:
             "An AI-powered infinite whiteboard. Draw, chat with an assistant, and turn a topic or a rough sketch into a clean beginner-friendly mindmap — all in one screen, with no login.",
         image: "/01-empty-canvas.png",
@@ -198,6 +218,9 @@ export const PROJECTS = [
     {
         id: 7,
         name: "PDF2Notes Pro",
+        category: "Frontend" as const,
+        live: true,
+        featured: true,
         description:
             "Turns a General Studies PDF into UPSC Mains Q&A revision notes and a downloadable A4 PDF. Upload a PDF, generate structured notes with answer frameworks, data tables, memory cues, and flowcharts, then export them for quick revision.",
         image:
@@ -210,6 +233,9 @@ export const PROJECTS = [
     {
         id: 9,
         name: "EMQX on AWS",
+        category: "DevOps" as const,
+        live: false,
+        featured: true,
         description:
             "Terraform-managed MQTT cluster that serves 300K concurrent users in a single go, with NLB, auto-scaled replicants, and full deploy/verify/load-test automation.",
         image:
@@ -220,6 +246,9 @@ export const PROJECTS = [
     {
         id: 1,
         name: "HLS Adaptive Bitrate Streaming With AWS",
+        category: "DevOps" as const,
+        live: false,
+        featured: false,
         description: "Deployed a High-Level Streaming (HLS) solution using Docker and Amazon Web Services (AWS) for optimized video delivery.",
         image: "/webpratice.png",
         link: "https://www.linkedin.com/posts/nehal-ingole_streaming-videostreaming-docker-activity-7207360568955924481--ZGI",
@@ -230,6 +259,9 @@ export const PROJECTS = [
     {
         id: 3,
         name: "CI/CD on ECR and Docker",
+        category: "DevOps" as const,
+        live: false,
+        featured: false,
         description: "Automated Docker container uploads to AWS ECR using GitHub Actions, boosting deployment efficiency.",
         image: "/ECR.png",
         link: "https://www.linkedin.com/posts/nehal-ingole_githubactions-aws-ecr-activity-7183878521130217474-oS8C",
@@ -238,6 +270,9 @@ export const PROJECTS = [
     {
         id: 4,
         name: "Ansible Server Automation",
+        category: "DevOps" as const,
+        live: false,
+        featured: false,
         description: "Simplified server management through Ansible playbooks, inventory management, and automated service deployments.",
         image: "/ansible.png",
         link: "https://www.linkedin.com/posts/nehal-ingole_document-activity-7178789372949897216-h1FK",
@@ -255,6 +290,9 @@ export const PROJECTS = [
     {
         id: 6,
         name: "Own Github Repository Using AWS",
+        category: "DevOps" as const,
+        live: false,
+        featured: false,
         description: "Deployed a Docker environment on Google Cloud Platform using Terraform, achieving efficient resource provisioning and management for scalable applications.",
         videoUrl: "https://www.youtube.com/embed/Xu9RLiXOa5k?autoplay=1&mute=1&loop=1&playlist=Xu9RLiXOa5k",
         image: "/github.png",
@@ -271,7 +309,9 @@ export const PROOF_OF_WORK: ProjectCardItem[] = [
             "An AI-powered GitHub Pull Request reviewer: when a PR is opened or updated, a webhook queues a review job, a worker fetches the diff, and gpt-5.3-codex (via OpenRouter) posts inline comments for bugs, security issues, performance problems, error handling, and logic errors",
         image: "/revio.png",
         link: "https://ai-code-reviwer-web.vercel.app/",
-        tags: ["Working", "GitHub App", "Next.js", "OpenRouter", "Clean Architecture", "TypeScript"]
+        tags: ["Working", "GitHub App", "Next.js", "OpenRouter", "Clean Architecture", "TypeScript"],
+        live: true,
+        featured: true,
     },
     {
         id: "pow-kestra",
@@ -280,7 +320,9 @@ export const PROOF_OF_WORK: ProjectCardItem[] = [
             "Merged fix for blueprint tags not resetting when navigating away from the Blueprints Browser; tag filters now stay aligned with the URL on return (#14965).",
         image: "https://cdn.simpleicons.org/kestra/6366F1",
         link: "https://github.com/kestra-io/kestra/pull/15043",
-        tags: ["Open Source", "Vue", "Frontend"]
+        tags: ["Open Source", "Vue", "Frontend"],
+        live: true,
+        featured: true,
     },
     {
         id: "pow-alif",
@@ -291,6 +333,8 @@ export const PROOF_OF_WORK: ProjectCardItem[] = [
         link: "https://alifviewmedia.com/",
         tags: ["React", "Tailwind CSS", "EmailJS", "Adobe"],
         imageFit: "contain",
+        live: true,
+        featured: false,
     },
     {
         id: "pow-rsquaree",
@@ -299,7 +343,9 @@ export const PROOF_OF_WORK: ProjectCardItem[] = [
             "Creative studio and marketing partner site: we help brands across every industry grow through thoughtful design and results-driven marketing.",
         image: "/rsquaree.png",
         link: "https://www.rsquaree.com/",
-        tags: ["React", "Tailwind CSS", "Marketing", "Design"]
+        tags: ["React", "Tailwind CSS", "Marketing", "Design"],
+        live: true,
+        featured: false,
     },
     {
         id: "pow-animioui",
@@ -308,7 +354,9 @@ export const PROOF_OF_WORK: ProjectCardItem[] = [
             "Ship faster than ever with a library designed for speed, performance, and cutting-edge aesthetics.",
         image: "/componentLibrary.png",
         link: "https://www.animioui.in/",
-        tags: ["Next.js", "Git", "Motion", "Tailwind CSS"]
+        tags: ["Next.js", "Git", "Motion", "Tailwind CSS"],
+        live: true,
+        featured: false,
     },
     {
         id: "pow-emotion",
@@ -320,14 +368,16 @@ export const PROOF_OF_WORK: ProjectCardItem[] = [
         link: "https://emotion-app-roan.vercel.app/",
         videoUrl:
             "https://www.youtube.com/embed/4_ue3T4wBx4?autoplay=1&mute=1&controls=0&loop=1&playlist=4_ue3T4wBx4",
-        tags: ["Next.js", "TypeScript", "Tailwind CSS", "OpenRouter", "Privacy"]
+        tags: ["Next.js", "TypeScript", "Tailwind CSS", "OpenRouter", "Privacy"],
+        live: true,
+        featured: false,
     }
 ];
 
 export const BIO = [
-    "I graduated from Government College of Engineering, Karad, in 2023, establishing a strong foundation in full-stack engineering and DevOps.",
-    "With a proven track record on AWS and expertise in Docker orchestration, I excel in automating and securing cloud environments.",
-    "I have authored over 72 blog posts, sharing insights on DevOps methodologies and modern development practices."
+    "I am a full-stack engineer who treats frontend craft and infrastructure as one job. Interfaces should feel inevitable; the pipelines behind them should be boring in the best way.",
+    "I graduated from Government College of Engineering, Karad in 2023. Since then I have shipped React and Next.js products, automated AWS and Docker environments, and written about the work in public.",
+    "I currently build automation and internal tools at Kshan Tech Soft in Pune — testing auth, hardening deploys, and keeping documentation close to the code.",
 ];
 
 export const EXPERIENCES = [

@@ -63,13 +63,14 @@ export function GithubActivity() {
     }, []);
 
     return (
-        <section id="github" className="section-container border-t border-zinc-100 dark:border-zinc-900">
-            <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <section id="github" className="section-container border-t border-zinc-200/80 dark:border-zinc-800/80">
+            <div className="mb-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
                 <div>
-                    <span className="mb-3 block text-xs font-bold uppercase tracking-[0.28em] text-zinc-500 dark:text-zinc-400">Open Source Signal</span>
-                    <h2 className="text-black dark:text-white">GitHub Activity</h2>
-                    <p className="mt-4 max-w-2xl text-sm leading-7 text-zinc-600 dark:text-zinc-400 md:text-base">
-                        A quick snapshot of consistency, contribution history, and ongoing engineering momentum.
+                    <h2 className="text-balance text-[1.75rem] leading-[1.15] tracking-[-0.02em] text-zinc-950 md:text-[2rem] dark:text-white">
+                        GitHub
+                    </h2>
+                    <p className="mt-3 max-w-[65ch] text-[15px] leading-[1.65] text-zinc-600 dark:text-zinc-400">
+                        Contribution history and a snapshot of shipping cadence.
                     </p>
                 </div>
                 <div className="flex flex-col items-end gap-3">

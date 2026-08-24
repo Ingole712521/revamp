@@ -1,6 +1,7 @@
 "use client"
 
 import { EXPERIENCES, SOCIALS } from "@/lib/constants";
+import { SectionHeading } from "@/components/section-heading";
 import { motion, AnimatePresence } from "motion/react";
 import {
     Briefcase,
@@ -20,26 +21,18 @@ import { useGmailRedirect } from "@/components/gmail-redirect-provider";
 
 export function ExperienceSection() {
     return (
-        <section id="work" className="section-container border-t border-zinc-100 dark:border-zinc-900">
-            <div className="mb-12 text-center md:mb-14">
-                <span className="mb-3 block text-xs font-bold uppercase tracking-[0.28em] text-zinc-500 dark:text-zinc-400">
-                    Career Journey
-                </span>
-                <h2 className="text-balance text-black dark:text-white">
-                    Professional Path
-                </h2>
-                <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-zinc-600 dark:text-zinc-400 md:text-base">
-                    Roles and projects that shaped my approach to frontend engineering, DevOps, and production-ready systems.
-                </p>
-            </div>
+        <section
+            id="work"
+            className="section-container border-t border-zinc-200/80 dark:border-zinc-800/80"
+        >
+            <SectionHeading
+                title="Experience"
+                description="Roles that shaped how I ship frontend, DevOps, and production systems."
+            />
 
-            <div className="space-y-4 px-4 md:px-0">
+            <div className="space-y-4">
                 {EXPERIENCES.map((exp, idx) => (
-                    <motion.div
-                        key={idx}
-                        initial={{ opacity: 1 }}
-                        className="mb-4"
-                    >
+                    <motion.div key={idx} initial={{ opacity: 1 }}>
                         <ExperienceCard exp={exp} defaultExpanded={idx === 0} />
                     </motion.div>
                 ))}

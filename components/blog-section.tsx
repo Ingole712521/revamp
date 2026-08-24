@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { CardMediaBackdrop } from '@/components/card-media-backdrop';
 import { getFeaturedBlogPosts } from '@/lib/blogs';
+import { SectionHeading } from '@/components/section-heading';
 
 const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
@@ -22,34 +23,14 @@ export function BlogSection() {
     return (
         <section
             id="blogs"
-            className="section-container border-t border-zinc-100 dark:border-zinc-900 relative overflow-hidden"
+            className="section-container border-t border-zinc-200/80 dark:border-zinc-800/80"
         >
-            <div
-                aria-hidden
-                className="pointer-events-none absolute -top-40 -left-40 size-96 rounded-full bg-fuchsia-500/20 blur-3xl dark:bg-fuchsia-500/10"
-            />
-            <div
-                aria-hidden
-                className="pointer-events-none absolute top-24 -right-44 size-[28rem] rounded-full bg-cyan-500/15 blur-3xl dark:bg-cyan-500/10"
-            />
-            <div
-                aria-hidden
-                className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-fuchsia-500/40 via-indigo-500/40 to-cyan-500/40 opacity-30 blur-sm"
+            <SectionHeading
+                title="Writing"
+                description="Articles on DevOps, frontend workflows, cloud experiments, and lessons from building in public."
             />
 
-            <div className="relative z-10 mb-12 text-center md:mb-14">
-                <span className="mb-3 block text-xs font-bold uppercase tracking-[0.28em] text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-500 via-indigo-500 to-cyan-400">
-                    Writing &amp; Notes
-                </span>
-                <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-900 via-indigo-600 to-cyan-600 dark:from-white dark:via-indigo-300 dark:to-cyan-300">
-                    Blogs
-                </h2>
-                <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-zinc-600 dark:text-zinc-400 md:text-base">
-                    Articles on DevOps, frontend workflows, cloud experiments, and the lessons that come from building in public.
-                </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
                 {blogs.map((blog, idx) => (
                     <motion.div
                         key={blog.href}

@@ -1,162 +1,91 @@
 "use client";
 
-import { HERO, TECH_STACK, SOCIALS } from "@/lib/constants";
-import { TechBadge } from "@/components/tech-badge";
+import { HERO } from "@/lib/constants";
 import { motion } from "motion/react";
 import Image from "next/image";
-import Link from "next/link";
-import { Github, Linkedin, Mail, Twitter, Youtube, FileText, Send } from "lucide-react";
-import { LinkPreview } from "@/components/ui/link-preview";
-import { TypewriterEffect } from "@/components/ui/typewriter";
-import { useGmailRedirect } from "@/components/gmail-redirect-provider";
+import { FileText, MapPin } from "lucide-react";
 
 export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
     return (
-        <section className="section-container flex flex-col items-center border-t-0 text-center">
+        <section
+            id="home"
+            className="section-container border-t-0 pt-4 md:pt-6"
+        >
             <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-                className="relative mb-8 size-32"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45 }}
+                className="relative -mx-6 overflow-hidden border-y border-zinc-200/70 dark:border-zinc-800/80"
             >
-                <div className="absolute inset-0 animate-pulse rounded-full bg-yellow-400 opacity-20 blur-2xl" />
-                <Image
-                    src={HERO.avatar}
-                    alt={HERO.name}
-                    fill
-                    className="relative z-10 rounded-full border-4 border-zinc-200 object-cover dark:border-zinc-800"
-                />
-                <div className="absolute bottom-2 right-2 z-20 size-4 rounded-full border-2 border-black bg-green-500" />
+                <div className="relative h-44 w-full sm:h-52 md:h-64">
+                    <Image
+                        src={HERO.banner}
+                        alt=""
+                        fill
+                        priority
+                        sizes="(max-width: 896px) 100vw, 896px"
+                        className="object-cover object-center grayscale contrast-[1.05]"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/55 via-black/10 to-transparent dark:from-black/70" />
+                </div>
             </motion.div>
 
-            <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="mb-6 min-h-[40px] text-4xl md:min-h-[48px]"
-            >
-                {HERO.greet}{" "}
-                <span className="text-zinc-600 dark:text-zinc-400">
-                    <TypewriterEffect words={["Frontend Developer", "DevOps Engineer"]} />
-                </span>
-            </motion.h1>
+            <div className="relative z-10 -mt-10 flex flex-col gap-5 sm:-mt-12 sm:flex-row sm:items-end sm:justify-between sm:gap-8">
+                <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.12, duration: 0.45 }}
+                    className="flex items-end gap-4 sm:gap-5"
+                >
+                    <div className="relative size-20 shrink-0 overflow-hidden rounded-xl border-2 border-white bg-zinc-200 shadow-lg sm:size-24 dark:border-zinc-950 dark:bg-zinc-900">
+                        <Image
+                            src={HERO.avatar}
+                            alt={HERO.name}
+                            fill
+                            priority
+                            className="object-cover"
+                        />
+                        <span
+                            className="absolute bottom-1.5 right-1.5 size-2.5 rounded-full border-2 border-white bg-emerald-500 dark:border-zinc-950"
+                            aria-hidden
+                        />
+                    </div>
+
+                    <div className="min-w-0 pb-0.5">
+                        <h1 className="text-balance text-[1.85rem] leading-[1.1] tracking-[-0.03em] text-zinc-950 sm:text-4xl md:text-[2.65rem] dark:text-white">
+                            {HERO.name}
+                        </h1>
+                        <p className="mt-1.5 text-[15px] leading-snug text-zinc-600 dark:text-zinc-400">
+                            {HERO.role}
+                        </p>
+                        <p className="mt-1.5 flex items-center gap-1.5 text-sm text-zinc-500 dark:text-zinc-500">
+                            <MapPin className="size-3.5 shrink-0" aria-hidden />
+                            {HERO.location}
+                        </p>
+                    </div>
+                </motion.div>
+
+                <motion.button
+                    type="button"
+                    onClick={onResumeClick}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.4 }}
+                    className="inline-flex w-fit items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-800 transition-colors hover:border-zinc-300 hover:bg-white dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-600 dark:hover:bg-zinc-800"
+                >
+                    <FileText className="size-3.5" aria-hidden />
+                    Resume
+                </motion.button>
+            </div>
 
             <motion.p
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="mb-8 max-w-2xl"
+                transition={{ delay: 0.25, duration: 0.4 }}
+                className="mt-8 max-w-[65ch] text-pretty text-[15px] leading-[1.7] text-zinc-600 md:text-base dark:text-zinc-400"
             >
-                I {HERO.description}
+                {HERO.description}
             </motion.p>
-
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                className="mb-10 flex flex-wrap justify-center gap-2"
-            >
-                {TECH_STACK.map((tech) => (
-                    <TechBadge key={tech} name={tech} />
-                ))}
-            </motion.div>
-
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="flex flex-wrap justify-center gap-4"
-            >
-                <motion.div
-                    initial={{ scale: 1, y: 0 }}
-                    animate={{ scale: [1, 1.02, 1], y: [0, -2, 0] }}
-                    transition={{
-                        duration: 2.4,
-                        repeat: Infinity,
-                        repeatType: "loop",
-                        ease: "easeInOut",
-                        delay: 0.4,
-                    }}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.97, y: 0 }}
-                >
-                    <button
-                        onClick={onResumeClick}
-                        className="relative inline-flex items-center gap-2 rounded-[999px] border border-zinc-200/80 bg-linear-to-b from-zinc-100 to-zinc-300 px-8 py-3 text-sm font-semibold text-zinc-900 shadow-[0_0_24px_rgba(148,163,184,0.35)] transition-all duration-200 outline-none hover:shadow-[0_0_30px_rgba(148,163,184,0.6)] focus-visible:ring-2 focus-visible:ring-zinc-300 focus-visible:ring-offset-2 focus-visible:ring-offset-black/5 dark:border-zinc-600/80 dark:from-zinc-700 dark:to-zinc-900 dark:text-white dark:focus-visible:ring-zinc-500"
-                    >
-                        <span className="relative z-10 flex items-center gap-2">
-                            <FileText className="size-4" />
-                            Resume / CV
-                        </span>
-                        <span className="pointer-events-none absolute inset-px rounded-[999px] bg-linear-to-b from-white/80 to-zinc-300/90 opacity-90 dark:from-zinc-700/90 dark:to-zinc-900/90" />
-                    </button>
-                </motion.div>
-                <motion.div
-                    initial={{ scale: 1, y: 0 }}
-                    animate={{ scale: [1, 1.02, 1], y: [0, -2, 0] }}
-                    transition={{
-                        duration: 2.4,
-                        repeat: Infinity,
-                        repeatType: "loop",
-                        ease: "easeInOut",
-                    }}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.97, y: 0 }}
-                >
-                    <Link
-                        href="/#contact"
-                        className="relative inline-flex items-center justify-center rounded-[999px] bg-linear-to-b from-[#d49b62] to-[#b5743b] px-10 py-3 text-sm font-semibold text-white shadow-[0_0_32px_rgba(180,116,59,0.45)] transition-all duration-200 outline-none hover:shadow-[0_0_40px_rgba(180,116,59,0.7)] focus-visible:ring-2 focus-visible:ring-[#d49b62] focus-visible:ring-offset-2 focus-visible:ring-offset-black/5"
-                    >
-                        <span className="relative z-10 flex items-center gap-2">
-                            <Send className="size-4" />
-                            Get in touch
-                        </span>
-                        <span className="pointer-events-none absolute inset-px rounded-[999px] bg-linear-to-b from-[#e2ae79] to-[#b5743b]/90 opacity-90" />
-                    </Link>
-                </motion.div>
-            </motion.div>
-
-            <SocialIcons />
         </section>
-    );
-}
-
-function SocialIcons() {
-    const { requestGmailRedirect } = useGmailRedirect();
-    const socialItems = [
-        { key: "twitter", icon: Twitter, data: SOCIALS.twitter },
-        { key: "linkedin", icon: Linkedin, data: SOCIALS.linkedin },
-        { key: "github", icon: Github, data: SOCIALS.github },
-        { key: "youtube", icon: Youtube, data: SOCIALS.youtube },
-    ] as const;
-
-    return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="mt-12 flex gap-6"
-        >
-            {socialItems.map((item) => {
-                const Icon = item.icon;
-                return (
-                    <LinkPreview
-                        key={item.key}
-                        url={item.data.url}
-                        className="text-zinc-400 transition-colors hover:text-black dark:text-zinc-500 dark:hover:text-white"
-                    >
-                        <Icon className="size-5" />
-                    </LinkPreview>
-                );
-            })}
-            <button
-                type="button"
-                onClick={requestGmailRedirect}
-                title={SOCIALS.email.preview}
-                className="text-zinc-400 transition-colors hover:text-black dark:text-zinc-500 dark:hover:text-white"
-            >
-                <Mail className="size-5" />
-            </button>
-        </motion.div>
     );
 }

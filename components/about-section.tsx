@@ -1,59 +1,71 @@
-"use client"
+"use client";
 
-import { motion } from 'motion/react';
-import { HERO, SKILLS_CATEGORIES } from '@/lib/constants';
-import Image from 'next/image';
-import { TechBadge } from '@/components/tech-badge';
+import { ABOUT_SNAPSHOT, BIO, SKILLS_CATEGORIES } from "@/lib/constants";
+import { SectionHeading } from "@/components/section-heading";
+import { TechBadge } from "@/components/tech-badge";
+import { motion } from "motion/react";
 
 export function AboutSection() {
     return (
-        <section id="bio" className="section-container border-t border-zinc-100 dark:border-zinc-900">
-            <div className="mb-12 text-center md:mb-14">
-                <span className="mb-3 block text-xs font-bold uppercase tracking-[0.28em] text-zinc-500 dark:text-zinc-400">
-                    Behind The Work
-                </span>
-                <h2 className="text-balance text-black dark:text-white">About Me</h2>
-                <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-zinc-600 dark:text-zinc-400 md:text-base">
-                    The mix of frontend craftsmanship, cloud automation, and product thinking that shapes how I build.
-                </p>
-            </div>
+        <section
+            id="bio"
+            className="section-container border-t border-zinc-200/80 dark:border-zinc-800/80"
+        >
+            <SectionHeading title="About" />
 
             <motion.div
-                initial={{ opacity: 0, scale: 0.98 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="flex flex-col lg:flex-row gap-8 items-center lg:items-center bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-100 dark:border-zinc-800 rounded-2xl overflow-hidden p-6 lg:p-8 mb-16"
+                className="space-y-4 max-w-[65ch]"
             >
-                <div className="relative h-32 w-32 shrink-0 overflow-hidden rounded-2xl border-2 border-white bg-yellow-400 shadow-xl group md:h-40 md:w-40 dark:border-zinc-800">
-                    <Image
-                        src={HERO.avatar}
-                        alt={HERO.name}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                        priority
-                    />
-                </div>
-
-                <div className="flex flex-1 flex-col justify-center text-center lg:text-left">
-                    <h3 className="mb-2 text-2xl font-semibold tracking-tight text-zinc-950 dark:text-white md:text-3xl">
-                        {HERO.name}
-                    </h3>
-
-                    <p className="mb-4 text-base leading-8 text-zinc-600 dark:text-zinc-300">
-                        I'm a DevOps Engineer and Frontend Developer, passionate about building scalable cloud systems and clean, high-performance web experiences. I specialize in automation, modern infrastructure, and user-focused design.
+                {BIO.map((paragraph) => (
+                    <p
+                        key={paragraph}
+                        className="text-pretty text-[15px] leading-[1.7] text-zinc-600 md:text-base dark:text-zinc-400"
+                    >
+                        {paragraph}
                     </p>
-
-                    <div id="skills" className="mt-2 scroll-mt-28">
-                        <span className="mb-3 block text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-500 dark:text-zinc-400">Skills & Technologies</span>
-
-                        <div className="flex flex-wrap items-center justify-center gap-2 lg:justify-start">
-                            {SKILLS_CATEGORIES.flatMap((cat) => cat.skills).map((skill) => (
-                                <TechBadge key={skill} name={skill} />
-                            ))}
-                        </div>
-                    </div>
-                </div>
+                ))}
             </motion.div>
+
+            <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="mt-8 rounded-2xl border border-zinc-200 bg-zinc-50/80 p-5 md:p-6 dark:border-zinc-800 dark:bg-zinc-900/40"
+            >
+                <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-zinc-500">
+                    Snapshot
+                </p>
+                <ul className="grid gap-3 sm:grid-cols-2">
+                    {ABOUT_SNAPSHOT.map((item) => (
+                        <li
+                            key={item}
+                            className="flex items-start gap-2.5 text-[15px] leading-snug text-zinc-700 dark:text-zinc-300"
+                        >
+                            <span
+                                className="mt-1.5 size-1.5 shrink-0 rounded-full bg-emerald-500"
+                                aria-hidden
+                            />
+                            {item}
+                        </li>
+                    ))}
+                </ul>
+            </motion.div>
+
+            <div id="skills" className="mt-10 scroll-mt-28">
+                <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.22em] text-zinc-500">
+                    Skills
+                </p>
+                <div className="flex flex-wrap gap-2">
+                    {SKILLS_CATEGORIES.flatMap((cat) => cat.skills).map(
+                        (skill) => (
+                            <TechBadge key={skill} name={skill} />
+                        ),
+                    )}
+                </div>
+            </div>
         </section>
     );
 }

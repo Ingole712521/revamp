@@ -14,13 +14,10 @@ export function QuotesSection() {
     }, []);
 
     return (
-        <section id="quotes" className="section-container border-t border-zinc-100 dark:border-zinc-900">
-            <div className="mb-12 text-center md:mb-14">
-                <span className="mb-3 block text-xs font-bold uppercase tracking-[0.28em] text-zinc-500 dark:text-zinc-400">
-                    Mindset
-                </span>
-                <h2 className="text-black dark:text-white">A Thought I Work By</h2>
-            </div>
+        <section id="quotes" className="section-container border-t border-zinc-200/80 dark:border-zinc-800/80">
+            <h2 className="mb-8 text-[1.75rem] leading-[1.15] tracking-[-0.02em] text-zinc-950 md:mb-10 md:text-[2rem] dark:text-white">
+                A thought I work by
+            </h2>
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Lamphome } from "@/components/ui/lamphome";
 import { NAVIGATION_LINKS } from "@/lib/constants";
@@ -18,6 +18,7 @@ import { ContactSection } from "@/components/contact-section";
 import { ResumeModal } from "@/components/resume-modal";
 import { HashScroll } from "@/components/hash-scroll";
 import { LoadingScreen } from "@/components/loading-screen";
+import { SectionIndex } from "@/components/section-index";
 import {
   hasSplashCompleted,
   markSplashCompleted,
@@ -43,10 +44,11 @@ export default function Home() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col bg-white transition-colors duration-500 dark:bg-black overflow-x-hidden">
+    <main className="flex min-h-screen flex-col overflow-x-hidden bg-white transition-colors duration-500 dark:bg-black">
       <HashScroll enabled={!isLoading} />
       <CustomCursor />
       <Oneko />
+      <SectionIndex />
       <ResumeModal
         isOpen={isResumeOpen}
         onClose={() => setIsResumeOpen(false)}
@@ -57,16 +59,16 @@ export default function Home() {
         navItems={NAVIGATION_LINKS}
         className="flex-1"
       >
-        <div className="max-w-4xl w-full flex flex-col items-center">
+        <div className="flex w-full max-w-4xl flex-col items-stretch">
           <HeroSection onResumeClick={() => setIsResumeOpen(true)} />
-          <ExperienceSection />
-          <ProofOfWorkSection />
-          <ProjectsSection />
           <AboutSection />
+          <ContactSection onResumeClick={() => setIsResumeOpen(true)} />
+          <ProjectsSection />
+          <ProofOfWorkSection />
+          <ExperienceSection />
           <GithubActivity />
           <BlogSection />
           <QuotesSection />
-          <ContactSection />
         </div>
       </Lamphome>
       <Footer />
