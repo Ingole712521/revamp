@@ -18,7 +18,6 @@ import { ContactSection } from "@/components/contact-section";
 import { ResumeModal } from "@/components/resume-modal";
 import { HashScroll } from "@/components/hash-scroll";
 import { LoadingScreen } from "@/components/loading-screen";
-import { SectionIndex } from "@/components/section-index";
 import {
   hasSplashCompleted,
   markSplashCompleted,
@@ -58,19 +57,16 @@ export default function Home() {
         navItems={NAVIGATION_LINKS}
         className="flex-1"
       >
-        <div className="relative mx-auto w-full max-w-7xl">
-          <div className="mx-auto flex w-full max-w-4xl flex-col items-stretch">
-            <HeroSection onResumeClick={() => setIsResumeOpen(true)} />
-            <ExperienceSection />
-            <ProofOfWorkSection />
-            <ProjectsSection />
-            <AboutSection />
-            <GithubActivity />
-            <BlogSection />
-            <QuotesSection />
-            <ContactSection onResumeClick={() => setIsResumeOpen(true)} />
-          </div>
-          <SectionIndex />
+        <div className="mx-auto flex w-full max-w-4xl flex-col items-stretch">
+          <HeroSection onResumeClick={() => setIsResumeOpen(true)} />
+          <ExperienceSection />
+          <ProofOfWorkSection />
+          <ProjectsSection />
+          <AboutSection />
+          <GithubActivity />
+          <BlogSection />
+          <QuotesSection />
+          <ContactSection onResumeClick={() => setIsResumeOpen(true)} />
         </div>
       </Lamphome>
       <Footer />
