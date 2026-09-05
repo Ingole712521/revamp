@@ -144,8 +144,8 @@ export default function RootLayout({
         <StructuredData />
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <LenisProvider>
