@@ -186,10 +186,10 @@ export function ProjectCard({ project, idx }: { project: ProjectCardItem; idx: n
                 )}
             </CardMediaBackdrop>
             <div className="flex flex-1 flex-col gap-4 p-6">
-                <h3 className="text-xl font-semibold leading-tight tracking-tight text-zinc-950 dark:text-white md:text-[1.35rem]">
+                <h3 className="text-lg font-semibold leading-snug tracking-tight text-zinc-950 dark:text-white">
                     {project.name}
                 </h3>
-                <p className="flex-1 text-sm leading-7 text-zinc-600 dark:text-zinc-300 md:text-[15px]">
+                <p className="flex-1 text-sm leading-7 text-zinc-500 dark:text-zinc-400 md:text-[15px]">
                     {project.description}
                 </p>
                 {project.caseStudyLink && (

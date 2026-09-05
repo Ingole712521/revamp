@@ -52,13 +52,13 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
                     </div>
 
                     <div className="min-w-0 pb-0.5">
-                        <h1 className="text-balance text-[1.85rem] leading-[1.1] tracking-[-0.03em] text-zinc-950 sm:text-4xl md:text-[2.65rem] dark:text-white">
+                        <h1 className="text-balance text-[1.85rem] font-semibold leading-[1.1] tracking-[-0.03em] text-zinc-950 sm:text-4xl md:text-[2.65rem] dark:text-white">
                             {HERO.name}
                         </h1>
-                        <p className="mt-1.5 text-[15px] leading-snug text-zinc-600 dark:text-zinc-400">
+                        <p className="mt-1.5 text-[15px] font-normal leading-snug text-zinc-500 dark:text-zinc-400">
                             {HERO.role}
                         </p>
-                        <p className="mt-1.5 flex items-center gap-1.5 text-sm text-zinc-500 dark:text-zinc-500">
+                        <p className="mt-1.5 flex items-center gap-1.5 text-sm font-normal text-zinc-500 dark:text-zinc-500">
                             <MapPin className="size-3.5 shrink-0" aria-hidden />
                             {HERO.location}
                         </p>
@@ -82,7 +82,7 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.25, duration: 0.4 }}
-                className="mt-8 max-w-[65ch] text-pretty text-[15px] leading-[1.7] text-zinc-600 md:text-base dark:text-zinc-400"
+                className="mt-8 max-w-[65ch] text-pretty text-[15px] leading-[1.7] text-zinc-500 md:text-base dark:text-zinc-400"
             >
                 {HERO.description}
             </motion.p>

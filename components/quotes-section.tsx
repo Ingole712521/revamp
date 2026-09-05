@@ -15,7 +15,7 @@ export function QuotesSection() {
 
     return (
         <section id="quotes" className="section-container border-t border-zinc-200/80 dark:border-zinc-800/80">
-            <h2 className="mb-8 text-[1.75rem] leading-[1.15] tracking-[-0.02em] text-zinc-950 md:mb-10 md:text-[2rem] dark:text-white">
+            <h2 className="mb-8 text-xl font-semibold leading-[1.2] tracking-[-0.02em] text-zinc-950 md:mb-10 md:text-2xl dark:text-white">
                 A thought I work by
             </h2>
             <motion.div
@@ -28,7 +28,7 @@ export function QuotesSection() {
                 <Quote className="absolute -top-4 -left-4 w-32 h-32 text-zinc-200/50 dark:text-zinc-800/50 -rotate-12 pointer-events-none" />
 
                 <div className="relative z-10 flex flex-col items-center md:items-start">
-                    <p className="mb-8 text-center text-xl font-medium italic leading-9 text-zinc-900 dark:text-zinc-100 md:text-left">
+                    <p className="mb-8 max-w-[65ch] text-pretty text-center text-lg font-normal leading-[1.6] text-zinc-600 italic md:text-left md:text-xl dark:text-zinc-400">
                         "{quote.text}"
                     </p>
                     <div className="flex items-center gap-4">

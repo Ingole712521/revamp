@@ -66,17 +66,17 @@ export function GithubActivity() {
         <section id="github" className="section-container border-t border-zinc-200/80 dark:border-zinc-800/80">
             <div className="mb-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
                 <div>
-                    <h2 className="text-balance text-[1.75rem] leading-[1.15] tracking-[-0.02em] text-zinc-950 md:text-[2rem] dark:text-white">
+                    <h2 className="text-balance text-xl font-semibold leading-[1.2] tracking-[-0.02em] text-zinc-950 md:text-2xl dark:text-white">
                         GitHub
                     </h2>
-                    <p className="mt-3 max-w-[65ch] text-[15px] leading-[1.65] text-zinc-600 dark:text-zinc-400">
+                    <p className="mt-2.5 max-w-[65ch] text-[15px] leading-[1.65] text-zinc-500 dark:text-zinc-400">
                         Contribution history and a snapshot of shipping cadence.
                     </p>
                 </div>
                 <div className="flex flex-col items-end gap-3">
                     <div className="flex flex-col items-end">
                         <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-500">Total Contributions</span>
-                        <span className="text-2xl font-black text-black dark:text-white leading-none mt-1">
+                        <span className="mt-1 text-2xl font-semibold tabular-nums leading-none text-black dark:text-white">
                             {GITHUB_STATS.totalContributions.toLocaleString('en-US')}
                         </span>
                     </div>

@@ -180,13 +180,13 @@ function ExperienceCard({ exp, defaultExpanded = false }: { exp: any; defaultExp
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-2">
 
                         <div className="flex items-center gap-2">
-                            <h3 className="truncate text-xl font-semibold tracking-tight text-zinc-950 dark:text-white">
+                            <h3 className="truncate text-base font-semibold tracking-tight text-zinc-950 md:text-lg dark:text-white">
                                 {exp.company}
                             </h3>
 
                         </div>
 
-                        <div className="flex flex-col gap-1 whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.18em] text-zinc-700 dark:text-zinc-200 md:items-end">
+                        <div className="flex flex-col gap-1 whitespace-nowrap text-sm font-normal text-zinc-500 dark:text-zinc-400 md:items-end">
                             <div className="flex items-center gap-1.5">
                                 <Calendar className="w-3 h-3" />
                                 <span>{exp.duration}</span>
@@ -199,7 +199,7 @@ function ExperienceCard({ exp, defaultExpanded = false }: { exp: any; defaultExp
                     </div>
 
                     <div className="flex items-center justify-between">
-                        <p className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                        <p className="text-sm font-normal text-zinc-500 dark:text-zinc-400">
                             {exp.title}
                         </p>
                         <motion.div
@@ -239,7 +239,7 @@ function ExperienceCard({ exp, defaultExpanded = false }: { exp: any; defaultExp
 
                             <ul className="space-y-2">
                                 {exp.points?.map((point: string, pIdx: number) => (
-                                    <li key={pIdx} className="flex gap-2 text-sm leading-7 text-zinc-700 dark:text-zinc-200">
+                                    <li key={pIdx} className="flex gap-2 text-sm leading-7 text-zinc-600 dark:text-zinc-400">
                                         <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500/40 dark:bg-blue-500/60" />
                                         <span>{point}</span>
                                     </li>

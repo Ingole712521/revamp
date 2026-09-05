@@ -86,7 +86,7 @@ export function NavBar({
             <div className="z-10 flex flex-1 items-center justify-start">
                 <Link
                     href="/"
-                    className="text-sm font-semibold tracking-tight text-zinc-950 dark:text-white"
+                    className="text-[13px] font-medium tracking-tight text-zinc-950 dark:text-white"
                 >
                     Nehal
                 </Link>
@@ -99,7 +99,7 @@ export function NavBar({
                         <Link
                             key={item.href}
                             href={item.href}
-                            className={`relative text-sm font-medium transition-colors ${
+                            className={`relative text-[13px] font-normal transition-colors ${
                                 active
                                     ? "text-zinc-950 dark:text-white"
                                     : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"

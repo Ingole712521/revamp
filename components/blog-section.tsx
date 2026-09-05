@@ -88,10 +88,10 @@ export function BlogSection() {
                         </CardMediaBackdrop>
 
                         <div className="p-8 flex flex-col flex-1">
-                            <h3 className="mb-4 line-clamp-2 text-xl font-semibold leading-tight tracking-tight text-zinc-950 transition-colors group-hover/card:text-indigo-600 dark:text-white group-hover/card:dark:text-indigo-300">
+                            <h3 className="mb-2 line-clamp-2 text-lg font-semibold leading-snug tracking-tight text-zinc-950 dark:text-white">
                                 {blog.title}
                             </h3>
-                            <p className="mb-8 line-clamp-3 text-sm leading-7 text-zinc-600 dark:text-zinc-400 md:text-[15px]">
+                            <p className="mb-8 line-clamp-3 text-sm leading-7 text-zinc-500 dark:text-zinc-400 md:text-[15px]">
                                 {blog.brief}
                             </p>
 

@@ -22,7 +22,7 @@ export function AboutSection() {
                 {BIO.map((paragraph) => (
                     <p
                         key={paragraph}
-                        className="text-pretty text-[15px] leading-[1.7] text-zinc-600 md:text-base dark:text-zinc-400"
+                        className="text-pretty text-[15px] leading-[1.7] text-zinc-500 md:text-base dark:text-zinc-400"
                     >
                         {paragraph}
                     </p>
@@ -42,7 +42,7 @@ export function AboutSection() {
                     {ABOUT_SNAPSHOT.map((item) => (
                         <li
                             key={item}
-                            className="flex items-start gap-2.5 text-[15px] leading-snug text-zinc-700 dark:text-zinc-300"
+                            className="flex items-start gap-2.5 text-[15px] leading-snug text-zinc-600 dark:text-zinc-400"
                         >
                             <span
                                 className="mt-1.5 size-1.5 shrink-0 rounded-full bg-emerald-500"
