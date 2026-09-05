@@ -1,11 +1,46 @@
 "use client";
 
-import { HERO } from "@/lib/constants";
+import { HERO, SOCIALS } from "@/lib/constants";
+import { useGmailRedirect } from "@/components/gmail-redirect-provider";
 import { motion } from "motion/react";
 import Image from "next/image";
-import { FileText, MapPin } from "lucide-react";
+import Link from "next/link";
+import {
+    FileText,
+    Github,
+    Linkedin,
+    Mail,
+    MapPin,
+    Twitter,
+    Youtube,
+} from "lucide-react";
+
+function HashnodeIcon({ className }: { className?: string }) {
+    return (
+        <svg
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden
+            className={className}
+        >
+            <path d="M22.351 8.019l-6.37-6.37a5.63 5.63 0 0 0-7.962 0l-6.37 6.37a5.63 5.63 0 0 0 0 7.962l6.37 6.37a5.63 5.63 0 0 0 7.962 0l6.37-6.37a5.63 5.63 0 0 0 0-7.962zM12 15.95A3.95 3.95 0 1 1 15.95 12 3.95 3.95 0 0 1 12 15.95z" />
+        </svg>
+    );
+}
 
 export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
+    const { requestGmailRedirect } = useGmailRedirect();
+
+    const socialLinks = [
+        { key: "github", href: SOCIALS.github.url, label: SOCIALS.github.label, icon: Github },
+        { key: "linkedin", href: SOCIALS.linkedin.url, label: SOCIALS.linkedin.label, icon: Linkedin },
+        { key: "twitter", href: SOCIALS.twitter.url, label: SOCIALS.twitter.label, icon: Twitter },
+        { key: "youtube", href: SOCIALS.youtube.url, label: SOCIALS.youtube.label, icon: Youtube },
+        { key: "hashnode", href: SOCIALS.hashnode.url, label: SOCIALS.hashnode.label, icon: HashnodeIcon },
+    ] as const;
+
+    const iconClass = "size-4";
+
     return (
         <section
             id="home"
@@ -78,14 +113,50 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
                 </motion.button>
             </div>
 
-            <motion.p
+            <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.25, duration: 0.4 }}
-                className="mt-8 max-w-[65ch] text-pretty text-[15px] leading-[1.7] text-zinc-500 md:text-base dark:text-zinc-400"
+                className="mt-8 max-w-[65ch]"
             >
-                {HERO.description}
-            </motion.p>
+                <p className="text-pretty text-base leading-[1.7] text-zinc-800 md:text-[1.05rem] dark:text-zinc-200">
+                    {HERO.headline}
+                </p>
+                <p className="mt-4 text-pretty text-[15px] leading-[1.7] text-zinc-500 md:text-base dark:text-zinc-400">
+                    {HERO.subline}
+                </p>
+            </motion.div>
+
+            <motion.ul
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.32, duration: 0.4 }}
+                className="mt-6 flex flex-wrap items-center gap-2.5"
+            >
+                {socialLinks.map(({ key, href, label, icon: Icon }) => (
+                    <li key={key}>
+                        <Link
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={label}
+                            className="inline-flex size-9 items-center justify-center rounded-full border border-zinc-200 text-zinc-500 transition-colors hover:border-zinc-300 hover:bg-zinc-50 hover:text-zinc-950 dark:border-zinc-800 dark:text-zinc-400 dark:hover:border-zinc-600 dark:hover:bg-zinc-900 dark:hover:text-white"
+                        >
+                            <Icon className={iconClass} />
+                        </Link>
+                    </li>
+                ))}
+                <li>
+                    <button
+                        type="button"
+                        onClick={requestGmailRedirect}
+                        aria-label={SOCIALS.email.label}
+                        className="inline-flex size-9 items-center justify-center rounded-full border border-zinc-200 text-zinc-500 transition-colors hover:border-zinc-300 hover:bg-zinc-50 hover:text-zinc-950 dark:border-zinc-800 dark:text-zinc-400 dark:hover:border-zinc-600 dark:hover:bg-zinc-900 dark:hover:text-white"
+                    >
+                        <Mail className={iconClass} />
+                    </button>
+                </li>
+            </motion.ul>
         </section>
     );
 }

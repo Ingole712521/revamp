@@ -32,7 +32,7 @@ export const RESUME_AVATAR = "/image (3) copy.jpg";
 export const RESUME = {
     name: "Nehal Ingole",
     avatar: RESUME_AVATAR,
-    title: "Frontend Developer & DevOps Engineer",
+    title: "Software Developer",
     location: "Pune, India",
     email: CONTACT_EMAIL,
     phone: "+91 7397966719",
@@ -46,7 +46,7 @@ export const RESUME = {
         blog: "https://learnwithnehal.hashnode.dev",
     },
     summary:
-        "DevOps Engineer and Frontend Developer specialising in cloud automation, high-performance web experiences, and technical documentation. Proficient in AWS, Docker/Kubernetes, and modern React/Next.js stacks. Author of 80+ technical blog posts. Open-source contributor (Kestra). Focused on CI/CD, infrastructure as code, and building scalable, secure, user-centred products.",
+        "Software Developer with 3+ years building modern web apps, reusable UI systems, and cloud-native products. Primary stack is React, TypeScript, and JavaScript, with hands-on AWS, Docker, Kubernetes, CI/CD, Terraform, and Ansible. Creator of AnimioUI. 13+ open-source contributions and 80+ technical articles on Hashnode.",
     skills: [
         {
             category: "Cloud",
@@ -95,13 +95,17 @@ export const RESUME = {
                 "Machine Learning",
                 "EmailJS",
                 "OpenRouter/LLM APIs",
+                "Cursor",
+                "ChatGPT",
+                "Grok",
+                "Gemini",
             ],
         },
     ] satisfies ResumeSkillGroup[],
     experience: [
         {
             company: "Kshan Tech Soft Pvt Ltd",
-            title: "Software Developer (DevOps Engineer)",
+            title: "Software Developer",
             duration: "Jan 2025 – Present",
             location: "Pune, India (On-Site)",
             website: "https://kshantechsoft.com/",

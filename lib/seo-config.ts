@@ -12,9 +12,9 @@ export const GA_MEASUREMENT_ID =
 
 export const SITE_NAME = "Nehal Ingole";
 export const SITE_TITLE =
-  "Nehal Ingole | Frontend Developer & DevOps Engineer | Portfolio";
+  "Nehal Ingole | Frontend Developer | Portfolio";
 export const SITE_TAGLINE =
-  "Frontend Developer & DevOps Engineer — React, Next.js, AWS, Docker";
+  "Frontend Developer — React, Next.js, AWS, Docker";
 
 export const SITE_DESCRIPTION =
   "Official portfolio of Nehal Ingole: Frontend Developer and DevOps Engineer in India. React, Next.js, TypeScript, AWS, Docker, Kubernetes, CI/CD, cloud automation, and open source. View projects, experience, proof of work, and blog.";

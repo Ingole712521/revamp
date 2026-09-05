@@ -54,17 +54,19 @@ export function AboutSection() {
                 </ul>
             </motion.div>
 
-            <div id="skills" className="mt-10 scroll-mt-28">
-                <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.22em] text-zinc-500">
-                    Skills
-                </p>
-                <div className="flex flex-wrap gap-2">
-                    {SKILLS_CATEGORIES.flatMap((cat) => cat.skills).map(
-                        (skill) => (
-                            <TechBadge key={skill} name={skill} />
-                        ),
-                    )}
-                </div>
+            <div id="skills" className="mt-10 scroll-mt-28 space-y-6">
+                {SKILLS_CATEGORIES.map((category) => (
+                    <div key={category.title}>
+                        <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.22em] text-zinc-500">
+                            {category.title}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                            {category.skills.map((skill) => (
+                                <TechBadge key={skill} name={skill} />
+                            ))}
+                        </div>
+                    </div>
+                ))}
             </div>
         </section>
     );

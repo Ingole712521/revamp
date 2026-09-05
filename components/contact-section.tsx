@@ -11,6 +11,7 @@ import {
     Linkedin,
     Mail,
     Twitter,
+    Youtube,
     type LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
@@ -54,6 +55,12 @@ export function ContactSection({ onResumeClick }: ContactSectionProps) {
             label: "Twitter",
             icon: Twitter,
             href: SOCIALS.twitter.url,
+        },
+        {
+            key: "youtube",
+            label: "YouTube",
+            icon: Youtube,
+            href: SOCIALS.youtube.url,
         },
         {
             key: "mail",

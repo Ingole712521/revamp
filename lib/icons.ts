@@ -5,7 +5,7 @@ export const TECH_ICONS: Record<string, string> = {
     "Kubernetes": "https://cdn.simpleicons.org/kubernetes/326CE5",
     "Rust": "https://cdn.simpleicons.org/rust/white",
     "React": "https://cdn.simpleicons.org/react/61DAFB",
-    "Next.js": "https://cdn.simpleicons.org/nextdotjs/white",
+    "Next.js": "https://cdn.simpleicons.org/nextdotjs/000000",
     "TypeScript": "https://cdn.simpleicons.org/typescript/3178C6",
     "JavaScript": "https://cdn.simpleicons.org/javascript/F7DF1E",
     "Tailwind CSS": "https://cdn.simpleicons.org/tailwindcss/06B6D4",
@@ -38,6 +38,11 @@ export const TECH_ICONS: Record<string, string> = {
     "GitHub": "https://cdn.simpleicons.org/github/black",
     "GitLab": "https://cdn.simpleicons.org/gitlab/FC6D26",
     "React.js": "https://cdn.simpleicons.org/react/61DAFB",
+    "Azure": "https://cdn.simpleicons.org/microsoftazure/0078D4",
+    "Cursor": "https://cdn.simpleicons.org/cursor/000000",
+    "ChatGPT": "https://cdn.simpleicons.org/openai/412991",
+    "Grok": "https://cdn.simpleicons.org/xai/000000",
+    "Gemini": "https://cdn.simpleicons.org/googlegemini/8E75B2",
 };
 
 export const getTechIcon = (name: string) => {

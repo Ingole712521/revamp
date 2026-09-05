@@ -27,9 +27,11 @@ export const FOOTER_NAV: FooterLink[] = [
 export const HERO = {
     name: "Nehal Ingole",
     greet: "Hi, I'm Nehal Ingole",
-    role: "Frontend Developer & DevOps Engineer",
-    description:
-        "I build high-performance interfaces and the cloud systems that keep them shipping. Docker, AWS, and a preference for quiet, precise engineering.",
+    role: "Software Developer",
+    headline:
+        "Software Developer with 3+ years building modern web apps, reusable UI systems, and cloud-native products.",
+    subline:
+        "React, TypeScript, and AWS — creator of AnimioUI. 13+ open-source contributions. 80+ articles on Hashnode.",
     avatar: "/image (3).jpg",
     banner:
         "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80",
@@ -37,10 +39,10 @@ export const HERO = {
 };
 
 export const ABOUT_SNAPSHOT = [
-    "Shipping product, not just tickets",
-    "Cloud automation on AWS and Docker",
-    "80+ technical posts on Hashnode",
-    "Open-source work on Kestra",
+    "3+ years shipping web and cloud products",
+    "Creator of AnimioUI",
+    "13+ open-source contributions",
+    "80+ technical articles on Hashnode",
 ];
 
 export type PortfolioVideo = {
@@ -151,16 +153,21 @@ export const SOCIALS = {
         label: "Email",
         preview: CONTACT_EMAIL,
     },
+    hashnode: {
+        url: "https://learnwithnehal.hashnode.dev",
+        label: "Hashnode",
+        preview: "learnwithnehal.hashnode.dev",
+    },
 };
 
 export const TECH_STACK = [
-    "AWS", "Docker", "Kubernetes", "Rust", "React", "Next.js", "TypeScript", "Linux", "Terraform", "GitHub Actions", "Ansible", "Cybersecurity"
+    "AWS", "Azure", "Docker", "Kubernetes", "MongoDB", "React", "Next.js", "TypeScript", "Linux", "Terraform", "GitHub Actions", "Ansible", "Cursor", "ChatGPT", "Grok", "Gemini"
 ];
 
 export const SKILLS_CATEGORIES = [
     {
         title: "Cloud",
-        skills: ["AWS"]
+        skills: ["AWS", "Azure"]
     },
     {
         title: "DevOps",
@@ -176,7 +183,15 @@ export const SKILLS_CATEGORIES = [
     },
     {
         title: "Frontend",
-        skills: ["React.js", "TypeScript", "JavaScript"]
+        skills: ["React.js", "Next.js", "TypeScript", "JavaScript"]
+    },
+    {
+        title: "Data",
+        skills: ["MongoDB"]
+    },
+    {
+        title: "AI Tools",
+        skills: ["Cursor", "ChatGPT", "Grok", "Gemini"]
     }
 ];
 
@@ -312,9 +327,9 @@ export const PROJECTS: ProjectCardItem[] = [
 ];
 
 export const BIO = [
-    "I am a full-stack engineer who treats frontend craft and infrastructure as one job. Interfaces should feel inevitable; the pipelines behind them should be boring in the best way.",
-    "I graduated from Government College of Engineering, Karad in 2023. Since then I have shipped React and Next.js products, automated AWS and Docker environments, and written about the work in public.",
-    "I currently build automation and internal tools at Kshan Tech Soft in Pune — testing auth, hardening deploys, and keeping documentation close to the code.",
+    "Software Developer with 3+ years building modern web apps, reusable UI systems, and cloud-native products. I work mainly in React, TypeScript, and JavaScript — shipping responsive apps, component systems, REST APIs, and maintainable code.",
+    "I also work across AWS, Docker, Kubernetes, CI/CD, Terraform, and Ansible, from development through deployment. Creator of AnimioUI, a production-ready React component library.",
+    "Active in open source (13+ contributions) and writing (80+ Hashnode articles on React, TypeScript, AWS, Docker, Kubernetes, and AI).",
 ];
 
 export const EXPERIENCES = [
