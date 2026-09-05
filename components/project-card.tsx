@@ -20,8 +20,7 @@ export type ProjectCardItem = {
     tags: string[];
     imageFit?: "cover" | "contain";
     category?: "Frontend" | "DevOps" | "Fullstack";
-    live?: boolean;
-    featured?: boolean;
+    shipped?: boolean;
 };
 
 export function ProjectCard({ project, idx }: { project: ProjectCardItem; idx: number }) {
@@ -67,20 +66,6 @@ export function ProjectCard({ project, idx }: { project: ProjectCardItem; idx: n
             onClick={handleCardClick}
             className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 transition-all hover:border-zinc-300 dark:border-zinc-800 dark:bg-zinc-900/40 dark:hover:border-zinc-700 ${project.link || project.caseStudyLink ? "cursor-pointer" : ""}`}
         >
-            {(project.live || project.featured) && (
-                <div className="absolute top-3 left-3 z-50 flex flex-wrap gap-1.5">
-                    {project.live ? (
-                        <span className="rounded-md bg-emerald-500/90 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-white uppercase">
-                            Live
-                        </span>
-                    ) : null}
-                    {project.featured ? (
-                        <span className="rounded-md bg-amber-500/90 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-white uppercase">
-                            Featured
-                        </span>
-                    ) : null}
-                </div>
-            )}
             <CardMediaBackdrop className="h-64 w-full p-6 group/image">
                 <div
                     className="relative z-10 flex h-full w-full flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-2xl transition-all duration-500 ease-out group-hover/image:transform-none! dark:border-white/20 dark:bg-zinc-950"

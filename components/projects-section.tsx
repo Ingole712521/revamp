@@ -5,7 +5,7 @@ import { ProjectCard } from "@/components/project-card";
 import { SectionHeading } from "@/components/section-heading";
 import { useMemo, useState } from "react";
 
-const FILTERS = ["All", "Frontend", "DevOps", "Fullstack"] as const;
+const FILTERS = ["All", "Shipped", "Frontend", "DevOps", "Fullstack"] as const;
 type Filter = (typeof FILTERS)[number];
 
 export function ProjectsSection() {
@@ -13,6 +13,7 @@ export function ProjectsSection() {
 
     const projects = useMemo(() => {
         if (filter === "All") return PROJECTS;
+        if (filter === "Shipped") return PROJECTS.filter((project) => project.shipped);
         return PROJECTS.filter((project) => project.category === filter);
     }, [filter]);
 

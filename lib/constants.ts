@@ -17,7 +17,6 @@ export const FOOTER_NAV: FooterLink[] = [
     { label: "Home", href: "/" },
     { label: "Work", href: "/#work" },
     { label: "Projects", href: "/#projects" },
-    { label: "Proof of Work", href: "/#proof-of-work" },
     { label: "Videos", href: "/video" },
     { label: "Bio", href: "/#bio" },
     { label: "Blog", href: "https://learnwithnehal.hashnode.dev", external: true },
@@ -181,13 +180,56 @@ export const SKILLS_CATEGORIES = [
     }
 ];
 
-export const PROJECTS = [
+export const PROJECTS: ProjectCardItem[] = [
+    {
+        id: "revio",
+        name: "Revio",
+        category: "Fullstack",
+        shipped: true,
+        description:
+            "An AI-powered GitHub Pull Request reviewer: when a PR is opened or updated, a webhook queues a review job, a worker fetches the diff, and gpt-5.3-codex (via OpenRouter) posts inline comments for bugs, security issues, performance problems, error handling, and logic errors",
+        image: "/revio.png",
+        link: "https://ai-code-reviwer-web.vercel.app/",
+        tags: ["GitHub App", "Next.js", "OpenRouter", "Clean Architecture", "TypeScript"],
+    },
+    {
+        id: "alief-view",
+        name: "Alief View Media Group",
+        category: "Frontend",
+        shipped: true,
+        description:
+            "Conference organizer and corporate events site: responsive marketing experience for technology summits and premier events.",
+        image: "/lightmodeofalifview.png",
+        link: "https://alifviewmedia.com/",
+        tags: ["React", "Tailwind CSS", "EmailJS", "Adobe"],
+        imageFit: "contain",
+    },
+    {
+        id: "rsquare",
+        name: "R Square",
+        category: "Frontend",
+        shipped: true,
+        description:
+            "Creative studio and marketing partner site: we help brands across every industry grow through thoughtful design and results-driven marketing.",
+        image: "/rsquaree.png",
+        link: "https://www.rsquaree.com/",
+        tags: ["React", "Tailwind CSS", "Marketing", "Design"],
+    },
+    {
+        id: "animioui",
+        name: "AnimioUI",
+        category: "Frontend",
+        shipped: true,
+        description:
+            "Ship faster than ever with a library designed for speed, performance, and cutting-edge aesthetics.",
+        image: "/componentLibrary.png",
+        link: "https://www.animioui.in/",
+        tags: ["Next.js", "Git", "Motion", "Tailwind CSS"],
+    },
     {
         id: 8,
         name: "AI Workspace",
-        category: "Fullstack" as const,
-        live: true,
-        featured: true,
+        category: "Fullstack",
         description:
             "An AI-powered infinite whiteboard. Draw, chat with an assistant, and turn a topic or a rough sketch into a clean beginner-friendly mindmap — all in one screen, with no login.",
         image: "/01-empty-canvas.png",
@@ -207,9 +249,7 @@ export const PROJECTS = [
     {
         id: 7,
         name: "PDF2Notes Pro",
-        category: "Frontend" as const,
-        live: true,
-        featured: true,
+        category: "Frontend",
         description:
             "Turns a General Studies PDF into UPSC Mains Q&A revision notes and a downloadable A4 PDF. Upload a PDF, generate structured notes with answer frameworks, data tables, memory cues, and flowcharts, then export them for quick revision.",
         image:
@@ -222,9 +262,7 @@ export const PROJECTS = [
     {
         id: 9,
         name: "EMQX on AWS",
-        category: "DevOps" as const,
-        live: false,
-        featured: true,
+        category: "DevOps",
         description:
             "Terraform-managed MQTT cluster that serves 300K concurrent users in a single go, with NLB, auto-scaled replicants, and full deploy/verify/load-test automation.",
         image:
@@ -235,9 +273,7 @@ export const PROJECTS = [
     {
         id: 1,
         name: "HLS Adaptive Bitrate Streaming With AWS",
-        category: "DevOps" as const,
-        live: false,
-        featured: false,
+        category: "DevOps",
         description: "Deployed a High-Level Streaming (HLS) solution using Docker and Amazon Web Services (AWS) for optimized video delivery.",
         image: "/webpratice.png",
         link: "https://www.linkedin.com/posts/nehal-ingole_streaming-videostreaming-docker-activity-7207360568955924481--ZGI",
@@ -248,9 +284,7 @@ export const PROJECTS = [
     {
         id: 3,
         name: "CI/CD on ECR and Docker",
-        category: "DevOps" as const,
-        live: false,
-        featured: false,
+        category: "DevOps",
         description: "Automated Docker container uploads to AWS ECR using GitHub Actions, boosting deployment efficiency.",
         image: "/ECR.png",
         link: "https://www.linkedin.com/posts/nehal-ingole_githubactions-aws-ecr-activity-7183878521130217474-oS8C",
@@ -259,107 +293,21 @@ export const PROJECTS = [
     {
         id: 4,
         name: "Ansible Server Automation",
-        category: "DevOps" as const,
-        live: false,
-        featured: false,
+        category: "DevOps",
         description: "Simplified server management through Ansible playbooks, inventory management, and automated service deployments.",
         image: "/ansible.png",
         link: "https://www.linkedin.com/posts/nehal-ingole_document-activity-7178789372949897216-h1FK",
         tags: ["Ansible", "Automation", "IAAC"]
     },
-    // {
-    //     id: 5,
-    //     name: "Docker Deployment on GCP Using Terraform",
-    //     description: "Deployed a Docker environment on Google Cloud Platform using Terraform, achieving efficient resource provisioning and management for scalable applications.",
-    //     videoUrl: "https://www.youtube.com/embed/VkoHykQrWOY?autoplay=1&mute=1&controls=0&loop=1&playlist=VkoHykQrWOY",
-    //     image: "/terraform.png",
-    //     link: "https://www.linkedin.com/posts/nehal-ingole_terraform-docker-googlecloud-activity-7187755010640801792-4rFl?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC508FUBuGfTDjOmT3MnzkFrrqilcF1xhAw",
-    //     tags: ["Docker", "Terraform", "IAAC", "GCP", "Ubuntu"]
-    // },
     {
         id: 6,
         name: "Own Github Repository Using AWS",
-        category: "DevOps" as const,
-        live: false,
-        featured: false,
+        category: "DevOps",
         description: "Deployed a Docker environment on Google Cloud Platform using Terraform, achieving efficient resource provisioning and management for scalable applications.",
         videoUrl: "https://www.youtube.com/embed/Xu9RLiXOa5k?autoplay=1&mute=1&loop=1&playlist=Xu9RLiXOa5k",
         image: "/github.png",
         link: "https://www.linkedin.com/posts/nehal-ingole_github-aws-codingjourney-activity-7172914850921148416-9Lue?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC508FUBuGfTDjOmT3MnzkFrrqilcF1xhAw",
         tags: ["Docker", "Git", "AWS", "Ubuntu", "Windows"]
-    }
-];
-
-export const PROOF_OF_WORK: ProjectCardItem[] = [
-    {
-        id: "pow-revio",
-        name: "Revio",
-        description:
-            "An AI-powered GitHub Pull Request reviewer: when a PR is opened or updated, a webhook queues a review job, a worker fetches the diff, and gpt-5.3-codex (via OpenRouter) posts inline comments for bugs, security issues, performance problems, error handling, and logic errors",
-        image: "/revio.png",
-        link: "https://ai-code-reviwer-web.vercel.app/",
-        tags: ["Working", "GitHub App", "Next.js", "OpenRouter", "Clean Architecture", "TypeScript"],
-        live: true,
-        featured: true,
-    },
-    {
-        id: "pow-kestra",
-        name: "Kestra — open source contribution",
-        description:
-            "Merged fix for blueprint tags not resetting when navigating away from the Blueprints Browser; tag filters now stay aligned with the URL on return (#14965).",
-        image: "https://cdn.simpleicons.org/kestra/6366F1",
-        link: "https://github.com/kestra-io/kestra/pull/15043",
-        tags: ["Open Source", "Vue", "Frontend"],
-        live: true,
-        featured: true,
-    },
-    {
-        id: "pow-alif",
-        name: "Alif View Media Group",
-        description:
-            "Conference organizer and corporate events site: responsive marketing experience for technology summits and premier events.",
-        image: "/lightmodeofalifview.png",
-        link: "https://alifviewmedia.com/",
-        tags: ["React", "Tailwind CSS", "EmailJS", "Adobe"],
-        imageFit: "contain",
-        live: true,
-        featured: false,
-    },
-    {
-        id: "pow-rsquaree",
-        name: "R Square",
-        description:
-            "Creative studio and marketing partner site: we help brands across every industry grow through thoughtful design and results-driven marketing.",
-        image: "/rsquaree.png",
-        link: "https://www.rsquaree.com/",
-        tags: ["React", "Tailwind CSS", "Marketing", "Design"],
-        live: true,
-        featured: false,
-    },
-    {
-        id: "pow-animioui",
-        name: "AnimioUI",
-        description:
-            "Ship faster than ever with a library designed for speed, performance, and cutting-edge aesthetics.",
-        image: "/componentLibrary.png",
-        link: "https://www.animioui.in/",
-        tags: ["Next.js", "Git", "Motion", "Tailwind CSS"],
-        live: true,
-        featured: false,
-    },
-    {
-        id: "pow-emotion",
-        name: "Emotion — emotional support chat",
-        description:
-            "A single-page space to talk through feelings with no sign-ups, logins, or database—messages exist only in the browser session. Next.js (App Router), React, TypeScript, Tailwind, and OpenRouter (LLaMA) with server-only API handling and a calm, minimal UX.",
-        image:
-            "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=80",
-        link: "https://emotion-app-roan.vercel.app/",
-        videoUrl:
-            "https://www.youtube.com/embed/4_ue3T4wBx4?autoplay=1&mute=1&controls=0&loop=1&playlist=4_ue3T4wBx4",
-        tags: ["Next.js", "TypeScript", "Tailwind CSS", "OpenRouter", "Privacy"],
-        live: true,
-        featured: false,
     }
 ];
 
