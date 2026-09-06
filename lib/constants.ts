@@ -33,8 +33,6 @@ export const HERO = {
     subline:
         "React, TypeScript, and AWS — creator of AnimioUI. 13+ open-source contributions. 80+ articles on Hashnode.",
     avatar: "/image (3).jpg",
-    banner:
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80",
     location: "Pune, India",
 };
 

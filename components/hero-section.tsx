@@ -2,6 +2,7 @@
 
 import { HERO, SOCIALS } from "@/lib/constants";
 import { useGmailRedirect } from "@/components/gmail-redirect-provider";
+import { HeroWallpaper } from "@/components/hero-wallpaper";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -52,16 +53,8 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
                 transition={{ duration: 0.45 }}
                 className="relative -mx-6 overflow-hidden border-y border-zinc-200/70 dark:border-zinc-800/80"
             >
-                <div className="relative h-44 w-full sm:h-52 md:h-64">
-                    <Image
-                        src={HERO.banner}
-                        alt=""
-                        fill
-                        priority
-                        sizes="(max-width: 896px) 100vw, 896px"
-                        className="object-cover object-center grayscale contrast-[1.05]"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-black/55 via-black/10 to-transparent dark:from-black/70" />
+                <div className="relative h-44 w-full overflow-hidden sm:h-52 md:h-64">
+                    <HeroWallpaper />
                 </div>
             </motion.div>
 
