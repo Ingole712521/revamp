@@ -9,7 +9,7 @@ import { NAVIGATION_LINKS } from "@/lib/constants";
 
 export default function VideoPage() {
   return (
-    <main className="flex min-h-screen flex-col overflow-x-hidden bg-white transition-colors duration-500 dark:bg-black">
+    <main className="flex min-h-screen flex-col overflow-x-hidden bg-transparent">
       <CustomCursor />
       <Oneko />
       <Lamphome

@@ -21,7 +21,7 @@ export default function Home() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   return (
-    <main className="flex min-h-screen flex-col overflow-x-hidden bg-white transition-colors duration-500 dark:bg-black">
+    <main className="flex min-h-screen flex-col overflow-x-hidden bg-transparent">
       <HashScroll />
       <CustomCursor />
       <Oneko />
