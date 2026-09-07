@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useLenis } from "lenis/react";
 import React, { useEffect, useRef, useState } from "react";
 
 interface NavItem {
@@ -40,6 +41,8 @@ export function NavBar({
     const navRef = useRef<HTMLDivElement>(null);
     const pathname = usePathname();
     const [hash, setHash] = useState("");
+    const [scrolled, setScrolled] = useState(false);
+    const lenis = useLenis();
 
     useEffect(() => {
         const syncHash = () => setHash(window.location.hash || "");
@@ -68,12 +71,26 @@ export function NavBar({
     }, [mobileMenuOpen, setMobileMenuOpen]);
 
     useEffect(() => {
-        const handleScroll = () => {
+        const apply = (y: number) => setScrolled(y > 16);
+        apply(window.scrollY);
+        const onWindowScroll = () => {
+            apply(window.scrollY);
             if (mobileMenuOpen) setMobileMenuOpen(false);
         };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", onWindowScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onWindowScroll);
     }, [mobileMenuOpen, setMobileMenuOpen]);
+
+    useEffect(() => {
+        if (!lenis) return;
+        const onScroll = ({ scroll }: { scroll: number }) => {
+            setScrolled(scroll > 16);
+        };
+        lenis.on("scroll", onScroll);
+        return () => {
+            lenis.off("scroll", onScroll);
+        };
+    }, [lenis]);
 
     return (
         <motion.div
@@ -81,7 +98,11 @@ export function NavBar({
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="relative flex w-full items-center justify-between rounded-2xl border border-zinc-200/80 bg-white/85 px-4 py-3 shadow-sm backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-950/85 sm:px-5"
+            className={`relative flex w-full items-center justify-between rounded-2xl border px-4 py-3 shadow-sm transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 sm:px-5 ${
+                scrolled
+                    ? "border-zinc-200/50 bg-white/65 shadow-md backdrop-blur-xl dark:border-zinc-800/60 dark:bg-zinc-950/55"
+                    : "border-zinc-200/80 bg-white/85 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-950/85"
+            }`}
         >
             <div className="z-10 flex flex-1 items-center justify-start">
                 <Link
@@ -99,7 +120,7 @@ export function NavBar({
                         <Link
                             key={item.href}
                             href={item.href}
-                            className={`relative text-[13px] font-normal transition-colors ${
+                            className={`relative text-[13px] font-normal transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-zinc-900 dark:focus-visible:outline-white ${
                                 active
                                     ? "text-zinc-950 dark:text-white"
                                     : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
@@ -123,7 +144,7 @@ export function NavBar({
                     type="button"
                     onClick={toggleMobileMenu}
                     aria-label="Toggle menu"
-                    className="flex items-center justify-center rounded-lg border border-zinc-200 bg-zinc-50 p-2 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:bg-zinc-800 sm:hidden"
+                    className="flex items-center justify-center rounded-lg border border-zinc-200 bg-zinc-50 p-2 transition-colors hover:bg-zinc-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:bg-zinc-800 dark:focus-visible:outline-white sm:hidden"
                 >
                     <motion.svg
                         width="18"

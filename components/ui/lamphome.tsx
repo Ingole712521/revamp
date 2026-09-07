@@ -93,7 +93,7 @@ export function Lamphome({
     <>
       {/* Fixed Navbar - Always visible at top */}
       <div className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
-        <div className="pointer-events-auto w-full max-w-4xl">
+        <div className="pointer-events-auto w-full max-w-6xl">
           <NavBar
             logoSrc={logoSrc}
             logoAlt={logoAlt}
@@ -169,7 +169,7 @@ export function Lamphome({
           className='mt-6 [@media(min-width:480px)]:mt-8 flex w-full flex-1 flex-col items-center justify-start'
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.55, delay: 0.15 }}
         >
           {children}
         </motion.div>

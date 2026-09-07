@@ -4,6 +4,25 @@ import { ABOUT_SNAPSHOT, BIO, SKILLS_CATEGORIES } from "@/lib/constants";
 import { SectionHeading } from "@/components/section-heading";
 import { TechBadge } from "@/components/tech-badge";
 import { motion } from "motion/react";
+import {
+    Cloud,
+    Code2,
+    Cpu,
+    Database,
+    GitBranch,
+    Monitor,
+    Sparkles,
+} from "lucide-react";
+
+const CATEGORY_ICONS = {
+    Frontend: Code2,
+    Cloud: Cloud,
+    DevOps: Cpu,
+    "Version Control": GitBranch,
+    OS: Monitor,
+    Data: Database,
+    "AI Tools": Sparkles,
+} as const;
 
 export function AboutSection() {
     return (
@@ -17,7 +36,7 @@ export function AboutSection() {
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="space-y-4 max-w-[65ch]"
+                className="max-w-[65ch] space-y-4"
             >
                 {BIO.map((paragraph) => (
                     <p
@@ -35,7 +54,7 @@ export function AboutSection() {
                 viewport={{ once: true }}
                 className="mt-8 rounded-2xl border border-zinc-200 bg-zinc-50/80 p-5 md:p-6 dark:border-zinc-800 dark:bg-zinc-900/40"
             >
-                <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-zinc-500">
+                <p className="mb-4 text-[13px] font-medium text-zinc-500">
                     Snapshot
                 </p>
                 <ul className="grid gap-3 sm:grid-cols-2">
@@ -54,19 +73,24 @@ export function AboutSection() {
                 </ul>
             </motion.div>
 
-            <div id="skills" className="mt-10 scroll-mt-28 space-y-6">
-                {SKILLS_CATEGORIES.map((category) => (
-                    <div key={category.title}>
-                        <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.22em] text-zinc-500">
-                            {category.title}
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                            {category.skills.map((skill) => (
-                                <TechBadge key={skill} name={skill} />
-                            ))}
+            <div id="skills" className="mt-10 scroll-mt-28 space-y-7">
+                {SKILLS_CATEGORIES.map((category) => {
+                    const Icon =
+                        CATEGORY_ICONS[category.title as keyof typeof CATEGORY_ICONS] ?? Code2;
+                    return (
+                        <div key={category.title}>
+                            <p className={`mb-3 flex items-center gap-2 text-[13px] font-semibold ${category.accent}`}>
+                                <Icon className="size-3.5" aria-hidden />
+                                {category.title}
+                            </p>
+                            <div className="flex flex-wrap gap-2">
+                                {category.skills.map((skill) => (
+                                    <TechBadge key={skill} name={skill} />
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
         </section>
     );

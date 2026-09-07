@@ -29,9 +29,9 @@ export const HERO = {
     greet: "Hi, I'm Nehal Ingole",
     role: "Software Developer",
     headline:
-        "Software Developer with 3+ years building modern web apps, reusable UI systems, and cloud-native products.",
+        "I build modern web apps, reusable UI systems, and the cloud workflows that keep them in production.",
     subline:
-        "React, TypeScript, and AWS — creator of AnimioUI. 13+ open-source contributions. 80+ articles on Hashnode.",
+        "Primary stack: React, TypeScript, and AWS. I also write, contribute to open source, and ship AnimioUI.",
     avatar: "/image (3).jpg",
     location: "Pune, India",
 };
@@ -164,33 +164,40 @@ export const TECH_STACK = [
 
 export const SKILLS_CATEGORIES = [
     {
+        title: "Frontend",
+        accent: "text-sky-700 dark:text-sky-300",
+        skills: ["React.js", "Next.js", "TypeScript", "JavaScript"],
+    },
+    {
         title: "Cloud",
-        skills: ["AWS", "Azure"]
+        accent: "text-amber-700 dark:text-amber-300",
+        skills: ["AWS", "Azure"],
     },
     {
         title: "DevOps",
-        skills: ["Docker", "Kubernetes", "Jenkins", "Terraform", "Ansible", "ArgoCD"]
+        accent: "text-emerald-700 dark:text-emerald-300",
+        skills: ["Docker", "Kubernetes", "Jenkins", "Terraform", "Ansible", "ArgoCD"],
     },
     {
         title: "Version Control",
-        skills: ["Git", "GitHub", "GitLab"]
+        accent: "text-violet-700 dark:text-violet-300",
+        skills: ["Git", "GitHub", "GitLab"],
     },
     {
         title: "OS",
-        skills: ["Linux"]
-    },
-    {
-        title: "Frontend",
-        skills: ["React.js", "Next.js", "TypeScript", "JavaScript"]
+        accent: "text-zinc-700 dark:text-zinc-300",
+        skills: ["Linux"],
     },
     {
         title: "Data",
-        skills: ["MongoDB"]
+        accent: "text-rose-700 dark:text-rose-300",
+        skills: ["MongoDB"],
     },
     {
         title: "AI Tools",
-        skills: ["Cursor", "ChatGPT", "Grok", "Gemini"]
-    }
+        accent: "text-indigo-700 dark:text-indigo-300",
+        skills: ["Cursor", "ChatGPT", "Grok", "Gemini"],
+    },
 ];
 
 export const PROJECTS: ProjectCardItem[] = [
@@ -200,7 +207,8 @@ export const PROJECTS: ProjectCardItem[] = [
         category: "Fullstack",
         shipped: true,
         description:
-            "An AI-powered GitHub Pull Request reviewer: when a PR is opened or updated, a webhook queues a review job, a worker fetches the diff, and gpt-5.3-codex (via OpenRouter) posts inline comments for bugs, security issues, performance problems, error handling, and logic errors",
+            "AI-powered GitHub PR reviewer that automatically posts inline comments on bugs, security issues, and logic errors using gpt-5.3-codex via OpenRouter. Built the full webhook → worker → comment pipeline with clean architecture.",
+        impact: "Reviews PRs in seconds and reduces manual review time.",
         image: "/revio.png",
         link: "https://ai-code-reviwer-web.vercel.app/",
         tags: ["GitHub App", "Next.js", "OpenRouter", "Clean Architecture", "TypeScript"],
@@ -211,7 +219,8 @@ export const PROJECTS: ProjectCardItem[] = [
         category: "Frontend",
         shipped: true,
         description:
-            "Conference organizer and corporate events site: responsive marketing experience for technology summits and premier events.",
+            "Responsive marketing site for conference organizing and corporate events. Built the frontend, layouts, and contact flows.",
+        impact: "Live production site for a media group's events brand.",
         image: "/lightmodeofalifview.png",
         link: "https://alifviewmedia.com/",
         tags: ["React", "Tailwind CSS", "EmailJS", "Adobe"],
@@ -223,7 +232,8 @@ export const PROJECTS: ProjectCardItem[] = [
         category: "Frontend",
         shipped: true,
         description:
-            "Creative studio and marketing partner site: we help brands across every industry grow through thoughtful design and results-driven marketing.",
+            "Creative studio site for design-led brand and marketing work. Built the responsive marketing frontend.",
+        impact: "Shipped a polished live brand site for a design studio.",
         image: "/rsquaree.png",
         link: "https://www.rsquaree.com/",
         tags: ["React", "Tailwind CSS", "Marketing", "Design"],
@@ -234,7 +244,8 @@ export const PROJECTS: ProjectCardItem[] = [
         category: "Frontend",
         shipped: true,
         description:
-            "Ship faster than ever with a library designed for speed, performance, and cutting-edge aesthetics.",
+            "Production-ready React component library focused on performance, smooth animations (Framer Motion), and modern aesthetics. Built reusable primitives so teams can ship UIs faster.",
+        impact: "Creator of AnimioUI — used in multiple projects.",
         image: "/componentLibrary.png",
         link: "https://www.animioui.in/",
         tags: ["Next.js", "Git", "Motion", "Tailwind CSS"],
@@ -244,7 +255,8 @@ export const PROJECTS: ProjectCardItem[] = [
         name: "AI Workspace",
         category: "Fullstack",
         description:
-            "An AI-powered infinite whiteboard. Draw, chat with an assistant, and turn a topic or a rough sketch into a clean beginner-friendly mindmap — all in one screen, with no login.",
+            "AI-powered infinite whiteboard. Draw, chat with an assistant, and instantly convert a topic or rough sketch into a clean beginner-friendly mindmap — all on one screen with no login required.",
+        impact: "Zero-auth collaborative whiteboard + AI mindmap generation.",
         image: "/01-empty-canvas.png",
         link: "https://a-icanvas.vercel.app/",
         caseStudyLink:
@@ -264,7 +276,8 @@ export const PROJECTS: ProjectCardItem[] = [
         name: "PDF2Notes Pro",
         category: "Frontend",
         description:
-            "Turns a General Studies PDF into UPSC Mains Q&A revision notes and a downloadable A4 PDF. Upload a PDF, generate structured notes with answer frameworks, data tables, memory cues, and flowcharts, then export them for quick revision.",
+            "Turns any General Studies PDF into structured UPSC Mains Q&A revision notes + downloadable A4 PDF. Features answer frameworks, data tables, memory cues, and flowcharts.",
+        impact: "PDF → structured revision notes in one click.",
         image:
             "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=80",
         link: "https://generate-notes.vercel.app/",
@@ -277,7 +290,8 @@ export const PROJECTS: ProjectCardItem[] = [
         name: "EMQX on AWS",
         category: "DevOps",
         description:
-            "Terraform-managed MQTT cluster that serves 300K concurrent users in a single go, with NLB, auto-scaled replicants, and full deploy/verify/load-test automation.",
+            "Terraform-managed EMQX MQTT cluster on AWS that handles 300K concurrent connections with NLB + auto-scaling. Includes full deploy, verify, and load-test automation.",
+        impact: "Scaled to 300K concurrent MQTT users.",
         image:
             "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
         link: "https://app.notion.com/p/EMQX-AWS-Deployment-Proof-Demo-377ac888d27580438dd8e14545a7b471",
@@ -287,18 +301,21 @@ export const PROJECTS: ProjectCardItem[] = [
         id: 1,
         name: "HLS Adaptive Bitrate Streaming With AWS",
         category: "DevOps",
-        description: "Deployed a High-Level Streaming (HLS) solution using Docker and Amazon Web Services (AWS) for optimized video delivery.",
+        description:
+            "HLS adaptive bitrate streaming on AWS with Docker for optimized video delivery.",
+        impact: "End-to-end streaming pipeline on AWS.",
         image: "/webpratice.png",
         link: "https://www.linkedin.com/posts/nehal-ingole_streaming-videostreaming-docker-activity-7207360568955924481--ZGI",
         videoUrl: "https://www.youtube.com/embed/VkoHykQrWOY?autoplay=1&mute=1&controls=0&loop=1&playlist=VkoHykQrWOY",
-
         tags: ["AWS", "Docker", "HLS", "S3"]
     },
     {
         id: 3,
         name: "CI/CD on ECR and Docker",
         category: "DevOps",
-        description: "Automated Docker container uploads to AWS ECR using GitHub Actions, boosting deployment efficiency.",
+        description:
+            "Automated Docker image builds and uploads to AWS ECR with GitHub Actions.",
+        impact: "Faster, repeatable container deploys.",
         image: "/ECR.png",
         link: "https://www.linkedin.com/posts/nehal-ingole_githubactions-aws-ecr-activity-7183878521130217474-oS8C",
         tags: ["GitHub Actions", "AWS ECR", "CI/CD"]
@@ -307,7 +324,9 @@ export const PROJECTS: ProjectCardItem[] = [
         id: 4,
         name: "Ansible Server Automation",
         category: "DevOps",
-        description: "Simplified server management through Ansible playbooks, inventory management, and automated service deployments.",
+        description:
+            "Ansible playbooks and inventory for automated server and service deployments.",
+        impact: "Repeatable server setup with infrastructure as code.",
         image: "/ansible.png",
         link: "https://www.linkedin.com/posts/nehal-ingole_document-activity-7178789372949897216-h1FK",
         tags: ["Ansible", "Automation", "IAAC"]
@@ -316,7 +335,9 @@ export const PROJECTS: ProjectCardItem[] = [
         id: 6,
         name: "Own Github Repository Using AWS",
         category: "DevOps",
-        description: "Deployed a Docker environment on Google Cloud Platform using Terraform, achieving efficient resource provisioning and management for scalable applications.",
+        description:
+            "Docker environment provisioned with Terraform for a self-hosted repository workflow.",
+        impact: "Automated cloud provisioning for a Git-style workflow.",
         videoUrl: "https://www.youtube.com/embed/Xu9RLiXOa5k?autoplay=1&mute=1&loop=1&playlist=Xu9RLiXOa5k",
         image: "/github.png",
         link: "https://www.linkedin.com/posts/nehal-ingole_github-aws-codingjourney-activity-7172914850921148416-9Lue?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC508FUBuGfTDjOmT3MnzkFrrqilcF1xhAw",
@@ -325,9 +346,8 @@ export const PROJECTS: ProjectCardItem[] = [
 ];
 
 export const BIO = [
-    "Software Developer with 3+ years building modern web apps, reusable UI systems, and cloud-native products. I work mainly in React, TypeScript, and JavaScript — shipping responsive apps, component systems, REST APIs, and maintainable code.",
-    "I also work across AWS, Docker, Kubernetes, CI/CD, Terraform, and Ansible, from development through deployment. Creator of AnimioUI, a production-ready React component library.",
-    "Active in open source (13+ contributions) and writing (80+ Hashnode articles on React, TypeScript, AWS, Docker, Kubernetes, and AI).",
+    "I like work that feels fast in the browser and stays reliable after deploy. Most days that means React and TypeScript on the product side, with AWS, Docker, and CI/CD on the path to production.",
+    "AnimioUI started as the component system I wanted for my own projects — reusable primitives, motion, and a look I could actually ship. Writing and open source are how I keep that craft sharp.",
 ];
 
 export const EXPERIENCES = [
@@ -360,10 +380,9 @@ export const EXPERIENCES = [
         description: "Spearheaded full-site development from concept to deployment, ensuring seamless UX across devices.",
         techStack: ["React", "TypeScript", "Tailwind CSS", "Figma", "GSAP"],
         points: [
-            "Designed and developed fully responsive web interfaces using React and GSAP for high-end animations.",
-            "Translated complex Figma designs into pixel-perfect, performant code.",
-            "Collaborated with cross-functional teams to deliver cloud-based media solutions.",
-            "Implemented modern CSS practices with Tailwind for scalable and maintainable styling."
+            "Built the full marketing site from Figma: responsive layouts, event pages, and GSAP motion.",
+            "Shipped pixel-accurate React + Tailwind UI across conference and corporate surfaces.",
+            "Worked with the team to deliver cloud-based media experiences end to end.",
         ],
         socials: {
             website: "#",
@@ -380,10 +399,9 @@ export const EXPERIENCES = [
         description: "Mastered cloud orchestration and automation tools during an intensive DevOps internship.",
         techStack: ["Docker", "Kubernetes", "Ansible", "AWS", "GCP", "Microsoft Azure", "Machine Learning", "Ubuntu", "Redhat 7", "Terraform"],
         points: [
-            "Deployed and managed containerized applications using Docker and Kubernetes clusters.",
-            "Automated infrastructure provisioning with Terraform and configuration management with Ansible.",
-            "Implemented CI/CD pipelines across multiple cloud providers (AWS, GCP, Azure).",
-            "Leveraged machine learning models for predictive infrastructure monitoring."
+            "Ran containerized workloads with Docker and Kubernetes in day-to-day lab and intern projects.",
+            "Automated provisioning with Terraform and configuration with Ansible.",
+            "Built CI/CD pipelines across AWS, GCP, and Azure on Linux (Ubuntu / RHEL).",
         ],
         socials: {
             website: "https://www.linuxworldindia.org/",

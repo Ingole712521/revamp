@@ -10,16 +10,16 @@ export function TechBadge({ name }: { name: string }) {
 
   return (
     <motion.span
-      initial={{ opacity: 0, scale: 0.9 }}
+      initial={{ opacity: 0, scale: 0.96 }}
       whileInView={{ opacity: 1, scale: 1 }}
-      whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
-      className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium border border-zinc-200 dark:border-white/10 rounded-full bg-zinc-50 dark:bg-white/5 text-zinc-800 dark:text-zinc-200 transition-all cursor-default"
+      viewport={{ once: true }}
+      className="inline-flex cursor-default items-center gap-2 rounded-full border border-zinc-200/80 bg-zinc-100/80 px-3 py-1.5 text-sm font-medium text-zinc-700 transition-[transform,background-color,border-color] duration-200 hover:scale-[1.04] hover:border-zinc-300 hover:bg-white hover:text-zinc-950 motion-reduce:transform-none dark:border-zinc-700 dark:bg-zinc-800/70 dark:text-zinc-200 dark:hover:border-zinc-500 dark:hover:bg-zinc-800 dark:hover:text-white"
     >
-      <span className="relative w-4 h-4 flex-shrink-0">
+      <span className="relative h-4 w-4 shrink-0">
         {isLocalIcon ? (
           <Image
             src={iconUrl}
-            alt={name}
+            alt=""
             fill
             loading="lazy"
             sizes="16px"
@@ -28,12 +28,12 @@ export function TechBadge({ name }: { name: string }) {
         ) : (
           <img
             src={iconUrl}
-            alt={name}
+            alt=""
             loading="lazy"
             decoding="async"
             width={16}
             height={16}
-            className="w-full h-full object-contain"
+            className="h-full w-full object-contain"
           />
         )}
       </span>

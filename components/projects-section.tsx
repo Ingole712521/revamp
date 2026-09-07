@@ -35,7 +35,7 @@ export function ProjectsSection() {
                             key={item}
                             type="button"
                             onClick={() => setFilter(item)}
-                            className={`rounded-full border px-3.5 py-1.5 text-xs font-medium tracking-wide transition-colors ${
+                            className={`rounded-full border px-3.5 py-1.5 text-xs font-medium tracking-wide transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:focus-visible:outline-white ${
                                 active
                                     ? "border-zinc-900 bg-zinc-900 text-white dark:border-white dark:bg-white dark:text-zinc-950"
                                     : "border-zinc-200 bg-transparent text-zinc-600 hover:border-zinc-300 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-500 dark:hover:text-zinc-100"
@@ -47,7 +47,7 @@ export function ProjectsSection() {
                 })}
             </div>
 
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
                 {projects.map((project, idx) => (
                     <ProjectCard key={project.id} project={project} idx={idx} />
                 ))}

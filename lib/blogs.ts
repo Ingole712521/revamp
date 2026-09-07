@@ -66,3 +66,8 @@ export function getFeaturedBlogPosts(): BlogPost[] {
         tags: blog.tags.map((name) => ({ name })),
     }));
 }
+
+export function readingMinutes(text: string) {
+    const words = text.trim().split(/\s+/).filter(Boolean).length;
+    return Math.max(4, Math.round(words / 45));
+}

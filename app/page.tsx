@@ -15,6 +15,8 @@ import { QuotesSection } from "@/components/quotes-section";
 import { ContactSection } from "@/components/contact-section";
 import { ResumeModal } from "@/components/resume-modal";
 import { HashScroll } from "@/components/hash-scroll";
+import { FloatingAvatar } from "@/components/floating-avatar";
+import { SectionReveal } from "@/components/section-reveal";
 import { useState } from "react";
 
 export default function Home() {
@@ -25,6 +27,7 @@ export default function Home() {
       <HashScroll />
       <CustomCursor />
       <Oneko />
+      <FloatingAvatar />
       <ResumeModal
         isOpen={isResumeOpen}
         onClose={() => setIsResumeOpen(false)}
@@ -35,15 +38,29 @@ export default function Home() {
         navItems={NAVIGATION_LINKS}
         className="flex-1"
       >
-        <div className="mx-auto flex w-full max-w-4xl flex-col items-stretch">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-stretch">
           <HeroSection onResumeClick={() => setIsResumeOpen(true)} />
-          <ExperienceSection />
-          <ProjectsSection />
-          <AboutSection />
-          <GithubActivity />
-          <BlogSection />
-          <QuotesSection />
-          <ContactSection onResumeClick={() => setIsResumeOpen(true)} />
+          <SectionReveal>
+            <ExperienceSection />
+          </SectionReveal>
+          <SectionReveal>
+            <ProjectsSection />
+          </SectionReveal>
+          <SectionReveal>
+            <AboutSection />
+          </SectionReveal>
+          <SectionReveal>
+            <GithubActivity />
+          </SectionReveal>
+          <SectionReveal>
+            <BlogSection />
+          </SectionReveal>
+          <SectionReveal>
+            <QuotesSection />
+          </SectionReveal>
+          <SectionReveal>
+            <ContactSection onResumeClick={() => setIsResumeOpen(true)} />
+          </SectionReveal>
         </div>
       </Lamphome>
       <Footer />

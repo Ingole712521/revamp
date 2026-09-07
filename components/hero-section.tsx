@@ -6,6 +6,7 @@ import { HeroWallpaper } from "@/components/hero-wallpaper";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import {
     FileText,
     Github,
@@ -28,6 +29,50 @@ function HashnodeIcon({ className }: { className?: string }) {
         </svg>
     );
 }
+
+function TypedRole({ text }: { text: string }) {
+    const [shown, setShown] = useState("");
+
+    useEffect(() => {
+        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reduce) {
+            setShown(text);
+            return;
+        }
+
+        setShown("");
+        let i = 0;
+        const id = window.setInterval(() => {
+            i += 1;
+            setShown(text.slice(0, i));
+            if (i >= text.length) window.clearInterval(id);
+        }, 38);
+
+        return () => window.clearInterval(id);
+    }, [text]);
+
+    return (
+        <p className="mt-1.5 min-h-5 text-[15px] font-normal leading-snug text-zinc-500 dark:text-zinc-400">
+            {shown}
+            <span
+                className="hero-caret ml-0.5 inline-block h-3.5 w-0.5 translate-y-px bg-zinc-500 align-middle dark:bg-zinc-400"
+                aria-hidden
+            />
+        </p>
+    );
+}
+
+const SOCIAL_HOVER: Record<string, string> = {
+    github: "hover:scale-110 hover:border-zinc-400 hover:text-zinc-950 dark:hover:text-white",
+    linkedin: "hover:scale-110 hover:border-[#0A66C2]/40 hover:text-[#0A66C2]",
+    twitter: "hover:scale-110 hover:border-sky-400/50 hover:text-sky-500",
+    youtube: "hover:scale-110 hover:border-red-400/50 hover:text-red-600",
+    hashnode: "hover:scale-110 hover:border-blue-400/50 hover:text-[#2962FF]",
+    email: "hover:scale-110 hover:border-amber-400/50 hover:text-amber-600",
+};
+
+const socialButtonClass =
+    "inline-flex size-9 items-center justify-center rounded-full border border-zinc-200 text-zinc-500 transition-[transform,color,border-color,background-color] duration-200 hover:bg-zinc-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 motion-reduce:transform-none dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:focus-visible:outline-white";
 
 export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
     const { requestGmailRedirect } = useGmailRedirect();
@@ -53,7 +98,7 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
                 transition={{ duration: 0.45 }}
                 className="relative -mx-6 overflow-hidden border-y border-zinc-200/70 dark:border-zinc-800/80"
             >
-                <div className="relative h-44 w-full overflow-hidden sm:h-52 md:h-64">
+                <div className="relative h-56 w-full overflow-hidden sm:h-72 md:h-80">
                     <HeroWallpaper />
                 </div>
             </motion.div>
@@ -80,12 +125,10 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
                     </div>
 
                     <div className="min-w-0 pb-0.5">
-                        <h1 className="text-balance text-[1.85rem] font-semibold leading-[1.1] tracking-[-0.03em] text-zinc-950 sm:text-4xl md:text-[2.65rem] dark:text-white">
+                        <h1 className="text-balance text-[2.05rem] font-semibold leading-[1.05] tracking-[-0.05em] text-zinc-950 sm:text-[2.6rem] md:text-[3.15rem] dark:text-white">
                             {HERO.name}
                         </h1>
-                        <p className="mt-1.5 text-[15px] font-normal leading-snug text-zinc-500 dark:text-zinc-400">
-                            {HERO.role}
-                        </p>
+                        <TypedRole text={HERO.role} />
                         <p className="mt-1.5 flex items-center gap-1.5 text-sm font-normal text-zinc-500 dark:text-zinc-500">
                             <MapPin className="size-3.5 shrink-0" aria-hidden />
                             {HERO.location}
@@ -99,7 +142,7 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2, duration: 0.4 }}
-                    className="inline-flex w-fit items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-800 transition-colors hover:border-zinc-300 hover:bg-white dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-600 dark:hover:bg-zinc-800"
+                    className="inline-flex w-fit items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-800 transition-colors hover:border-zinc-300 hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-600 dark:hover:bg-zinc-800 dark:focus-visible:outline-white"
                 >
                     <FileText className="size-3.5" aria-hidden />
                     Resume
@@ -109,7 +152,7 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
             <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.25, duration: 0.4 }}
+                transition={{ delay: 0.28, duration: 0.45 }}
                 className="mt-8 max-w-[65ch]"
             >
                 <p className="text-pretty text-base leading-[1.7] text-zinc-800 md:text-[1.05rem] dark:text-zinc-200">
@@ -123,7 +166,7 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
             <motion.ul
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.32, duration: 0.4 }}
+                transition={{ delay: 0.36, duration: 0.4 }}
                 className="mt-6 flex flex-wrap items-center gap-2.5"
             >
                 {socialLinks.map(({ key, href, label, icon: Icon }) => (
@@ -133,7 +176,7 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={label}
-                            className="inline-flex size-9 items-center justify-center rounded-full border border-zinc-200 text-zinc-500 transition-colors hover:border-zinc-300 hover:bg-zinc-50 hover:text-zinc-950 dark:border-zinc-800 dark:text-zinc-400 dark:hover:border-zinc-600 dark:hover:bg-zinc-900 dark:hover:text-white"
+                            className={`${socialButtonClass} ${SOCIAL_HOVER[key]}`}
                         >
                             <Icon className={iconClass} />
                         </Link>
@@ -144,7 +187,7 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
                         type="button"
                         onClick={requestGmailRedirect}
                         aria-label={SOCIALS.email.label}
-                        className="inline-flex size-9 items-center justify-center rounded-full border border-zinc-200 text-zinc-500 transition-colors hover:border-zinc-300 hover:bg-zinc-50 hover:text-zinc-950 dark:border-zinc-800 dark:text-zinc-400 dark:hover:border-zinc-600 dark:hover:bg-zinc-900 dark:hover:text-white"
+                        className={`${socialButtonClass} ${SOCIAL_HOVER.email}`}
                     >
                         <Mail className={iconClass} />
                     </button>
