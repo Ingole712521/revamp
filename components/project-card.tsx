@@ -4,6 +4,8 @@ import { CardMediaBackdrop } from "@/components/card-media-backdrop";
 import { ProjectPlaceholder } from "@/components/project-placeholder";
 import { motion } from "motion/react";
 import Image from "next/image";
+import Link from "next/link";
+import { Github } from "lucide-react";
 import { useState, useRef, useEffect, type KeyboardEvent } from "react";
 import { gsap } from "gsap";
 
@@ -15,11 +17,13 @@ export type ProjectCardItem = {
     image: string;
     link?: string;
     caseStudyLink?: string;
+    githubRepo?: string;
     videoUrl?: string;
     tags: string[];
     imageFit?: "cover" | "contain";
     category?: "Frontend" | "DevOps" | "Fullstack";
     shipped?: boolean;
+    featured?: boolean;
 };
 
 function projectCtaLabel(project: ProjectCardItem) {
@@ -32,7 +36,15 @@ function projectCornerBadge(project: ProjectCardItem) {
     return project.category ?? null;
 }
 
-export function ProjectCard({ project, idx }: { project: ProjectCardItem; idx: number }) {
+export function ProjectCard({
+    project,
+    idx,
+    featured = false,
+}: {
+    project: ProjectCardItem;
+    idx: number;
+    featured?: boolean;
+}) {
     const [isHovered, setIsHovered] = useState(false);
     const [imageError, setImageError] = useState(false);
     const [showVideo, setShowVideo] = useState(false);
@@ -100,10 +112,12 @@ export function ProjectCard({ project, idx }: { project: ProjectCardItem; idx: n
             tabIndex={clickable ? 0 : undefined}
             aria-label={clickable ? `${project.name}, ${cta}` : project.name}
             className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200/90 bg-zinc-50 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_rgba(15,23,42,0.05)] transition-[transform,box-shadow,border-color] duration-300 ease-out motion-reduce:transform-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:border-zinc-800 dark:bg-zinc-900/40 dark:shadow-[0_1px_2px_rgba(0,0,0,0.35),0_10px_28px_rgba(0,0,0,0.28)] dark:focus-visible:outline-white ${
+                featured ? "md:min-h-112" : ""
+            } ${
                 clickable ? "cursor-pointer hover:z-10 hover:scale-[1.025] hover:border-zinc-300 hover:shadow-[0_12px_36px_rgba(15,23,42,0.12)] dark:hover:border-zinc-600 dark:hover:shadow-[0_16px_40px_rgba(0,0,0,0.5)]" : ""
             }`}
         >
-            <CardMediaBackdrop className="aspect-16/10 w-full">
+            <CardMediaBackdrop className={`${featured ? "aspect-video" : "aspect-16/10"} w-full`}>
                 <div className="relative z-10 h-full w-full overflow-hidden">
                     {imageError ? (
                         <ProjectPlaceholder name={project.name} index={idx} />
@@ -143,9 +157,24 @@ export function ProjectCard({ project, idx }: { project: ProjectCardItem; idx: n
                         </div>
                     )}
 
-                    {badge ? (
+                    {project.githubRepo ? (
+                        <Link
+                            href={project.githubRepo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`${project.name} GitHub repository`}
+                            title="View source"
+                            onClick={(e) => e.stopPropagation()}
+                            onKeyDown={(e) => e.stopPropagation()}
+                            className="absolute top-2.5 left-2.5 z-40 inline-flex size-8 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white backdrop-blur-sm transition-transform hover:scale-110 hover:bg-black/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                        >
+                            <Github className="size-3.5" />
+                        </Link>
+                    ) : null}
+
+                    {featured || badge ? (
                         <span className="absolute top-2.5 right-2.5 z-30 rounded-full border border-white/15 bg-black/55 px-2 py-0.5 text-[10px] font-medium tracking-wide text-white/95 backdrop-blur-sm">
-                            {badge}
+                            {featured ? "Featured" : badge}
                         </span>
                     ) : null}
 
@@ -186,12 +215,12 @@ export function ProjectCard({ project, idx }: { project: ProjectCardItem; idx: n
                     </div>
                 )}
             </CardMediaBackdrop>
-            <div className="flex flex-1 flex-col gap-2.5 p-5">
-                <h3 className="text-xl font-bold leading-snug tracking-tight text-zinc-950 dark:text-white">
+            <div className={`flex flex-1 flex-col gap-2.5 ${featured ? "p-6" : "p-5"}`}>
+                <h3 className={`font-bold leading-snug tracking-tight text-zinc-950 dark:text-white ${featured ? "text-2xl" : "text-xl"}`}>
                     {project.name}
                 </h3>
                 <div className="relative">
-                    <p className="line-clamp-3 text-sm leading-6 text-zinc-500 dark:text-zinc-400">
+                    <p className={`text-sm leading-6 text-zinc-500 dark:text-zinc-400 ${featured ? "line-clamp-4" : "line-clamp-3"}`}>
                         {project.description}
                     </p>
                     <div

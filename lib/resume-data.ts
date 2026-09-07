@@ -110,10 +110,9 @@ export const RESUME = {
             location: "Pune, India (On-Site)",
             website: "https://kshantechsoft.com/",
             points: [
-                "Architect core infrastructure and develop automation agents for flagship products",
-                "Engineer and deploy high-performance automation agents to enhance product capabilities",
-                "Conduct comprehensive testing for authentication, automation, and system stability",
-                "Optimise internal tools and maintain detailed technical documentation to streamline workflows",
+                "Own architecture and delivery for flagship product infrastructure and automation agents (on-site since Jan 2025).",
+                "Ship high-performance automation agents end-to-end across a 12-tool stack — TypeScript/React on the UI, Docker + GitHub Actions into AWS/GCP.",
+                "Cover authentication, automation, and stability testing before release; keep internal tools and docs current so the team can ship without blockers.",
             ],
             techStack: [
                 "React",

@@ -162,6 +162,17 @@ export const TECH_STACK = [
     "AWS", "Azure", "Docker", "Kubernetes", "MongoDB", "React", "Next.js", "TypeScript", "Linux", "Terraform", "GitHub Actions", "Ansible", "Cursor", "ChatGPT", "Grok", "Gemini"
 ];
 
+export const CORE_TECH = [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "AWS",
+    "Docker",
+    "Kubernetes",
+    "Terraform",
+    "Tailwind CSS",
+];
+
 export const SKILLS_CATEGORIES = [
     {
         title: "Frontend",
@@ -211,6 +222,8 @@ export const PROJECTS: ProjectCardItem[] = [
         impact: "Reviews PRs in seconds and reduces manual review time.",
         image: "/revio.png",
         link: "https://ai-code-reviwer-web.vercel.app/",
+        featured: true,
+        githubRepo: "https://github.com/Ingole712521/AI-Code-Reviwer",
         tags: ["GitHub App", "Next.js", "OpenRouter", "Clean Architecture", "TypeScript"],
     },
     {
@@ -223,6 +236,7 @@ export const PROJECTS: ProjectCardItem[] = [
         impact: "Live production site for a media group's events brand.",
         image: "/lightmodeofalifview.png",
         link: "https://alifviewmedia.com/",
+        githubRepo: "https://github.com/Ingole712521/AlifViewMedia",
         tags: ["React", "Tailwind CSS", "EmailJS", "Adobe"],
         imageFit: "contain",
     },
@@ -248,6 +262,8 @@ export const PROJECTS: ProjectCardItem[] = [
         impact: "Creator of AnimioUI — used in multiple projects.",
         image: "/componentLibrary.png",
         link: "https://www.animioui.in/",
+        featured: true,
+        githubRepo: "https://github.com/Ingole712521/component",
         tags: ["Next.js", "Git", "Motion", "Tailwind CSS"],
     },
     {
@@ -261,6 +277,8 @@ export const PROJECTS: ProjectCardItem[] = [
         link: "https://a-icanvas.vercel.app/",
         caseStudyLink:
             "https://forest-breath-f27.notion.site/AI-Workspace-Complete-Project-Documentation-3c0ac888d27581219ffbfd8c82e00984",
+        featured: true,
+        githubRepo: "https://github.com/Ingole712521/AIcanvas",
         tags: [
             "Next.js 16",
             "React 19",
@@ -283,6 +301,7 @@ export const PROJECTS: ProjectCardItem[] = [
         link: "https://generate-notes.vercel.app/",
         caseStudyLink:
             "https://forest-breath-f27.notion.site/How-PDF2Notes-Pro-Turns-a-GS-PDF-Into-UPSC-Mains-Notes-3c0ac888d27581eaae3ff77a473a8607",
+        githubRepo: "https://github.com/Ingole712521/generate_notes",
         tags: ["Next.js 14", "TypeScript", "React", "Tailwind CSS", "pdf-parse", "OpenRouter", "react-markdown", "@react-pdf/renderer", "Vercel"]
     },
     {
@@ -295,6 +314,8 @@ export const PROJECTS: ProjectCardItem[] = [
         image:
             "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
         link: "https://app.notion.com/p/EMQX-AWS-Deployment-Proof-Demo-377ac888d27580438dd8e14545a7b471",
+        featured: true,
+        githubRepo: "https://github.com/Ingole712521/EMQX_autoScaling",
         tags: ["Terraform", "AWS", "EMQX 5.8", "MQTT", "NLB", "Python", "Ubuntu"]
     },
     {
@@ -350,6 +371,12 @@ export const BIO = [
     "AnimioUI started as the component system I wanted for my own projects — reusable primitives, motion, and a look I could actually ship. Writing and open source are how I keep that craft sharp.",
 ];
 
+export const PORTFOLIO_BUILD_NOTE = {
+    title: "How I built this portfolio",
+    body: "Next.js 16, Tailwind, and Motion — with Lenis scrolling, a custom theme chain, and project cards I designed and wired myself. The source is public if you want to see how the pieces fit.",
+    href: "https://github.com/Ingole712521/revamp",
+};
+
 export const EXPERIENCES = [
     {
         title: "Software Developer",
@@ -360,10 +387,9 @@ export const EXPERIENCES = [
         description: "Developing high-performance web applications with a focus on cloud integration and smooth user experiences.",
         techStack: ["Docker", "TypeScript", "GitHub Actions", "Ubuntu", "GCP", "MongoDB", "React", "JavaScript", "Tailwind CSS", "Next.js", "GSAP", "AWS"],
         points: [
-            "Architecting core infrastructure and agent development for flagship products.",
-            "Engineered and deployed high-performance automation agents enhancing product capabilities.",
-            "Conducting comprehensive testing for authentication, automation, and system stability.",
-            "Optimizing internal tools and maintaining detailed technical documentation to streamline workflows."
+            "Own architecture and delivery for flagship product infrastructure and automation agents (on-site since Jan 2025).",
+            "Ship high-performance automation agents end-to-end across a 12-tool stack — TypeScript/React on the UI, Docker + GitHub Actions into AWS/GCP.",
+            "Cover authentication, automation, and stability testing before release; keep internal tools and docs current so the team can ship without blockers.",
         ],
         socials: {
             website: "https://kshantechsoft.com/",

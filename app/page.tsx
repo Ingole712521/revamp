@@ -16,6 +16,7 @@ import { ContactSection } from "@/components/contact-section";
 import { ResumeModal } from "@/components/resume-modal";
 import { HashScroll } from "@/components/hash-scroll";
 import { FloatingAvatar } from "@/components/floating-avatar";
+import { TechRail } from "@/components/tech-rail";
 import { SectionReveal } from "@/components/section-reveal";
 import { useState } from "react";
 
@@ -28,6 +29,7 @@ export default function Home() {
       <CustomCursor />
       <Oneko />
       <FloatingAvatar />
+      {/* <TechRail /> */}
       <ResumeModal
         isOpen={isResumeOpen}
         onClose={() => setIsResumeOpen(false)}

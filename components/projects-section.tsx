@@ -10,11 +10,16 @@ type Filter = (typeof FILTERS)[number];
 
 export function ProjectsSection() {
     const [filter, setFilter] = useState<Filter>("All");
+    const featured = useMemo(
+        () => PROJECTS.filter((project) => project.featured),
+        [],
+    );
 
     const projects = useMemo(() => {
-        if (filter === "All") return PROJECTS;
-        if (filter === "Shipped") return PROJECTS.filter((project) => project.shipped);
-        return PROJECTS.filter((project) => project.category === filter);
+        const rest = PROJECTS.filter((project) => !project.featured);
+        if (filter === "All") return rest;
+        if (filter === "Shipped") return rest.filter((project) => project.shipped);
+        return rest.filter((project) => project.category === filter);
     }, [filter]);
 
     return (
@@ -26,6 +31,22 @@ export function ProjectsSection() {
                 title="Projects"
                 description="Frontend builds, DevOps workflows, and cloud experiments — clean UX, reliable automation."
             />
+
+            <div className="mb-10">
+                <p className="mb-4 text-[13px] font-medium text-zinc-500">
+                    Featured
+                </p>
+                <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
+                    {featured.map((project, idx) => (
+                        <ProjectCard
+                            key={project.id}
+                            project={project}
+                            idx={idx}
+                            featured
+                        />
+                    ))}
+                </div>
+            </div>
 
             <div className="mb-8 flex flex-wrap gap-2">
                 {FILTERS.map((item) => {
@@ -55,7 +76,7 @@ export function ProjectsSection() {
 
             {projects.length === 0 ? (
                 <p className="text-sm text-zinc-500">
-                    Nothing in this filter yet — try All.
+                    Nothing else in this filter — the featured work is above.
                 </p>
             ) : null}
         </section>

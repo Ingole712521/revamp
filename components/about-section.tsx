@@ -1,10 +1,11 @@
 "use client";
 
-import { ABOUT_SNAPSHOT, BIO, SKILLS_CATEGORIES } from "@/lib/constants";
+import { ABOUT_SNAPSHOT, BIO, PORTFOLIO_BUILD_NOTE, SKILLS_CATEGORIES, TECH_STACK } from "@/lib/constants";
 import { SectionHeading } from "@/components/section-heading";
 import { TechBadge } from "@/components/tech-badge";
 import { motion } from "motion/react";
 import {
+    ArrowUpRight,
     Cloud,
     Code2,
     Cpu,
@@ -13,6 +14,7 @@ import {
     Monitor,
     Sparkles,
 } from "lucide-react";
+import Link from "next/link";
 
 const CATEGORY_ICONS = {
     Frontend: Code2,
@@ -73,7 +75,40 @@ export function AboutSection() {
                 </ul>
             </motion.div>
 
+            <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="mt-6 rounded-2xl border border-zinc-200 bg-zinc-50/80 p-5 md:p-6 dark:border-zinc-800 dark:bg-zinc-900/40"
+            >
+                <p className="mb-2 text-[13px] font-medium text-zinc-800 dark:text-zinc-200">
+                    {PORTFOLIO_BUILD_NOTE.title}
+                </p>
+                <p className="max-w-[65ch] text-pretty text-[15px] leading-[1.7] text-zinc-500 dark:text-zinc-400">
+                    {PORTFOLIO_BUILD_NOTE.body}
+                </p>
+                <Link
+                    href={PORTFOLIO_BUILD_NOTE.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-zinc-800 underline-offset-2 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:text-zinc-200 dark:focus-visible:outline-white"
+                >
+                    View the repo
+                    <ArrowUpRight className="size-3.5" />
+                </Link>
+            </motion.div>
+
             <div id="skills" className="mt-10 scroll-mt-28 space-y-7">
+                <div>
+                    <p className="mb-3 text-[13px] font-semibold text-zinc-800 dark:text-zinc-200">
+                        Tech I use
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                        {TECH_STACK.map((skill) => (
+                            <TechBadge key={skill} name={skill} />
+                        ))}
+                    </div>
+                </div>
                 {SKILLS_CATEGORIES.map((category) => {
                     const Icon =
                         CATEGORY_ICONS[category.title as keyof typeof CATEGORY_ICONS] ?? Code2;
