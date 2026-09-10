@@ -123,7 +123,7 @@ export function NavBar({
                         <Link
                             key={item.href}
                             href={item.href}
-                            className={`relative text-[13px] font-normal transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-zinc-900 dark:focus-visible:outline-white ${
+                            className={`group relative text-[13px] font-normal transition-colors duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-zinc-900 dark:focus-visible:outline-white ${
                                 active
                                     ? "text-zinc-950 dark:text-white"
                                     : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
@@ -131,8 +131,8 @@ export function NavBar({
                         >
                             {item.label}
                             <span
-                                className={`absolute -bottom-1 left-0 h-px bg-zinc-950 transition-all duration-300 dark:bg-white ${
-                                    active ? "w-full" : "w-0"
+                                className={`absolute -bottom-1 left-0 h-px bg-current transition-[width] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                                    active ? "w-full" : "w-0 group-hover:w-full"
                                 }`}
                             />
                         </Link>

@@ -23,7 +23,7 @@ export default function Home() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   return (
-    <main className="flex min-h-[100dvh] flex-col bg-transparent">
+    <main className="flex min-h-[100dvh] flex-col overflow-x-clip bg-transparent">
       <HashScroll />
       <CustomCursor />
       <Oneko />
@@ -38,31 +38,29 @@ export default function Home() {
         navItems={NAVIGATION_LINKS}
         className="flex-1"
       >
-        <div className="flex w-full max-w-none flex-col items-stretch">
-          <div className="mx-auto flex w-full max-w-6xl flex-col items-stretch">
-            <HeroSection onResumeClick={() => setIsResumeOpen(true)} />
-            <SectionReveal>
-              <ExperienceSection />
-            </SectionReveal>
-          </div>
-          <ProjectsSection />
-          <div className="mx-auto flex w-full max-w-6xl flex-col items-stretch">
-            <SectionReveal>
-              <AboutSection />
-            </SectionReveal>
-            <SectionReveal>
-              <GithubActivity />
-            </SectionReveal>
-            <SectionReveal>
-              <BlogSection />
-            </SectionReveal>
-            <SectionReveal>
-              <QuotesSection />
-            </SectionReveal>
-            <SectionReveal>
-              <ContactSection onResumeClick={() => setIsResumeOpen(true)} />
-            </SectionReveal>
-          </div>
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-stretch">
+          <HeroSection onResumeClick={() => setIsResumeOpen(true)} />
+          <SectionReveal>
+            <ExperienceSection />
+          </SectionReveal>
+          <SectionReveal>
+            <ProjectsSection />
+          </SectionReveal>
+          <SectionReveal>
+            <AboutSection />
+          </SectionReveal>
+          <SectionReveal>
+            <GithubActivity />
+          </SectionReveal>
+          <SectionReveal>
+            <BlogSection />
+          </SectionReveal>
+          <SectionReveal>
+            <QuotesSection />
+          </SectionReveal>
+          <SectionReveal>
+            <ContactSection onResumeClick={() => setIsResumeOpen(true)} />
+          </SectionReveal>
         </div>
       </Lamphome>
       <Footer />

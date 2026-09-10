@@ -3,9 +3,9 @@ export const EASE_OUT_QUINT: [number, number, number, number] = [0.22, 1, 0.36, 
 export const EASE_SHEET: [number, number, number, number] = [0.32, 0.72, 0, 1];
 
 export const SPRING_MAGNETIC = {
-    stiffness: 240,
-    damping: 18,
-    mass: 0.35,
+    stiffness: 280,
+    damping: 26,
+    mass: 0.4,
 } as const;
 
 export const SPRING_PROGRESS = {

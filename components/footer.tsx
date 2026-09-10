@@ -108,7 +108,7 @@ export function Footer() {
                                     <span className="size-1.5 rounded-full bg-emerald-500" />
                                     Available for work
                                 </div>
-                                <h3 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl dark:text-white">
+                                <h3 className="text-[length:var(--text-title)] font-semibold tracking-[-0.02em] text-slate-900 dark:text-white">
                                     Let&apos;s build something great.
                                 </h3>
                                 <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
@@ -118,11 +118,11 @@ export function Footer() {
 
                             <MagneticLink
                                 href="/#contact"
-                                className="group inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-zinc-900 bg-zinc-950 py-3 pr-2 pl-6 text-sm font-semibold tracking-wide text-white transition-colors hover:bg-zinc-800 dark:border-zinc-200 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100"
+                                className="pressable group inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-zinc-900 bg-zinc-950 py-2.5 pr-1.5 pl-5 text-sm font-medium tracking-wide text-white hover:bg-zinc-800 dark:border-zinc-200 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100"
                             >
                                 Get in touch
-                                <span className="inline-flex size-8 items-center justify-center rounded-full bg-white/10 dark:bg-zinc-950/10">
-                                    <ArrowUpRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                                <span className="inline-flex size-7 items-center justify-center rounded-full bg-white/10 dark:bg-zinc-950/10">
+                                    <ArrowUpRight className="icon-nudge size-3.5" />
                                 </span>
                             </MagneticLink>
                         </div>

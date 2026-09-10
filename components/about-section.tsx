@@ -4,7 +4,6 @@ import { ABOUT_SNAPSHOT, BIO, PORTFOLIO_BUILD_NOTE, SKILLS_CATEGORIES, TECH_STAC
 import { EASE_OUT_EXPO } from "@/lib/motion";
 import { SectionHeading } from "@/components/section-heading";
 import { TechBadge } from "@/components/tech-badge";
-import { TechMarquee } from "@/components/tech-marquee";
 import { motion } from "motion/react";
 import {
     ArrowUpRight,
@@ -94,15 +93,24 @@ export function AboutSection() {
                     href={PORTFOLIO_BUILD_NOTE.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-zinc-800 underline-offset-2 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:text-zinc-200 dark:focus-visible:outline-white"
+                    className="group mt-3 inline-flex items-center gap-1 text-sm font-medium text-zinc-800 underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:text-zinc-200 dark:focus-visible:outline-white"
                 >
                     View the repo
-                    <ArrowUpRight className="size-3.5" />
+                    <ArrowUpRight className="icon-nudge size-3.5" />
                 </Link>
             </motion.div>
 
             <div id="skills" className="mt-10 scroll-mt-28 space-y-7">
-                <TechMarquee items={TECH_STACK} label="Tech I use" />
+                <div>
+                    <p className="mb-3 text-[13px] font-semibold leading-[1.4] text-zinc-800 dark:text-zinc-200">
+                        Tech I use
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                        {TECH_STACK.map((skill) => (
+                            <TechBadge key={skill} name={skill} />
+                        ))}
+                    </div>
+                </div>
                 {SKILLS_CATEGORIES.map((category) => {
                     const Icon =
                         CATEGORY_ICONS[category.title as keyof typeof CATEGORY_ICONS] ?? Code2;

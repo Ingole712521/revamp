@@ -13,6 +13,11 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist);
   --font-mono: var(--font-geist-mono);
+  --text-display: clamp(1.7rem, 3.6vw, 2.5rem);
+  --text-title: clamp(1.2rem, 1.6vw, 1.5rem);
+  --text-heading: 1.125rem;
+  --text-body: 1rem;
+  --text-caption: 0.8125rem;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -130,14 +135,20 @@
   html {
     background-color: #f7f7f5;
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-optical-sizing: auto;
+    overflow-x: clip;
   }
   html.dark {
     background-color: #0c0e0d;
   }
   body {
-    @apply bg-background text-foreground text-base leading-[1.6];
+    @apply bg-background text-foreground text-base leading-[1.6] antialiased;
     font-family: var(--font-geist), ui-sans-serif, system-ui, -apple-system,
       BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-kerning: normal;
     background-color: #f7f7f5;
     background-image: radial-gradient(#d4d4d8 1.15px, transparent 1.15px);
     background-size: 32px 32px;
@@ -148,19 +159,28 @@
     color: inherit;
   }
   h1 {
-    @apply text-balance text-3xl font-semibold leading-[1.1] tracking-[-0.03em] md:text-4xl;
+    @apply text-balance font-semibold tracking-[-0.03em] text-zinc-950 dark:text-white;
+    font-size: var(--text-display);
+    line-height: 1.1;
     font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   }
   h2 {
-    @apply text-balance text-xl font-semibold leading-[1.2] tracking-[-0.02em] md:text-2xl;
+    @apply text-balance font-semibold tracking-[-0.02em] text-zinc-950 dark:text-white;
+    font-size: var(--text-title);
+    line-height: 1.2;
     font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   }
   h3 {
-    @apply text-lg font-semibold leading-[1.25] tracking-[-0.015em] md:text-xl;
+    @apply text-balance font-semibold tracking-[-0.015em] text-zinc-950 dark:text-white;
+    font-size: var(--text-heading);
+    line-height: 1.3;
     font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   }
   p {
-    @apply text-pretty text-[15px] leading-[1.65] text-zinc-600 md:text-base dark:text-zinc-400;
+    @apply text-pretty text-zinc-600 dark:text-zinc-400;
+    font-size: var(--text-body);
+    line-height: 1.6;
+    overflow-wrap: break-word;
   }
   a:focus-visible,
   button:focus-visible,
@@ -184,7 +204,27 @@
 }
 
 .section-container {
-  @apply w-full max-w-6xl mx-auto px-6 py-20 md:py-28 border-x border-zinc-200/70 dark:border-zinc-800/70 bg-transparent;
+  @apply w-full max-w-6xl mx-auto px-5 py-14 md:px-6 md:py-20 border-x border-zinc-200/70 dark:border-zinc-800/70 bg-transparent;
+}
+
+@layer components {
+  .pressable {
+    transition:
+      transform 150ms var(--ease-out-expo),
+      background-color 200ms var(--ease-out-expo),
+      border-color 200ms var(--ease-out-expo),
+      color 200ms var(--ease-out-expo);
+  }
+  .pressable:active {
+    transform: scale(0.97);
+  }
+  .icon-nudge {
+    transition: transform 180ms var(--ease-out-expo);
+  }
+  .group:hover .icon-nudge,
+  .group:focus-visible .icon-nudge {
+    transform: translate(2px, -1px);
+  }
 }
 
 .dark body {
@@ -192,19 +232,6 @@
   background-image: radial-gradient(rgba(255, 255, 255, 0.11) 1.15px, transparent 1.15px);
   background-size: 32px 32px;
   background-attachment: fixed;
-}
-
-@keyframes tech-marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-tech-marquee {
-  animation: tech-marquee 38s linear infinite;
 }
 
 @keyframes meteor {
@@ -279,9 +306,12 @@
 
   .hero-code-scroll,
   .hero-caret,
-  .hero-scanline,
-  .animate-tech-marquee {
+  .hero-scanline {
     animation: none;
+  }
+
+  .pressable:active {
+    transform: none;
   }
 }
 

@@ -76,7 +76,7 @@ export function GithubActivity() {
                 <div className="flex flex-col items-end gap-3">
                     <div className="flex flex-col items-end">
                         <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-500">Total Contributions</span>
-                        <span className="mt-1 text-2xl font-semibold tabular-nums leading-none text-black dark:text-white">
+        <span className="mt-1 text-2xl font-semibold tabular-nums leading-none tracking-[-0.02em] text-black dark:text-white">
                             {GITHUB_STATS.totalContributions.toLocaleString('en-US')}
                         </span>
                     </div>

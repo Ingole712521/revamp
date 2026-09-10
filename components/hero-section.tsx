@@ -66,22 +66,26 @@ function TypedRole({ text }: { text: string }) {
 
 function KineticName({ name }: { name: string }) {
     const reduce = useReducedMotion();
+    const words = name.split(" ");
 
     return (
-        <h1 className="text-balance text-[2.05rem] font-semibold leading-[1.1] tracking-[-0.05em] text-zinc-950 sm:text-[2.6rem] md:text-[3.15rem] dark:text-white">
-            {name.split("").map((char, index) => (
-                <span key={`${char}-${index}`} className="inline-block overflow-hidden pb-1 align-bottom">
+        <h1 className="text-balance font-semibold leading-[1.1] tracking-[-0.03em] text-zinc-950 dark:text-white">
+            {words.map((word, index) => (
+                <span
+                    key={`${word}-${index}`}
+                    className="mr-[0.28em] inline-block overflow-hidden pb-0.5 align-bottom last:mr-0"
+                >
                     <motion.span
                         className="inline-block"
-                        initial={reduce ? false : { y: "108%" }}
+                        initial={reduce ? false : { y: "110%" }}
                         animate={{ y: "0%" }}
                         transition={{
-                            duration: 0.72,
-                            delay: 0.18 + index * 0.028,
+                            duration: 0.55,
+                            delay: 0.12 + index * 0.06,
                             ease: EASE_OUT_EXPO,
                         }}
                     >
-                        {char === " " ? "\u00a0" : char}
+                        {word}
                     </motion.span>
                 </span>
             ))}
@@ -90,16 +94,16 @@ function KineticName({ name }: { name: string }) {
 }
 
 const SOCIAL_HOVER: Record<string, string> = {
-    github: "hover:scale-110 hover:border-zinc-400 hover:text-zinc-950 dark:hover:text-white",
-    linkedin: "hover:scale-110 hover:border-[#0A66C2]/40 hover:text-[#0A66C2]",
-    twitter: "hover:scale-110 hover:border-sky-400/50 hover:text-sky-500",
-    youtube: "hover:scale-110 hover:border-red-400/50 hover:text-red-600",
-    hashnode: "hover:scale-110 hover:border-blue-400/50 hover:text-[#2962FF]",
-    email: "hover:scale-110 hover:border-emerald-400/50 hover:text-emerald-600",
+    github: "hover:scale-[1.06] hover:border-zinc-400 hover:text-zinc-950 dark:hover:text-white",
+    linkedin: "hover:scale-[1.06] hover:border-[#0A66C2]/40 hover:text-[#0A66C2]",
+    twitter: "hover:scale-[1.06] hover:border-sky-400/50 hover:text-sky-500",
+    youtube: "hover:scale-[1.06] hover:border-red-400/50 hover:text-red-600",
+    hashnode: "hover:scale-[1.06] hover:border-blue-400/50 hover:text-[#2962FF]",
+    email: "hover:scale-[1.06] hover:border-emerald-400/50 hover:text-emerald-600",
 };
 
 const socialButtonClass =
-    "inline-flex size-9 items-center justify-center rounded-full border border-zinc-200 text-zinc-500 transition-[transform,color,border-color,background-color] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-zinc-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 motion-reduce:transform-none dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:focus-visible:outline-white";
+    "pressable inline-flex size-9 items-center justify-center rounded-full border border-zinc-200 text-zinc-500 hover:bg-zinc-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 motion-reduce:transform-none dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:focus-visible:outline-white";
 
 export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
     const { requestGmailRedirect } = useGmailRedirect();
@@ -118,28 +122,28 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
     return (
         <section
             id="home"
-            className="section-container border-t-0 pt-4 pb-16 md:pt-6 md:pb-24"
+            className="section-container border-t-0 pt-4 pb-12 md:pt-6 md:pb-16"
         >
             <motion.div
-                initial={reduce ? false : { opacity: 0.35, clipPath: "inset(10% 6% 14% 6% round 0px)" }}
-                animate={{ opacity: 1, clipPath: "inset(0% 0% 0% 0% round 0px)" }}
-                transition={{ duration: 1.05, ease: EASE_OUT_EXPO }}
-                className="relative -mx-6 overflow-hidden border-y border-zinc-200/70 dark:border-zinc-800/80"
+                initial={reduce ? false : { opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, ease: EASE_OUT_EXPO }}
+                className="relative -mx-5 overflow-hidden border-y border-zinc-200/70 md:-mx-6 dark:border-zinc-800/80"
             >
-                <div className="relative h-64 w-full overflow-hidden sm:h-80 md:h-96">
+                <div className="relative h-52 w-full overflow-hidden sm:h-64 md:h-72">
                     <HeroWallpaper />
                 </div>
             </motion.div>
 
-            <div className="relative z-10 -mt-10 flex flex-col gap-5 sm:-mt-14 sm:flex-row sm:items-end sm:justify-between sm:gap-8">
+            <div className="relative z-10 -mt-8 flex flex-col gap-4 sm:-mt-10 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
                 <motion.div
-                    initial={reduce ? false : { opacity: 0, y: 18 }}
+                    initial={reduce ? false : { opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.22, duration: 0.55, ease: EASE_OUT_EXPO }}
-                    className="flex items-end gap-4 sm:gap-5"
+                    transition={{ delay: 0.12, duration: 0.45, ease: EASE_OUT_EXPO }}
+                    className="flex min-w-0 items-end gap-4"
                 >
-                    <div className="rounded-2xl border border-white/80 bg-white/50 p-1 shadow-[0_12px_36px_rgba(15,23,42,0.12)] dark:border-zinc-800 dark:bg-zinc-950/40">
-                        <div className="relative size-20 shrink-0 overflow-hidden rounded-[0.9rem] bg-zinc-200 sm:size-24 dark:bg-zinc-900">
+                    <div className="rounded-2xl border border-white/80 bg-white/60 p-0.5 shadow-[0_8px_24px_rgba(15,23,42,0.1)] dark:border-zinc-800 dark:bg-zinc-950/40">
+                        <div className="relative size-[4.5rem] shrink-0 overflow-hidden rounded-[0.85rem] bg-zinc-200 sm:size-20 dark:bg-zinc-900">
                             <Image
                                 src={HERO.avatar}
                                 alt={HERO.name}
@@ -166,11 +170,11 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
 
                 <MagneticButton
                     onClick={onResumeClick}
-                    className="group inline-flex w-fit items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 py-2 pr-2 pl-4 text-sm font-medium text-zinc-800 transition-colors hover:border-zinc-300 hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-600 dark:hover:bg-zinc-800 dark:focus-visible:outline-white"
+                    className="pressable group inline-flex w-fit items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 py-1.5 pr-1.5 pl-4 text-sm font-medium text-zinc-800 hover:border-zinc-300 hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-600 dark:hover:bg-zinc-800 dark:focus-visible:outline-white"
                 >
                     Resume
-                    <span className="inline-flex size-7 items-center justify-center rounded-full bg-zinc-950 text-white transition-transform duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px dark:bg-white dark:text-zinc-950">
-                        <FileText className="size-3.5" aria-hidden />
+                    <span className="inline-flex size-7 items-center justify-center rounded-full bg-zinc-950 text-white dark:bg-white dark:text-zinc-950">
+                        <FileText className="icon-nudge size-3.5" aria-hidden />
                     </span>
                 </MagneticButton>
             </div>
@@ -179,12 +183,12 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
                 initial={reduce ? false : { opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.42, duration: 0.55, ease: EASE_OUT_EXPO }}
-                className="mt-8 max-w-[65ch]"
+                className="mt-7 max-w-[65ch]"
             >
-                <p className="text-pretty text-base leading-[1.7] text-zinc-800 md:text-[1.05rem] dark:text-zinc-200">
+                <p className="text-pretty text-[0.9375rem] leading-[1.65] text-zinc-800 md:text-base dark:text-zinc-200">
                     {HERO.headline}
                 </p>
-                <p className="mt-4 text-pretty text-[15px] leading-[1.7] text-zinc-500 md:text-base dark:text-zinc-400">
+                <p className="mt-3 text-pretty text-[0.9375rem] leading-[1.65] text-zinc-500 md:text-base dark:text-zinc-400">
                     {HERO.subline}
                 </p>
             </motion.div>

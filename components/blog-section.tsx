@@ -84,7 +84,7 @@ function BlogCard({
             role="link"
             tabIndex={0}
             aria-label={`Read ${blog.title}`}
-            className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-zinc-200/90 bg-zinc-50 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_rgba(15,23,42,0.05)] transition-[transform,box-shadow,border-color] duration-300 ease-out hover:z-10 hover:scale-[1.025] hover:border-zinc-300 hover:shadow-[0_12px_36px_rgba(15,23,42,0.12)] motion-reduce:transform-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:border-zinc-800 dark:bg-zinc-900/40 dark:shadow-[0_1px_2px_rgba(0,0,0,0.35),0_10px_28px_rgba(0,0,0,0.28)] dark:hover:border-zinc-600 dark:hover:shadow-[0_16px_40px_rgba(0,0,0,0.5)] dark:focus-visible:outline-white"
+            className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-zinc-200/90 bg-zinc-50 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_rgba(15,23,42,0.05)] transition-[transform,box-shadow,border-color] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-[0_10px_28px_rgba(15,23,42,0.1)] motion-reduce:transform-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:border-zinc-800 dark:bg-zinc-900/40 dark:shadow-[0_1px_2px_rgba(0,0,0,0.35),0_10px_28px_rgba(0,0,0,0.28)] dark:hover:border-zinc-600 dark:hover:shadow-[0_12px_32px_rgba(0,0,0,0.45)] dark:focus-visible:outline-white"
         >
             <CardMediaBackdrop className="aspect-16/10 w-full">
                 <div className="relative z-10 h-full w-full overflow-hidden">
@@ -121,7 +121,7 @@ function BlogCard({
                         {minutes} min read
                     </span>
                 </div>
-                <h3 className="line-clamp-2 text-xl font-bold leading-snug tracking-tight text-zinc-950 dark:text-white">
+                <h3 className="line-clamp-2 text-lg font-semibold leading-[1.3] tracking-[-0.015em] text-zinc-950 dark:text-white">
                     {blog.title}
                 </h3>
                 <p className="line-clamp-3 text-sm leading-6 text-zinc-500 dark:text-zinc-400">
@@ -139,7 +139,7 @@ function BlogCard({
                 </div>
                 <span className="mt-1 inline-flex items-center gap-1 text-[13px] font-medium text-zinc-700 dark:text-zinc-300">
                     Read more
-                    <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+                    <ArrowRight className="icon-nudge size-3.5" />
                 </span>
             </div>
         </motion.article>

@@ -111,10 +111,8 @@ export function ProjectCard({
             role={clickable ? "link" : undefined}
             tabIndex={clickable ? 0 : undefined}
             aria-label={clickable ? `${project.name}, ${cta}` : project.name}
-            className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200/90 bg-zinc-50 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_rgba(15,23,42,0.05)] transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transform-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:border-zinc-800 dark:bg-zinc-900/40 dark:shadow-[0_1px_2px_rgba(0,0,0,0.35),0_10px_28px_rgba(0,0,0,0.28)] dark:focus-visible:outline-white ${
-                featured ? "md:min-h-112" : ""
-            } ${
-                clickable ? "cursor-pointer hover:z-10 hover:scale-[1.02] hover:border-zinc-300 hover:shadow-[0_12px_36px_rgba(15,23,42,0.12)] dark:hover:border-zinc-600 dark:hover:shadow-[0_16px_40px_rgba(0,0,0,0.5)]" : ""
+            className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200/90 bg-zinc-50 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_rgba(15,23,42,0.05)] transition-[transform,box-shadow,border-color] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transform-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:border-zinc-800 dark:bg-zinc-900/40 dark:shadow-[0_1px_2px_rgba(0,0,0,0.35),0_10px_28px_rgba(0,0,0,0.28)] dark:focus-visible:outline-white ${
+                clickable ? "cursor-pointer hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-[0_10px_28px_rgba(15,23,42,0.1)] dark:hover:border-zinc-600 dark:hover:shadow-[0_12px_32px_rgba(0,0,0,0.45)]" : ""
             }`}
         >
             <motion.div
@@ -221,12 +219,12 @@ export function ProjectCard({
                     </div>
                 )}
             </CardMediaBackdrop>
-            <div className={`flex flex-1 flex-col gap-2.5 ${featured ? "p-6" : "p-5"}`}>
-                <h3 className={`font-bold leading-snug tracking-tight text-zinc-950 dark:text-white ${featured ? "text-2xl" : "text-xl"}`}>
+            <div className={`flex flex-1 flex-col gap-2 ${featured ? "p-5" : "p-4"}`}>
+                <h3 className={`font-semibold leading-[1.3] tracking-[-0.015em] text-zinc-950 dark:text-white ${featured ? "text-lg" : "text-base"}`}>
                     {project.name}
                 </h3>
                 <div className="relative">
-                    <p className={`text-sm leading-6 text-zinc-500 dark:text-zinc-400 ${featured ? "line-clamp-4" : "line-clamp-3"}`}>
+                    <p className={`text-sm leading-[1.55] text-zinc-500 dark:text-zinc-400 ${featured ? "line-clamp-3" : "line-clamp-3"}`}>
                         {project.description}
                     </p>
                     <div

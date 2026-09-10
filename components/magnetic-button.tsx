@@ -21,8 +21,8 @@ function useMagnetic() {
         (event: PointerEvent<HTMLElement>) => {
             if (reduce) return;
             const rect = event.currentTarget.getBoundingClientRect();
-            x.set((event.clientX - (rect.left + rect.width / 2)) * 0.32);
-            y.set((event.clientY - (rect.top + rect.height / 2)) * 0.32);
+            x.set((event.clientX - (rect.left + rect.width / 2)) * 0.12);
+            y.set((event.clientY - (rect.top + rect.height / 2)) * 0.12);
         },
         [reduce, x, y],
     );

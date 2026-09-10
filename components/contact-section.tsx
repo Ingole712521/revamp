@@ -78,7 +78,7 @@ export function ContactSection({ onResumeClick }: ContactSectionProps) {
     ];
 
     const className =
-        "group inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2.5 text-sm font-medium text-zinc-800 transition-colors hover:border-zinc-300 hover:bg-white dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-600 dark:hover:bg-zinc-800";
+        "pressable group inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-800 hover:border-zinc-300 hover:bg-white dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-600 dark:hover:bg-zinc-800";
 
     return (
         <section
@@ -103,8 +103,8 @@ export function ContactSection({ onResumeClick }: ContactSectionProps) {
                         <>
                             <Icon className="size-3.5 shrink-0 opacity-80" />
                             {item.label}
-                            <span className="inline-flex size-6 items-center justify-center rounded-full bg-zinc-950/5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-px dark:bg-white/10">
-                                <ArrowUpRight className="size-3 opacity-60 group-hover:opacity-100" />
+                            <span className="inline-flex size-6 items-center justify-center rounded-full bg-zinc-950/5 dark:bg-white/10">
+                                <ArrowUpRight className="icon-nudge size-3 opacity-60 group-hover:opacity-100" />
                             </span>
                         </>
                     );
