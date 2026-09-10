@@ -46,7 +46,7 @@ export const RESUME = {
         blog: "https://learnwithnehal.hashnode.dev",
     },
     summary:
-        "Software Developer with 3+ years building modern web apps, reusable UI systems, and cloud-native products. Primary stack is React, TypeScript, and JavaScript, with hands-on AWS, Docker, Kubernetes, CI/CD, Terraform, and Ansible. Creator of AnimioUI. 13+ open-source contributions and 80+ technical articles on Hashnode.",
+        "Software Developer with 3+ years building modern web apps, reusable UI systems, and cloud-native products. Primary stack is React, TypeScript, and JavaScript, with hands-on AWS, Docker, Kubernetes, CI/CD, Terraform, and Ansible. Creator of AnimioUI. 12 merged open-source pull requests and 80+ technical articles on Hashnode.",
     skills: [
         {
             category: "Cloud",

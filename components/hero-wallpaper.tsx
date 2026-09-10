@@ -51,7 +51,7 @@ const COLUMNS = [
             "  res.json({ ok: true, region: 'pune' })",
             "})",
             "",
-            "// 13+ open source contributions",
+            "// 12 merged open-source PRs",
             "// 80+ articles on Hashnode",
         ],
     },

@@ -19,6 +19,7 @@ export const FOOTER_NAV: FooterLink[] = [
     { label: "Projects", href: "/#projects" },
     { label: "Videos", href: "/video" },
     { label: "Bio", href: "/#bio" },
+    { label: "Open source", href: "/#oss" },
     { label: "Blog", href: "https://learnwithnehal.hashnode.dev", external: true },
     { label: "Contact", href: "/#contact" },
     { label: "Resume", href: "/Nehal_Ingole_7397966719.pdf", external: true },
@@ -39,8 +40,131 @@ export const HERO = {
 export const ABOUT_SNAPSHOT = [
     "3+ years shipping web and cloud products",
     "Creator of AnimioUI",
-    "13+ open-source contributions",
+    "12 merged open-source pull requests",
     "80+ technical articles on Hashnode",
+];
+
+export type OpenSourceContribution = {
+    repo: string;
+    pr: number;
+    href: string;
+    title: string;
+    status: "merged" | "open";
+};
+
+export const OPEN_SOURCE_CONTRIBUTIONS: OpenSourceContribution[] = [
+    {
+        repo: "kestra-io/kestra",
+        pr: 15043,
+        href: "https://github.com/kestra-io/kestra/pull/15043",
+        title: "Fix blueprint tags so they reset when navigating away",
+        status: "merged",
+    },
+    {
+        repo: "umami-software/umami",
+        pr: 4103,
+        href: "https://github.com/umami-software/umami/pull/4103",
+        title: "Enhance revenue report with metric selection and filtering",
+        status: "open",
+    },
+    {
+        repo: "TENET-DEV-AI/TENET-AI",
+        pr: 193,
+        href: "https://github.com/TENET-DEV-AI/TENET-AI/pull/193",
+        title: "Add SOC dashboard charts with interactive filtering",
+        status: "merged",
+    },
+    {
+        repo: "geturbackend/urBackend",
+        pr: 320,
+        href: "https://github.com/geturbackend/urBackend/pull/320",
+        title: "Improve web dashboard with new hooks and layout",
+        status: "merged",
+    },
+    {
+        repo: "nandinigoyaldev/Open-Source-Contribution-Atelier",
+        pr: 655,
+        href: "https://github.com/nandinigoyaldev/Open-Source-Contribution-Atelier/pull/655",
+        title: "Add health check endpoint for PostgreSQL and Redis",
+        status: "merged",
+    },
+    {
+        repo: "memact-archive/Memory",
+        pr: 10,
+        href: "https://github.com/memact-archive/Memory/pull/10",
+        title: "Add backup and restore for the memory store",
+        status: "merged",
+    },
+    {
+        repo: "memact-archive/Memory",
+        pr: 11,
+        href: "https://github.com/memact-archive/Memory/pull/11",
+        title: "Add encryption at rest for memory data",
+        status: "merged",
+    },
+    {
+        repo: "memact-archive/Context",
+        pr: 73,
+        href: "https://github.com/memact-archive/Context/pull/73",
+        title: "Related contribution for Memory encryption work",
+        status: "merged",
+    },
+    {
+        repo: "Anushka-045/deshsafe",
+        pr: 58,
+        href: "https://github.com/Anushka-045/deshsafe/pull/58",
+        title: "Add geocoding utility endpoints with Google Maps",
+        status: "merged",
+    },
+    {
+        repo: "archangel2006/SafeHaven",
+        pr: 244,
+        href: "https://github.com/archangel2006/SafeHaven/pull/244",
+        title: "Implement a responsive navbar across all pages",
+        status: "merged",
+    },
+    {
+        repo: "jai3546/AI_ROCKERS",
+        pr: 79,
+        href: "https://github.com/jai3546/AI_ROCKERS/pull/79",
+        title: "Fix a UI layout break",
+        status: "merged",
+    },
+    {
+        repo: "jai3546/AI_ROCKERS",
+        pr: 80,
+        href: "https://github.com/jai3546/AI_ROCKERS/pull/80",
+        title: "Add role-based access for student, mentor, and admin",
+        status: "open",
+    },
+    {
+        repo: "sudip-mondal-2002/Opticlick",
+        pr: 69,
+        href: "https://github.com/sudip-mondal-2002/Opticlick/pull/69",
+        title: "Fix automatic scrolling and same-tab link navigation",
+        status: "open",
+    },
+    {
+        repo: "roshankumar0036singh/auth-server",
+        pr: 131,
+        href: "https://github.com/roshankumar0036singh/auth-server/pull/131",
+        title: "Add a website for the auth server",
+        status: "open",
+    },
+    {
+        repo: "firstcontributions/first-contributions",
+        pr: 79024,
+        href: "https://github.com/firstcontributions/first-contributions/pull/79024",
+        title: "Add Nehal Ingole to the contributors list",
+        status: "merged",
+    },
+    {
+        repo: "firstcontributions/first-contributions",
+        pr: 79066,
+        href: "https://github.com/firstcontributions/first-contributions/pull/79066",
+        title: "Add name to the contributors list",
+        status: "merged",
+    },
 ];
 
 export type PortfolioVideo = {
