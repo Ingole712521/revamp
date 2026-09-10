@@ -167,8 +167,8 @@ export function Lamphome({
       {children && (
         <motion.div
           className='mt-6 [@media(min-width:480px)]:mt-8 flex w-full flex-1 flex-col items-center justify-start'
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.55, delay: 0.15 }}
         >
           {children}

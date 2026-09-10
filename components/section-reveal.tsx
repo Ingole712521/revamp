@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "motion/react";
+import { EASE_OUT_EXPO } from "@/lib/motion";
+import { motion, useReducedMotion } from "motion/react";
 import type { ReactNode } from "react";
 
 export function SectionReveal({
@@ -10,12 +11,14 @@ export function SectionReveal({
     children: ReactNode;
     className?: string;
 }) {
+    const reduce = useReducedMotion();
+
     return (
         <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={reduce ? false : { opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-48px" }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true, margin: "-12% 0px", amount: 0.18 }}
+            transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
             className={className}
         >
             {children}

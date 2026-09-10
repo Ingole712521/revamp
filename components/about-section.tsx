@@ -1,8 +1,10 @@
 "use client";
 
 import { ABOUT_SNAPSHOT, BIO, PORTFOLIO_BUILD_NOTE, SKILLS_CATEGORIES, TECH_STACK } from "@/lib/constants";
+import { EASE_OUT_EXPO } from "@/lib/motion";
 import { SectionHeading } from "@/components/section-heading";
 import { TechBadge } from "@/components/tech-badge";
+import { TechMarquee } from "@/components/tech-marquee";
 import { motion } from "motion/react";
 import {
     ArrowUpRight,
@@ -38,6 +40,7 @@ export function AboutSection() {
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
+                transition={{ duration: 0.5, ease: EASE_OUT_EXPO }}
                 className="max-w-[65ch] space-y-4"
             >
                 {BIO.map((paragraph) => (
@@ -99,16 +102,7 @@ export function AboutSection() {
             </motion.div>
 
             <div id="skills" className="mt-10 scroll-mt-28 space-y-7">
-                <div>
-                    <p className="mb-3 text-[13px] font-semibold text-zinc-800 dark:text-zinc-200">
-                        Tech I use
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                        {TECH_STACK.map((skill) => (
-                            <TechBadge key={skill} name={skill} />
-                        ))}
-                    </div>
-                </div>
+                <TechMarquee items={TECH_STACK} label="Tech I use" />
                 {SKILLS_CATEGORIES.map((category) => {
                     const Icon =
                         CATEGORY_ICONS[category.title as keyof typeof CATEGORY_ICONS] ?? Code2;

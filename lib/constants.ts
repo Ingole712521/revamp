@@ -259,7 +259,7 @@ export const PROJECTS: ProjectCardItem[] = [
         shipped: true,
         description:
             "Production-ready React component library focused on performance, smooth animations (Framer Motion), and modern aesthetics. Built reusable primitives so teams can ship UIs faster.",
-        impact: "Creator of AnimioUI — used in multiple projects.",
+        impact: "Creator of AnimioUI, used in multiple projects.",
         image: "/componentLibrary.png",
         link: "https://www.animioui.in/",
         featured: true,
@@ -368,12 +368,12 @@ export const PROJECTS: ProjectCardItem[] = [
 
 export const BIO = [
     "I like work that feels fast in the browser and stays reliable after deploy. Most days that means React and TypeScript on the product side, with AWS, Docker, and CI/CD on the path to production.",
-    "AnimioUI started as the component system I wanted for my own projects — reusable primitives, motion, and a look I could actually ship. Writing and open source are how I keep that craft sharp.",
+    "AnimioUI started as the component system I wanted for my own projects: reusable primitives, motion, and a look I could actually ship. Writing and open source are how I keep that craft sharp.",
 ];
 
 export const PORTFOLIO_BUILD_NOTE = {
     title: "How I built this portfolio",
-    body: "Next.js 16, Tailwind, and Motion — with Lenis scrolling, a custom theme chain, and project cards I designed and wired myself. The source is public if you want to see how the pieces fit.",
+    body: "Next.js 16, Tailwind, and Motion, with Lenis scrolling, a custom theme chain, and project cards I designed and wired myself. The source is public if you want to see how the pieces fit.",
     href: "https://github.com/Ingole712521/revamp",
 };
 
@@ -388,7 +388,7 @@ export const EXPERIENCES = [
         techStack: ["Docker", "TypeScript", "GitHub Actions", "Ubuntu", "GCP", "MongoDB", "React", "JavaScript", "Tailwind CSS", "Next.js", "GSAP", "AWS"],
         points: [
             "Own architecture and delivery for flagship product infrastructure and automation agents (on-site since Jan 2025).",
-            "Ship high-performance automation agents end-to-end across a 12-tool stack — TypeScript/React on the UI, Docker + GitHub Actions into AWS/GCP.",
+            "Ship high-performance automation agents end-to-end across a 12-tool stack: TypeScript/React on the UI, Docker + GitHub Actions into AWS/GCP.",
             "Cover authentication, automation, and stability testing before release; keep internal tools and docs current so the team can ship without blockers.",
         ],
         socials: {

@@ -16,7 +16,6 @@ import { ContactSection } from "@/components/contact-section";
 import { ResumeModal } from "@/components/resume-modal";
 import { HashScroll } from "@/components/hash-scroll";
 import { FloatingAvatar } from "@/components/floating-avatar";
-import { TechRail } from "@/components/tech-rail";
 import { SectionReveal } from "@/components/section-reveal";
 import { useState } from "react";
 
@@ -24,12 +23,11 @@ export default function Home() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   return (
-    <main className="flex min-h-screen flex-col overflow-x-hidden bg-transparent">
+    <main className="flex min-h-[100dvh] flex-col bg-transparent">
       <HashScroll />
       <CustomCursor />
       <Oneko />
       <FloatingAvatar />
-      {/* <TechRail /> */}
       <ResumeModal
         isOpen={isResumeOpen}
         onClose={() => setIsResumeOpen(false)}
@@ -40,29 +38,31 @@ export default function Home() {
         navItems={NAVIGATION_LINKS}
         className="flex-1"
       >
-        <div className="mx-auto flex w-full max-w-6xl flex-col items-stretch">
-          <HeroSection onResumeClick={() => setIsResumeOpen(true)} />
-          <SectionReveal>
-            <ExperienceSection />
-          </SectionReveal>
-          <SectionReveal>
-            <ProjectsSection />
-          </SectionReveal>
-          <SectionReveal>
-            <AboutSection />
-          </SectionReveal>
-          <SectionReveal>
-            <GithubActivity />
-          </SectionReveal>
-          <SectionReveal>
-            <BlogSection />
-          </SectionReveal>
-          <SectionReveal>
-            <QuotesSection />
-          </SectionReveal>
-          <SectionReveal>
-            <ContactSection onResumeClick={() => setIsResumeOpen(true)} />
-          </SectionReveal>
+        <div className="flex w-full max-w-none flex-col items-stretch">
+          <div className="mx-auto flex w-full max-w-6xl flex-col items-stretch">
+            <HeroSection onResumeClick={() => setIsResumeOpen(true)} />
+            <SectionReveal>
+              <ExperienceSection />
+            </SectionReveal>
+          </div>
+          <ProjectsSection />
+          <div className="mx-auto flex w-full max-w-6xl flex-col items-stretch">
+            <SectionReveal>
+              <AboutSection />
+            </SectionReveal>
+            <SectionReveal>
+              <GithubActivity />
+            </SectionReveal>
+            <SectionReveal>
+              <BlogSection />
+            </SectionReveal>
+            <SectionReveal>
+              <QuotesSection />
+            </SectionReveal>
+            <SectionReveal>
+              <ContactSection onResumeClick={() => setIsResumeOpen(true)} />
+            </SectionReveal>
+          </div>
         </div>
       </Lamphome>
       <Footer />

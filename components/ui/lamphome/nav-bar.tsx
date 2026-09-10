@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, AnimatePresence } from "motion/react";
+import { EASE_OUT_EXPO, SPRING_PROGRESS } from "@/lib/motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLenis } from "lenis/react";
@@ -43,6 +44,8 @@ export function NavBar({
     const [hash, setHash] = useState("");
     const [scrolled, setScrolled] = useState(false);
     const lenis = useLenis();
+    const { scrollYProgress } = useScroll();
+    const progress = useSpring(scrollYProgress, SPRING_PROGRESS);
 
     useEffect(() => {
         const syncHash = () => setHash(window.location.hash || "");
@@ -97,8 +100,8 @@ export function NavBar({
             ref={navRef}
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className={`relative flex w-full items-center justify-between rounded-2xl border px-4 py-3 shadow-sm transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 sm:px-5 ${
+            transition={{ duration: 0.45, ease: EASE_OUT_EXPO }}
+            className={`relative flex w-full items-center justify-between rounded-2xl border px-4 py-3 shadow-sm transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] sm:px-5 ${
                 scrolled
                     ? "border-zinc-200/50 bg-white/65 shadow-md backdrop-blur-xl dark:border-zinc-800/60 dark:bg-zinc-950/55"
                     : "border-zinc-200/80 bg-white/85 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-950/85"
@@ -143,27 +146,35 @@ export function NavBar({
                 <button
                     type="button"
                     onClick={toggleMobileMenu}
-                    aria-label="Toggle menu"
-                    className="flex items-center justify-center rounded-lg border border-zinc-200 bg-zinc-50 p-2 transition-colors hover:bg-zinc-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:bg-zinc-800 dark:focus-visible:outline-white sm:hidden"
+                    aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                    aria-expanded={mobileMenuOpen}
+                    className="flex size-9 items-center justify-center rounded-lg border border-zinc-200 bg-zinc-50 transition-colors hover:bg-zinc-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:bg-zinc-800 dark:focus-visible:outline-white sm:hidden"
                 >
-                    <motion.svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        animate={{ rotate: mobileMenuOpen ? 90 : 0 }}
-                        transition={{ duration: 0.2 }}
-                    >
-                        <line x1="3" y1="6" x2="21" y2="6" />
-                        <line x1="3" y1="12" x2="21" y2="12" />
-                        <line x1="3" y1="18" x2="21" y2="18" />
-                    </motion.svg>
+                    <span className="relative block size-[18px]" aria-hidden>
+                        <span
+                            className={`absolute left-0 h-[1.5px] w-full origin-center bg-current transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                                mobileMenuOpen ? "top-1/2 rotate-45" : "top-[4px]"
+                            }`}
+                        />
+                        <span
+                            className={`absolute top-1/2 left-0 h-[1.5px] w-full -translate-y-1/2 bg-current transition-opacity duration-200 ${
+                                mobileMenuOpen ? "opacity-0" : "opacity-100"
+                            }`}
+                        />
+                        <span
+                            className={`absolute left-0 h-[1.5px] w-full origin-center bg-current transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                                mobileMenuOpen ? "top-1/2 -rotate-45" : "top-[13px]"
+                            }`}
+                        />
+                    </span>
                 </button>
             </div>
+
+            <motion.div
+                aria-hidden
+                className="pointer-events-none absolute inset-x-5 bottom-0 h-px origin-left bg-emerald-600/80 dark:bg-emerald-400"
+                style={{ scaleX: progress }}
+            />
 
             <AnimatePresence>
                 {mobileMenuOpen && (

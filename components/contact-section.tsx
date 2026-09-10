@@ -1,8 +1,10 @@
 "use client";
 
 import { SectionHeading } from "@/components/section-heading";
+import { MagneticButton, MagneticLink } from "@/components/magnetic-button";
 import { useGmailRedirect } from "@/components/gmail-redirect-provider";
 import { SOCIALS } from "@/lib/constants";
+import { EASE_OUT_EXPO } from "@/lib/motion";
 import { motion } from "motion/react";
 import {
     ArrowUpRight,
@@ -14,7 +16,6 @@ import {
     Youtube,
     type LucideIcon,
 } from "lucide-react";
-import Link from "next/link";
 
 type ContactItem =
     | {
@@ -86,13 +87,14 @@ export function ContactSection({ onResumeClick }: ContactSectionProps) {
         >
             <SectionHeading
                 title="Contact"
-                description="Open a channel — GitHub, LinkedIn, mail, or the resume."
+                description="Open a channel: GitHub, LinkedIn, mail, or the resume."
             />
 
             <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
+                transition={{ duration: 0.5, ease: EASE_OUT_EXPO }}
                 className="flex flex-wrap gap-2.5"
             >
                 {items.map((item) => {
@@ -101,33 +103,33 @@ export function ContactSection({ onResumeClick }: ContactSectionProps) {
                         <>
                             <Icon className="size-3.5 shrink-0 opacity-80" />
                             {item.label}
-                            <ArrowUpRight className="size-3.5 opacity-40 transition-opacity group-hover:opacity-80" />
+                            <span className="inline-flex size-6 items-center justify-center rounded-full bg-zinc-950/5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-px dark:bg-white/10">
+                                <ArrowUpRight className="size-3 opacity-60 group-hover:opacity-100" />
+                            </span>
                         </>
                     );
 
                     if ("onClick" in item) {
                         return (
-                            <button
+                            <MagneticButton
                                 key={item.key}
-                                type="button"
                                 onClick={item.onClick}
                                 className={className}
                             >
                                 {content}
-                            </button>
+                            </MagneticButton>
                         );
                     }
 
                     return (
-                        <Link
+                        <MagneticLink
                             key={item.key}
                             href={item.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            external
                             className={className}
                         >
                             {content}
-                        </Link>
+                        </MagneticLink>
                     );
                 })}
             </motion.div>

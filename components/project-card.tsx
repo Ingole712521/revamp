@@ -2,12 +2,12 @@
 
 import { CardMediaBackdrop } from "@/components/card-media-backdrop";
 import { ProjectPlaceholder } from "@/components/project-placeholder";
-import { motion } from "motion/react";
+import { EASE_OUT_EXPO } from "@/lib/motion";
+import { motion, useMotionTemplate, useMotionValue, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { Github } from "lucide-react";
-import { useState, useRef, useEffect, type KeyboardEvent } from "react";
-import { gsap } from "gsap";
+import { useState, type KeyboardEvent, type PointerEvent } from "react";
 
 export type ProjectCardItem = {
     id: number | string;
@@ -49,19 +49,19 @@ export function ProjectCard({
     const [imageError, setImageError] = useState(false);
     const [showVideo, setShowVideo] = useState(false);
     const [tapped, setTapped] = useState(false);
-    const videoRef = useRef<HTMLDivElement>(null);
-    const cardRef = useRef<HTMLElement>(null);
+    const reduce = useReducedMotion();
+    const spotlightX = useMotionValue(0);
+    const spotlightY = useMotionValue(0);
+    const spotlight = useMotionTemplate`radial-gradient(280px circle at ${spotlightX}px ${spotlightY}px, rgb(16 185 129 / 0.14), transparent 58%)`;
     const clickable = Boolean(project.link || project.caseStudyLink);
     const cta = projectCtaLabel(project);
     const badge = projectCornerBadge(project);
 
-    useEffect(() => {
-        if (isHovered && project.videoUrl && !showVideo) {
-            gsap.to(videoRef.current, { opacity: 1, duration: 0.5, ease: "power2.inOut" });
-        } else if (project.videoUrl && !showVideo) {
-            gsap.to(videoRef.current, { opacity: 0, duration: 0.3, ease: "power2.inOut" });
-        }
-    }, [isHovered, project.videoUrl, showVideo]);
+    const handlePointerMove = (event: PointerEvent<HTMLElement>) => {
+        const rect = event.currentTarget.getBoundingClientRect();
+        spotlightX.set(event.clientX - rect.left);
+        spotlightY.set(event.clientY - rect.top);
+    };
 
     const handleMouseEnter = () => {
         setIsHovered(true);
@@ -98,25 +98,30 @@ export function ProjectCard({
 
     return (
         <motion.article
-            ref={cardRef}
-            initial={{ opacity: 0, y: 30 }}
+            initial={reduce ? false : { opacity: 0, y: 22 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: idx * 0.08 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ delay: idx * 0.05, duration: 0.5, ease: EASE_OUT_EXPO }}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onPointerMove={handlePointerMove}
             onTouchStart={handleTouchStart}
             onClick={handleCardClick}
             onKeyDown={handleKeyDown}
             role={clickable ? "link" : undefined}
             tabIndex={clickable ? 0 : undefined}
             aria-label={clickable ? `${project.name}, ${cta}` : project.name}
-            className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200/90 bg-zinc-50 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_rgba(15,23,42,0.05)] transition-[transform,box-shadow,border-color] duration-300 ease-out motion-reduce:transform-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:border-zinc-800 dark:bg-zinc-900/40 dark:shadow-[0_1px_2px_rgba(0,0,0,0.35),0_10px_28px_rgba(0,0,0,0.28)] dark:focus-visible:outline-white ${
+            className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200/90 bg-zinc-50 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_rgba(15,23,42,0.05)] transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transform-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:border-zinc-800 dark:bg-zinc-900/40 dark:shadow-[0_1px_2px_rgba(0,0,0,0.35),0_10px_28px_rgba(0,0,0,0.28)] dark:focus-visible:outline-white ${
                 featured ? "md:min-h-112" : ""
             } ${
-                clickable ? "cursor-pointer hover:z-10 hover:scale-[1.025] hover:border-zinc-300 hover:shadow-[0_12px_36px_rgba(15,23,42,0.12)] dark:hover:border-zinc-600 dark:hover:shadow-[0_16px_40px_rgba(0,0,0,0.5)]" : ""
+                clickable ? "cursor-pointer hover:z-10 hover:scale-[1.02] hover:border-zinc-300 hover:shadow-[0_12px_36px_rgba(15,23,42,0.12)] dark:hover:border-zinc-600 dark:hover:shadow-[0_16px_40px_rgba(0,0,0,0.5)]" : ""
             }`}
         >
+            <motion.div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 z-20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                style={{ background: spotlight }}
+            />
             <CardMediaBackdrop className={`${featured ? "aspect-video" : "aspect-16/10"} w-full`}>
                 <div className="relative z-10 h-full w-full overflow-hidden">
                     {imageError ? (
@@ -145,8 +150,9 @@ export function ProjectCard({
 
                     {project.videoUrl && !showVideo && (
                         <div
-                            ref={videoRef}
-                            className="pointer-events-none absolute inset-0 z-10 bg-black opacity-0"
+                            className={`pointer-events-none absolute inset-0 z-10 bg-black transition-opacity duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                                isHovered ? "opacity-100" : "opacity-0"
+                            }`}
                         >
                             <iframe
                                 src={project.videoUrl}

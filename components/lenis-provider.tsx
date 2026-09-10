@@ -1,8 +1,12 @@
 "use client";
 
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ReactLenis, useLenis } from "lenis/react";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const LENIS_SCROLL_OFFSET = -112;
 
@@ -24,6 +28,16 @@ function LenisRouteSync() {
         if (!lenis || window.location.hash) return;
         lenis.scrollTo(0, { immediate: true });
     }, [pathname, lenis]);
+
+    useEffect(() => {
+        if (!lenis) return;
+        const onScroll = () => ScrollTrigger.update();
+        lenis.on("scroll", onScroll);
+        requestAnimationFrame(() => ScrollTrigger.refresh());
+        return () => {
+            lenis.off("scroll", onScroll);
+        };
+    }, [lenis]);
 
     return null;
 }
