@@ -4,6 +4,7 @@ import { Lamphome } from "@/components/ui/lamphome";
 import { NAVIGATION_LINKS } from "@/lib/constants";
 import { HeroSection } from "@/components/hero-section";
 import { ProjectsSection } from "@/components/projects-section";
+import { OpenSourceList } from "@/components/open-source-list";
 import { ExperienceSection } from "@/components/experience-section";
 import { Footer } from "@/components/footer";
 import { CustomCursor } from "@/components/custom-cursor";
@@ -42,6 +43,9 @@ export default function Home() {
           <HeroSection onResumeClick={() => setIsResumeOpen(true)} />
           <SectionReveal>
             <ExperienceSection />
+          </SectionReveal>
+          <SectionReveal>
+            <OpenSourceList />
           </SectionReveal>
           <SectionReveal>
             <ProjectsSection />

@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { GITHUB_STATS } from '@/lib/constants';
-import { OpenSourceList } from '@/components/open-source-list';
 import { Github, Clock } from 'lucide-react';
 import { GitHubCalendar } from 'react-github-calendar';
 import { useTheme } from 'next-themes';
@@ -137,8 +136,6 @@ export function GithubActivity() {
                     </div>
                 </div>
             </motion.div>
-
-            <OpenSourceList />
 
             <style jsx>{`
                 .custom-scrollbar::-webkit-scrollbar {

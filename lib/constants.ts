@@ -16,6 +16,7 @@ export type FooterLink = {
 export const FOOTER_NAV: FooterLink[] = [
     { label: "Home", href: "/" },
     { label: "Work", href: "/#work" },
+    { label: "Open source", href: "/#oss" },
     { label: "Projects", href: "/#projects" },
     { label: "Videos", href: "/video" },
     { label: "Bio", href: "/#bio" },
