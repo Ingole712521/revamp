@@ -5,8 +5,8 @@ import { EASE_OUT_EXPO } from "@/lib/motion";
 import { useGmailRedirect } from "@/components/gmail-redirect-provider";
 import { HeroWallpaper } from "@/components/hero-wallpaper";
 import { MagneticButton } from "@/components/magnetic-button";
+import { Mascot } from "page-mascot";
 import { motion, useReducedMotion } from "motion/react";
-import Image from "next/image";
 import Link from "next/link";
 import {
     FileText,
@@ -99,23 +99,15 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
                 </div>
             </div>
 
-            <div className="relative z-10 mt-6 flex flex-wrap items-end gap-x-6 gap-y-3 sm:mt-8">
+            <div className="relative z-10 mt-6 flex flex-wrap items-end gap-x-4 gap-y-3 sm:mt-8 sm:gap-x-6">
                 <KineticName name={HERO.name} />
-                <div className="mb-1 shrink-0 rounded-2xl border border-zinc-200 bg-white p-0.5 dark:border-zinc-800 dark:bg-zinc-950">
-                    <div className="relative size-16 overflow-hidden rounded-[0.85rem] bg-zinc-200 sm:size-24 dark:bg-zinc-900">
-                        <Image
-                            src={HERO.avatar}
-                            alt={HERO.name}
-                            fill
-                            priority
-                            className="object-cover"
-                        />
-                        <span
-                            className="absolute bottom-1.5 right-1.5 size-2.5 rounded-full border-2 border-white bg-emerald-500 dark:border-zinc-950"
-                            aria-hidden
-                        />
-                    </div>
-                </div>
+                <Mascot
+                    directions="/mascots/otter-directions.webp"
+                    reactions="/mascots/otter-reactions.webp"
+                    label="otter"
+                    size={120}
+                    className="mb-1 shrink-0"
+                />
             </div>
 
             <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
