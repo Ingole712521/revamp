@@ -3,6 +3,8 @@
 import { Lamphome } from "@/components/ui/lamphome";
 import { NAVIGATION_LINKS } from "@/lib/constants";
 import { HeroSection } from "@/components/hero-section";
+import { ProofStrip } from "@/components/proof-strip";
+import { FeaturedProject } from "@/components/featured-project";
 import { ProjectsSection } from "@/components/projects-section";
 import { OpenSourceList } from "@/components/open-source-list";
 import { ExperienceSection } from "@/components/experience-section";
@@ -41,6 +43,8 @@ export default function Home() {
       >
         <div className="mx-auto flex w-full max-w-6xl flex-col items-stretch">
           <HeroSection onResumeClick={() => setIsResumeOpen(true)} />
+          <ProofStrip />
+          <FeaturedProject />
           <SectionReveal>
             <ExperienceSection />
           </SectionReveal>

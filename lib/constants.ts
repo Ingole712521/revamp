@@ -38,6 +38,14 @@ export const HERO = {
     location: "Pune, India",
 };
 
+export const LEAD_PROJECT_ID = "animioui";
+
+export const PROOF = [
+    { figure: "3+", detail: "years shipping web and cloud products" },
+    { figure: "12", detail: "merged open-source pull requests" },
+    { figure: "80+", detail: "technical articles on Hashnode" },
+] as const;
+
 export const ABOUT_SNAPSHOT = [
     "3+ years shipping web and cloud products",
     "Creator of AnimioUI",

@@ -8,7 +8,6 @@ import { MagneticButton } from "@/components/magnetic-button";
 import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import {
     FileText,
     Github,
@@ -32,56 +31,27 @@ function HashnodeIcon({ className }: { className?: string }) {
     );
 }
 
-function TypedRole({ text }: { text: string }) {
-    const [shown, setShown] = useState("");
-
-    useEffect(() => {
-        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        if (reduce) {
-            setShown(text);
-            return;
-        }
-
-        setShown("");
-        let i = 0;
-        const id = window.setInterval(() => {
-            i += 1;
-            setShown(text.slice(0, i));
-            if (i >= text.length) window.clearInterval(id);
-        }, 38);
-
-        return () => window.clearInterval(id);
-    }, [text]);
-
-    return (
-        <p className="mt-1.5 min-h-5 text-[15px] font-normal leading-snug text-zinc-500 dark:text-zinc-400">
-            {shown}
-            <span
-                className="hero-caret ml-0.5 inline-block h-3.5 w-0.5 translate-y-px bg-emerald-600 align-middle dark:bg-emerald-400"
-                aria-hidden
-            />
-        </p>
-    );
-}
-
 function KineticName({ name }: { name: string }) {
     const reduce = useReducedMotion();
     const words = name.split(" ");
 
     return (
-        <h1 className="text-balance font-semibold leading-[1.1] tracking-[-0.03em] text-zinc-950 dark:text-white">
+        <h1
+            aria-label={name}
+            className="max-w-full font-semibold text-zinc-950 dark:text-white text-[clamp(2.6rem,7vw,6rem)] leading-none tracking-[-0.04em]"
+        >
             {words.map((word, index) => (
                 <span
                     key={`${word}-${index}`}
-                    className="mr-[0.28em] inline-block overflow-hidden pb-0.5 align-bottom last:mr-0"
+                    className="mr-[0.22em] inline-block overflow-hidden pb-[0.2em] align-bottom leading-[1.05] last:mr-0"
                 >
                     <motion.span
                         className="inline-block"
-                        initial={reduce ? false : { y: "110%" }}
+                        initial={reduce ? false : { y: "108%" }}
                         animate={{ y: "0%" }}
                         transition={{
-                            duration: 0.55,
-                            delay: 0.12 + index * 0.06,
+                            duration: 0.7,
+                            delay: 0.06 + index * 0.08,
                             ease: EASE_OUT_EXPO,
                         }}
                     >
@@ -107,7 +77,6 @@ const socialButtonClass =
 
 export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
     const { requestGmailRedirect } = useGmailRedirect();
-    const reduce = useReducedMotion();
 
     const socialLinks = [
         { key: "github", href: SOCIALS.github.url, label: SOCIALS.github.label, icon: Github },
@@ -124,88 +93,64 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
             id="home"
             className="section-container border-t-0 pt-4 pb-12 md:pt-6 md:pb-16"
         >
-            <motion.div
-                initial={reduce ? false : { opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, ease: EASE_OUT_EXPO }}
-                className="relative -mx-5 overflow-hidden border-y border-zinc-200/70 md:-mx-6 dark:border-zinc-800/80"
-            >
-                <div className="relative h-52 w-full overflow-hidden sm:h-64 md:h-72">
+            <div className="relative -mx-5 overflow-hidden border-y border-zinc-200/70 md:-mx-6 dark:border-zinc-800/80">
+                <div className="relative h-28 w-full overflow-hidden sm:h-36">
                     <HeroWallpaper />
                 </div>
-            </motion.div>
+            </div>
 
-            <div className="relative z-10 -mt-8 flex flex-col gap-4 sm:-mt-10 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
-                <motion.div
-                    initial={reduce ? false : { opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.12, duration: 0.45, ease: EASE_OUT_EXPO }}
-                    className="flex min-w-0 items-end gap-4"
-                >
-                    <div className="rounded-2xl border border-white/80 bg-white/60 p-0.5 shadow-[0_8px_24px_rgba(15,23,42,0.1)] dark:border-zinc-800 dark:bg-zinc-950/40">
-                        <div className="relative size-[4.5rem] shrink-0 overflow-hidden rounded-[0.85rem] bg-zinc-200 sm:size-20 dark:bg-zinc-900">
-                            <Image
-                                src={HERO.avatar}
-                                alt={HERO.name}
-                                fill
-                                priority
-                                className="object-cover"
-                            />
-                            <span
-                                className="absolute bottom-1.5 right-1.5 size-2.5 rounded-full border-2 border-white bg-emerald-500 dark:border-zinc-950"
-                                aria-hidden
-                            />
-                        </div>
+            <div className="relative z-10 mt-6 flex flex-wrap items-end gap-x-6 gap-y-3 sm:mt-8">
+                <KineticName name={HERO.name} />
+                <div className="mb-1 shrink-0 rounded-2xl border border-zinc-200 bg-white p-0.5 dark:border-zinc-800 dark:bg-zinc-950">
+                    <div className="relative size-16 overflow-hidden rounded-[0.85rem] bg-zinc-200 sm:size-24 dark:bg-zinc-900">
+                        <Image
+                            src={HERO.avatar}
+                            alt={HERO.name}
+                            fill
+                            priority
+                            className="object-cover"
+                        />
+                        <span
+                            className="absolute bottom-1.5 right-1.5 size-2.5 rounded-full border-2 border-white bg-emerald-500 dark:border-zinc-950"
+                            aria-hidden
+                        />
                     </div>
+                </div>
+            </div>
 
-                    <div className="min-w-0 pb-0.5">
-                        <KineticName name={HERO.name} />
-                        <TypedRole text={HERO.role} />
-                        <p className="mt-1.5 flex items-center gap-1.5 text-sm font-normal text-zinc-500 dark:text-zinc-500">
-                            <MapPin className="size-3.5 shrink-0" aria-hidden />
-                            {HERO.location}
-                        </p>
-                    </div>
-                </motion.div>
-
+            <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div className="min-w-0">
+                    <p className="text-base font-medium text-zinc-800 dark:text-zinc-100">
+                        {HERO.role}
+                    </p>
+                    <p className="mt-1 flex items-center gap-1.5 text-sm text-zinc-600 dark:text-zinc-300">
+                        <MapPin className="size-3.5 shrink-0" aria-hidden />
+                        {HERO.location}
+                    </p>
+                </div>
                 <MagneticButton
                     onClick={onResumeClick}
-                    className="pressable group inline-flex w-fit items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 py-1.5 pr-1.5 pl-4 text-sm font-medium text-zinc-800 hover:border-zinc-300 hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-600 dark:hover:bg-zinc-800 dark:focus-visible:outline-white"
+                    className="pressable group inline-flex w-fit items-center gap-2 rounded-full bg-emerald-800 py-1.5 pr-1.5 pl-4 text-sm font-medium text-white hover:bg-emerald-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-950 dark:bg-emerald-800 dark:hover:bg-emerald-700 dark:focus-visible:outline-emerald-200"
                 >
                     Resume
-                    <span className="inline-flex size-7 items-center justify-center rounded-full bg-zinc-950 text-white dark:bg-white dark:text-zinc-950">
+                    <span className="inline-flex size-7 items-center justify-center rounded-full bg-white text-emerald-800">
                         <FileText className="icon-nudge size-3.5" aria-hidden />
                     </span>
                 </MagneticButton>
             </div>
 
-            <motion.div
-                initial={reduce ? false : { opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.42, duration: 0.55, ease: EASE_OUT_EXPO }}
-                className="mt-7 max-w-[65ch]"
-            >
+            <div className="mt-7 max-w-[65ch]">
                 <p className="text-pretty text-[0.9375rem] leading-[1.65] text-zinc-800 md:text-base dark:text-zinc-200">
                     {HERO.headline}
                 </p>
-                <p className="mt-3 text-pretty text-[0.9375rem] leading-[1.65] text-zinc-500 md:text-base dark:text-zinc-400">
+                <p className="mt-3 text-pretty text-[0.9375rem] leading-[1.65] text-zinc-600 md:text-base dark:text-zinc-300">
                     {HERO.subline}
                 </p>
-            </motion.div>
+            </div>
 
-            <motion.ul
-                initial={reduce ? false : { opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.52, duration: 0.45, ease: EASE_OUT_EXPO }}
-                className="mt-6 flex flex-wrap items-center gap-2.5"
-            >
-                {socialLinks.map(({ key, href, label, icon: Icon }, index) => (
-                    <motion.li
-                        key={key}
-                        initial={reduce ? false : { opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.56 + index * 0.04, duration: 0.35, ease: EASE_OUT_EXPO }}
-                    >
+            <ul className="mt-6 flex flex-wrap items-center gap-2.5">
+                {socialLinks.map(({ key, href, label, icon: Icon }) => (
+                    <li key={key}>
                         <Link
                             href={href}
                             target="_blank"
@@ -215,7 +160,7 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
                         >
                             <Icon className={iconClass} />
                         </Link>
-                    </motion.li>
+                    </li>
                 ))}
                 <li>
                     <button
@@ -227,7 +172,7 @@ export function HeroSection({ onResumeClick }: { onResumeClick: () => void }) {
                         <Mail className={iconClass} />
                     </button>
                 </li>
-            </motion.ul>
+            </ul>
         </section>
     );
 }

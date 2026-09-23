@@ -1,6 +1,6 @@
 "use client";
 
-import { PROJECTS } from "@/lib/constants";
+import { LEAD_PROJECT_ID, PROJECTS } from "@/lib/constants";
 import { EASE_OUT_EXPO } from "@/lib/motion";
 import { ProjectCard } from "@/components/project-card";
 import { SectionHeading } from "@/components/section-heading";
@@ -13,7 +13,10 @@ type Filter = (typeof FILTERS)[number];
 export function ProjectsSection() {
     const [filter, setFilter] = useState<Filter>("All");
     const featured = useMemo(
-        () => PROJECTS.filter((project) => project.featured),
+        () =>
+            PROJECTS.filter(
+                (project) => project.featured && project.id !== LEAD_PROJECT_ID,
+            ),
         [],
     );
 
@@ -35,9 +38,6 @@ export function ProjectsSection() {
             />
 
             <div className="mb-8">
-                <p className="mb-3 text-[13px] font-medium leading-[1.4] text-zinc-500">
-                    Featured
-                </p>
                 <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
                     {featured.map((project, idx) => (
                         <ProjectCard
