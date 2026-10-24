@@ -7,6 +7,12 @@
       "skillPath": "skills/better-typography/SKILL.md",
       "computedHash": "0cd871f48bb1a411e0724b48226c69bb768f1c903930ae6d333e234d46f0a9d2"
     },
+    "brag": {
+      "source": "latent-spaces/brag",
+      "sourceType": "github",
+      "skillPath": "skills/brag/SKILL.md",
+      "computedHash": "3865fa44d0af6f8483c4e3229ae369390a21c96e3bd8485ee49b88b5bffcd833"
+    },
     "find-skills": {
       "source": "vercel-labs/skills",
       "sourceType": "github",

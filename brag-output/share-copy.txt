@@ -1,0 +1,2 @@
+Nehal Ingole. I build modern web apps, reusable UI systems, and the cloud workflows that keep them in production.
+React, TypeScript, AWS.

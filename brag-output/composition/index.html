@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Geist Mono";
+        src: url("assets/fonts/geist-mono-400.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Geist Mono";
+        src: url("assets/fonts/geist-mono-500.woff2") format("woff2");
+        font-weight: 500;
+        font-style: normal;
+      }
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #000000;
+      }
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background-color: #000000;
+        background-image: radial-gradient(rgba(255, 255, 255, 0.13) 1.15px, rgba(0, 0, 0, 0) 1.15px);
+        background-size: 32px 32px;
+        font-family: Inter, sans-serif;
+        color: #fafafa;
+      }
+      h1, h2, h3, p { margin: 0; }
+      #halo {
+        position: absolute;
+        z-index: 0;
+        left: 80px;
+        top: 120px;
+        width: 920px;
+        height: 920px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(16, 185, 129, 0.28) 0%, rgba(16, 185, 129, 0) 68%);
+        pointer-events: none;
+        opacity: 0;
+      }
+      .scene {
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: rgba(0, 0, 0, 0);
+      }
+      #scene2 { z-index: 2; opacity: 0; }
+      #scene3 { z-index: 3; opacity: 0; }
+      #scene4 { z-index: 4; opacity: 0; }
+      .scene-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 120px 150px;
+        gap: 18px;
+      }
+      .scene-content.center { align-items: center; text-align: center; }
+      .name-row {
+        display: flex;
+        align-items: flex-end;
+        gap: 22px;
+      }
+      #name {
+        font-size: 124px;
+        font-weight: 600;
+        letter-spacing: -0.04em;
+        line-height: 0.98;
+        color: #fafafa;
+      }
+      #dot {
+        width: 22px;
+        height: 22px;
+        margin-bottom: 22px;
+        border-radius: 50%;
+        background: #10b981;
+        flex: none;
+      }
+      #place {
+        font-size: 28px;
+        font-weight: 400;
+        letter-spacing: 0.01em;
+        color: #c4c4cc;
+      }
+      #role {
+        min-height: 48px;
+        font-size: 36px;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        color: #d4d4d8;
+        clip-path: inset(0 0 0 0);
+      }
+      #caret {
+        display: inline-block;
+        width: 3px;
+        height: 0.85em;
+        margin-left: 6px;
+        background: #d4d4d8;
+        vertical-align: -2px;
+      }
+      .line {
+        max-width: 1560px;
+        font-size: 64px;
+        font-weight: 500;
+        letter-spacing: -0.03em;
+        line-height: 1.16;
+        color: #fafafa;
+      }
+      .cards {
+        display: flex;
+        align-items: stretch;
+        gap: 28px;
+        width: 100%;
+      }
+      .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 500px;
+        min-height: 280px;
+        padding: 36px 36px 32px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 16px;
+        background: #1c1c1f;
+        gap: 18px;
+      }
+      .card h3 {
+        font-size: 44px;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+        color: #fafafa;
+      }
+      .impact {
+        font-size: 28px;
+        font-weight: 400;
+        line-height: 1.3;
+        color: #e4e4e7;
+      }
+      .tag {
+        font-family: "Geist Mono", ui-monospace, monospace;
+        font-size: 28px;
+        font-weight: 400;
+        letter-spacing: 0.04em;
+        color: #d4d4d8;
+      }
+      #domain {
+        font-family: "Geist Mono", ui-monospace, monospace;
+        font-size: 84px;
+        font-weight: 500;
+        letter-spacing: -0.03em;
+        color: #fafafa;
+      }
+      #domain-rule {
+        width: 72px;
+        height: 2px;
+        background: #10b981;
+      }
+      #stack {
+        font-size: 28px;
+        font-weight: 400;
+        letter-spacing: 0.01em;
+        color: #d4d4d8;
+      }
+      #fade {
+        position: absolute;
+        z-index: 30;
+        inset: 0;
+        background: #000000;
+        opacity: 0;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-width="1920"
+      data-height="1080"
+      data-start="0"
+      data-duration="21"
+    >
+      <div id="halo" data-layout-ignore></div>
+
+      <div id="scene1" class="scene" data-layout-allow-overflow>
+        <div class="scene-content">
+          <div class="name-row">
+            <h1 id="name">Nehal Ingole</h1>
+            <span id="dot"></span>
+          </div>
+          <p id="place">Pune, India</p>
+          <p id="role">Software Developer<span id="caret"></span></p>
+        </div>
+      </div>
+
+      <div id="scene2" class="scene" data-layout-allow-overflow>
+        <div class="scene-content">
+          <h2 class="line" id="line1" data-hold>I build modern web apps,</h2>
+          <h2 class="line" id="line2" data-hold>reusable UI systems,</h2>
+          <h2 class="line" id="line3" data-hold>and the cloud workflows that keep them in production.</h2>
+        </div>
+      </div>
+
+      <div id="scene3" class="scene" data-layout-allow-overflow>
+        <div class="scene-content">
+          <div class="cards">
+            <article class="card" id="card1">
+              <h3>AnimioUI</h3>
+              <p class="impact">Creator of AnimioUI</p>
+              <p class="tag">Next.js</p>
+            </article>
+            <article class="card" id="card2">
+              <h3>Revio</h3>
+              <p class="impact">Reviews PRs in seconds</p>
+              <p class="tag">TypeScript</p>
+            </article>
+            <article class="card" id="card3">
+              <h3>EMQX on AWS</h3>
+              <p class="impact">300K concurrent connections</p>
+              <p class="tag">Terraform</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene4" class="scene" data-layout-allow-overflow>
+        <div class="scene-content center">
+          <p id="domain">nehalingole.in</p>
+          <div id="domain-rule"></div>
+          <p id="stack">React · TypeScript · AWS</p>
+        </div>
+      </div>
+
+      <div id="fade"></div>
+
+      <audio id="music" data-start="0" data-duration="21" data-track-index="10" data-volume="0.35" src="assets/music/bed.mp3"></audio>
+      <audio id="sfx-name" data-start="1.6" data-duration="0.12" data-track-index="11" data-volume="0.42" src="assets/sfx/impactSoft_medium_000.ogg"></audio>
+      <audio id="sfx-key-1" data-start="1.95" data-duration="0.25" data-track-index="12" data-volume="0.22" src="assets/sfx/keypress-003.wav"></audio>
+      <audio id="sfx-key-2" data-start="2.2" data-duration="0.25" data-track-index="13" data-volume="0.2" src="assets/sfx/keypress-008.wav"></audio>
+      <audio id="sfx-key-3" data-start="2.48" data-duration="0.25" data-track-index="14" data-volume="0.2" src="assets/sfx/keypress-012.wav"></audio>
+      <audio id="sfx-key-4" data-start="2.78" data-duration="0.25" data-track-index="15" data-volume="0.18" src="assets/sfx/keypress-015.wav"></audio>
+      <audio id="sfx-key-5" data-start="3.08" data-duration="0.25" data-track-index="16" data-volume="0.18" src="assets/sfx/keypress-021.wav"></audio>
+      <audio id="sfx-card-1" data-start="11.06" data-duration="0.11" data-track-index="17" data-volume="0.55" src="assets/sfx/drop_001.ogg"></audio>
+      <audio id="sfx-card-2" data-start="12.65" data-duration="0.19" data-track-index="18" data-volume="0.55" src="assets/sfx/drop_002.ogg"></audio>
+      <audio id="sfx-card-3" data-start="14.22" data-duration="0.19" data-track-index="19" data-volume="0.55" src="assets/sfx/drop_003.ogg"></audio>
+      <audio id="sfx-domain" data-start="17.91" data-duration="0.15" data-track-index="20" data-volume="0.34" src="assets/sfx/impactSoft_medium_004.ogg"></audio>
+    </div>
+
+    <script src="assets/music/audio-data.js"></script>
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var tl = gsap.timeline({ paused: true });
+
+        if (window.AUDIO && AUDIO.frames && AUDIO.frames.length) {
+          var frames = AUDIO.frames;
+          var fps = AUDIO.fps || 30;
+          var count = Math.min(frames.length, Math.ceil(21 * fps));
+          for (var f = 0; f < count; f++) {
+            var t = f / fps;
+            var ramp = t < 0.45 ? t / 0.45 : 1;
+            var bass = frames[f].bands ? frames[f].bands[0] : frames[f].rms;
+            var rms = frames[f].rms || 0;
+            tl.set("#halo", {
+              opacity: ramp * (0.28 + bass * 0.22),
+              scale: 1 + rms * 0.04
+            }, t);
+          }
+        } else {
+          tl.fromTo("#halo",
+            { opacity: 0, scale: 1 },
+            { opacity: 0.34, scale: 1.04, duration: 0.8, ease: "power1.out" },
+            0.2);
+          tl.to("#halo", {
+            opacity: 0.22,
+            scale: 1,
+            duration: 2.2,
+            yoyo: true,
+            repeat: 8,
+            ease: "sine.inOut"
+          }, 1.0);
+        }
+
+        tl.from("#dot", { scale: 0.4, opacity: 0, duration: 0.45, ease: "back.out(1.6)" }, 0.25);
+        // beat-locked: 1.60s
+        tl.from("#name", { y: 36, opacity: 0, duration: 0.6, ease: "power3.out" }, 1.0);
+        tl.from("#place", { y: 16, opacity: 0, duration: 0.45, ease: "power2.out" }, 1.72);
+        tl.fromTo("#role",
+          { clipPath: "inset(0 100% 0 0)" },
+          { clipPath: "inset(0 0% 0 0)", duration: 1.25, ease: "steps(18)" },
+          1.9);
+        tl.fromTo("#caret", { opacity: 1 }, { opacity: 0, duration: 0.32, repeat: 3, yoyo: true, ease: "steps(1)" }, 2.15);
+        tl.set("#caret", { opacity: 1 }, 3.55);
+
+        function blurFade(oldId, newId, T) {
+          tl.to(oldId, { filter: "blur(10px)", scale: 1.03, opacity: 0, duration: 0.5, ease: "power2.inOut" }, T);
+          tl.fromTo(newId,
+            { filter: "blur(10px)", scale: 0.97, opacity: 0 },
+            { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.5, ease: "power2.inOut" },
+            T + 0.1);
+        }
+
+        blurFade("#scene1", "#scene2", 4.55);
+        tl.from("#line1", { y: 28, opacity: 0, duration: 0.5, ease: "power3.out" }, 4.9);
+        tl.from("#line2", { y: 24, opacity: 0, duration: 0.45, ease: "power2.out" }, 5.15);
+        // beat-locked: 5.80s
+        tl.from("#line3", { y: 22, opacity: 0, duration: 0.45, ease: "expo.out" }, 5.35);
+
+        blurFade("#scene2", "#scene3", 10.6);
+        // beat-grid: card 1 at 11.06s, card 2 at 12.65s, card 3 at 14.22s
+        tl.from("#card1", { x: -28, opacity: 0, duration: 0.45, ease: "power3.out" }, 11.06);
+        tl.from("#card2", { y: 32, opacity: 0, duration: 0.42, ease: "power2.out" }, 12.65);
+        tl.from("#card3", { x: 28, opacity: 0, duration: 0.42, ease: "expo.out" }, 14.22);
+
+        blurFade("#scene3", "#scene4", 17.1);
+        // beat-locked: 17.91s
+        tl.from("#domain", { y: 26, opacity: 0, duration: 0.56, ease: "power3.out" }, 17.35);
+        tl.from("#domain-rule", { scaleX: 0, opacity: 0, duration: 0.35, ease: "power1.inOut" }, 18.05);
+        tl.from("#stack", { y: 14, opacity: 0, duration: 0.4, ease: "power2.out" }, 18.15);
+
+        tl.to("#fade", { opacity: 1, duration: 1.05, ease: "power1.in" }, 19.95);
+
+        window.__timelines["main"] = tl;
+      })();
+    </script>
+  </body>
+</html>
