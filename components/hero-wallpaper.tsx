@@ -51,7 +51,7 @@ const COLUMNS = [
             "  res.json({ ok: true, region: 'pune' })",
             "})",
             "",
-            "// 13+ open source contributions",
+            "// 12 merged open-source PRs",
             "// 80+ articles on Hashnode",
         ],
     },
@@ -71,7 +71,7 @@ const COLUMNS = [
             "}",
             "",
             "const tokens = {",
-            "  font: 'Inter'",
+            "  font: 'Geist'",
             "  radius: 8",
             "}",
             "",
@@ -173,7 +173,7 @@ export function HeroWallpaper() {
                         <span className="size-2.5 rounded-full bg-[#28c840] shadow-[0_0_8px_rgba(40,200,64,0.45)]" />
                     </span>
                     <span className="truncate tracking-tight">
-                        nehal@pune — deploy.yml
+                        nehal@pune - deploy.yml
                     </span>
                     <span className="hero-caret ml-auto hidden h-3.5 w-1.5 bg-emerald-500 sm:inline-block" />
                 </div>

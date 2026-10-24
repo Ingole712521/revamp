@@ -1,47 +1,56 @@
 "use client"
 
 import { QUOTES } from "@/lib/constants";
-import { motion } from "motion/react";
+import { EASE_OUT_EXPO } from "@/lib/motion";
+import { SectionHeading } from "@/components/section-heading";
+import { AnimatePresence, motion } from "motion/react";
 import { Quote } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export function QuotesSection() {
-    const [quote, setQuote] = useState(QUOTES[0]);
+    const [index, setIndex] = useState(0);
 
     useEffect(() => {
-        const randomIndex = Math.floor(Math.random() * QUOTES.length);
-        setQuote(QUOTES[randomIndex]);
+        setIndex(Math.floor(Math.random() * QUOTES.length));
     }, []);
+
+    useEffect(() => {
+        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reduce) return;
+        const id = window.setInterval(() => {
+            setIndex((current) => (current + 1) % QUOTES.length);
+        }, 8000);
+        return () => window.clearInterval(id);
+    }, []);
+
+    const quote = QUOTES[index];
 
     return (
         <section id="quotes" className="section-container border-t border-zinc-200/80 dark:border-zinc-800/80">
-            <h2 className="mb-8 text-xl font-semibold leading-[1.2] tracking-[-0.02em] text-zinc-950 md:mb-10 md:text-2xl dark:text-white">
-                A thought I work by
-            </h2>
-            <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="relative p-10 md:p-16 rounded-[2.5rem] bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-100 dark:border-zinc-800 overflow-hidden"
-            >
-                {/* Decorative Quote Icon */}
-                <Quote className="absolute -top-4 -left-4 w-32 h-32 text-zinc-200/50 dark:text-zinc-800/50 -rotate-12 pointer-events-none" />
-
-                <div className="relative z-10 flex flex-col items-center md:items-start">
-                    <p className="mb-8 max-w-[65ch] text-pretty text-center text-lg font-normal leading-[1.6] text-zinc-600 italic md:text-left md:text-xl dark:text-zinc-400">
-                        "{quote.text}"
-                    </p>
-                    <div className="flex items-center gap-4">
-                        <div className="h-px w-8 bg-zinc-300 dark:bg-zinc-700" />
-                        <span className="text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500 underline dark:text-zinc-400">
-                            {quote.author}
-                        </span>
-                    </div>
-                </div>
-
-                {/* Grid Pattern Subtlety */}
-                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-size-[32px_32px]"></div>
-            </motion.div>
+            <SectionHeading title="A thought I work by" />
+            <div className="relative overflow-hidden rounded-2xl border border-zinc-200/80 bg-zinc-50/70 p-6 md:p-8 dark:border-zinc-800 dark:bg-zinc-900/40">
+                <Quote className="pointer-events-none absolute -top-2 -left-2 size-16 text-zinc-200/80 dark:text-zinc-800/80" />
+                <AnimatePresence mode="wait">
+                    <motion.blockquote
+                        key={quote.text}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.28, ease: EASE_OUT_EXPO }}
+                        className="relative z-10"
+                    >
+                        <p className="mb-5 max-w-[65ch] text-pretty text-base font-normal leading-[1.6] text-zinc-600 italic dark:text-zinc-400">
+                            &ldquo;{quote.text}&rdquo;
+                        </p>
+                        <footer className="flex items-center gap-3">
+                            <div className="h-px w-6 bg-zinc-300 dark:bg-zinc-700" />
+                            <cite className="text-[13px] font-medium not-italic leading-[1.4] text-zinc-500 dark:text-zinc-400">
+                                {quote.author}
+                            </cite>
+                        </footer>
+                    </motion.blockquote>
+                </AnimatePresence>
+            </div>
         </section>
     );
 }

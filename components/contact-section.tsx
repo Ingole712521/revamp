@@ -1,8 +1,10 @@
 "use client";
 
 import { SectionHeading } from "@/components/section-heading";
+import { MagneticButton, MagneticLink } from "@/components/magnetic-button";
 import { useGmailRedirect } from "@/components/gmail-redirect-provider";
 import { SOCIALS } from "@/lib/constants";
+import { EASE_OUT_EXPO } from "@/lib/motion";
 import { motion } from "motion/react";
 import {
     ArrowUpRight,
@@ -14,7 +16,6 @@ import {
     Youtube,
     type LucideIcon,
 } from "lucide-react";
-import Link from "next/link";
 
 type ContactItem =
     | {
@@ -77,7 +78,7 @@ export function ContactSection({ onResumeClick }: ContactSectionProps) {
     ];
 
     const className =
-        "group inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2.5 text-sm font-medium text-zinc-800 transition-colors hover:border-zinc-300 hover:bg-white dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-600 dark:hover:bg-zinc-800";
+        "pressable group inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-800 hover:border-zinc-300 hover:bg-white dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-600 dark:hover:bg-zinc-800";
 
     return (
         <section
@@ -86,13 +87,14 @@ export function ContactSection({ onResumeClick }: ContactSectionProps) {
         >
             <SectionHeading
                 title="Contact"
-                description="Open a channel — GitHub, LinkedIn, mail, or the resume."
+                description="Open a channel: GitHub, LinkedIn, mail, or the resume."
             />
 
             <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
+                transition={{ duration: 0.5, ease: EASE_OUT_EXPO }}
                 className="flex flex-wrap gap-2.5"
             >
                 {items.map((item) => {
@@ -101,33 +103,33 @@ export function ContactSection({ onResumeClick }: ContactSectionProps) {
                         <>
                             <Icon className="size-3.5 shrink-0 opacity-80" />
                             {item.label}
-                            <ArrowUpRight className="size-3.5 opacity-40 transition-opacity group-hover:opacity-80" />
+                            <span className="inline-flex size-6 items-center justify-center rounded-full bg-zinc-950/5 dark:bg-white/10">
+                                <ArrowUpRight className="icon-nudge size-3 opacity-60 group-hover:opacity-100" />
+                            </span>
                         </>
                     );
 
                     if ("onClick" in item) {
                         return (
-                            <button
+                            <MagneticButton
                                 key={item.key}
-                                type="button"
                                 onClick={item.onClick}
                                 className={className}
                             >
                                 {content}
-                            </button>
+                            </MagneticButton>
                         );
                     }
 
                     return (
-                        <Link
+                        <MagneticLink
                             key={item.key}
                             href={item.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            external
                             className={className}
                         >
                             {content}
-                        </Link>
+                        </MagneticLink>
                     );
                 })}
             </motion.div>

@@ -3,7 +3,10 @@
 import { Lamphome } from "@/components/ui/lamphome";
 import { NAVIGATION_LINKS } from "@/lib/constants";
 import { HeroSection } from "@/components/hero-section";
+import { ProofStrip } from "@/components/proof-strip";
+import { FeaturedProject } from "@/components/featured-project";
 import { ProjectsSection } from "@/components/projects-section";
+import { OpenSourceList } from "@/components/open-source-list";
 import { ExperienceSection } from "@/components/experience-section";
 import { Footer } from "@/components/footer";
 import { CustomCursor } from "@/components/custom-cursor";
@@ -16,7 +19,6 @@ import { ContactSection } from "@/components/contact-section";
 import { ResumeModal } from "@/components/resume-modal";
 import { HashScroll } from "@/components/hash-scroll";
 import { FloatingAvatar } from "@/components/floating-avatar";
-import { TechRail } from "@/components/tech-rail";
 import { SectionReveal } from "@/components/section-reveal";
 import { useState } from "react";
 
@@ -24,12 +26,11 @@ export default function Home() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   return (
-    <main className="flex min-h-screen flex-col overflow-x-hidden bg-transparent">
+    <main className="flex min-h-[100dvh] flex-col overflow-x-clip bg-transparent">
       <HashScroll />
       <CustomCursor />
       <Oneko />
       <FloatingAvatar />
-      {/* <TechRail /> */}
       <ResumeModal
         isOpen={isResumeOpen}
         onClose={() => setIsResumeOpen(false)}
@@ -42,8 +43,13 @@ export default function Home() {
       >
         <div className="mx-auto flex w-full max-w-6xl flex-col items-stretch">
           <HeroSection onResumeClick={() => setIsResumeOpen(true)} />
+          <ProofStrip />
+          <FeaturedProject />
           <SectionReveal>
             <ExperienceSection />
+          </SectionReveal>
+          <SectionReveal>
+            <OpenSourceList />
           </SectionReveal>
           <SectionReveal>
             <ProjectsSection />

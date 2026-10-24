@@ -1,8 +1,10 @@
 "use client";
 
-import { PROJECTS } from "@/lib/constants";
+import { LEAD_PROJECT_ID, PROJECTS } from "@/lib/constants";
+import { EASE_OUT_EXPO } from "@/lib/motion";
 import { ProjectCard } from "@/components/project-card";
 import { SectionHeading } from "@/components/section-heading";
+import { LayoutGroup, motion } from "motion/react";
 import { useMemo, useState } from "react";
 
 const FILTERS = ["All", "Shipped", "Frontend", "DevOps", "Fullstack"] as const;
@@ -11,7 +13,10 @@ type Filter = (typeof FILTERS)[number];
 export function ProjectsSection() {
     const [filter, setFilter] = useState<Filter>("All");
     const featured = useMemo(
-        () => PROJECTS.filter((project) => project.featured),
+        () =>
+            PROJECTS.filter(
+                (project) => project.featured && project.id !== LEAD_PROJECT_ID,
+            ),
         [],
     );
 
@@ -29,14 +34,11 @@ export function ProjectsSection() {
         >
             <SectionHeading
                 title="Projects"
-                description="Frontend builds, DevOps workflows, and cloud experiments — clean UX, reliable automation."
+                description="Frontend builds, DevOps workflows, and cloud experiments. Clean UX, reliable automation."
             />
 
-            <div className="mb-10">
-                <p className="mb-4 text-[13px] font-medium text-zinc-500">
-                    Featured
-                </p>
-                <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
+            <div className="mb-8">
+                <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
                     {featured.map((project, idx) => (
                         <ProjectCard
                             key={project.id}
@@ -48,35 +50,44 @@ export function ProjectsSection() {
                 </div>
             </div>
 
-            <div className="mb-8 flex flex-wrap gap-2">
-                {FILTERS.map((item) => {
-                    const active = filter === item;
-                    return (
-                        <button
-                            key={item}
-                            type="button"
-                            onClick={() => setFilter(item)}
-                            className={`rounded-full border px-3.5 py-1.5 text-xs font-medium tracking-wide transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:focus-visible:outline-white ${
-                                active
-                                    ? "border-zinc-900 bg-zinc-900 text-white dark:border-white dark:bg-white dark:text-zinc-950"
-                                    : "border-zinc-200 bg-transparent text-zinc-600 hover:border-zinc-300 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-500 dark:hover:text-zinc-100"
-                            }`}
-                        >
-                            {item}
-                        </button>
-                    );
-                })}
-            </div>
+            <LayoutGroup>
+                <div className="mb-6 flex flex-wrap gap-2">
+                    {FILTERS.map((item) => {
+                        const active = filter === item;
+                        return (
+                            <button
+                                key={item}
+                                type="button"
+                                onClick={() => setFilter(item)}
+                                className={`pressable relative rounded-full border px-3 py-1.5 text-xs font-medium tracking-wide focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:focus-visible:outline-white ${
+                                    active
+                                        ? "border-transparent text-white dark:text-zinc-950"
+                                        : "border-zinc-200 bg-transparent text-zinc-600 hover:border-zinc-300 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-500 dark:hover:text-zinc-100"
+                                }`}
+                            >
+                                {active ? (
+                                    <motion.span
+                                        layoutId="project-filter"
+                                        className="absolute inset-0 rounded-full bg-zinc-950 dark:bg-white"
+                                        transition={{ duration: 0.22, ease: EASE_OUT_EXPO }}
+                                    />
+                                ) : null}
+                                <span className="relative z-10">{item}</span>
+                            </button>
+                        );
+                    })}
+                </div>
+            </LayoutGroup>
 
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {projects.map((project, idx) => (
                     <ProjectCard key={project.id} project={project} idx={idx} />
                 ))}
             </div>
 
             {projects.length === 0 ? (
-                <p className="text-sm text-zinc-500">
-                    Nothing else in this filter — the featured work is above.
+                <p className="mt-4 text-sm text-zinc-500">
+                    Nothing else in this filter. The featured work is above.
                 </p>
             ) : null}
         </section>

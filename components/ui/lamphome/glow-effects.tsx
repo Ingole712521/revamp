@@ -25,10 +25,10 @@ export function GlowEffects({ isDarkMode, showGlow }: GlowEffectsProps) {
                 opacity: showGlow ? 1 : 0,
             }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className='relative max-w-3xl mt-2 h-0.5 bg-linear-to-r from-transparent via-purple-400 to-transparent'
+            className='relative max-w-3xl mt-2 h-0.5 bg-linear-to-r from-transparent via-emerald-400 to-transparent'
             style={{
                 boxShadow: showGlow
-                    ? '0 0 20px #A855F7, 0 0 40px rgba(168, 85, 247, 0.6), 0 0 60px rgba(168, 85, 247, 0.4)'
+                    ? '0 0 20px #34d399, 0 0 40px rgba(16, 185, 129, 0.45), 0 0 60px rgba(5, 150, 105, 0.28)'
                     : 'none',
             }}
         >
@@ -39,7 +39,7 @@ export function GlowEffects({ isDarkMode, showGlow }: GlowEffectsProps) {
                 className='absolute top-full left-1/2 transform -translate-x-1/2 w-full h-12 pointer-events-none'
                 style={{
                     background: showGlow
-                        ? 'radial-gradient(ellipse, rgba(168, 85, 247, 0.3) 0%, rgba(168, 85, 247, 0.1) 50%, transparent 100%)'
+                        ? 'radial-gradient(ellipse, rgba(16, 185, 129, 0.28) 0%, rgba(5, 150, 105, 0.1) 50%, transparent 100%)'
                         : 'none',
                     filter: showGlow ? 'blur(15px)' : 'none',
                 }}

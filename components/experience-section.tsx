@@ -1,6 +1,7 @@
 "use client"
 
 import { EXPERIENCES } from "@/lib/constants";
+import { EASE_OUT_EXPO } from "@/lib/motion";
 import { SectionHeading } from "@/components/section-heading";
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -31,15 +32,30 @@ export function ExperienceSection() {
                     aria-hidden
                     className="absolute top-3 bottom-3 left-1 w-px bg-zinc-200 dark:bg-zinc-800"
                 />
+                <motion.div
+                    aria-hidden
+                    initial={{ scaleY: 0 }}
+                    whileInView={{ scaleY: 1 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 1.15, ease: EASE_OUT_EXPO }}
+                    className="absolute top-3 bottom-3 left-1 origin-top w-px bg-emerald-500/70 dark:bg-emerald-400/60"
+                />
                 <div className="space-y-5">
-                    {EXPERIENCES.map((exp) => (
-                        <div key={exp.company} className="relative">
+                    {EXPERIENCES.map((exp, index) => (
+                        <motion.div
+                            key={exp.company}
+                            className="relative"
+                            initial={{ opacity: 0, x: -16 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, amount: 0.25 }}
+                            transition={{ delay: index * 0.08, duration: 0.5, ease: EASE_OUT_EXPO }}
+                        >
                             <span
                                 aria-hidden
-                                className="absolute -left-8 top-8 size-2.5 rounded-full border-2 border-zinc-400 bg-white md:-left-10 dark:border-zinc-500 dark:bg-zinc-950"
+                                className="absolute -left-8 top-8 size-2.5 rounded-full border-2 border-emerald-500 bg-white md:-left-10 dark:border-emerald-400 dark:bg-zinc-950"
                             />
                             <ExperienceCard exp={exp} defaultExpanded />
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>
@@ -60,7 +76,7 @@ function ExperienceCard({ exp, defaultExpanded = false }: { exp: Experience; def
     const isAlief = exp.company === "Alief View Media Group";
 
     return (
-        <div className="experience-card group overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-100/10 transition-all duration-300 hover:border-zinc-400 dark:border-zinc-700 dark:bg-zinc-800/20 dark:hover:border-zinc-500">
+        <div className="experience-card group overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-100/10 transition-[border-color,transform] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-400 hover:-translate-y-0.5 dark:border-zinc-700 dark:bg-zinc-800/20 dark:hover:border-zinc-500">
             <button
                 type="button"
                 onClick={() => setIsExpanded(!isExpanded)}
@@ -119,7 +135,7 @@ function ExperienceCard({ exp, defaultExpanded = false }: { exp: Experience; def
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: "circOut" }}
+                        transition={{ duration: 0.28, ease: EASE_OUT_EXPO }}
                     >
                         <div className="border-t border-zinc-100/50 px-5 pt-3 pb-6 md:px-6 dark:border-zinc-800/50">
                             <div className="mb-5">

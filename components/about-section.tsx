@@ -1,6 +1,7 @@
 "use client";
 
 import { ABOUT_SNAPSHOT, BIO, PORTFOLIO_BUILD_NOTE, SKILLS_CATEGORIES, TECH_STACK } from "@/lib/constants";
+import { EASE_OUT_EXPO } from "@/lib/motion";
 import { SectionHeading } from "@/components/section-heading";
 import { TechBadge } from "@/components/tech-badge";
 import { motion } from "motion/react";
@@ -38,6 +39,7 @@ export function AboutSection() {
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
+                transition={{ duration: 0.5, ease: EASE_OUT_EXPO }}
                 className="max-w-[65ch] space-y-4"
             >
                 {BIO.map((paragraph) => (
@@ -91,16 +93,16 @@ export function AboutSection() {
                     href={PORTFOLIO_BUILD_NOTE.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-zinc-800 underline-offset-2 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:text-zinc-200 dark:focus-visible:outline-white"
+                    className="group mt-3 inline-flex items-center gap-1 text-sm font-medium text-zinc-800 underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:text-zinc-200 dark:focus-visible:outline-white"
                 >
                     View the repo
-                    <ArrowUpRight className="size-3.5" />
+                    <ArrowUpRight className="icon-nudge size-3.5" />
                 </Link>
             </motion.div>
 
             <div id="skills" className="mt-10 scroll-mt-28 space-y-7">
                 <div>
-                    <p className="mb-3 text-[13px] font-semibold text-zinc-800 dark:text-zinc-200">
+                    <p className="mb-3 text-[13px] font-semibold leading-[1.4] text-zinc-800 dark:text-zinc-200">
                         Tech I use
                     </p>
                     <div className="flex flex-wrap gap-2">
