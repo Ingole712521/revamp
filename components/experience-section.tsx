@@ -74,6 +74,7 @@ function ExperienceCard({ exp, defaultExpanded = false }: { exp: Experience; def
                 : "/lightmodeofalifview.png"
             : exp.logo;
     const isAlief = exp.company === "Alief View Media Group";
+    const containLogo = "logoFit" in exp && exp.logoFit === "contain";
 
     return (
         <div className="experience-card group overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-100/10 transition-[border-color,transform] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zinc-400 hover:-translate-y-0.5 dark:border-zinc-700 dark:bg-zinc-800/20 dark:hover:border-zinc-500">
@@ -83,14 +84,14 @@ function ExperienceCard({ exp, defaultExpanded = false }: { exp: Experience; def
                 aria-expanded={isExpanded}
                 className="flex w-full cursor-pointer flex-col items-start gap-4 p-5 text-left md:flex-row md:p-6 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:focus-visible:outline-white"
             >
-                <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-inner dark:border-zinc-700 dark:bg-zinc-900">
+                <div className={`flex h-14 items-center justify-center overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-inner dark:border-zinc-700 dark:bg-zinc-900 ${containLogo ? "w-[7.75rem]" : "w-14"}`}>
                     {logoSrc ? (
                         <div className="relative h-full w-full">
                             <Image
                                 src={logoSrc}
                                 alt={exp.company}
                                 fill
-                                className={isAlief ? "object-contain p-1" : "object-cover"}
+                                className={isAlief || containLogo ? "object-contain p-1.5" : "object-cover"}
                             />
                         </div>
                     ) : (
@@ -138,6 +139,9 @@ function ExperienceCard({ exp, defaultExpanded = false }: { exp: Experience; def
                         transition={{ duration: 0.28, ease: EASE_OUT_EXPO }}
                     >
                         <div className="border-t border-zinc-100/50 px-5 pt-3 pb-6 md:px-6 dark:border-zinc-800/50">
+                            <p className="mb-5 max-w-[68ch] text-sm leading-7 text-zinc-700 dark:text-zinc-300">
+                                {exp.description}
+                            </p>
                             <div className="mb-5">
                                 <h4 className="mb-3 text-[13px] font-medium text-zinc-700 dark:text-zinc-300">
                                     Technologies & Tools

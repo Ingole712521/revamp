@@ -513,9 +513,28 @@ export const PORTFOLIO_BUILD_NOTE = {
 export const EXPERIENCES = [
     {
         title: "Software Developer",
+        company: "Castlers Consultancy Pvt. Ltd.",
+        logo: "/castleview-logo.png",
+        logoFit: "contain" as const,
+        duration: "Oct 2026 - Present",
+        location: "Pune, India (On-Site)",
+        description: "Frontend and backend on the Castlewise Portal — the product for land transactions and redevelopment.",
+        techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "JavaScript", "MongoDB", "GSAP", "Docker", "GitHub Actions", "AWS", "GCP"],
+        points: [
+            "Build the Castlewise Portal on both sides: the screens developers and stakeholders use, and the services behind land, redevelopment, and partner workflows.",
+            "Most of the work is Next.js, React, and TypeScript, with Tailwind on every screen. MongoDB and the portal APIs are the backend half of the same role.",
+            "GSAP only where a screen needs motion. Docker, GitHub Actions, AWS, and GCP are the release path, not the daily product work.",
+        ],
+        socials: {
+            website: "https://www.castlewise.in/",
+            linkedin: "https://www.linkedin.com/company/castlewise-consultancy/"
+        }
+    },
+    {
+        title: "Software Developer",
         company: "Kshan Tech Soft Pvt Ltd",
         logo: "/kshansofttech.png",
-        duration: "Jan 2025 - Present",
+        duration: "Jan 2025 - Oct 2026",
         location: "Pune, India (On-Site)",
         description: "Developing high-performance web applications with a focus on cloud integration and smooth user experiences.",
         techStack: ["Docker", "TypeScript", "GitHub Actions", "Ubuntu", "GCP", "MongoDB", "React", "JavaScript", "Tailwind CSS", "Next.js", "GSAP", "AWS"],
