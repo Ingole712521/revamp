@@ -20,7 +20,6 @@ export const FOOTER_NAV: FooterLink[] = [
     { label: "Projects", href: "/#projects" },
     { label: "Videos", href: "/video" },
     { label: "Bio", href: "/#bio" },
-    { label: "Open source", href: "/#oss" },
     { label: "Blog", href: "https://learnwithnehal.hashnode.dev", external: true },
     { label: "Contact", href: "/#contact" },
     { label: "Resume", href: "/Nehal_Ingole_7397966719.pdf", external: true },
